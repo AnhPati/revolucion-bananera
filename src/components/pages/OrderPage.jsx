@@ -1,6 +1,10 @@
 const OrderPage = () => {
     return (
-        <div>OrderPage</div>
+        <div>
+            <h1>Bonjour </h1>
+            <br />
+            <button>Déconnexion</button>
+        </div>
     )
 }
 
