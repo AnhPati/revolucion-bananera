@@ -54,7 +54,7 @@ const LoginFormStyled = styled.form`
     h2 {
         font-size: ${theme.fonts.P4};
         font-weight: ${theme.weights.bold};
-        margin: ${theme.spacing.sm}
+        margin-bottom: ${theme.spacing.sm}
     }
 
     hr {
