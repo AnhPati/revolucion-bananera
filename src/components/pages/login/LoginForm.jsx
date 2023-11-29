@@ -24,7 +24,7 @@ export const LoginForm = () => {
     return (
         <LoginFormStyled action="submit" onSubmit={handleSubmit}>
             <h1>Bienvenue chez nous !</h1>
-            <br />
+            <hr />
             <h2>Connectez-vous :</h2>
             <input
                 value={inputValue}
@@ -55,6 +55,11 @@ const LoginFormStyled = styled.form`
         font-size: ${theme.fonts.P4};
         font-weight: ${theme.weights.bold};
         margin: ${theme.spacing.sm}
+    }
+
+    hr {
+        width: 400px;
+        border: solid 1.5px ${theme.colors.primary};
     }
 
     input,
