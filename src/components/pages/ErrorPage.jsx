@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { Button } from "../utils/Button"
 
 const ErrorPage = () => {
     const navigate = useNavigate()
@@ -10,7 +11,7 @@ const ErrorPage = () => {
     return (
         <div>
             <h1>ErrorPage</h1>
-            <button onClick={handleClick}>{`Retour à la page d'accueil`}</button>
+            <Button text={`Retour à la page d'accueil`} onClick={handleClick} />
         </div>
     )
 }

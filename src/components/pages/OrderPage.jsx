@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom"
+import { Button } from "../utils/Button"
 
 const OrderPage = () => {
     const location = useLocation()
@@ -13,7 +14,7 @@ const OrderPage = () => {
         <div>
             <h1>Bonjour {userName}</h1>
             <br />
-            <button onClick={handleClick}>Déconnexion</button>
+            <Button text={`Déconnexion`} onClick={handleClick} />
         </div>
     )
 }
