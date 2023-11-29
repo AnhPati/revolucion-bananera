@@ -1,5 +1,9 @@
-export const Button = ({ text, onClick }) => {
+import { Link } from "react-router-dom"
+
+export const Button = ({ text, url }) => {
     return (
-        <button onClick={onClick}>{text}</button>
+        <Link to={url}>
+            <button>{text}</button>
+        </Link>
     )
 }
