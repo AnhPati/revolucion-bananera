@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import styled from "styled-components"
+import { theme } from "../../../theme/index"
 
 export const LoginForm = () => {
-    // state
     const [inputValue, setInputValue] = useState('')
     const navigate = useNavigate()
 
-    // comportements
     const handleChange = (e) => {
         setInputValue(e.target.value)
     }
@@ -21,9 +21,8 @@ export const LoginForm = () => {
         })
     }
 
-    // render
     return (
-        <form action="submit" onSubmit={handleSubmit}>
+        <LoginFormStyled action="submit" onSubmit={handleSubmit}>
             <h1>Bienvenue chez nous !</h1>
             <br />
             <h2>Connectez-vous :</h2>
@@ -35,6 +34,24 @@ export const LoginForm = () => {
                 required
             />
             <button>Accéder à votre espace</button>
-        </form>
+        </LoginFormStyled>
     )
 }
+
+const LoginFormStyled = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+
+    h1 {
+        font-size: ${theme.fonts.P5};
+        font-weight: ${theme.weights.bold};
+    }
+
+    h2 {
+        font-size: ${theme.fonts.P4};
+        font-weight: ${theme.weights.bold};
+    }
+`;
