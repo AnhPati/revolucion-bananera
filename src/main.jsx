@@ -4,11 +4,13 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
 import OrderPage from './components/pages/OrderPage.jsx'
+import ErrorPage from './components/pages/ErrorPage.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <App />,
+    errorElement: <ErrorPage />
   },
   {
     path: "/order",
