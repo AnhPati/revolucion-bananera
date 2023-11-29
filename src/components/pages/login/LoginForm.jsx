@@ -29,11 +29,11 @@ export const LoginForm = () => {
             <input
                 value={inputValue}
                 type="text"
-                placeholder="Entrer votre prénom :"
+                placeholder="Entrer votre prénom"
                 onChange={handleChange}
                 required
             />
-            <button>Accéder à votre espace</button>
+            <button>Accéder à mon espace</button>
         </LoginFormStyled>
     )
 }
