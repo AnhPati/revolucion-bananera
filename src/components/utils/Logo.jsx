@@ -1,6 +1,6 @@
 import styled from "styled-components";
+import logo from "./../../assets/logo-orange.png"
 import { theme } from "../../theme";
-import logoImg from "../../assets/logo-orange.png"
 
 export const Logo = () => {
     return (
@@ -9,7 +9,7 @@ export const Logo = () => {
                 Crazee
             </h1>
             <div className={'img-container'}>
-                <img src={logoImg} alt={'Crazee Burger logo'} />
+                <img src={logo} alt={'Crazee Burger logo'} />
             </div>
             <h1>
                 Burger

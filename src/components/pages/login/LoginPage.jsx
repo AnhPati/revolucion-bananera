@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { LoginForm } from "./LoginForm"
 import background from "./../../../assets/burger-background.jpg"
-import { Logo } from "../../utils/Logo";
+import { Logo } from "../../utils/logo";
 
 const LoginPage = () => {
     return (
