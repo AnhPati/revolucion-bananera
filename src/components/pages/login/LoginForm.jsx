@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { IoPersonCircleOutline } from "react-icons/io5";
+import { BsPersonCircle } from "react-icons/bs";
 import styled from "styled-components"
 import { theme } from "../../../theme/index"
 
@@ -28,7 +28,7 @@ export const LoginForm = () => {
             <hr />
             <h2>Connectez-vous :</h2>
             <div className="icon_placeholder-wrapper">
-                <IoPersonCircleOutline />
+                <BsPersonCircle />
                 <input
                     value={inputValue}
                     type="text"
