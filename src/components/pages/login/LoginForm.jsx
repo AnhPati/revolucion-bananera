@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { BsPersonCircle } from "react-icons/bs";
+import { IoChevronForward } from "react-icons/io5";
 import styled from "styled-components"
 import { theme } from "../../../theme/index"
 
@@ -37,7 +38,7 @@ export const LoginForm = () => {
                     required
                 />
             </div>
-            <button>Accéder à mon espace</button>
+            <button>Accéder à mon espace <IoChevronForward /></button>
         </LoginFormStyled>
     )
 }
@@ -114,6 +115,10 @@ const LoginFormStyled = styled.form`
         background: ${theme.colors.primary_burger};
         border: 1px solid ${theme.colors.primary_burger};
         cursor: pointer;
+
+        > svg {
+            margin-bottom: -2px;
+        }
 
         &:hover {
             color: ${theme.colors.primary_burger};
