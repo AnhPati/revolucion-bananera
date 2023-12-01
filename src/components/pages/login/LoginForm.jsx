@@ -29,17 +29,13 @@ export const LoginForm = () => {
             <h1>Bienvenue chez nous !</h1>
             <hr />
             <h2>Connectez-vous :</h2>
-            <TextInput />
-            <div className="icon_placeholder-wrapper">
-                <BsPersonCircle />
-                <input
-                    value={inputValue}
-                    type="text"
-                    placeholder="Entrer votre prénom"
-                    onChange={handleChange}
-                    required
-                />
-            </div>
+            <TextInput
+                value={inputValue}
+                onChange={handleChange}
+                placeholder={'Entrer votre prénom'}
+                required
+                Icon={<BsPersonCircle />}
+            />
             <button>Accéder à mon espace <IoChevronForward /></button>
         </LoginFormStyled>
     )
@@ -69,46 +65,13 @@ const LoginFormStyled = styled.form`
         border: solid 1.5px ${theme.colors.primary};
     }
 
-    .icon_placeholder-wrapper {
-        position: relative;
+    
 
-        > svg {
-            position: absolute;
-            top: 30px;
-            color: ${theme.colors.greyBlue};
-            left: 35px;
-            height: 15px;
-            width: 15px;
-        }
-    }
-
-    input,
     button {
         width: 400px;
         border-radius: ${theme.borderRadius.round};
         padding-top: 18px;
         padding-bottom: 18px;
-    }
-
-    input {
-        color: ${theme.colors.dark};
-        font-weight: ${theme.weights.regular};
-        padding-left: 46px;
-        padding-right: 24px;
-        margin: ${theme.spacing.sm};
-        border: none;
-
-        &::placeholder {
-            color: ${theme.colors.greyUltraLight};
-        }
-
-        &:focus-visible {
-            outline: none;
-
-            &::placeholder {
-                color: transparent;
-            }
-        }
     }
 
     button {
