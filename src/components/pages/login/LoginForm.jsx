@@ -4,6 +4,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
 import styled from "styled-components"
 import { theme } from "../../../theme/index"
+import { TextInput } from "../../ui/TextInput";
 
 export const LoginForm = () => {
     const [inputValue, setInputValue] = useState('')
@@ -28,6 +29,7 @@ export const LoginForm = () => {
             <h1>Bienvenue chez nous !</h1>
             <hr />
             <h2>Connectez-vous :</h2>
+            <TextInput />
             <div className="icon_placeholder-wrapper">
                 <BsPersonCircle />
                 <input
