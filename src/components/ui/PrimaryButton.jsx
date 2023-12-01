@@ -3,7 +3,7 @@ import { theme } from "../../theme";
 
 export const PrimaryButton = ({ label, Icon }) => {
     return (
-        <PrimaryButtonStyled>{label} {Icon && Icon}</PrimaryButtonStyled>
+        <PrimaryButtonStyled>{label}{Icon && Icon}</PrimaryButtonStyled>
     )
 }
 
@@ -20,6 +20,7 @@ const PrimaryButtonStyled = styled.button`
 
     > svg {
         margin-bottom: -2px;
+        margin-left: 10px;
     }
 
     &:hover {
