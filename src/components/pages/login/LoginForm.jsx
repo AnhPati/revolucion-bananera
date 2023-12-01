@@ -37,8 +37,10 @@ export const LoginForm = () => {
                 required
                 Icon={<BsPersonCircle />}
             />
-            <PrimaryButton />
-            <button>Accéder à mon espace <IoChevronForward /></button>
+            <PrimaryButton
+                label={'Accéder à mon espace'}
+                Icon={<IoChevronForward />}
+            />
         </LoginFormStyled>
     )
 }
@@ -65,36 +67,5 @@ const LoginFormStyled = styled.form`
     hr {
         width: 400px;
         border: solid 1.5px ${theme.colors.primary};
-    }
-
-    
-
-    button {
-        width: 400px;
-        border-radius: ${theme.borderRadius.round};
-        padding-top: 18px;
-        padding-bottom: 18px;
-    }
-
-    button {
-        color: ${theme.colors.white};
-        font-weight: ${theme.weights.bold};
-        background: ${theme.colors.primary_burger};
-        border: 1px solid ${theme.colors.primary_burger};
-        cursor: pointer;
-
-        > svg {
-            margin-bottom: -2px;
-        }
-
-        &:hover {
-            color: ${theme.colors.primary_burger};
-            background: ${theme.colors.white};
-        }
-
-        &:focus {
-            color: ${theme.colors.white};
-            background: ${theme.colors.primary_burger};
-        }
     }
 `
