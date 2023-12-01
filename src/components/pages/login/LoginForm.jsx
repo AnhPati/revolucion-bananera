@@ -46,6 +46,7 @@ export const LoginForm = () => {
 }
 
 const LoginFormStyled = styled.form`
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -65,7 +66,7 @@ const LoginFormStyled = styled.form`
     }
 
     hr {
-        width: 400px;
+        width: 100%;
         border: solid 1.5px ${theme.colors.primary};
     }
 `

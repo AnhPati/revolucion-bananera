@@ -8,7 +8,7 @@ export const PrimaryButton = ({ label, Icon }) => {
 }
 
 const PrimaryButtonStyled = styled.button`
-    width: 400px;
+    width: 100%;
     border-radius: ${theme.borderRadius.round};
     padding-top: 18px;
     padding-bottom: 18px;

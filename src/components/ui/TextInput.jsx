@@ -3,7 +3,7 @@ import { theme } from "../../theme";
 
 export const TextInput = ({ value, onChange, Icon, ...optionalsProps }) => {
     return (
-        <TextInputStyled className="icon_placeholder-wrapper">
+        <TextInputStyled>
             {Icon && Icon}
             <input
                 value={value}
@@ -17,18 +17,20 @@ export const TextInput = ({ value, onChange, Icon, ...optionalsProps }) => {
 
 const TextInputStyled = styled.div`
     position: relative;
+    width: 100%;
+    margin: ${theme.spacing.sm} 0;
 
     > svg {
         position: absolute;
-        top: 30px;
+        top: 17.5px;
         color: ${theme.colors.greyBlue};
-        left: 35px;
+        left: 20px;
         height: 15px;
         width: 15px;
     }
 
     input {
-        width: 400px;
+        width: 100%;
         border-radius: ${theme.borderRadius.round};
         padding-top: 18px;
         padding-bottom: 18px;
@@ -36,7 +38,6 @@ const TextInputStyled = styled.div`
         font-weight: ${theme.weights.regular};
         padding-left: 46px;
         padding-right: 24px;
-        margin: ${theme.spacing.sm};
         border: none;
 
         &::placeholder {
