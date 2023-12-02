@@ -2,7 +2,7 @@ import { Logo } from './ui/Logo'
 import { Button } from './ui/Button'
 import { BsPersonCircle } from 'react-icons/bs'
 
-const NavBar = ({ username }) => {
+const Navbar = ({ username }) => {
 
     return (
         <nav>
@@ -20,4 +20,4 @@ const NavBar = ({ username }) => {
     )
 }
 
-export default NavBar
+export default Navbar
