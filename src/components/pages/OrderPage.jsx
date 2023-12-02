@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom"
-import { Button } from "../utils/Button"
+import { Button } from "../ui/Button"
 
 const OrderPage = () => {
     const location = useLocation()

@@ -1,8 +1,11 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { IoPersonCircleOutline } from "react-icons/io5";
+import { BsPersonCircle } from "react-icons/bs";
+import { IoChevronForward } from "react-icons/io5";
 import styled from "styled-components"
 import { theme } from "../../../theme/index"
+import { TextInput } from "../../ui/TextInput";
+import { PrimaryButton } from "../../ui/PrimaryButton";
 
 export const LoginForm = () => {
     const [inputValue, setInputValue] = useState('')
@@ -27,102 +30,43 @@ export const LoginForm = () => {
             <h1>Bienvenue chez nous !</h1>
             <hr />
             <h2>Connectez-vous :</h2>
-            <div className="icon_placeholder-wrapper">
-                <IoPersonCircleOutline />
-                <input
-                    value={inputValue}
-                    type="text"
-                    placeholder="Entrer votre prénom"
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            <button>Accéder à mon espace</button>
+            <TextInput
+                value={inputValue}
+                onChange={handleChange}
+                placeholder={'Entrer votre prénom'}
+                required
+                Icon={<BsPersonCircle />}
+            />
+            <PrimaryButton
+                label={'Accéder à mon espace'}
+                Icon={<IoChevronForward />}
+            />
         </LoginFormStyled>
     )
 }
 
 const LoginFormStyled = styled.form`
+    width: ${theme.gridUnit * 50}px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: ${theme.colors.white};
-    font-size: ${theme.fonts.P0};
+    font-size: ${theme.fonts.size.P0};
 
     h1 {
-        font-size: ${theme.fonts.P5};
-        font-weight: ${theme.weights.bold};
+        font-size: ${theme.fonts.size.P5};
+        font-weight: ${theme.fonts.weights.bold};
     }
 
     h2 {
-        font-size: ${theme.fonts.P4};
-        font-weight: ${theme.weights.bold};
+        font-size: ${theme.fonts.size.P4};
+        font-weight: ${theme.fonts.weights.bold};
         margin-bottom: ${theme.spacing.sm}
     }
 
     hr {
-        width: 400px;
-        border: solid 1.5px ${theme.colors.primary};
-    }
-
-    .icon_placeholder-wrapper {
-        position: relative;
-
-        > svg {
-            position: absolute;
-            top: 30px;
-            color: ${theme.colors.greyBlue};
-            left: 35px;
-            height: 15px;
-            width: 15px;
-        }
-    }
-
-    input,
-    button {
-        width: 400px;
-        border-radius: ${theme.borderRadius.round};
-        padding-top: 18px;
-        padding-bottom: 18px;
-    }
-
-    input {
-        color: ${theme.colors.dark};
-        font-weight: ${theme.weights.regular};
-        padding-left: 46px;
-        padding-right: 24px;
-        margin: ${theme.spacing.sm};
-        border: none;
-
-        &::placeholder {
-            color: ${theme.colors.greyUltraLight};
-        }
-
-        &:focus-visible {
-            outline: none;
-
-            &::placeholder {
-                color: transparent;
-            }
-        }
-    }
-
-    button {
-        color: ${theme.colors.white};
-        font-weight: ${theme.weights.bold};
-        background: ${theme.colors.primary_burger};
-        border: 1px solid ${theme.colors.primary_burger};
-        cursor: pointer;
-
-        &:hover {
-            color: ${theme.colors.primary_burger};
-            background: ${theme.colors.white};
-        }
-
-        &:focus {
-            color: ${theme.colors.white};
-            background: ${theme.colors.primary_burger};
-        }
+        width: 100%;
+        border: solid 1.5px ${theme.colors.loginLine};
     }
 `
