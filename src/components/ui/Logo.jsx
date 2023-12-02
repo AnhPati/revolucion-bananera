@@ -30,8 +30,9 @@ const LogoStyled = styled.div`
     }
 
     .img-container {
-        max-width: 200px;
-        max-height: 150px;
+        width: 200px;
+        height: 150px;
+        margin: 0 ${theme.gridUnit * 0.625}px;
 
         img {
             width: 100%;
