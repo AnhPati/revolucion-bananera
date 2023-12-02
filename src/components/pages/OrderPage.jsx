@@ -4,12 +4,12 @@ import NavBar from "../NavBar"
 
 const OrderPage = () => {
     const location = useLocation()
-    const userName = location.state.userName
+    const username = location.state.userName
 
     return (
         <div>
-            <NavBar />
-            <h1>Bonjour {userName}</h1>
+            <NavBar username={username} />
+            <h1>Bonjour {username}</h1>
             <br />
             <Button text={`Déconnexion`} url={'/'} />
         </div>
