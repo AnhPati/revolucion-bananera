@@ -10,26 +10,26 @@ export const PrimaryButton = ({ label, Icon }) => {
 const PrimaryButtonStyled = styled.button`
     width: 100%;
     border-radius: ${theme.borderRadius.round};
-    padding-top: 18px;
-    padding-bottom: 18px;
+    padding-top: ${theme.gridUnit * 2.25}px;
+    padding-bottom: ${theme.gridUnit * 2.25}px;
     color: ${theme.colors.white};
-    font-weight: ${theme.weights.bold};
-    background: ${theme.colors.primary_burger};
-    border: 1px solid ${theme.colors.primary_burger};
+    font-weight: ${theme.fonts.weights.bold};
+    background: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.primary};
     cursor: pointer;
 
     > svg {
-        margin-bottom: -2px;
-        margin-left: 10px;
+        margin-bottom: ${theme.gridUnit * (-0.25)}px;
+        margin-left: ${theme.gridUnit * 1.25}px;
     }
 
     &:hover {
-        color: ${theme.colors.primary_burger};
+        color: ${theme.colors.primary};
         background: ${theme.colors.white};
     }
 
     &:focus {
         color: ${theme.colors.white};
-        background: ${theme.colors.primary_burger};
+        background: ${theme.colors.primary};
     }
 `;

@@ -21,11 +21,11 @@ export const Logo = () => {
 const LogoStyled = styled.div`
     display: flex;
     align-items: center;
-    color: ${theme.colors.primary_burger};
+    color: ${theme.colors.primary};
 
     h1 {
         font-size: 110px;
-        font-weight: ${theme.weights.bold};
+        font-weight: ${theme.fonts.weights.bold};
         margin: 0;
     }
 

@@ -22,22 +22,21 @@ const TextInputStyled = styled.div`
 
     > svg {
         position: absolute;
-        top: 17.5px;
+        top: ${theme.gridUnit * 2.25}px;
+        left: ${theme.gridUnit * 2.5}px;
         color: ${theme.colors.greyBlue};
-        left: 20px;
-        height: 15px;
-        width: 15px;
+        font-size: ${theme.fonts.size.P0};
     }
 
     input {
         width: 100%;
         border-radius: ${theme.borderRadius.round};
-        padding-top: 18px;
-        padding-bottom: 18px;
+        padding-top: ${theme.gridUnit * 2.25}px;
+        padding-bottom: ${theme.gridUnit * 2.25}px;
         color: ${theme.colors.dark};
-        font-weight: ${theme.weights.regular};
-        padding-left: 46px;
-        padding-right: 24px;
+        font-weight: ${theme.fonts.weights.regular};
+        padding-left: ${theme.gridUnit * 5.75}px;
+        padding-right: ${theme.gridUnit * 3}px;
         border: none;
 
         &::placeholder {

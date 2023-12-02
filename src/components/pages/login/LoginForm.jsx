@@ -46,27 +46,27 @@ export const LoginForm = () => {
 }
 
 const LoginFormStyled = styled.form`
-    width: 400px;
+    width: ${theme.gridUnit * 50}px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: ${theme.colors.white};
-    font-size: ${theme.fonts.P0};
+    font-size: ${theme.fonts.size.P0};
 
     h1 {
-        font-size: ${theme.fonts.P5};
-        font-weight: ${theme.weights.bold};
+        font-size: ${theme.fonts.size.P5};
+        font-weight: ${theme.fonts.weights.bold};
     }
 
     h2 {
-        font-size: ${theme.fonts.P4};
-        font-weight: ${theme.weights.bold};
+        font-size: ${theme.fonts.size.P4};
+        font-weight: ${theme.fonts.weights.bold};
         margin-bottom: ${theme.spacing.sm}
     }
 
     hr {
         width: 100%;
-        border: solid 1.5px ${theme.colors.primary};
+        border: solid 1.5px ${theme.colors.loginLine};
     }
 `
