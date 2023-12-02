@@ -10,7 +10,7 @@ const Navbar = ({ username }) => {
         <NavbarStyled>
             <Logo className={'nav-logo'} />
             <div className={'right-side'}>
-                <div className='text'>
+                <div className='text-container'>
                     <p>Hey, <span className='username'>{username}</span></p>
                     <Link to={'/'} >Se déconnecter</Link>
                 </div>
@@ -40,7 +40,7 @@ const NavbarStyled = styled.nav`
         display: flex;
         align-items: center;
 
-        .text {
+        .text-container {
             color: #747B91;
             text-align: end;
 
