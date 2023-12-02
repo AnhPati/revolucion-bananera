@@ -2,6 +2,7 @@ import { Logo } from './ui/Logo'
 import { BsPersonCircle } from 'react-icons/bs'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { theme } from '../theme'
 
 const Navbar = ({ username }) => {
 
@@ -9,8 +10,8 @@ const Navbar = ({ username }) => {
         <NavbarStyled>
             <Logo className={'nav-logo'} />
             <div className={'right-side'}>
-                <div>
-                    <p>Hey, {username}</p>
+                <div className='text'>
+                    <p>Hey, <span className='username'>{username}</span></p>
                     <Link to={'/'} >Se déconnecter</Link>
                 </div>
                 <div>
@@ -38,5 +39,26 @@ const NavbarStyled = styled.nav`
     .right-side {
         display: flex;
         align-items: center;
+
+        .text {
+            color: #747B91;
+            text-align: end;
+
+            p {
+                font-size: 16px;
+                margin: 0;
+
+                .username {
+                    color: ${theme.colors.primary};
+                    font-weight: ${theme.fonts.weights.bold};
+                }
+            }
+
+            a {
+                color: #747B91;
+                font-size: 10px;
+                text-decoration: none;
+            }
+        }
     }
 `;
