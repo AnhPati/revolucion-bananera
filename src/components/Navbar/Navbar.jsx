@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Link, useLocation } from 'react-router-dom'
 import { theme } from '../../theme'
 import { NavbarLogo } from './NavbarLogo'
+import { NavbarProfile } from './NavbarProfile'
 
 const Navbar = () => {
     const location = useLocation()
@@ -11,6 +12,7 @@ const Navbar = () => {
     return (
         <NavbarStyled>
             <NavbarLogo />
+            <NavbarProfile />
             <div className={'right-side'}>
                 <div className='text-container'>
                     <p>Hey, <span className='username'>{username}</span></p>
