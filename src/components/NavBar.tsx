@@ -14,7 +14,7 @@ const Navbar = ({ username }) => {
                     <p>Hey, <span className='username'>{username}</span></p>
                     <Link to={'/'} >Se déconnecter</Link>
                 </div>
-                <div>
+                <div className={'icon-container'}>
                     <BsPersonCircle />
                 </div>
             </div>
@@ -58,6 +58,17 @@ const NavbarStyled = styled.nav`
                 color: #747B91;
                 font-size: 10px;
                 text-decoration: none;
+            }
+        }
+
+        .icon-container {
+            display: flex;
+            align-items: end;
+            margin-left: 10px;
+
+            svg {
+                color: #747B91;
+                font-size: ${theme.fonts.size.P4};
             }
         }
     }
