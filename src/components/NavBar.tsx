@@ -7,7 +7,7 @@ const Navbar = ({ username }) => {
 
     return (
         <NavbarStyled>
-            <Logo />
+            <Logo className={'nav-logo'} />
             <div className={'right-side'}>
                 <div>
                     <p>Hey, {username}</p>
@@ -30,9 +30,13 @@ const NavbarStyled = styled.nav`
     align-items: center;
     padding-left: 20px;
     padding-right: 70px;
+
+    .nav-logo {
+        transform: none;
+    }
     
     .right-side {
         display: flex;
-        align-items: centerF;
+        align-items: center;
     }
 `;
