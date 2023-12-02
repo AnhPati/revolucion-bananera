@@ -1,7 +1,7 @@
 import { Logo } from './ui/Logo'
-import { Button } from './ui/Button'
 import { BsPersonCircle } from 'react-icons/bs'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Navbar = ({ username }) => {
 
@@ -11,7 +11,7 @@ const Navbar = ({ username }) => {
             <div className={'right-side'}>
                 <div>
                     <p>Hey, {username}</p>
-                    <Button text={`Déconnexion`} url={'/'} />
+                    <Link to={'/'} >Se déconnecter</Link>
                 </div>
                 <div>
                     <BsPersonCircle />
