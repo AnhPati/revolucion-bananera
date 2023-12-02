@@ -36,7 +36,11 @@ const NavbarStyled = styled.nav`
     align-items: center;
     padding-left: 20px;
     padding-right: 70px;
-        border-radius: ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound} 0 0;
+    border-radius: ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound} 0 0;
+
+    a {
+        text-decoration: none;
+    }
 
     .nav-logo {
         transform: none;
@@ -64,7 +68,6 @@ const NavbarStyled = styled.nav`
             a {
                 color: #747B91;
                 font-size: 10px;
-                text-decoration: none;
             }
         }
 
