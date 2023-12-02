@@ -2,9 +2,9 @@ import styled from "styled-components";
 import logo from "./../../assets/logo-orange.png"
 import { theme } from "../../theme";
 
-export const Logo = () => {
+export const Logo = ({ className }) => {
     return (
-        <LogoStyled>
+        <LogoStyled className={className}>
             <h1>
                 Crazee
             </h1>
@@ -22,16 +22,18 @@ const LogoStyled = styled.div`
     display: flex;
     align-items: center;
     color: ${theme.colors.primary};
+    transform: scale(2.5);
 
     h1 {
-        font-size: 110px;
+        font-size: 36px;
         font-weight: ${theme.fonts.weights.bold};
+        line-height: 1.5px;
         margin: 0;
     }
 
     .img-container {
-        width: 200px;
-        height: 150px;
+        width: 80px;
+        height: 60px;
         margin: 0 ${theme.gridUnit * 0.625}px;
 
         img {
