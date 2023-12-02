@@ -34,6 +34,7 @@ const NavbarStyled = styled.nav`
 
     .nav-logo {
         transform: none;
+        margin: 19px 0;
     }
     
     .right-side {
