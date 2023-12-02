@@ -3,6 +3,7 @@ import { BsPersonCircle } from 'react-icons/bs'
 import styled from 'styled-components'
 import { Link, useLocation } from 'react-router-dom'
 import { theme } from '../../theme'
+import { NavbarLogo } from './NavbarLogo'
 
 const Navbar = () => {
     const location = useLocation()
@@ -10,6 +11,7 @@ const Navbar = () => {
 
     return (
         <NavbarStyled>
+            <NavbarLogo />
             <a href='\order'>
                 <Logo className={'nav-logo'} />
             </a>
