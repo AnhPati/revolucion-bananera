@@ -1,14 +1,19 @@
 import { Logo } from './ui/Logo'
 import { BsPersonCircle } from 'react-icons/bs'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { theme } from '../theme'
 
-const Navbar = ({ username }) => {
+const Navbar = () => {
+    const location = useLocation()
+    const username = location.state.userName
 
     return (
         <NavbarStyled>
-            <Logo className={'nav-logo'} />
+            <a href='\order'>
+                <Logo className={'nav-logo'} />
+            </a>
+
             <div className={'right-side'}>
                 <div className='text-container'>
                     <p>Hey, <span className='username'>{username}</span></p>
