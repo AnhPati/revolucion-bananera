@@ -11,7 +11,6 @@ export const NavbarLogo = () => {
 
 const NavbarLogoStyled = styled.a`
     .nav-logo {
-        transform: none;
         margin: 19px 0;
     }
 `;
