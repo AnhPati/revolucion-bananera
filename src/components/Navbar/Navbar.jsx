@@ -1,7 +1,5 @@
-import { BsPersonCircle } from 'react-icons/bs'
 import styled from 'styled-components'
-import { Link, useLocation } from 'react-router-dom'
-import { theme } from '../../theme'
+import { useLocation } from 'react-router-dom'
 import { NavbarLogo } from './NavbarLogo'
 import { NavbarProfile } from './NavbarProfile'
 
@@ -12,16 +10,7 @@ const Navbar = () => {
     return (
         <NavbarStyled>
             <NavbarLogo />
-            <NavbarProfile />
-            <div className={'right-side'}>
-                <div className='text-container'>
-                    <p>Hey, <span className='username'>{username}</span></p>
-                    <Link to={'/'} >Se déconnecter</Link>
-                </div>
-                <div className={'icon-container'}>
-                    <BsPersonCircle />
-                </div>
-            </div>
+            <NavbarProfile username={username} />
         </NavbarStyled>
     )
 }
@@ -38,41 +27,5 @@ const NavbarStyled = styled.nav`
 
     a {
         text-decoration: none;
-    }
-    
-    .right-side {
-        display: flex;
-        align-items: center;
-
-        .text-container {
-            color: #747B91;
-            text-align: end;
-
-            p {
-                font-size: 16px;
-                margin: 0;
-
-                .username {
-                    color: ${theme.colors.primary};
-                    font-weight: ${theme.fonts.weights.bold};
-                }
-            }
-
-            a {
-                color: #747B91;
-                font-size: 10px;
-            }
-        }
-
-        .icon-container {
-            display: flex;
-            align-items: end;
-            margin-left: 10px;
-
-            svg {
-                color: #747B91;
-                font-size: ${theme.fonts.size.P4};
-            }
-        }
     }
 `;
