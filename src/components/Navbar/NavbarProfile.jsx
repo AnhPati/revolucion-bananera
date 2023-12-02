@@ -6,7 +6,7 @@ import { theme } from '../../theme';
 
 export const NavbarProfile = ({ username }) => {
     return (
-        <NavbarProfileStyled className={'right-side'}>
+        <NavbarProfileStyled>
             <div className='text-container'>
                 <p>Hey, <span className='username'>{username}</span></p>
                 <Link to={'/'} >Se déconnecter</Link>
