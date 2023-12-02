@@ -1,4 +1,3 @@
-import { Logo } from '../ui/Logo'
 import { BsPersonCircle } from 'react-icons/bs'
 import styled from 'styled-components'
 import { Link, useLocation } from 'react-router-dom'
@@ -12,10 +11,6 @@ const Navbar = () => {
     return (
         <NavbarStyled>
             <NavbarLogo />
-            <a href='\order'>
-                <Logo className={'nav-logo'} />
-            </a>
-
             <div className={'right-side'}>
                 <div className='text-container'>
                     <p>Hey, <span className='username'>{username}</span></p>
@@ -41,11 +36,6 @@ const NavbarStyled = styled.nav`
 
     a {
         text-decoration: none;
-    }
-
-    .nav-logo {
-        transform: none;
-        margin: 19px 0;
     }
     
     .right-side {
