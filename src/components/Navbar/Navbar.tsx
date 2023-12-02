@@ -1,8 +1,8 @@
-import { Logo } from './ui/Logo'
+import { Logo } from '../ui/Logo'
 import { BsPersonCircle } from 'react-icons/bs'
 import styled from 'styled-components'
 import { Link, useLocation } from 'react-router-dom'
-import { theme } from '../theme'
+import { theme } from '../../theme'
 
 const Navbar = () => {
     const location = useLocation()
