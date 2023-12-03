@@ -6,10 +6,7 @@ import { CardImg } from './CardImg';
 export const Card = ({ product }) => {
     return (
         <CardStyled key={product.id} className={'card'}>
-            <CardImg />
-            <div className={'card-img'}>
-                <img src={product.imageSource} alt={product.title} />
-            </div>
+            <CardImg src={product.imageSource} alt={product.title} />
             <h3 className={'card-title'}>{product.title}</h3>
             <div className={'card-description'}>
                 <p>
@@ -33,17 +30,6 @@ const CardStyled = styled.li`
     padding: 50px 20px 10px 20px;
     box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 0.20);
     border-radius: ${theme.borderRadius.extraRound};
-
-    .card-img {
-        height: 145px;
-        width: 200px;
-        text-align: center;
-
-        img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-    }
 
     .card-title {
         width: 100%;
