@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../../theme";
-import { MenuOrder } from "./MenuOrder";
+import { theme } from "../../../../theme";
+import { MenuOrder } from "../MenuOrder";
 
 export const MainOrder = () => {
     return (

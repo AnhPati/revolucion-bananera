@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Navbar from "./Navbar/Navbar"
 import { theme } from "../../../theme";
-import { MainOrder } from "./MainOrder";
+import { MainOrder } from "./MainOrder/MainOrder";
 
 const OrderPage = () => {
 
