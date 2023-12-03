@@ -3,10 +3,12 @@ import { formatPrice } from "../../utils/maths";
 import styled from 'styled-components';
 import { theme } from '../../theme';
 import { CardImg } from './CardImg';
+import { CardTitle } from './CardTitle';
 export const Card = ({ product }) => {
     return (
         <CardStyled key={product.id} className={'card'}>
             <CardImg src={product.imageSource} alt={product.title} />
+            <CardTitle />
             <h3 className={'card-title'}>{product.title}</h3>
             <div className={'card-description'}>
                 <p>
