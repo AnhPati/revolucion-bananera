@@ -13,7 +13,11 @@ export const MenuOrder = () => {
                 {products.map(product => {
                     return (
                         <Card key={product.id}
-                            product={product} />
+                            id={product.id}
+                            imgSrc={product.imageSource}
+                            title={product.title}
+                            price={product.price}
+                        />
                     )
                 })}
             </ul>

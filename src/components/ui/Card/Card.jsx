@@ -3,11 +3,11 @@ import { theme } from '../../../theme';
 import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
 
-export const Card = ({ product }) => {
+export const Card = ({ id, imgSrc, title, price }) => {
     return (
-        <CardStyled key={product.id} className={'card'}>
-            <CardImg src={product.imageSource} alt={product.title} />
-            <CardInfos title={product.title} price={product.price} />
+        <CardStyled key={id} id={id} className={'card'}>
+            <CardImg src={imgSrc} alt={title} />
+            <CardInfos title={title} price={price} />
         </CardStyled>
     )
 }
