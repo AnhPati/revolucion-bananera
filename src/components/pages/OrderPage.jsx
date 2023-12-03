@@ -28,7 +28,7 @@ const OrderPageStyled = styled.div`
 
     .app-container {
         width: 1400px;
-        background: ${theme.colors.white};
+        background: ${theme.colors.background_white};
         border-radius: ${theme.borderRadius.extraRound};
     }
 `;

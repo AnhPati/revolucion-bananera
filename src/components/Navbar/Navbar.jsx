@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
 import { NavbarLogo } from './NavbarLogo'
 import { NavbarProfile } from './NavbarProfile'
+import { theme } from '../../theme'
 
 const Navbar = () => {
     const location = useLocation()
@@ -24,6 +25,7 @@ const NavbarStyled = styled.nav`
     align-items: center;
     padding-left: 20px;
     padding-right: 20px;
+    background: ${theme.colors.white};
 
     a {
         text-decoration: none;
