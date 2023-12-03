@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Navbar from "../../navbar/Navbar"
 import { theme } from "../../../theme";
+import { MainOrder } from "./MainOrder";
 
 const OrderPage = () => {
 
@@ -8,8 +9,7 @@ const OrderPage = () => {
         <OrderPageStyled>
             <div className={'app-container'}>
                 <Navbar />
-                <main>
-                </main>
+                <MainOrder />
             </div>
         </OrderPageStyled>
     )
@@ -31,11 +31,5 @@ const OrderPageStyled = styled.div`
         flex-direction: column;
         border-radius: ${theme.borderRadius.extraRound};
         background: ${theme.colors.background_white};
-
-        main {
-            flex: 1;
-            border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
-            box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.20) inset;
-        }
     }
 `;
