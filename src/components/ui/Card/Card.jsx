@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../../theme';
+import { theme } from '../../../theme';
 import { CardImg } from './CardImg';
 import { CardTitle } from './CardTitle';
 import { CardDescription } from './CardDescription';

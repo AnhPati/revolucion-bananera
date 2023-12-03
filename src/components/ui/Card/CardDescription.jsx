@@ -1,7 +1,7 @@
-import { PrimaryButton } from './PrimaryButton'
-import { formatPrice } from "../../utils/maths";
+import { PrimaryButton } from '../PrimaryButton'
+import { formatPrice } from "../../../utils/maths";
 import styled from 'styled-components';
-import { theme } from '../../theme';
+import { theme } from '../../../theme';
 
 export const CardDescription = ({ price }) => {
     return (

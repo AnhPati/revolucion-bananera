@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { fakeMenu2 } from '../../../../fakeData/fakeMenu'
 import { theme } from "../../../../theme";
-import { Card } from "../../../ui/Card";
+import { Card } from "../../../ui/Card/Card";
 
 export const MenuOrder = () => {
     const [products, setProducts] = useState(fakeMenu2)
