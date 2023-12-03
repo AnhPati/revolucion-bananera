@@ -4,6 +4,7 @@ import { fakeMenu2 } from '../../../../fakeData/fakeMenu'
 import { PrimaryButton } from '../../../ui/PrimaryButton'
 import { theme } from "../../../../theme";
 import { formatPrice } from "../../../../utils/maths";
+import { Card } from "./Card";
 
 export const MenuOrder = () => {
     const [products, setProducts] = useState(fakeMenu2)
@@ -13,20 +14,21 @@ export const MenuOrder = () => {
             <ul>
                 {products.map(product => {
                     return (
-                        <li key={product.id} className={'card'}>
-                            <div className={'card-img'}>
-                                <img src={product.imageSource} alt={product.title} />
-                            </div>
-                            <h3 className={'card-title'}>{product.title}</h3>
-                            <div className={'card-description'}>
-                                <p>
-                                    {formatPrice(product.price)}
-                                </p>
-                                <div className={'add_button-container'}>
-                                    <PrimaryButton label={'Ajouter'} />
+                        <><Card />
+                            <li key={product.id} className={'card'}>
+                                <div className={'card-img'}>
+                                    <img src={product.imageSource} alt={product.title} />
                                 </div>
-                            </div>
-                        </li>
+                                <h3 className={'card-title'}>{product.title}</h3>
+                                <div className={'card-description'}>
+                                    <p>
+                                        {formatPrice(product.price)}
+                                    </p>
+                                    <div className={'add_button-container'}>
+                                        <PrimaryButton label={'Ajouter'} />
+                                    </div>
+                                </div>
+                            </li></>
                     )
                 })}
             </ul>
