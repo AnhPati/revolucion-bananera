@@ -21,6 +21,7 @@ export const NavbarProfile = ({ username }) => {
 const NavbarProfileStyled = styled.div`
     display: flex;
     align-items: center;
+    padding-right: 50px;
 
     .text-container {
         color: #747B91;
@@ -39,6 +40,10 @@ const NavbarProfileStyled = styled.div`
         a {
             color: #747B91;
             font-size: 10px;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 

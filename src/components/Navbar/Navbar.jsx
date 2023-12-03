@@ -23,7 +23,7 @@ const NavbarStyled = styled.nav`
     justify-content: space-between;
     align-items: center;
     padding-left: 20px;
-    padding-right: 70px;
+    padding-right: 20px;
 
     a {
         text-decoration: none;
