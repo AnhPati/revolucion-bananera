@@ -1,16 +1,20 @@
 import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
-import { NavbarLogo } from './NavbarLogo'
 import { NavbarProfile } from './NavbarProfile'
 import { theme } from '../../theme'
+import { Logo } from '../ui/Logo'
 
 const Navbar = () => {
     const location = useLocation()
     const username = location.state.userName
 
+    const windowRefresh = () => {
+        window.location.reload()
+    }
+
     return (
         <NavbarStyled>
-            <NavbarLogo />
+            <Logo className={'nav-logo'} onClick={windowRefresh} />
             <NavbarProfile username={username} />
         </NavbarStyled>
     )
@@ -30,5 +34,10 @@ const NavbarStyled = styled.nav`
 
     a {
         text-decoration: none;
+    }
+    
+    .nav-logo {
+        margin: 19px 0;
+        cursor: pointer;
     }
 `;
