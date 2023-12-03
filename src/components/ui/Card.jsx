@@ -8,8 +8,8 @@ export const Card = ({ product }) => {
     return (
         <CardStyled key={product.id} className={'card'}>
             <CardImg src={product.imageSource} alt={product.title} />
-            <CardTitle />
-            <h3 className={'card-title'}>{product.title}</h3>
+            <CardTitle title={product.title} />
+
             <div className={'card-description'}>
                 <p>
                     {formatPrice(product.price)}
@@ -32,18 +32,6 @@ const CardStyled = styled.li`
     padding: 50px 20px 10px 20px;
     box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 0.20);
     border-radius: ${theme.borderRadius.extraRound};
-
-    .card-title {
-        width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        margin: 15px 0 0 0;
-        color: #17161A;
-        font-size: 36px;
-        font-weight: 700;
-        text-align: start;
-    }
 
     .card-description {
         width: 100%;
