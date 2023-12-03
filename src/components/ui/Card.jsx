@@ -1,7 +1,7 @@
-import { PrimaryButton } from '../../../ui/PrimaryButton'
-import { formatPrice } from "../../../../utils/maths";
+import { PrimaryButton } from './PrimaryButton'
+import { formatPrice } from "../../utils/maths";
 import styled from 'styled-components';
-import { theme } from '../../../../theme';
+import { theme } from '../../theme';
 export const Card = ({ product }) => {
     return (
         <CardStyled key={product.id} className={'card'}>
