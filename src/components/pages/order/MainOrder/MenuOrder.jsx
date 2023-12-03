@@ -69,6 +69,9 @@ const MenuOrderStyled = styled.section`
 
         .card-title {
             width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
             margin: 15px 0 0 0;
             color: #17161A;
             font-size: 36px;
