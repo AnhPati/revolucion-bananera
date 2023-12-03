@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import { theme } from "../../../theme";
+import { MenuOrder } from "./MenuOrder";
 
 export const MainOrder = () => {
     return (
         <MainOrderStyled>
-            <section id="menu">
-                Menu
-            </section>
+            <MenuOrder />
         </MainOrderStyled>
     )
 }
@@ -16,8 +15,4 @@ const MainOrderStyled = styled.main`
     display: flex;
     border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.20) inset;
-
-    #menu {
-        flex: 1;
-    }
 `;
