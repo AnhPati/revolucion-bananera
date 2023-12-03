@@ -3,6 +3,7 @@ import { useState } from "react";
 import { fakeMenu2 } from '../../../../fakeData/fakeMenu'
 import { PrimaryButton } from '../../../ui/PrimaryButton'
 import { theme } from "../../../../theme";
+import { formatPrice } from "../../../../utils/maths";
 
 export const MenuOrder = () => {
     const [products, setProducts] = useState(fakeMenu2)
@@ -19,7 +20,7 @@ export const MenuOrder = () => {
                             <h3 className={'card-title'}>{product.title}</h3>
                             <div className={'card-description'}>
                                 <p>
-                                    {product.price} €
+                                    {formatPrice(product.price)}
                                 </p>
                                 <div className={'add_button-container'}>
                                     <PrimaryButton label={'Ajouter'} />
