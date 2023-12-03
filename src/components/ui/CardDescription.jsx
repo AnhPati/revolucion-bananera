@@ -5,7 +5,7 @@ import { theme } from '../../theme';
 
 export const CardDescription = ({ price }) => {
     return (
-        <CardDescriptionStyled className={'card-description'}>
+        <CardDescriptionStyled>
             <p>
                 {formatPrice(price)}
             </p>

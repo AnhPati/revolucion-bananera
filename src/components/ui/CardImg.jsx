@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CardImg = ({ src, alt }) => {
     return (
-        <CardImgStyled className={'card-img'}>
+        <CardImgStyled>
             <img src={src} alt={alt} />
         </CardImgStyled>
     )
