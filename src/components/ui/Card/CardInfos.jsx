@@ -1,5 +1,11 @@
-export const CardInfos = () => {
+import { CardDescription } from "./CardDescription"
+import { CardTitle } from "./CardTitle"
+
+export const CardInfos = ({ title, price }) => {
     return (
-        <div>CardInfos</div>
+        <>
+            <CardTitle title={title} />
+            <CardDescription price={price} />
+        </>
     )
 }
