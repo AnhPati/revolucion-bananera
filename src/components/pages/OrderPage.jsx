@@ -9,7 +9,6 @@ const OrderPage = () => {
             <div className={'app-container'}>
                 <Navbar />
                 <main>
-                    Main page
                 </main>
             </div>
         </OrderPageStyled>
@@ -28,7 +27,15 @@ const OrderPageStyled = styled.div`
 
     .app-container {
         width: 1400px;
-        background: ${theme.colors.background_white};
+        display: flex;
+        flex-direction: column;
         border-radius: ${theme.borderRadius.extraRound};
+        background: ${theme.colors.background_white};
+
+        main {
+            flex: 1;
+            border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
+            box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.20) inset;
+        }
     }
 `;

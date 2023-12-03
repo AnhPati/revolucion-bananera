@@ -25,6 +25,7 @@ const NavbarStyled = styled.nav`
     align-items: center;
     padding-left: 20px;
     padding-right: 20px;
+    border-radius: ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound} 0 0;
     background: ${theme.colors.white};
 
     a {
