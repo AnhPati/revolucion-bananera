@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
 import { NavbarProfile } from './NavbarProfile'
-import { theme } from '../../theme'
-import { Logo } from '../ui/Logo'
-import { windowRefresh } from '../../utils/windowsRefresh'
+import { Logo } from '../../../ui/Logo'
+import { windowRefresh } from '../../../../utils/windowsRefresh'
+import { theme } from '../../../../theme'
 
 const Navbar = () => {
     const location = useLocation()

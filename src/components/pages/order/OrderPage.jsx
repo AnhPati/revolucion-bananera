@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Navbar from "../../navbar/Navbar"
+import Navbar from "./Navbar/Navbar"
 import { theme } from "../../../theme";
 import { MainOrder } from "./MainOrder";
 
