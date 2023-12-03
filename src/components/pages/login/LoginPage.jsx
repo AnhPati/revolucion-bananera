@@ -6,7 +6,7 @@ import { Logo } from "../../ui/Logo";
 const LoginPage = () => {
     return (
         <LoginPageStyled>
-            <Logo />
+            <Logo className={'login_page-logo'} />
             <LoginForm />
         </LoginPageStyled>
     )
@@ -23,4 +23,8 @@ const LoginPageStyled = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .login_page-logo {
+        transform: scale(2.5);
+    }
 `;
