@@ -7,7 +7,7 @@ const OrderPage = () => {
 
     return (
         <OrderPageStyled>
-            <div className={'app-container'}>
+            <div className={'order-container'}>
                 <Navbar />
                 <MainOrder />
             </div>
@@ -25,7 +25,7 @@ const OrderPageStyled = styled.div`
     padding-top: 24.5px;
     padding-bottom: 24.5px;
 
-    .app-container {
+    .order-container {
         width: 1400px;
         display: flex;
         flex-direction: column;
