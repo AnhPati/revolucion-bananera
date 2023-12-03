@@ -4,12 +4,13 @@ import styled from 'styled-components';
 import { theme } from '../../theme';
 import { CardImg } from './CardImg';
 import { CardTitle } from './CardTitle';
+import { CardDescription } from './CardDescription';
 export const Card = ({ product }) => {
     return (
         <CardStyled key={product.id} className={'card'}>
             <CardImg src={product.imageSource} alt={product.title} />
             <CardTitle title={product.title} />
-
+            <CardDescription />
             <div className={'card-description'}>
                 <p>
                     {formatPrice(product.price)}
