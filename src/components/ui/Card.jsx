@@ -2,9 +2,11 @@ import { PrimaryButton } from './PrimaryButton'
 import { formatPrice } from "../../utils/maths";
 import styled from 'styled-components';
 import { theme } from '../../theme';
+import { CardImg } from './CardImg';
 export const Card = ({ product }) => {
     return (
         <CardStyled key={product.id} className={'card'}>
+            <CardImg />
             <div className={'card-img'}>
                 <img src={product.imageSource} alt={product.title} />
             </div>
