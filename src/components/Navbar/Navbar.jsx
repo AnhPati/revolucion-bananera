@@ -3,14 +3,13 @@ import { useLocation } from 'react-router-dom'
 import { NavbarProfile } from './NavbarProfile'
 import { theme } from '../../theme'
 import { Logo } from '../ui/Logo'
+import { windowRefresh } from '../../utils/windowsRefresh'
 
 const Navbar = () => {
     const location = useLocation()
     const username = location.state.userName
 
-    const windowRefresh = () => {
-        window.location.reload()
-    }
+
 
     return (
         <NavbarStyled>
