@@ -2,11 +2,13 @@ import "react-toastify/dist/ReactToastify.css"
 import { theme } from "../../../../theme"
 import { ToastContainer } from "react-toastify"
 import styled from "styled-components"
+import { NavbarProfile } from "./NavbarProfile"
 
-export default function NavbarRightSide() {
+export default function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled>
       <ToastContainer className="toaster" bodyClassName="body-toast" />
+      <NavbarProfile username={username} />
     </NavbarRightSideStyled>
   )
 }
