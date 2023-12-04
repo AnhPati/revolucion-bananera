@@ -6,6 +6,7 @@ import ToggleButton from "../../../ui/ToggleButton"
 import { IoMdInformationCircle } from "react-icons/io";
 import styled from "styled-components"
 import { theme } from "../../../../theme"
+import { AdminToast } from "./AdminToast";
 
 
 export default function NavbarRightSide({ username }) {
@@ -36,6 +37,7 @@ export default function NavbarRightSide({ username }) {
 
   return (
     <NavbarRightSideStyled>
+      <AdminToast />
       <ToastContainer className="toaster" bodyClassName="body-toast" />
       <ToggleButton labelIfChecked={toggleLabelChecked} labelIfUnchecked={toggleLabelUnchecked} onToggle={displayAdminToast} />
       <NavbarProfile username={username} />
