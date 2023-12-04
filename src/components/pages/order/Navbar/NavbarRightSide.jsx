@@ -20,7 +20,8 @@ export default function NavbarRightSide({ username }) {
 
 const NavbarRightSideStyled = styled.div`
   display: flex;
-  
+  align-items: center;
+
   .toaster {
     max-width: 300px;
   }
