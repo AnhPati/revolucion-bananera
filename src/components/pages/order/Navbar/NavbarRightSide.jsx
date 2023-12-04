@@ -11,8 +11,8 @@ import { theme } from "../../../../theme"
 export default function NavbarRightSide({ username }) {
   const [adminMode, setAdminMode] = useState(false)
 
-  const toggleLabelUnchecked = `Activer le mode admin`.toUpperCase()
-  const toggleLabelChecked = `Désactiver le mode admin`.toUpperCase()
+  const toggleLabelUnchecked = `Activer le mode admin`
+  const toggleLabelChecked = `Désactiver le mode admin`
 
   const notify = () => {
     if (adminMode) {
