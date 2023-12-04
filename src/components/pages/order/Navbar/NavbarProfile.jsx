@@ -22,6 +22,7 @@ const NavbarProfileStyled = styled.div`
     display: flex;
     align-items: center;
     padding-right: 50px;
+    padding-left: 50px;
 
     .text-container {
         color: #747B91;

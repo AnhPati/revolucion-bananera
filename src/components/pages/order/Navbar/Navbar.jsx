@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
-import { NavbarProfile } from './NavbarProfile'
 import { Logo } from '../../../ui/Logo'
 import { windowRefresh } from '../../../../utils/windowsRefresh'
 import { theme } from '../../../../theme'
+import NavbarRightSide from './NavbarRightSide'
 
 const Navbar = () => {
     const location = useLocation()
@@ -14,7 +14,7 @@ const Navbar = () => {
     return (
         <NavbarStyled>
             <Logo className={'nav-logo'} onClick={windowRefresh} />
-            <NavbarProfile username={username} />
+            <NavbarRightSide username={username} />
         </NavbarStyled>
     )
 }
