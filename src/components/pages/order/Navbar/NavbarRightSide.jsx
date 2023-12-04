@@ -15,21 +15,19 @@ export default function NavbarRightSide({ username }) {
   const toggleLabelChecked = `Désactiver le mode admin`
 
   const displayAdminToast = () => {
-    if (isAdminMode) {
-      return setIsAdminMode(!isAdminMode)
+    if (!isAdminMode) {
+      toast.info("Mode admin activé", {
+        icon: <IoMdInformationCircle size={30} />,
+        theme: "dark",
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
     }
-
-    toast.info("Mode admin activé", {
-      icon: <IoMdInformationCircle size={30} />,
-      theme: "dark",
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    })
 
     setIsAdminMode(!isAdminMode)
   }
