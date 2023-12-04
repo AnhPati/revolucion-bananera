@@ -6,16 +6,21 @@ import { NavbarProfile } from "./NavbarProfile"
 import ToggleButton from "../../../ui/ToggleButton"
 
 export default function NavbarRightSide({ username }) {
+  const toggleLabelUnchecked = `Activer le mode admin`.toUpperCase()
+  const toggleLabelChecked = `Désactiver le mode admin`.toUpperCase()
+
   return (
     <NavbarRightSideStyled>
       <ToastContainer className="toaster" bodyClassName="body-toast" />
-      <ToggleButton />
+      <ToggleButton labelIfChecked={toggleLabelChecked} labelIfUnchecked={toggleLabelUnchecked} />
       <NavbarProfile username={username} />
     </NavbarRightSideStyled>
   )
 }
 
 const NavbarRightSideStyled = styled.div`
+  display: flex;
+  
   .toaster {
     max-width: 300px;
   }
