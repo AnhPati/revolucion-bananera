@@ -9,14 +9,14 @@ import { theme } from "../../../../theme"
 
 
 export default function NavbarRightSide({ username }) {
-  const [adminMode, setAdminMode] = useState(false)
+  const [isAdminMode, setIsAdminMode] = useState(false)
 
   const toggleLabelUnchecked = `Activer le mode admin`
   const toggleLabelChecked = `Désactiver le mode admin`
 
-  const notify = () => {
-    if (adminMode) {
-      return setAdminMode(!adminMode)
+  const displayAdminToast = () => {
+    if (isAdminMode) {
+      return setIsAdminMode(!isAdminMode)
     }
 
     toast.info("Mode admin activé", {
@@ -31,13 +31,13 @@ export default function NavbarRightSide({ username }) {
       progress: undefined,
     })
 
-    setAdminMode(!adminMode)
+    setIsAdminMode(!isAdminMode)
   }
 
   return (
     <NavbarRightSideStyled>
       <ToastContainer className="toaster" bodyClassName="body-toast" />
-      <ToggleButton labelIfChecked={toggleLabelChecked} labelIfUnchecked={toggleLabelUnchecked} onToggle={notify} />
+      <ToggleButton labelIfChecked={toggleLabelChecked} labelIfUnchecked={toggleLabelUnchecked} onToggle={displayAdminToast} />
       <NavbarProfile username={username} />
     </NavbarRightSideStyled>
   )
