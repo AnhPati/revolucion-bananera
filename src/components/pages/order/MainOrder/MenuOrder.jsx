@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { fakeMenu2 } from '../../../../fakeData/fakeMenu'
-import { theme } from "../../../../theme";
 import { Card } from "../../../ui/Card/Card";
+import { formatPrice } from "../../../../utils/maths";
 
 export const MenuOrder = () => {
     const [products, setProducts] = useState(fakeMenu2)
@@ -10,13 +10,13 @@ export const MenuOrder = () => {
     return (
         <MenuOrderStyled>
             <ul>
-                {products.map(product => {
+                {products.map(({ id, imageSource, title, price }) => {
                     return (
-                        <Card key={product.id}
-                            id={product.id}
-                            imgSrc={product.imageSource}
-                            title={product.title}
-                            price={product.price}
+                        <Card key={id}
+                            id={id}
+                            imgSrc={imageSource}
+                            title={title}
+                            leftDescription={formatPrice(price)}
                         />
                     )
                 })}

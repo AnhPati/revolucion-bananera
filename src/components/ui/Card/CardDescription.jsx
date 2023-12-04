@@ -1,13 +1,12 @@
 import { PrimaryButton } from '../PrimaryButton'
-import { formatPrice } from "../../../utils/maths";
 import styled from 'styled-components';
 import { theme } from '../../../theme';
 
-export const CardDescription = ({ price }) => {
+export const CardDescription = ({ leftDescription }) => {
     return (
         <CardDescriptionStyled>
             <p>
-                {formatPrice(price)}
+                {leftDescription}
             </p>
             <div className={'add_button-container'}>
                 <PrimaryButton label={'Ajouter'} />
