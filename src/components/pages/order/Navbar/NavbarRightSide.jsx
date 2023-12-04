@@ -3,11 +3,13 @@ import { theme } from "../../../../theme"
 import { ToastContainer } from "react-toastify"
 import styled from "styled-components"
 import { NavbarProfile } from "./NavbarProfile"
+import ToggleButton from "../../../ui/ToggleButton"
 
 export default function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled>
       <ToastContainer className="toaster" bodyClassName="body-toast" />
+      <ToggleButton />
       <NavbarProfile username={username} />
     </NavbarRightSideStyled>
   )
