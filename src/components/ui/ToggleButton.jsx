@@ -4,8 +4,8 @@ import { theme } from "../../theme"
 export default function ToggleButton({
   isChecked,
   onToggle,
-  labelIfChecked,
-  labelIfUnchecked,
+  labelIfChecked = 'Fermer',
+  labelIfUnchecked = 'Ouvrir',
 }) {
   return (
     <ToggleButtonStyled>
