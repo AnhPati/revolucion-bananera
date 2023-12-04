@@ -3,6 +3,7 @@ import { useState } from "react";
 import { fakeMenu2 } from '../../../../fakeData/fakeMenu'
 import { Card } from "../../../ui/Card/Card";
 import { formatPrice } from "../../../../utils/maths";
+import { theme } from "../../../../theme";
 
 export const MenuOrder = () => {
     const [products, setProducts] = useState(fakeMenu2)
@@ -27,12 +28,12 @@ export const MenuOrder = () => {
 
 const MenuOrderStyled = styled.section`
     flex: 1;
-    padding-top: 50px;
+    padding-top: ${theme.gridUnit * 6.25}px;
 
     ul {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 85px 60px;
+        gap: ${theme.gridUnit * 10.625}px ${theme.gridUnit * 7.5}px;
         list-style: none;
     }
 `;

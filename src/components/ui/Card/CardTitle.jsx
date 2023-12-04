@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../../theme";
 
 export const CardTitle = ({ title }) => {
     return (
@@ -14,8 +15,8 @@ const CardTitleStyled = styled.h3`
     white-space: nowrap;
     text-overflow: ellipsis;
     margin: 15px 0 0 0;
-    color: #17161A;
-    font-size: 36px;
-    font-weight: 700;
+    color: ${theme.colors.dark};
+    font-size: ${theme.fonts.size.P4};
+    font-weight: ${theme.fonts.weights.bold};
     text-align: start;
 `;

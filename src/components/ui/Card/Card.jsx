@@ -19,7 +19,7 @@ const CardStyled = styled.li`
     height: 330px;
     width: 240px;
     background: ${theme.colors.white};
-    padding: 50px 20px 10px 20px;
+    padding: 50px ${theme.spacing.md} 10px ${theme.spacing.md};
     box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 0.20);
     border-radius: ${theme.borderRadius.extraRound};
 `;
