@@ -17,6 +17,7 @@ const PrimaryButtonStyled = styled.button`
     background: ${theme.colors.primary};
     border: 1px solid ${theme.colors.primary};
     cursor: pointer;
+    transition: background-color 0.4s ;
 
     > svg {
         margin-bottom: ${theme.gridUnit * (-0.25)}px;
@@ -28,8 +29,9 @@ const PrimaryButtonStyled = styled.button`
         background: ${theme.colors.white};
     }
 
-    &:focus {
+    &:active {
         color: ${theme.colors.white};
         background: ${theme.colors.primary};
+        transition: none;
     }
 `;
