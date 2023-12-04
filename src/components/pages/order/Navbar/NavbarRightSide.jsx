@@ -1,18 +1,17 @@
-import React from "react"
 import "react-toastify/dist/ReactToastify.css"
 import { theme } from "../../../../theme"
 import { ToastContainer } from "react-toastify"
 import styled from "styled-components"
 
-export default function NavbarRightSideIncomplet() {
+export default function NavbarRightSide() {
   return (
-    <NavbarRightSideIncompletStyled>
+    <NavbarRightSideStyled>
       <ToastContainer className="toaster" bodyClassName="body-toast" />
-    </NavbarRightSideIncompletStyled>
+    </NavbarRightSideStyled>
   )
 }
 
-const NavbarRightSideIncompletStyled = styled.div`
+const NavbarRightSideStyled = styled.div`
   .toaster {
     max-width: 300px;
   }
