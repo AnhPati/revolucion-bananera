@@ -29,7 +29,7 @@ const PrimaryButtonStyled = styled.button`
         background: ${theme.colors.white};
     }
 
-    &:focus {
+    &:active {
         color: ${theme.colors.white};
         background: ${theme.colors.primary};
         transition: none;
