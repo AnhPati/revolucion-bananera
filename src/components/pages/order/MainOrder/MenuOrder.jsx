@@ -4,6 +4,7 @@ import { fakeMenu2 } from '../../../../fakeData/fakeMenu'
 import { Card } from "../../../ui/Card/Card";
 import { formatPrice } from "../../../../utils/maths";
 import { theme } from "../../../../theme";
+import AdminPanel from "./AdminPanel";
 
 export const MenuOrder = () => {
     const [products, setProducts] = useState(fakeMenu2)
@@ -22,6 +23,7 @@ export const MenuOrder = () => {
                     )
                 })}
             </ul>
+            <AdminPanel />
         </MenuOrderStyled>
     )
 }
