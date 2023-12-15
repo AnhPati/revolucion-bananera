@@ -11,7 +11,7 @@ export const MenuOrder = () => {
 
     return (
         <MenuOrderStyled>
-            <ul>
+            <ul className="cards-list">
                 {products.map(({ id, imageSource, title, price }) => {
                     return (
                         <Card key={id}
@@ -32,7 +32,7 @@ const MenuOrderStyled = styled.section`
     position: relative;
     flex: 1;
 
-    ul {
+    .cards-list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: ${theme.gridUnit * 10.625}px ${theme.gridUnit * 7.5}px;
