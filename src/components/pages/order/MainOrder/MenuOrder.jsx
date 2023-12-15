@@ -29,6 +29,7 @@ export const MenuOrder = () => {
 }
 
 const MenuOrderStyled = styled.section`
+    position: relative;
     flex: 1;
 
     ul {
