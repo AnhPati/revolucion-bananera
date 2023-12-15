@@ -29,11 +29,13 @@ export const MenuOrder = () => {
 const MenuOrderStyled = styled.section`
     position: relative;
     flex: 1;
+    display: flex;
+    justify-content: center;
 
     .cards-list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: ${theme.gridUnit * 10.625}px ${theme.gridUnit * 7.5}px;
+        gap: ${theme.gridUnit * 7.5}px ${theme.gridUnit * 10.625}px;
         padding-top: ${theme.gridUnit * 6.25}px;
         padding-bottom: ${theme.gridUnit * 6.25}px;
         list-style: none;
