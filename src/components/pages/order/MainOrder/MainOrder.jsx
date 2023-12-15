@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import { MenuOrder } from "./MenuOrder";
+import AdminPanel from "./AdminPanel";
 
 export const MainOrder = () => {
     return (
         <MainOrderStyled>
             <MenuOrder />
+            <AdminPanel />
         </MainOrderStyled>
     )
 }
