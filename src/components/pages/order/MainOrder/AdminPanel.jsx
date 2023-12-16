@@ -3,32 +3,52 @@ import { theme } from "../../../../theme";
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
+import { useState } from "react";
 
 const AdminPanel = () => {
+    const [isOpen, setIsOpen] = useState(false)
+
+    const handleOpenPanel = (e) => {
+        setIsOpen(!isOpen)
+        handleActiveTab(e)
+    }
+
+    const handleActiveTab = (e) => {
+        const tabs = document.querySelectorAll('.admin_panel-nav button')
+        const tabActive = e.currentTarget
+        for (let tab of tabs) {
+            if (tab.className === 'tab-active') {
+                tab.className = ''
+            }
+        }
+
+        tabActive.className = 'tab-active'
+    }
+
     return (
         <AdminPanelStyled>
             <nav className="admin_panel-nav">
                 <ul>
                     <li>
-                        <button>
-                            <FiChevronDown />
+                        <button onClick={handleOpenPanel}>
+                            {isOpen ? <FiChevronDown /> : <FiChevronUp />}
                         </button>
                     </li>
                     <li>
-                        <button>
+                        <button onClick={handleActiveTab}>
                             <AiOutlinePlus />
                             <span className="nav-text">Ajouter un produit</span>
                         </button>
                     </li>
                     <li>
-                        <button>
+                        <button onClick={handleActiveTab}>
                             <MdModeEditOutline />
                             <span className="nav-text">Modifier un produit</span>
                         </button>
                     </li>
                 </ul>
             </nav>
-            <div className="admin_panel-body">
+            <div className={isOpen ? 'admin_panel-body' : 'admin_panel-body closed'}>
                 Ajouter un produit
             </div>
 
@@ -72,6 +92,7 @@ const AdminPanelStyled = styled.div`
                     .nav-text {
                         margin-left: 10px;
                         margin-right: 10px;
+                        padding-bottom: 3.5px;
                     }
 
                     &:hover {
@@ -79,14 +100,14 @@ const AdminPanelStyled = styled.div`
                             border-bottom: #93A2B1 solid 2px;
                         }
 
-                        &:active {
+                        &.tab-active {
                             .nav-text {
                                 border-bottom: ${theme.colors.white} solid 2px;
                             }
                         }       
                     }
 
-                    &:active {
+                    &.tab-active {
                         background-color: #000;
                         color: ${theme.colors.white};
                         border: #000;
@@ -103,5 +124,10 @@ const AdminPanelStyled = styled.div`
         background-color: ${theme.colors.white};
         color: #000;
         box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.10);
+
+        &.closed {
+            height: 0;
+            padding: 0;
+        }
     }
 `;
