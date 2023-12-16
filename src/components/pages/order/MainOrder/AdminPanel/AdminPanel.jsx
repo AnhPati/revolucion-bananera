@@ -20,7 +20,6 @@ const AdminPanel = () => {
 
         for (let tab of panelTabs) {
             if (tab.className === 'tab-active') {
-                console.log("RESET")
                 tab.className = ''
             }
         }
@@ -37,10 +36,11 @@ const AdminPanel = () => {
                 onClickMenuTabs={handleActiveTab}
                 isOpen={isOpen}
             />
-            <AdminPanelContent />
-            <div className={isOpen ? 'admin_panel-body' : 'admin_panel-body closed'}>
-                {panelContent === 'add' ? 'Ajouter un produit' : 'Modifier un produit'}
-            </div>
+            <AdminPanelContent
+                content={panelContent}
+                isOpen={isOpen}
+            />
+
 
         </AdminPanelStyled>
     )
@@ -54,18 +54,4 @@ const AdminPanelStyled = styled.div`
     width: 1400px;
     border-radius: 0 0 0 15px;
     overflow: hidden;
-
-    .admin_panel-body {
-        width: 100%;
-        height: 250px;
-        padding: 17px;
-        background-color: ${theme.colors.white};
-        color: #000;
-        box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.10);
-
-        &.closed {
-            height: 0;
-            padding: 0;
-        }
-    }
-`;
+`
