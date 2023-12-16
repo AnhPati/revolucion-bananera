@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../../theme";
+import { theme } from "../../../../../theme";
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";

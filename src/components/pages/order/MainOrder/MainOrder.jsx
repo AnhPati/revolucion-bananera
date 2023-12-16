@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import { MenuOrder } from "./MenuOrder";
-import AdminPanel from "./AdminPanel";
+import AdminPanel from "./AdminPanel/AdminPanel";
 import { useContext } from "react";
 import AdminContext from "../../../../contexts/AdminContext";
 
