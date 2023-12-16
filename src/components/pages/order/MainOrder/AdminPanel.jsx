@@ -6,7 +6,7 @@ import { MdModeEditOutline } from "react-icons/md";
 import { useState } from "react";
 
 const AdminPanel = () => {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(true)
 
     const handleOpenPanel = () => {
         setIsOpen(!isOpen)
@@ -17,15 +17,14 @@ const AdminPanel = () => {
         const panelTabs = [...tabs].filter(tab => !tab.classList.contains('tab-control'))
         const tabActive = e.currentTarget
 
-        if (isOpen) {
-            for (let tab of panelTabs) {
-                if (tab.className === 'tab-active') {
-                    tab.className = ''
-                }
+        for (let tab of panelTabs) {
+            if (tab.className === 'tab-active') {
+                tab.className = ''
             }
-
-            tabActive.className = 'tab-active'
         }
+
+        tabActive.className = 'tab-active'
+        !isOpen && handleOpenPanel()
     }
 
     return (
@@ -38,13 +37,13 @@ const AdminPanel = () => {
                         </button>
                     </li>
                     <li>
-                        <button onClick={handleActiveTab} disabled={!isOpen}>
+                        <button onClick={handleActiveTab} className='tab-active'>
                             <AiOutlinePlus />
                             <span className="nav-text">Ajouter un produit</span>
                         </button>
                     </li>
                     <li>
-                        <button onClick={handleActiveTab} disabled={!isOpen}>
+                        <button onClick={handleActiveTab}>
                             <MdModeEditOutline />
                             <span className="nav-text">Modifier un produit</span>
                         </button>
