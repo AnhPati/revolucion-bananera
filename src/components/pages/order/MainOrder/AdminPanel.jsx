@@ -8,21 +8,24 @@ import { useState } from "react";
 const AdminPanel = () => {
     const [isOpen, setIsOpen] = useState(false)
 
-    const handleOpenPanel = (e) => {
+    const handleOpenPanel = () => {
         setIsOpen(!isOpen)
-        handleActiveTab(e)
     }
 
     const handleActiveTab = (e) => {
         const tabs = document.querySelectorAll('.admin_panel-nav button')
+        const panelTabs = [...tabs].filter(tab => !tab.classList.contains('tab-control'))
         const tabActive = e.currentTarget
-        for (let tab of tabs) {
-            if (tab.className === 'tab-active') {
-                tab.className = ''
-            }
-        }
 
-        tabActive.className = 'tab-active'
+        if (isOpen) {
+            for (let tab of panelTabs) {
+                if (tab.className === 'tab-active') {
+                    tab.className = ''
+                }
+            }
+
+            tabActive.className = 'tab-active'
+        }
     }
 
     return (
@@ -30,18 +33,18 @@ const AdminPanel = () => {
             <nav className="admin_panel-nav">
                 <ul>
                     <li>
-                        <button onClick={handleOpenPanel}>
+                        <button onClick={handleOpenPanel} className={isOpen ? 'tab-control' : 'tab-control tab-active'}>
                             {isOpen ? <FiChevronDown /> : <FiChevronUp />}
                         </button>
                     </li>
                     <li>
-                        <button onClick={handleActiveTab}>
+                        <button onClick={handleActiveTab} disabled={!isOpen}>
                             <AiOutlinePlus />
                             <span className="nav-text">Ajouter un produit</span>
                         </button>
                     </li>
                     <li>
-                        <button onClick={handleActiveTab}>
+                        <button onClick={handleActiveTab} disabled={!isOpen}>
                             <MdModeEditOutline />
                             <span className="nav-text">Modifier un produit</span>
                         </button>
@@ -111,6 +114,16 @@ const AdminPanelStyled = styled.div`
                         background-color: #000;
                         color: ${theme.colors.white};
                         border: #000;
+                    }
+
+                    &:disabled {
+                        cursor: default;
+
+                        &:hover {
+                            .nav-text {
+                                border-bottom: none;
+                            }
+                        }
                     }
                 }
             }
