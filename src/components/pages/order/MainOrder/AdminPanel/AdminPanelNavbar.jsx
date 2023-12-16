@@ -3,11 +3,13 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { MdModeEditOutline } from "react-icons/md"
 import styled from "styled-components"
 import { theme } from "../../../../../theme"
+import { AdminPanelNavbarButton } from "./AdminPanelNavbarButton"
 
 const AdminPanelNavbar = ({ onClickDisplayTab, onClickMenuTabs, isOpen }) => {
     return (
         <AdminPanelNavbarStyled className='admin_panel-nav'>
             <ul>
+                <AdminPanelNavbarButton />
                 <li>
                     <button onClick={onClickDisplayTab} className={isOpen ? 'tab-control' : 'tab-control tab-active'}>
                         {isOpen ? <FiChevronDown /> : <FiChevronUp />}
