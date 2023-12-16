@@ -4,6 +4,7 @@ import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 import { useState } from "react";
+import AdminPanelNavbar from "./AdminPanelNavbar";
 
 const AdminPanel = () => {
     const [isOpen, setIsOpen] = useState(true)
@@ -29,6 +30,7 @@ const AdminPanel = () => {
 
     return (
         <AdminPanelStyled>
+            <AdminPanelNavbar />
             <nav className="admin_panel-nav">
                 <ul>
                     <li>
