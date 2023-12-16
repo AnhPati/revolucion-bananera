@@ -14,13 +14,13 @@ const AdminPanelNavbar = ({ onClickDisplayTab, onClickMenuTabs, isOpen }) => {
                     </button>
                 </li>
                 <li>
-                    <button onClick={onClickMenuTabs} className='tab-active'>
+                    <button onClick={onClickMenuTabs} className='tab-active' id={'tab-add'}>
                         <AiOutlinePlus />
                         <span className="nav-text">Ajouter un produit</span>
                     </button>
                 </li>
                 <li>
-                    <button onClick={onClickMenuTabs}>
+                    <button onClick={onClickMenuTabs} id={'tab-udpate'}>
                         <MdModeEditOutline />
                         <span className="nav-text">Modifier un produit</span>
                     </button>

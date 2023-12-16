@@ -5,6 +5,7 @@ import AdminPanelNavbar from "./AdminPanelNavbar";
 
 const AdminPanel = () => {
     const [isOpen, setIsOpen] = useState(true)
+    const [panelContent, setPanelContent] = useState('add')
 
     const handleOpenPanel = () => {
         setIsOpen(!isOpen)
@@ -14,7 +15,7 @@ const AdminPanel = () => {
         const tabs = document.querySelectorAll('.admin_panel-nav button')
         const panelTabs = [...tabs].filter(tab => !tab.classList.contains('tab-control'))
         const tabActive = e.currentTarget
-        console.log(panelTabs)
+        const tabActiveType = tabActive.id.slice(tabActive.id.indexOf('-') + 1)
 
         for (let tab of panelTabs) {
             if (tab.className === 'tab-active') {
@@ -24,6 +25,7 @@ const AdminPanel = () => {
         }
 
         tabActive.className = 'tab-active'
+        setPanelContent(tabActiveType)
         !isOpen && handleOpenPanel()
     }
 
@@ -35,7 +37,7 @@ const AdminPanel = () => {
                 isOpen={isOpen}
             />
             <div className={isOpen ? 'admin_panel-body' : 'admin_panel-body closed'}>
-                Ajouter un produit
+                {panelContent === 'add' ? 'Ajouter un produit' : 'Modifier un produit'}
             </div>
 
         </AdminPanelStyled>
