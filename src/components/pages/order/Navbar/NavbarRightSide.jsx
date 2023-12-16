@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "react-toastify/dist/ReactToastify.css"
 import { toast } from "react-toastify"
 import { NavbarProfile } from "./NavbarProfile"
@@ -6,10 +5,12 @@ import ToggleButton from "../../../ui/ToggleButton"
 import { IoMdInformationCircle } from "react-icons/io";
 import styled from "styled-components"
 import { AdminToast } from "./AdminToast";
+import { useContext } from "react";
+import AdminContext from "../../../../contexts/AdminContext";
 
 
 export default function NavbarRightSide({ username }) {
-  const [isAdminMode, setIsAdminMode] = useState(false)
+  const { isAdminMode, setIsAdminMode } = useContext(AdminContext)
 
   const toggleLabelUnchecked = `Activer le mode admin`
   const toggleLabelChecked = `Désactiver le mode admin`

@@ -2,14 +2,20 @@ import styled from "styled-components";
 import Navbar from "./Navbar/Navbar"
 import { theme } from "../../../theme";
 import { MainOrder } from "./MainOrder/MainOrder";
+import { useState } from "react";
+import AdminContext from "../../../contexts/AdminContext";
 
 const OrderPage = () => {
+    const [isAdminMode, setIsAdminMode] = useState(false)
+    const adminContextValue = { isAdminMode, setIsAdminMode }
 
     return (
         <OrderPageStyled>
             <div className={'order-container'}>
-                <Navbar />
-                <MainOrder />
+                <AdminContext.Provider value={adminContextValue}>
+                    <Navbar />
+                    <MainOrder />
+                </AdminContext.Provider>
             </div>
         </OrderPageStyled>
     )
