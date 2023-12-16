@@ -10,7 +10,7 @@ export const MenuOrder = () => {
 
     return (
         <MenuOrderStyled>
-            <ul>
+            <ul className="cards-list">
                 {products.map(({ id, imageSource, title, price }) => {
                     return (
                         <Card key={id}
@@ -27,12 +27,15 @@ export const MenuOrder = () => {
 }
 
 const MenuOrderStyled = styled.section`
+    position: relative;
     flex: 1;
+    display: flex;
+    justify-content: center;
 
-    ul {
+    .cards-list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: ${theme.gridUnit * 10.625}px ${theme.gridUnit * 7.5}px;
+        gap: ${theme.gridUnit * 7.5}px ${theme.gridUnit * 10.625}px;
         padding-top: ${theme.gridUnit * 6.25}px;
         padding-bottom: ${theme.gridUnit * 6.25}px;
         list-style: none;

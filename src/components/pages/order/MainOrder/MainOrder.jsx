@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import { MenuOrder } from "./MenuOrder";
+import AdminPanel from "./AdminPanel/AdminPanel";
+import { useContext } from "react";
+import AdminContext from "../../../../contexts/AdminContext";
 
 export const MainOrder = () => {
+    const { isAdminMode } = useContext(AdminContext)
     return (
         <MainOrderStyled>
             <MenuOrder />
+            {isAdminMode && <AdminPanel />}
         </MainOrderStyled>
     )
 }
