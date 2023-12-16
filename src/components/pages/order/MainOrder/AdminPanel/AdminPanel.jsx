@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import { useState } from "react";
 import AdminPanelNavbar from "./AdminPanelNavbar";
+import AdminPanelContent from "./AdminPanelContent";
 
 const AdminPanel = () => {
     const [isOpen, setIsOpen] = useState(true)
@@ -36,6 +37,7 @@ const AdminPanel = () => {
                 onClickMenuTabs={handleActiveTab}
                 isOpen={isOpen}
             />
+            <AdminPanelContent />
             <div className={isOpen ? 'admin_panel-body' : 'admin_panel-body closed'}>
                 {panelContent === 'add' ? 'Ajouter un produit' : 'Modifier un produit'}
             </div>
