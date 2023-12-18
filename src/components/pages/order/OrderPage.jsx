@@ -6,8 +6,19 @@ import { useState } from "react";
 import AdminContext from "../../../contexts/AdminContext";
 
 const OrderPage = () => {
-    const [isAdminMode, setIsAdminMode] = useState(false)
-    const adminContextValue = { isAdminMode, setIsAdminMode }
+    const [adminMode, setAdminMode] = useState({
+        isAdminMode: false,
+        adminPanel: {
+            isOpen: true,
+            tabSelected: 'add'
+        },
+        setAdminMode: () => { }
+    })
+
+    const adminContextValue = {
+        adminMode,
+        setAdminMode
+    }
 
     return (
         <OrderPageStyled>
