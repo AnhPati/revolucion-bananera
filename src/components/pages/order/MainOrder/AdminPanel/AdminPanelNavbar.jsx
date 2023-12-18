@@ -4,7 +4,7 @@ import { MdModeEditOutline } from "react-icons/md"
 import styled from "styled-components"
 import { AdminPanelNavbarButton } from "./AdminPanelNavbarButton"
 
-const AdminPanelNavbar = ({ onClickDisplayTab, onClickMenuTabs, isOpen }) => {
+const AdminPanelNavbar = ({ onClickDisplayTab, onClickMenuTabs, isOpen, tabSelected }) => {
     return (
         <AdminPanelNavbarStyled className='admin_panel-nav'>
             <ul>
@@ -15,13 +15,14 @@ const AdminPanelNavbar = ({ onClickDisplayTab, onClickMenuTabs, isOpen }) => {
                 />
                 <AdminPanelNavbarButton
                     onClick={onClickMenuTabs}
-                    className='tab-active'
+                    tabSelected={tabSelected}
                     id={'tab-add'}
                     Icon={<AiOutlinePlus />}
                     label={'Ajouter un produit'}
                 />
                 <AdminPanelNavbarButton
                     onClick={onClickMenuTabs}
+                    tabSelected={tabSelected}
                     id={'tab-update'}
                     Icon={<MdModeEditOutline />}
                     label={'Modifier un produit'}
