@@ -25,7 +25,7 @@ const CardDescriptionStyled = styled.div`
     p {
         margin: 0;
         color: ${theme.colors.primary};
-        font-size: 16px;
+        font-size: ${theme.fonts.size.P0};
         font-weight: ${theme.fonts.weights.regular};
         line-height: 22px;
     }

@@ -25,7 +25,7 @@ const TextInputStyled = styled.div`
         top: ${theme.gridUnit * 2.25}px;
         left: ${theme.gridUnit * 2.5}px;
         color: ${theme.colors.greyBlue};
-        font-size: ${theme.fonts.size.P0};
+        font-size: ${theme.fonts.size.SM};
     }
 
     input {

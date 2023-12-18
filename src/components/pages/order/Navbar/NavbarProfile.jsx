@@ -29,7 +29,7 @@ const NavbarProfileStyled = styled.div`
         text-align: end;
 
         p {
-            font-size: 16px;
+            font-size: ${theme.fonts.size.P0};
             margin: 0;
 
             .username {

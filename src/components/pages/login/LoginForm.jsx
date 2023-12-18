@@ -52,7 +52,7 @@ const LoginFormStyled = styled.form`
     justify-content: center;
     align-items: center;
     color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P0};
+    font-size: ${theme.fonts.size.SM};
 
     h1 {
         font-size: ${theme.fonts.size.P5};
