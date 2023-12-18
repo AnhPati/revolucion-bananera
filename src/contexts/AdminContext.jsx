@@ -1,8 +1,14 @@
 import { createContext } from "react";
 
 const AdminContext = createContext({
-    isAdminMode: false,
-    setIsAdminMode: () => { }
+    adminMode: {
+        isAdminMode: false,
+        adminPanel: {
+            isOpen: true,
+            tabSelected: 'add'
+        }
+    },
+    setAdminMode: () => { }
 })
 
 export default AdminContext

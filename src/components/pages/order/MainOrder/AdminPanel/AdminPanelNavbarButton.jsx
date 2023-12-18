@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 
-export const AdminPanelNavbarButton = ({ onClick, className, id, Icon, label }) => {
+export const AdminPanelNavbarButton = ({ onClick, className, tabSelected, id, Icon, label }) => {
+    const isSelected = id && (tabSelected === id.slice(id.indexOf('-') + 1)) ? true : false
+
     return (
         <AdminPanelNavbarButtonStyled>
-            <button onClick={onClick} className={className} id={id}>
+            <button onClick={onClick} className={className ? className : isSelected ? 'tab-active' : ''} id={id}>
                 {Icon}
                 {label && <span className="nav-text">{label}</span>}
             </button>
-        </AdminPanelNavbarButtonStyled>
+        </AdminPanelNavbarButtonStyled >
     )
 }
 

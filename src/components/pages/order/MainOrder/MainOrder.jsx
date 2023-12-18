@@ -6,7 +6,9 @@ import { useContext } from "react";
 import AdminContext from "../../../../contexts/AdminContext";
 
 export const MainOrder = () => {
-    const { isAdminMode } = useContext(AdminContext)
+    const { adminMode } = useContext(AdminContext)
+    const isAdminMode = adminMode.isAdminMode
+
     return (
         <MainOrderStyled>
             <MenuOrder />

@@ -10,13 +10,15 @@ import AdminContext from "../../../../contexts/AdminContext";
 
 
 export default function NavbarRightSide({ username }) {
-  const { isAdminMode, setIsAdminMode } = useContext(AdminContext)
+  const { adminMode, setAdminMode } = useContext(AdminContext)
 
   const toggleLabelUnchecked = `Activer le mode admin`
   const toggleLabelChecked = `Désactiver le mode admin`
 
   const displayAdminToast = () => {
-    if (!isAdminMode) {
+    const isAdminMode = adminMode.isAdminMode
+    console.log(isAdminMode)
+    if (!adminMode.isAdminMode) {
       toast.info("Mode admin activé", {
         icon: <IoMdInformationCircle size={30} />,
         theme: "dark",
@@ -30,7 +32,9 @@ export default function NavbarRightSide({ username }) {
       })
     }
 
-    setIsAdminMode(!isAdminMode)
+    console.log("tab selected mode admin : " + adminMode.adminPanel.tabSelected)
+
+    setAdminMode({ ...adminMode, isAdminMode: !isAdminMode })
   }
 
   return (

@@ -1,15 +1,19 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
-import { useState } from "react";
+import { useContext } from "react";
 import AdminPanelNavbar from "./AdminPanelNavbar";
 import AdminPanelContent from "./AdminPanelContent";
+import AdminContext from "../../../../../contexts/AdminContext";
 
 const AdminPanel = () => {
-    const [isOpen, setIsOpen] = useState(true)
-    const [panelContent, setPanelContent] = useState('add')
+    const { adminMode, setAdminMode } = useContext(AdminContext)
+    const isOpen = adminMode.adminPanel.isOpen
+    const tabSelected = adminMode.adminPanel.tabSelected
 
     const handleOpenPanel = () => {
-        setIsOpen(!isOpen)
+        const newAdminMode = { ...adminMode }
+        newAdminMode.adminPanel.isOpen = !isOpen
+
+        setAdminMode(newAdminMode)
     }
 
     const handleActiveTab = (e) => {
@@ -17,6 +21,9 @@ const AdminPanel = () => {
         const panelTabs = [...tabs].filter(tab => !tab.classList.contains('tab-control'))
         const tabActive = e.currentTarget
         const tabActiveType = tabActive.id.slice(tabActive.id.indexOf('-') + 1)
+        const newAdminMode = { ...adminMode }
+        newAdminMode.adminPanel.tabSelected = tabActiveType
+        console.log("Tab active : " + newAdminMode.adminPanel.tabSelected)
 
         for (let tab of panelTabs) {
             if (tab.className === 'tab-active') {
@@ -25,7 +32,7 @@ const AdminPanel = () => {
         }
 
         tabActive.className = 'tab-active'
-        setPanelContent(tabActiveType)
+        setAdminMode(newAdminMode)
         !isOpen && handleOpenPanel()
     }
 
@@ -35,10 +42,11 @@ const AdminPanel = () => {
                 onClickDisplayTab={handleOpenPanel}
                 onClickMenuTabs={handleActiveTab}
                 isOpen={isOpen}
+                tabSelected={tabSelected}
             />
             <AdminPanelContent
-                content={panelContent}
                 isOpen={isOpen}
+                content={tabSelected}
             />
 
 
@@ -50,7 +58,7 @@ export default AdminPanel
 
 const AdminPanelStyled = styled.div`
     position: fixed;
-    bottom: 25px;
+    bottom: 24px;
     width: 1400px;
     border-radius: 0 0 0 15px;
     overflow: hidden;
