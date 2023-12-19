@@ -2,25 +2,25 @@ import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { MdModeEditOutline } from "react-icons/md"
 import styled from "styled-components"
-import { AdminPanelNavbarButton } from "./AdminPanelNavbarButton"
+import { Tab } from "../../../../ui/Tab"
 
 const AdminPanelNavbar = ({ onClickDisplayTab, onClickMenuTabs, isOpen, tabSelected }) => {
     return (
         <AdminPanelNavbarStyled className='admin_panel-nav'>
             <ul>
-                <AdminPanelNavbarButton
+                <Tab
                     onClick={onClickDisplayTab}
                     className={isOpen ? 'tab-control' : 'tab-control tab-active'}
                     Icon={isOpen ? <FiChevronDown /> : <FiChevronUp />}
                 />
-                <AdminPanelNavbarButton
+                <Tab
                     onClick={onClickMenuTabs}
                     tabSelected={tabSelected}
                     id={'tab-add'}
                     Icon={<AiOutlinePlus />}
                     label={'Ajouter un produit'}
                 />
-                <AdminPanelNavbarButton
+                <Tab
                     onClick={onClickMenuTabs}
                     tabSelected={tabSelected}
                     id={'tab-update'}

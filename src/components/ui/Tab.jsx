@@ -1,20 +1,20 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
+import { theme } from "../../theme";
 
-export const AdminPanelNavbarButton = ({ onClick, className, tabSelected, id, Icon, label }) => {
+export const Tab = ({ onClick, className, tabSelected, id, Icon, label }) => {
     const isSelected = id && (tabSelected === id.slice(id.indexOf('-') + 1)) ? true : false
 
     return (
-        <AdminPanelNavbarButtonStyled>
+        <TabStyled>
             <button onClick={onClick} className={className ? className : isSelected ? 'tab-active' : ''} id={id}>
                 {Icon}
                 {label && <span className="nav-text">{label}</span>}
             </button>
-        </AdminPanelNavbarButtonStyled >
+        </TabStyled >
     )
 }
 
-const AdminPanelNavbarButtonStyled = styled.li`
+const TabStyled = styled.li`
     button {
         height: 45px;
         padding: 10px 22px 11px 22px;
