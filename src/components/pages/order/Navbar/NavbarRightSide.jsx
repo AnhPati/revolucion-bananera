@@ -9,7 +9,7 @@ import { useContext } from "react";
 import AdminContext from "../../../../contexts/AdminContext";
 
 
-export default function NavbarRightSide({ username }) {
+export default function NavbarRightSide() {
   const { adminMode, setAdminMode } = useContext(AdminContext)
 
   const toggleLabelUnchecked = `Activer le mode admin`
@@ -41,7 +41,7 @@ export default function NavbarRightSide({ username }) {
     <NavbarRightSideStyled>
       <AdminToast />
       <ToggleButton labelIfChecked={toggleLabelChecked} labelIfUnchecked={toggleLabelUnchecked} onToggle={displayAdminToast} />
-      <NavbarProfile username={username} />
+      <NavbarProfile />
     </NavbarRightSideStyled>
   )
 }

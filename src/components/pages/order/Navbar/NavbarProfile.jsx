@@ -1,10 +1,13 @@
 import { BsPersonCircle } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components';
 import { theme } from '../../../../theme';
 
 
-export const NavbarProfile = ({ username }) => {
+export const NavbarProfile = () => {
+    const location = useLocation()
+    const username = location.state.userName
+
     return (
         <NavbarProfileStyled>
             <div className='text-container'>
