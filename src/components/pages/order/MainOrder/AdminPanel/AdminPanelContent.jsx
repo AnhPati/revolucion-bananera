@@ -1,10 +1,20 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import { useContext } from "react";
+import AdminContext from "../../../../../contexts/AdminContext";
+import { getAdminTabsConfig, getCurrentTabSelected } from "./helpers/getAdminTabsConfig";
 
-const AdminPanelContent = ({ content, isOpen }) => {
+const AdminPanelContent = () => {
+    const { adminMode } = useContext(AdminContext)
+    const isOpen = adminMode.adminPanel.isOpen
+    const tabSelected = adminMode.adminPanel.tabSelected
+
+    const tabs = getAdminTabsConfig().slice(1)
+    const currentTabSelected = getCurrentTabSelected(tabs, tabSelected)
+
     return (
         <AdminPanelContentStyled className={isOpen ? '' : 'closed'}>
-            {content === 'add' ? 'Ajouter un produit' : 'Modifier un produit'}
+            {tabSelected === currentTabSelected.id && currentTabSelected.label}
         </AdminPanelContentStyled>
     )
 }

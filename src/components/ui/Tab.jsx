@@ -2,10 +2,9 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 
 export const Tab = ({ onClick, className, tabSelected, id, Icon, label }) => {
-    const isSelected = id && (tabSelected === id.slice(id.indexOf('-') + 1)) ? true : false
 
     return (
-        <TabStyled onClick={onClick} className={className ? className : isSelected ? 'tab-active' : ''} id={id}>
+        <TabStyled onClick={onClick} className={className ? className : ''} id={id}>
             {Icon}
             {label && <span className="nav-text">{label}</span>}
         </TabStyled >

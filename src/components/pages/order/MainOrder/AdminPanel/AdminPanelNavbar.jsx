@@ -1,11 +1,35 @@
 import styled from "styled-components"
 import { Tab } from "../../../../ui/Tab"
 import { getAdminTabsConfig } from "./helpers/getAdminTabsConfig"
+import { useContext } from "react"
+import AdminContext from "../../../../../contexts/AdminContext"
 
-const AdminPanelNavbar = ({ onClickDisplayTab, onClickMenuTabs, isOpen, tabSelected }) => {
+const AdminPanelNavbar = () => {
+    const { adminMode, setAdminMode } = useContext(AdminContext)
+    const isOpen = adminMode.adminPanel.isOpen
+    const tabSelected = adminMode.adminPanel.tabSelected
 
-    const tabs = getAdminTabsConfig(isOpen, tabSelected, onClickDisplayTab, onClickMenuTabs)
+    const handleOpenPanel = () => {
+        const newAdminMode = { ...adminMode }
+        newAdminMode.adminPanel.isOpen = !isOpen
 
+        setAdminMode(newAdminMode)
+    }
+
+    const handleActiveTab = (e) => {
+        const tabSelected = e.currentTarget.id
+
+        setAdminMode(prevAdminMode => ({
+            ...prevAdminMode,
+            adminPanel: {
+                isOpen: true,
+                tabSelected: tabSelected
+            }
+        }))
+    }
+
+
+    const tabs = getAdminTabsConfig(isOpen, tabSelected, handleOpenPanel, handleActiveTab)
 
     return (
         <AdminPanelNavbarStyled className='admin_panel-nav'>
@@ -16,7 +40,6 @@ const AdminPanelNavbar = ({ onClickDisplayTab, onClickMenuTabs, isOpen, tabSelec
                             <Tab
                                 className={tab.className && tab.className}
                                 onClick={tab.onClick}
-                                tabSelected={tab.tabSelected && tab.tabSelected}
                                 id={tab.id && tab.id}
                                 Icon={tab.Icon}
                                 label={tab.label && tab.label}
