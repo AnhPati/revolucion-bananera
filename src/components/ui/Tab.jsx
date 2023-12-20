@@ -16,28 +16,28 @@ export const Tab = ({ onClick, className, tabSelected, id, Icon, label }) => {
 
 const TabStyled = styled.li`
     button {
+        display: flex;
+        align-items: center;
         height: 45px;
         padding: 10px 22px 11px 22px;
         background-color: ${theme.colors.white};
         font-family: 'Open Sans';
         color: #93A2B1;
-        font-size: 14px;
+        font-size: ${theme.fonts.size.P0};
         border: 1px solid #E4E5E9;
-        border-radius: 5px 5px 0px 0px;
+        border-radius: ${theme.borderRadius.round} ${theme.borderRadius.round}  0px 0px;
+        box-shadow: ${theme.shadows.subtle};
         cursor: pointer;
 
-        svg {
-            width: 16px;
-            height: 16px;
-        }
-
         .nav-text {
-            margin-left: 10px;
-            margin-right: 10px;
+            margin-left: 13px;
+            margin-right: 13px;
             padding-bottom: 3.5px;
         }
 
         &:hover {
+            border-bottom-color: ${theme.colors.white};
+
             .nav-text {
                 border-bottom: #93A2B1 solid 2px;
             }
@@ -50,9 +50,9 @@ const TabStyled = styled.li`
         }
 
         &.tab-active {
-            background-color: #000;
+            background-color: ${theme.colors.background_dark};
             color: ${theme.colors.white};
-            border: #000;
+            border-color: ${theme.colors.background_dark};
         }
     }
 `;

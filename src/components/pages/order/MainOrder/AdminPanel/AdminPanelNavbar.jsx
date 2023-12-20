@@ -40,6 +40,9 @@ const AdminPanelNavbarStyled = styled.nav`
         margin: 0;
         padding-left: 71px;
         list-style-type: none;
+
+        button {
+            margin-left: 1px;
+        }
     }
-  
 `;
