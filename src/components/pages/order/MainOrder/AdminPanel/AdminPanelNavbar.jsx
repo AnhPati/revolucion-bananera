@@ -1,37 +1,16 @@
-import { AiOutlinePlus } from "react-icons/ai"
-import { FiChevronDown, FiChevronUp } from "react-icons/fi"
-import { MdModeEditOutline } from "react-icons/md"
 import styled from "styled-components"
 import { Tab } from "../../../../ui/Tab"
+import { getAdminTabsConfig } from "./helpers/getAdminTabsConfig"
 
 const AdminPanelNavbar = ({ onClickDisplayTab, onClickMenuTabs, isOpen, tabSelected }) => {
 
-    const adminTabsConfig = [
-        {
-            className: isOpen ? 'tab-control' : 'tab-control tab-active',
-            Icon: isOpen ? <FiChevronDown /> : <FiChevronUp />,
-            onClick: onClickDisplayTab
-        },
-        {
-            id: 'tab-add',
-            label: 'Ajouter un produit',
-            Icon: <AiOutlinePlus />,
-            onClick: onClickMenuTabs,
-            tabSelected: tabSelected
-        },
-        {
-            id: 'tab-update',
-            label: 'Modifier un produit',
-            Icon: <MdModeEditOutline />,
-            onClick: onClickMenuTabs,
-            tabSelected: tabSelected
-        }
-    ]
+    const tabs = getAdminTabsConfig(isOpen, tabSelected, onClickDisplayTab, onClickMenuTabs)
+
 
     return (
         <AdminPanelNavbarStyled className='admin_panel-nav'>
             <ul>
-                {adminTabsConfig.map((tab) => {
+                {tabs.map((tab) => {
                     return (
                         <li key={tab.id}>
                             <Tab
