@@ -8,25 +8,31 @@ const AdminPanelNavbar = ({ onClickDisplayTab, onClickMenuTabs, isOpen, tabSelec
     return (
         <AdminPanelNavbarStyled className='admin_panel-nav'>
             <ul>
-                <Tab
-                    onClick={onClickDisplayTab}
-                    className={isOpen ? 'tab-control' : 'tab-control tab-active'}
-                    Icon={isOpen ? <FiChevronDown /> : <FiChevronUp />}
-                />
-                <Tab
-                    onClick={onClickMenuTabs}
-                    tabSelected={tabSelected}
-                    id={'tab-add'}
-                    Icon={<AiOutlinePlus />}
-                    label={'Ajouter un produit'}
-                />
-                <Tab
-                    onClick={onClickMenuTabs}
-                    tabSelected={tabSelected}
-                    id={'tab-update'}
-                    Icon={<MdModeEditOutline />}
-                    label={'Modifier un produit'}
-                />
+                <li>
+                    <Tab
+                        onClick={onClickDisplayTab}
+                        className={isOpen ? 'tab-control' : 'tab-control tab-active'}
+                        Icon={isOpen ? <FiChevronDown /> : <FiChevronUp />}
+                    />
+                </li>
+                <li>
+                    <Tab
+                        onClick={onClickMenuTabs}
+                        tabSelected={tabSelected}
+                        id={'tab-add'}
+                        Icon={<AiOutlinePlus />}
+                        label={'Ajouter un produit'}
+                    />
+                </li>
+                <li>
+                    <Tab
+                        onClick={onClickMenuTabs}
+                        tabSelected={tabSelected}
+                        id={'tab-update'}
+                        Icon={<MdModeEditOutline />}
+                        label={'Modifier un produit'}
+                    />
+                </li>
             </ul>
         </AdminPanelNavbarStyled>
     )
