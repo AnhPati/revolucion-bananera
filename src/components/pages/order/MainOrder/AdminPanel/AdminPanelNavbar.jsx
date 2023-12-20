@@ -5,34 +5,46 @@ import styled from "styled-components"
 import { Tab } from "../../../../ui/Tab"
 
 const AdminPanelNavbar = ({ onClickDisplayTab, onClickMenuTabs, isOpen, tabSelected }) => {
+
+    const adminTabsConfig = [
+        {
+            className: isOpen ? 'tab-control' : 'tab-control tab-active',
+            Icon: isOpen ? <FiChevronDown /> : <FiChevronUp />,
+            onClick: onClickDisplayTab
+        },
+        {
+            id: 'tab-add',
+            label: 'Ajouter un produit',
+            Icon: <AiOutlinePlus />,
+            onClick: onClickMenuTabs,
+            tabSelected: tabSelected
+        },
+        {
+            id: 'tab-update',
+            label: 'Modifier un produit',
+            Icon: <MdModeEditOutline />,
+            onClick: onClickMenuTabs,
+            tabSelected: tabSelected
+        }
+    ]
+
     return (
         <AdminPanelNavbarStyled className='admin_panel-nav'>
             <ul>
-                <li>
-                    <Tab
-                        onClick={onClickDisplayTab}
-                        className={isOpen ? 'tab-control' : 'tab-control tab-active'}
-                        Icon={isOpen ? <FiChevronDown /> : <FiChevronUp />}
-                    />
-                </li>
-                <li>
-                    <Tab
-                        onClick={onClickMenuTabs}
-                        tabSelected={tabSelected}
-                        id={'tab-add'}
-                        Icon={<AiOutlinePlus />}
-                        label={'Ajouter un produit'}
-                    />
-                </li>
-                <li>
-                    <Tab
-                        onClick={onClickMenuTabs}
-                        tabSelected={tabSelected}
-                        id={'tab-update'}
-                        Icon={<MdModeEditOutline />}
-                        label={'Modifier un produit'}
-                    />
-                </li>
+                {adminTabsConfig.map((tab) => {
+                    return (
+                        <li key={tab.id}>
+                            <Tab
+                                className={tab.className && tab.className}
+                                onClick={tab.onClick}
+                                tabSelected={tab.tabSelected && tab.tabSelected}
+                                id={tab.id && tab.id}
+                                Icon={tab.Icon}
+                                label={tab.label && tab.label}
+                            />
+                        </li>
+                    )
+                })}
             </ul>
         </AdminPanelNavbarStyled>
     )
