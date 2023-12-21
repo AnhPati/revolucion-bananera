@@ -28,8 +28,7 @@ const AdminPanelNavbar = () => {
         }))
     }
 
-
-    const tabs = getAdminTabsConfig(isOpen, tabSelected, handleOpenPanel, handleActiveTab)
+    const tabs = getAdminTabsConfig(isOpen, handleOpenPanel, handleActiveTab)
 
     return (
         <AdminPanelNavbarStyled className='admin_panel-nav'>
@@ -38,11 +37,11 @@ const AdminPanelNavbar = () => {
                     return (
                         <li key={tab.id}>
                             <Tab
-                                className={tab.className && tab.className}
-                                onClick={tab.onClick}
                                 id={tab.id && tab.id}
-                                Icon={tab.Icon}
                                 label={tab.label && tab.label}
+                                className={tab.className ? tab.className : tabSelected === tab.id ? 'tab-active' : ''}
+                                Icon={tab.Icon}
+                                onClick={tab.onClick}
                             />
                         </li>
                     )
