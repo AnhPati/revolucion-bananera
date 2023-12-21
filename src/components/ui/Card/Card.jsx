@@ -20,6 +20,6 @@ const CardStyled = styled.li`
     width: 240px;
     background: ${theme.colors.white};
     padding: 50px ${theme.spacing.md} 10px ${theme.spacing.md};
-    box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 0.20);
+    box-shadow: ${theme.shadows.medium};
     border-radius: ${theme.borderRadius.extraRound};
 `;
