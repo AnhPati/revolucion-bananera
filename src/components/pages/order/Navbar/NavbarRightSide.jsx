@@ -17,7 +17,6 @@ export default function NavbarRightSide() {
 
   const displayAdminToast = () => {
     const isAdminMode = adminMode.isAdminMode
-    console.log(isAdminMode)
     if (!adminMode.isAdminMode) {
       toast.info("Mode admin activé", {
         icon: <IoMdInformationCircle size={30} />,
@@ -31,8 +30,6 @@ export default function NavbarRightSide() {
         progress: undefined,
       })
     }
-
-    console.log("tab selected mode admin : " + adminMode.adminPanel.tabSelected)
 
     setAdminMode({ ...adminMode, isAdminMode: !isAdminMode })
   }
