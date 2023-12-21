@@ -5,7 +5,7 @@ const AdminContext = createContext({
         isAdminMode: false,
         adminPanel: {
             isOpen: true,
-            tabSelected: 'add'
+            tabSelected: 'tab-add'
         }
     },
     setAdminMode: () => { }

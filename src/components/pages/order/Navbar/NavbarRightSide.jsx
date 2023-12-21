@@ -9,7 +9,7 @@ import { useContext } from "react";
 import AdminContext from "../../../../contexts/AdminContext";
 
 
-export default function NavbarRightSide({ username }) {
+export default function NavbarRightSide() {
   const { adminMode, setAdminMode } = useContext(AdminContext)
 
   const toggleLabelUnchecked = `Activer le mode admin`
@@ -17,7 +17,6 @@ export default function NavbarRightSide({ username }) {
 
   const displayAdminToast = () => {
     const isAdminMode = adminMode.isAdminMode
-    console.log(isAdminMode)
     if (!adminMode.isAdminMode) {
       toast.info("Mode admin activé", {
         icon: <IoMdInformationCircle size={30} />,
@@ -32,8 +31,6 @@ export default function NavbarRightSide({ username }) {
       })
     }
 
-    console.log("tab selected mode admin : " + adminMode.adminPanel.tabSelected)
-
     setAdminMode({ ...adminMode, isAdminMode: !isAdminMode })
   }
 
@@ -41,7 +38,7 @@ export default function NavbarRightSide({ username }) {
     <NavbarRightSideStyled>
       <AdminToast />
       <ToggleButton labelIfChecked={toggleLabelChecked} labelIfUnchecked={toggleLabelUnchecked} onToggle={displayAdminToast} />
-      <NavbarProfile username={username} />
+      <NavbarProfile />
     </NavbarRightSideStyled>
   )
 }

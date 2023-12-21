@@ -1,32 +1,51 @@
-import { AiOutlinePlus } from "react-icons/ai"
-import { FiChevronDown, FiChevronUp } from "react-icons/fi"
-import { MdModeEditOutline } from "react-icons/md"
 import styled from "styled-components"
-import { AdminPanelNavbarButton } from "./AdminPanelNavbarButton"
+import { Tab } from "../../../../ui/Tab"
+import { getAdminTabsConfig } from "./helpers/getAdminTabsConfig"
+import { useContext } from "react"
+import AdminContext from "../../../../../contexts/AdminContext"
 
-const AdminPanelNavbar = ({ onClickDisplayTab, onClickMenuTabs, isOpen, tabSelected }) => {
+const AdminPanelNavbar = () => {
+    const { adminMode, setAdminMode } = useContext(AdminContext)
+    const isOpen = adminMode.adminPanel.isOpen
+    const tabSelected = adminMode.adminPanel.tabSelected
+
+    const handleOpenPanel = () => {
+        const newAdminMode = { ...adminMode }
+        newAdminMode.adminPanel.isOpen = !isOpen
+
+        setAdminMode(newAdminMode)
+    }
+
+    const handleActiveTab = (e) => {
+        const tabSelected = e.currentTarget.id
+
+        setAdminMode(prevAdminMode => ({
+            ...prevAdminMode,
+            adminPanel: {
+                isOpen: true,
+                tabSelected: tabSelected
+            }
+        }))
+    }
+
+    const tabs = getAdminTabsConfig(isOpen, handleOpenPanel, handleActiveTab)
+
     return (
         <AdminPanelNavbarStyled className='admin_panel-nav'>
             <ul>
-                <AdminPanelNavbarButton
-                    onClick={onClickDisplayTab}
-                    className={isOpen ? 'tab-control' : 'tab-control tab-active'}
-                    Icon={isOpen ? <FiChevronDown /> : <FiChevronUp />}
-                />
-                <AdminPanelNavbarButton
-                    onClick={onClickMenuTabs}
-                    tabSelected={tabSelected}
-                    id={'tab-add'}
-                    Icon={<AiOutlinePlus />}
-                    label={'Ajouter un produit'}
-                />
-                <AdminPanelNavbarButton
-                    onClick={onClickMenuTabs}
-                    tabSelected={tabSelected}
-                    id={'tab-update'}
-                    Icon={<MdModeEditOutline />}
-                    label={'Modifier un produit'}
-                />
+                {tabs.map((tab) => {
+                    return (
+                        <li key={tab.id}>
+                            <Tab
+                                id={tab.id && tab.id}
+                                label={tab.label && tab.label}
+                                className={tab.className ? tab.className : tabSelected === tab.id ? 'tab-active' : ''}
+                                Icon={tab.Icon}
+                                onClick={tab.onClick}
+                            />
+                        </li>
+                    )
+                })}
             </ul>
         </AdminPanelNavbarStyled>
     )
@@ -40,6 +59,9 @@ const AdminPanelNavbarStyled = styled.nav`
         margin: 0;
         padding-left: 71px;
         list-style-type: none;
+
+        button {
+            margin-left: 1px;
+        }
     }
-  
 `;
