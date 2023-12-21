@@ -14,7 +14,7 @@ const AdminPanelContent = () => {
 
     return (
         <AdminPanelContentStyled className={isOpen ? '' : 'closed'}>
-            {tabSelected === currentTabSelected.id && currentTabSelected.label}
+            {currentTabSelected.label}
         </AdminPanelContentStyled>
     )
 }
