@@ -26,7 +26,7 @@ const AdminPanelContent = () => {
         <AdminPanelContentStyled className={isOpen ? '' : 'closed'}>
             {/*currentTabSelected.label*/}
             <form action="submit" >
-                <div>
+                <div className="img-container">
                     {imgUrl ? (
                         <img src="" alt="" />
                     ) : (
@@ -83,6 +83,21 @@ const AdminPanelContentStyled = styled.div`
         display: grid;
         grid-gap: ${theme.spacing.md};
         grid-template-columns: 1fr 3fr 2fr;
+
+        .img-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 100%;
+            }
+
+            p {
+                font-size: 16px;
+                color: #93A2B1;
+            }
+        }
 
         .input-container {
             margin: 5px;
