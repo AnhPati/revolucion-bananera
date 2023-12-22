@@ -25,15 +25,15 @@ const AdminPanelContent = () => {
     return (
         <AdminPanelContentStyled className={isOpen ? '' : 'closed'}>
             {/*currentTabSelected.label*/}
-            <form action="submit" >
-                <div className="img-container">
+            <form action='submit' >
+                <div className='img-container'>
                     {imgUrl ? (
                         <img src="" alt="" />
                     ) : (
                         <p>Aucune image</p>
                     )}
                 </div>
-                <div>
+                <div className='inputs-container'>
                     <TextInput
                         value={inputValue}
                         onChange={handleChange}
@@ -52,11 +52,11 @@ const AdminPanelContent = () => {
                         placeholder={'Prix'}
                         Icon={<MdOutlineEuro />}
                     />
-                    <div className="button-container">
-                        <PrimaryButton
-                            label={'Ajouter un nouveau produit au menu'}
-                        />
-                    </div>
+                </div>
+                <div className='button-container'>
+                    <PrimaryButton
+                        label={'Ajouter un nouveau produit au menu'}
+                    />
                 </div>
             </form>
         </AdminPanelContentStyled>
@@ -81,10 +81,14 @@ const AdminPanelContentStyled = styled.div`
 
     form {
         display: grid;
-        grid-gap: ${theme.spacing.md};
-        grid-template-columns: 1fr 3fr 2fr;
+        grid-column-gap: ${theme.spacing.md};
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        height: 100%;
+        width: 100%;
 
         .img-container {
+            grid-area: 1 / 1 / 4 / 2;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -99,8 +103,14 @@ const AdminPanelContentStyled = styled.div`
             }
         }
 
+        .inputs-container {
+            grid-area: 1 / 2 / 4 / 5;
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+        }
+
         .input-container {
-            margin: 5px;
+                margin: 0;
 
             > svg {
                 top: ${theme.gridUnit}px;
@@ -124,6 +134,7 @@ const AdminPanelContentStyled = styled.div`
         }
 
         .button-container {
+            grid-area: 4 / 2 / 5 / 4;
             width: 275.25px;
             margin-top: 10px;
 
