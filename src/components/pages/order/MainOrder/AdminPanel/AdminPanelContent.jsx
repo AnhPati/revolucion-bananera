@@ -52,9 +52,11 @@ const AdminPanelContent = () => {
                         placeholder={'Prix'}
                         Icon={<MdOutlineEuro />}
                     />
-                    <PrimaryButton
-                        label={'Ajouter un nouveau produit au menu'}
-                    />
+                    <div className="button-container">
+                        <PrimaryButton
+                            label={'Ajouter un nouveau produit au menu'}
+                        />
+                    </div>
                 </div>
             </form>
         </AdminPanelContentStyled>
@@ -102,6 +104,30 @@ const AdminPanelContentStyled = styled.div`
                     &::placeholder {
                         color: transparent;
                     }
+                }
+            }
+        }
+
+        .button-container {
+            width: 275.25px;
+            margin-top: 10px;
+
+            button {
+                height: auto;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background: #60BD4F;
+                border-color: #60BD4F;
+
+                &:hover {
+                    color: #60BD4F;
+                    background: #FFF;
+                }
+
+                &:active {
+                    color: ${theme.colors.white};
+                    background: #60BD4F;
+                    transition: none;
                 }
             }
         }
