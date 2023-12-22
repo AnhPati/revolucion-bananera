@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AdminContext from "../../../../../contexts/AdminContext";
 import { getAdminTabsConfig, getCurrentTabSelected } from "./helpers/getAdminTabsConfig";
 import { TextInput } from "../../../../ui/TextInput"
@@ -10,6 +10,7 @@ import { BsFillCameraFill } from 'react-icons/bs'
 import { MdOutlineEuro } from 'react-icons/md'
 
 const AdminPanelContent = () => {
+    const [inputValue, setInputValue] = useState('')
     const { adminMode } = useContext(AdminContext)
     const isOpen = adminMode.adminPanel.isOpen
     const tabSelected = adminMode.adminPanel.tabSelected
@@ -34,19 +35,19 @@ const AdminPanelContent = () => {
                 </div>
                 <div>
                     <TextInput
-                        value={''}
+                        value={inputValue}
                         onChange={handleChange}
                         placeholder={'Nom du produit (ex: Super Burger)'}
                         Icon={<FaHamburger />}
                     />
                     <TextInput
-                        value={''}
+                        value={inputValue}
                         onChange={handleChange}
                         placeholder={`Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)`}
                         Icon={<BsFillCameraFill />}
                     />
                     <TextInput
-                        value={''}
+                        value={inputValue}
                         onChange={handleChange}
                         placeholder={'Prix'}
                         Icon={<MdOutlineEuro />}
@@ -78,8 +79,31 @@ const AdminPanelContentStyled = styled.div`
 
     form {
         display: grid;
-        grid-gap: 20px;
+        grid-gap: ${theme.spacing.md};
         grid-template-columns: 1fr 3fr 2fr;
 
+        .input-container {
+            margin: 5px;
+
+            > svg {
+                top: ${theme.gridUnit}px;
+            }
+
+            input {
+                font-size: ${theme.fonts.size.SM};
+                padding-top: ${theme.gridUnit}px;
+                padding-bottom: ${theme.gridUnit}px;
+
+                &::placeholder {
+                    color:  ${theme.colors.greyMedium};
+                }
+
+                &:focus-visible {
+                    &::placeholder {
+                        color: transparent;
+                    }
+                }
+            }
+        }
     }
 `

@@ -3,7 +3,7 @@ import { theme } from "../../theme";
 
 export const TextInput = ({ value, onChange, Icon, ...optionalsProps }) => {
     return (
-        <TextInputStyled>
+        <TextInputStyled className='input-container'>
             {Icon && Icon}
             <input
                 value={value}
