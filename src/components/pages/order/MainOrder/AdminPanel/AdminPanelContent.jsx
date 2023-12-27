@@ -77,6 +77,7 @@ const AdminPanelContentStyled = styled.div`
     &.closed {
         height: 0;
         padding: 0;
+        overflow: hidden;
     }
 
     form {
