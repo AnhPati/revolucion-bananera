@@ -33,14 +33,14 @@ const CardStyled = styled.li`
         right: 15px;
         top: 15px;
 
+        :hover {
+                color: #E25549;
+            }
+
         svg {
             font-size: 30px;
             color: #FFA01B;
             cursor: pointer;
-
-            :hover {
-                color: #E25549;
-            }
         }
     }
 `;
