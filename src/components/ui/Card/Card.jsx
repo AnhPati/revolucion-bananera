@@ -7,12 +7,15 @@ import AdminContext from '../../../contexts/AdminContext';
 import { useContext } from 'react';
 
 export const Card = ({ id, imgSrc, title, leftDescription }) => {
-    const { handleDeleteProduct } = useContext(AdminContext)
+    const { handleDeleteProduct, adminMode } = useContext(AdminContext)
+    const isAdminMode = adminMode.isAdminMode
     return (
         <CardStyled key={id} id={id} className={'card'}>
-            <span className='remove-button' onClick={handleDeleteProduct}>
-                <TiDelete />
-            </span>
+            {isAdminMode && (
+                <span className='remove-button' onClick={handleDeleteProduct}>
+                    <TiDelete />
+                </span>
+            )}
             <CardImg src={imgSrc} alt={title} />
             <CardInfos title={title} leftDescription={leftDescription} />
         </CardStyled>
