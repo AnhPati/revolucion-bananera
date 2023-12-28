@@ -23,18 +23,19 @@ const AdminPanelContent = () => {
     const tabSelected = adminMode.adminPanel.tabSelected
 
     const handleChange = (e) => {
-        const newProductValues = { ...productValues }
-        const inputName = e.target.name
-        setProductValues({ ...newProductValues, [inputName]: e.target.value })
+        const { name, value } = e.target
+
+        setProductValues({ ...productValues, [name]: value })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
         const newProduct = {
             ...productValues,
-            id: new Date().getTime()
+            id: crypto.randomUUID()
         }
-        console.log(newProduct)
+
         handleAddProduct(newProduct)
         setProductValues({ id: '', title: '', imageSource: '', price: 0 })
     }
