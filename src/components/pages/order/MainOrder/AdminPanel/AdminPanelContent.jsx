@@ -9,14 +9,33 @@ import { FaHamburger } from 'react-icons/fa'
 import { BsFillCameraFill } from 'react-icons/bs'
 import { MdOutlineEuro } from 'react-icons/md'
 
+const EMPTY_PRODUCT = {
+    id: '',
+    title: '',
+    imageSource: '',
+    price: 0
+}
+
 const AdminPanelContent = () => {
-    const [inputValue, setInputValue] = useState('')
-    const { adminMode } = useContext(AdminContext)
+    const [productValues, setProductValues] = useState(EMPTY_PRODUCT)
+    const { adminMode, handleAddProduct } = useContext(AdminContext)
     const isOpen = adminMode.adminPanel.isOpen
     const tabSelected = adminMode.adminPanel.tabSelected
 
     const handleChange = (e) => {
-        setInputValue(e.target.value)
+        const newProductValues = { ...productValues }
+        const inputName = e.target.name
+        setProductValues({ ...newProductValues, [inputName]: e.target.value })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const newProduct = {
+            ...productValues,
+            id: new Date().getTime()
+        }
+        console.log(newProduct)
+        handleAddProduct(newProduct)
     }
 
     const tabs = getAdminTabsConfig().slice(1)
@@ -25,7 +44,7 @@ const AdminPanelContent = () => {
     return (
         <AdminPanelContentStyled className={isOpen ? '' : 'closed'}>
             {/*currentTabSelected.label*/}
-            <form action='submit' >
+            <form action='submit' onSubmit={handleSubmit}>
                 <div className='img-container'>
                     {imgUrl ? (
                         <img src="" alt="" />
@@ -35,19 +54,22 @@ const AdminPanelContent = () => {
                 </div>
                 <div className='inputs-container'>
                     <TextInput
-                        value={inputValue}
+                        name={'title'}
+                        value={productValues.title}
                         onChange={handleChange}
                         placeholder={'Nom du produit (ex: Super Burger)'}
                         Icon={<FaHamburger />}
                     />
                     <TextInput
-                        value={inputValue}
+                        name={'imageSource'}
+                        value={productValues.imageSource}
                         onChange={handleChange}
                         placeholder={`Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)`}
                         Icon={<BsFillCameraFill />}
                     />
                     <TextInput
-                        value={inputValue}
+                        name={'price'}
+                        value={productValues.price > 0 ? productValues.price : ''}
                         onChange={handleChange}
                         placeholder={'Prix'}
                         Icon={<MdOutlineEuro />}

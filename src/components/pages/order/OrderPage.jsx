@@ -17,14 +17,18 @@ const OrderPage = () => {
         setAdminMode: () => { }
     })
 
-    const handleAddProduct = () => {
+    const handleAddProduct = (newProduct) => {
+        const newProducts = [...products]
+
+        setProducts([newProduct, ...newProducts])
     }
+
+    console.log(products)
 
     const adminContextValue = {
         adminMode,
         setAdminMode,
         products,
-        setProducts,
         handleAddProduct
     }
 
