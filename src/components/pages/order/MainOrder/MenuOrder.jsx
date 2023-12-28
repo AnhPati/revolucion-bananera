@@ -4,11 +4,10 @@ import { Card } from "../../../ui/Card/Card";
 import { formatPrice } from "../../../../utils/maths";
 import { theme } from "../../../../theme";
 import AdminContext from "../../../../contexts/AdminContext";
-import { PrimaryButton } from "../../../ui/PrimaryButton";
 import EmptyMenu from "./EmptyMenu";
 
 export const MenuOrder = () => {
-    const { products, handleAddProduct } = useContext(AdminContext)
+    const { products } = useContext(AdminContext)
 
     return (
         <MenuOrderStyled>
@@ -26,19 +25,7 @@ export const MenuOrder = () => {
                     })}
                 </ul>
             ) : (
-                <div className="menu-empty">
-                    <EmptyMenu />
-                    <h1>
-                        Le menu est vide ?
-                    </h1>
-                    <h2>
-                        Cliquez ci-dessous pour le réinitialiser
-                    </h2>
-                    <PrimaryButton
-                        label={'Générer de nouveaux produits'}
-                        onClick={handleAddProduct}
-                    />
-                </div>
+                <EmptyMenu />
             )}
         </MenuOrderStyled>
     )
@@ -57,33 +44,5 @@ const MenuOrderStyled = styled.section`
         padding-top: ${theme.gridUnit * 6.25}px;
         padding-bottom: ${theme.gridUnit * 6.25}px;
         list-style: none;
-    }
-
-    .menu-empty {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 21px;
-
-        h1, h2 {
-            text-align: center;
-            color: #747B91;
-            font-size: 36px;
-            margin: 0;
-        }
-
-        h2 {
-            font-weight: 400;
-        }
-
-        button {
-            width: auto;
-            padding-left: 25px;
-            padding-right: 25px;
-            margin: 10px 0;
-        }
     }
 `;
