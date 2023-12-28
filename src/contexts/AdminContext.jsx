@@ -12,7 +12,8 @@ const AdminContext = createContext({
 
     products: [],
     setProducts: () => { },
-    handleAddProduct: () => { }
+    handleAddProduct: () => { },
+    handleDeleteProduct: () => { }
 })
 
 export default AdminContext

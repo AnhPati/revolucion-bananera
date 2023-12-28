@@ -3,11 +3,14 @@ import { theme } from '../../../theme';
 import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
 import { TiDelete } from 'react-icons/ti'
+import AdminContext from '../../../contexts/AdminContext';
+import { useContext } from 'react';
 
 export const Card = ({ id, imgSrc, title, leftDescription }) => {
+    const { handleDeleteProduct } = useContext(AdminContext)
     return (
         <CardStyled key={id} id={id} className={'card'}>
-            <span className='remove-button'>
+            <span className='remove-button' onClick={handleDeleteProduct}>
                 <TiDelete />
             </span>
             <CardImg src={imgSrc} alt={title} />

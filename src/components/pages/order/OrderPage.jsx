@@ -23,13 +23,21 @@ const OrderPage = () => {
         setProducts([newProduct, ...newProducts])
     }
 
-    console.log(products)
+    const handleDeleteProduct = (e) => {
+        const oldProductId = Number(e.currentTarget.parentNode.id)
+        console.log(oldProductId)
+        const newProducts = products.filter(product => product.id !== oldProductId)
+        console.log(newProducts)
+
+        setProducts(newProducts)
+    }
 
     const adminContextValue = {
         adminMode,
         setAdminMode,
         products,
-        handleAddProduct
+        handleAddProduct,
+        handleDeleteProduct
     }
 
     return (
