@@ -41,14 +41,14 @@ const AdminPanelContent = () => {
 
     const tabs = getAdminTabsConfig().slice(1)
     const currentTabSelected = getCurrentTabSelected(tabs, tabSelected)
-    const imgUrl = null
+
     return (
         <AdminPanelContentStyled className={isOpen ? '' : 'closed'}>
             {/*currentTabSelected.label*/}
             <form action='submit' onSubmit={handleSubmit}>
                 <div className='img-container'>
-                    {imgUrl ? (
-                        <img src="" alt="" />
+                    {productValues.imageSource ? (
+                        <img src={productValues.imageSource} alt="" />
                     ) : (
                         <p>Aucune image</p>
                     )}
