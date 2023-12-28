@@ -5,6 +5,7 @@ import { formatPrice } from "../../../../utils/maths";
 import { theme } from "../../../../theme";
 import AdminContext from "../../../../contexts/AdminContext";
 import { PrimaryButton } from "../../../ui/PrimaryButton";
+import EmptyMenu from "./EmptyMenu";
 
 export const MenuOrder = () => {
     const { products, handleAddProduct } = useContext(AdminContext)
@@ -26,6 +27,7 @@ export const MenuOrder = () => {
                 </ul>
             ) : (
                 <div className="menu-empty">
+                    <EmptyMenu />
                     <h1>
                         Le menu est vide ?
                     </h1>
