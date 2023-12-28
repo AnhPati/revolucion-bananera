@@ -6,6 +6,8 @@ import { theme } from "../../../../../theme";
 import AdminContext from "../../../../../contexts/AdminContext";
 import EmptyMenu from "./EmptyMenu";
 
+const DEFAULT_IMG = '/images/coming-soon.png'
+
 export const MenuOrder = () => {
     const { products } = useContext(AdminContext)
 
@@ -17,7 +19,7 @@ export const MenuOrder = () => {
                         return (
                             <Card key={id}
                                 id={id}
-                                imgSrc={imageSource}
+                                imgSrc={imageSource ? imageSource : DEFAULT_IMG}
                                 title={title}
                                 leftDescription={formatPrice(price)}
                             />
