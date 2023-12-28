@@ -36,6 +36,7 @@ const AdminPanelContent = () => {
         }
         console.log(newProduct)
         handleAddProduct(newProduct)
+        setProductValues({ id: '', title: '', imageSource: '', price: 0 })
     }
 
     const tabs = getAdminTabsConfig().slice(1)
