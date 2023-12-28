@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { useState } from "react";
-import { fakeMenu2 } from '../../../../fakeData/fakeMenu'
+import { useContext } from "react";
 import { Card } from "../../../ui/Card/Card";
 import { formatPrice } from "../../../../utils/maths";
 import { theme } from "../../../../theme";
+import AdminContext from "../../../../contexts/AdminContext";
 
 export const MenuOrder = () => {
-    const [products, setProducts] = useState(fakeMenu2)
+    const { products } = useContext(AdminContext)
 
     return (
         <MenuOrderStyled>
