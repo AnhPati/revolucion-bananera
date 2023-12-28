@@ -45,44 +45,49 @@ const AdminPanelContent = () => {
 
     return (
         <AdminPanelContentStyled className={isOpen ? '' : 'closed'}>
-            {/*currentTabSelected.label*/}
-            <form action='submit' onSubmit={handleSubmit}>
-                <div className='img-container'>
-                    {productValues.imageSource ? (
-                        <img src={productValues.imageSource} alt="" />
-                    ) : (
-                        <p>Aucune image</p>
-                    )}
-                </div>
-                <div className='inputs-container'>
-                    <TextInput
-                        name={'title'}
-                        value={productValues.title}
-                        onChange={handleChange}
-                        placeholder={'Nom du produit (ex: Super Burger)'}
-                        Icon={<FaHamburger />}
-                    />
-                    <TextInput
-                        name={'imageSource'}
-                        value={productValues.imageSource}
-                        onChange={handleChange}
-                        placeholder={`Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)`}
-                        Icon={<BsFillCameraFill />}
-                    />
-                    <TextInput
-                        name={'price'}
-                        value={productValues.price > 0 ? productValues.price : ''}
-                        onChange={handleChange}
-                        placeholder={'Prix'}
-                        Icon={<MdOutlineEuro />}
-                    />
-                </div>
-                <div className='button-container'>
-                    <PrimaryButton
-                        label={'Ajouter un nouveau produit au menu'}
-                    />
-                </div>
-            </form>
+            {currentTabSelected.id === 'tab-add' ? (
+                <form action='submit' onSubmit={handleSubmit}>
+                    <div className='img-container'>
+                        {productValues.imageSource ? (
+                            <img src={productValues.imageSource} alt="" />
+                        ) : (
+                            <p>Aucune image</p>
+                        )}
+                    </div>
+                    <div className='inputs-container'>
+                        <TextInput
+                            name={'title'}
+                            value={productValues.title}
+                            onChange={handleChange}
+                            placeholder={'Nom du produit (ex: Super Burger)'}
+                            Icon={<FaHamburger />}
+                        />
+                        <TextInput
+                            name={'imageSource'}
+                            value={productValues.imageSource}
+                            onChange={handleChange}
+                            placeholder={`Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)`}
+                            Icon={<BsFillCameraFill />}
+                        />
+                        <TextInput
+                            name={'price'}
+                            value={productValues.price > 0 ? productValues.price : ''}
+                            onChange={handleChange}
+                            placeholder={'Prix'}
+                            Icon={<MdOutlineEuro />}
+                        />
+                    </div>
+                    <div className='button-container'>
+                        <PrimaryButton
+                            label={'Ajouter un nouveau produit au menu'}
+                        />
+                    </div>
+                </form>
+            ) : (
+                <>
+                    {currentTabSelected.label}
+                </>
+            )}
         </AdminPanelContentStyled>
     )
 }
