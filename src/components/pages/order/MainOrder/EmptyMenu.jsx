@@ -4,20 +4,39 @@ import AdminContext from "../../../../contexts/AdminContext";
 import { useContext } from "react";
 
 const EmptyMenu = () => {
-    const { handleAddProduct } = useContext(AdminContext)
+    const { adminMode, handleAddProduct } = useContext(AdminContext)
+    const isAdminMode = adminMode.isAdminMode
 
     return (
         <EmptyMenuStyled>
-            <h1>
-                Le menu est vide ?
-            </h1>
-            <h2>
-                Cliquez ci-dessous pour le réinitialiser
-            </h2>
-            <PrimaryButton
-                label={'Générer de nouveaux produits'}
-                onClick={handleAddProduct}
-            />
+            <div className="menu-empty">
+                {isAdminMode ? (
+                    <>
+                        <h1>
+                            Le menu est vide ?
+                        </h1>
+                        <h2>
+                            Cliquez ci-dessous pour le réinitialiser
+                        </h2>
+                        <PrimaryButton
+                            label={'Générer de nouveaux produits'}
+                            onClick={handleAddProduct}
+                        />
+                    </>
+                ) : (
+                    <>
+                        <h1>
+                            Victime de notre succès ! :D
+                        </h1>
+                        <h2>
+                            De nouvelles recettes sont en cours de préparation.
+                        </h2>
+                        <h2>
+                            À très vite !
+                        </h2>
+                    </>
+                )}
+            </div>
         </EmptyMenuStyled>
     )
 }
