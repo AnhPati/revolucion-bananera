@@ -11,7 +11,7 @@ export const MenuOrder = () => {
 
     return (
         <MenuOrderStyled>
-            {products.length > 0 ?
+            {products.length > 0 ? (
                 <ul className="cards-list">
                     {products.map(({ id, imageSource, title, price }) => {
                         return (
@@ -24,16 +24,20 @@ export const MenuOrder = () => {
                         )
                     })}
                 </ul>
-                : <div className="menu-empty">
+            ) : (
+                <div className="menu-empty">
                     <h1>
-                        Le menu est vide ?<br />
-                        Cliquez ci-dessous pour le réinitialiser
+                        Le menu est vide ?
                     </h1>
+                    <h2>
+                        Cliquez ci-dessous pour le réinitialiser
+                    </h2>
                     <PrimaryButton
                         label={'Générer de nouveaux produits'}
                         onClick={handleAddProduct}
                     />
-                </div>}
+                </div>
+            )}
         </MenuOrderStyled>
     )
 }
@@ -60,13 +64,24 @@ const MenuOrderStyled = styled.section`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 21px;
 
-        h1 {
+        h1, h2 {
             text-align: center;
+            color: #747B91;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        h2 {
+            font-weight: 400;
         }
 
         button {
-            width: 300px;
+            width: auto;
+            padding-left: 25px;
+            padding-right: 25px;
+            margin: 10px 0;
         }
     }
 `;
