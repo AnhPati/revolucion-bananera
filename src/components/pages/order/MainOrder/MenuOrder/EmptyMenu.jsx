@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { PrimaryButton } from "../../../ui/PrimaryButton"
-import AdminContext from "../../../../contexts/AdminContext";
+import { PrimaryButton } from "../../../../ui/PrimaryButton"
+import AdminContext from "../../../../../contexts/AdminContext";
 import { useContext } from "react";
 
 const EmptyMenu = () => {

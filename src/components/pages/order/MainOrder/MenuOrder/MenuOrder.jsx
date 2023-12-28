@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { useContext } from "react";
-import { Card } from "../../../ui/Card/Card";
-import { formatPrice } from "../../../../utils/maths";
-import { theme } from "../../../../theme";
-import AdminContext from "../../../../contexts/AdminContext";
+import { Card } from "../../../../ui/Card/Card";
+import { formatPrice } from "../../../../../utils/maths";
+import { theme } from "../../../../../theme";
+import AdminContext from "../../../../../contexts/AdminContext";
 import EmptyMenu from "./EmptyMenu";
 
 export const MenuOrder = () => {
