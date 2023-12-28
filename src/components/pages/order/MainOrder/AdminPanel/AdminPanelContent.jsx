@@ -8,6 +8,7 @@ import { PrimaryButton } from "../../../../ui/PrimaryButton";
 import { FaHamburger } from 'react-icons/fa'
 import { BsFillCameraFill } from 'react-icons/bs'
 import { MdOutlineEuro } from 'react-icons/md'
+import { FiCheck } from "react-icons/fi";
 
 const EMPTY_PRODUCT = {
     id: '',
@@ -18,6 +19,7 @@ const EMPTY_PRODUCT = {
 
 const AdminPanelContent = () => {
     const [productValues, setProductValues] = useState(EMPTY_PRODUCT)
+    const [isAdding, setIsAdding] = useState(false)
     const { adminMode, handleAddProduct } = useContext(AdminContext)
     const isOpen = adminMode.adminPanel.isOpen
     const tabSelected = adminMode.adminPanel.tabSelected
@@ -36,8 +38,16 @@ const AdminPanelContent = () => {
             id: crypto.randomUUID()
         }
 
+        displaySuccesMessage()
         handleAddProduct(newProduct)
         setProductValues({ id: '', title: '', imageSource: '', price: 0 })
+    }
+
+    const displaySuccesMessage = () => {
+        setIsAdding(true)
+        setTimeout(() => {
+            setIsAdding(false)
+        }, 2000)
     }
 
     const tabs = getAdminTabsConfig().slice(1)
@@ -49,7 +59,7 @@ const AdminPanelContent = () => {
                 <form action='submit' onSubmit={handleSubmit}>
                     <div className='img-container'>
                         {productValues.imageSource ? (
-                            <img src={productValues.imageSource} alt="" />
+                            <img src={productValues.imageSource} alt={productValues.title} />
                         ) : (
                             <p>Aucune image</p>
                         )}
@@ -81,7 +91,9 @@ const AdminPanelContent = () => {
                         <PrimaryButton
                             label={'Ajouter un nouveau produit au menu'}
                         />
+                        {isAdding && <span className="succes-message"><FiCheck /> Ajouté avec succès !</span>}
                     </div>
+
                 </form>
             ) : (
                 <>
@@ -164,11 +176,11 @@ const AdminPanelContentStyled = styled.div`
         }
 
         .button-container {
-            grid-area: 4 / 2 / 5 / 4;
-            width: 275.25px;
+            grid-area: 4 / 2 / 5 / 5;
             margin-top: 10px;
 
             button {
+                width: 275.25px;
                 height: auto;
                 padding-top: 10px;
                 padding-bottom: 10px;
@@ -184,6 +196,14 @@ const AdminPanelContentStyled = styled.div`
                     color: ${theme.colors.white};
                     background: #60BD4F;
                     transition: none;
+                }
+            }
+
+            .succes-message {
+                border: solid 1px green;
+
+                svg {
+                    border-radius: 50%;
                 }
             }
         }
