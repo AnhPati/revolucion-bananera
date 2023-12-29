@@ -24,7 +24,7 @@ export const MenuOrder = () => {
                                 title={title}
                                 leftDescription={formatPrice(price)}
                                 hasDeleteButton={isAdminMode}
-                                onDelete={handleDeleteProduct}
+                                onDelete={() => handleDeleteProduct(id)}
                             />
                         )
                     })}

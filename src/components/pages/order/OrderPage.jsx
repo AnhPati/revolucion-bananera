@@ -23,11 +23,8 @@ const OrderPage = () => {
         setProducts([newProduct, ...newProducts])
     }
 
-    const handleDeleteProduct = (e) => {
-        const oldProductId = e.currentTarget.parentNode.id
-        console.log(oldProductId)
-        const newProducts = products.filter(product => product.id.toString() !== oldProductId)
-        console.log(newProducts)
+    const handleDeleteProduct = (id) => {
+        const newProducts = products.filter(product => product.id.toString() !== id.toString())
 
         setProducts(newProducts)
     }
