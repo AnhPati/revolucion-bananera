@@ -9,7 +9,8 @@ import EmptyMenu from "./EmptyMenu";
 const DEFAULT_IMG = '/images/coming-soon.png'
 
 export const MenuOrder = () => {
-    const { products } = useContext(AdminContext)
+    const { products, adminMode } = useContext(AdminContext)
+    const isAdminMode = adminMode.isAdminMode
 
     return (
         <MenuOrderStyled>
@@ -22,6 +23,7 @@ export const MenuOrder = () => {
                                 imgSrc={imageSource ? imageSource : DEFAULT_IMG}
                                 title={title}
                                 leftDescription={formatPrice(price)}
+                                hasDeleteButton={isAdminMode}
                             />
                         )
                     })}
