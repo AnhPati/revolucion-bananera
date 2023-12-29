@@ -176,6 +176,8 @@ const AdminPanelContentStyled = styled.div`
         }
 
         .button-container {
+            display: flex;
+            align-items: center;
             grid-area: 4 / 2 / 5 / 5;
             margin-top: 10px;
 
@@ -200,10 +202,18 @@ const AdminPanelContentStyled = styled.div`
             }
 
             .succes-message {
-                border: solid 1px green;
+                display: flex;
+                align-items: center;
+                margin-left: 5px;
+                padding-left: 10px;
+                color: #60BD4F;
+                font-size: 15px;
 
                 svg {
+                    font-size: 18px;
+                    border: solid 1px #60BD4F;
                     border-radius: 50%;
+                    margin-right: 5px;
                 }
             }
         }
