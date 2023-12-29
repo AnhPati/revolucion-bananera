@@ -9,34 +9,32 @@ const EmptyMenu = () => {
 
     return (
         <EmptyMenuStyled>
-            <div className="menu-empty">
-                {isAdminMode ? (
-                    <>
-                        <h1>
-                            Le menu est vide ?
-                        </h1>
-                        <h2>
-                            Cliquez ci-dessous pour le réinitialiser
-                        </h2>
-                        <PrimaryButton
-                            label={'Générer de nouveaux produits'}
-                            onClick={handleAddProduct}
-                        />
-                    </>
-                ) : (
-                    <>
-                        <h1>
-                            Victime de notre succès ! :D
-                        </h1>
-                        <h2>
-                            De nouvelles recettes sont en cours de préparation.
-                        </h2>
-                        <h2>
-                            À très vite !
-                        </h2>
-                    </>
-                )}
-            </div>
+            {isAdminMode ? (
+                <>
+                    <h1>
+                        Le menu est vide ?
+                    </h1>
+                    <h2>
+                        Cliquez ci-dessous pour le réinitialiser
+                    </h2>
+                    <PrimaryButton
+                        label={'Générer de nouveaux produits'}
+                        onClick={handleAddProduct}
+                    />
+                </>
+            ) : (
+                <>
+                    <h1>
+                        Victime de notre succès ! :D
+                    </h1>
+                    <h2>
+                        De nouvelles recettes sont en cours de préparation.
+                    </h2>
+                    <h2>
+                        À très vite !
+                    </h2>
+                </>
+            )}
         </EmptyMenuStyled>
     )
 }
