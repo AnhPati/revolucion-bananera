@@ -155,10 +155,12 @@ const AdminPanelContentStyled = styled.div`
                 margin: 0;
 
             > svg {
+                color: ${theme.colors.greyBlue};
                 top: ${theme.gridUnit}px;
             }
 
             input {
+                background: ${theme.colors.background_white};
                 font-size: ${theme.fonts.size.SM};
                 padding-top: ${theme.gridUnit}px;
                 padding-bottom: ${theme.gridUnit}px;
