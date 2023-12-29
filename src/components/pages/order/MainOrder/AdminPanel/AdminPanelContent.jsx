@@ -134,6 +134,8 @@ const AdminPanelContentStyled = styled.div`
             display: flex;
             align-items: center;
             justify-content: center;
+            border: solid 1px #E4E5E9;
+            border-radius: ${theme.borderRadius.round};
 
             img {
                 width: 100%;
