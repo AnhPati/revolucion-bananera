@@ -43,6 +43,10 @@ const CardStyled = styled.li`
                 color: #E25549;
             }
 
+        :active {
+            color: #FFA01B;
+        }
+
         svg {
             font-size: 30px;
             color: #FFA01B;
