@@ -9,7 +9,7 @@ import EmptyMenu from "./EmptyMenu";
 const DEFAULT_IMG = '/images/coming-soon.png'
 
 export const MenuOrder = () => {
-    const { products, adminMode } = useContext(AdminContext)
+    const { products, adminMode, handleDeleteProduct } = useContext(AdminContext)
     const isAdminMode = adminMode.isAdminMode
 
     return (
@@ -24,6 +24,7 @@ export const MenuOrder = () => {
                                 title={title}
                                 leftDescription={formatPrice(price)}
                                 hasDeleteButton={isAdminMode}
+                                onDelete={handleDeleteProduct}
                             />
                         )
                     })}

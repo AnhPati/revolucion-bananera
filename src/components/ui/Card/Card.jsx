@@ -6,13 +6,12 @@ import { TiDelete } from 'react-icons/ti'
 import AdminContext from '../../../contexts/AdminContext';
 import { useContext } from 'react';
 
-export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton }) => {
-    const { handleDeleteProduct } = useContext(AdminContext)
+export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete }) => {
 
     return (
         <CardStyled key={id} id={id} className={'card'}>
             {hasDeleteButton && (
-                <span className='remove-button' onClick={handleDeleteProduct}>
+                <span className='remove-button' onClick={onDelete}>
                     <TiDelete />
                 </span>
             )}
