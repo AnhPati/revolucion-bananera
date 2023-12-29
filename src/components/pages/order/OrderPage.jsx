@@ -29,12 +29,18 @@ const OrderPage = () => {
         setProducts(newProducts)
     }
 
+    const handleGenerateNewProducts = () => {
+        console.log(fakeMenu2)
+        setProducts(fakeMenu2)
+    }
+
     const adminContextValue = {
         adminMode,
         setAdminMode,
         products,
         handleAddProduct,
-        handleDeleteProduct
+        handleDeleteProduct,
+        handleGenerateNewProducts
     }
 
     return (

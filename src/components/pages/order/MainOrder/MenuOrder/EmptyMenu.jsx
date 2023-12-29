@@ -4,7 +4,7 @@ import AdminContext from "../../../../../contexts/AdminContext";
 import { useContext } from "react";
 
 const EmptyMenu = () => {
-    const { adminMode, handleAddProduct } = useContext(AdminContext)
+    const { adminMode, handleGenerateNewProducts } = useContext(AdminContext)
     const isAdminMode = adminMode.isAdminMode
 
     return (
@@ -19,7 +19,7 @@ const EmptyMenu = () => {
                     </h2>
                     <PrimaryButton
                         label={'Générer de nouveaux produits'}
-                        onClick={handleAddProduct}
+                        onClick={handleGenerateNewProducts}
                     />
                 </>
             ) : (

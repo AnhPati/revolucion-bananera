@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export const PrimaryButton = ({ label, Icon }) => {
+export const PrimaryButton = ({ label, Icon, onClick }) => {
     return (
-        <PrimaryButtonStyled>{label}{Icon && Icon}</PrimaryButtonStyled>
+        <PrimaryButtonStyled onClick={onClick}>{label}{Icon && Icon}</PrimaryButtonStyled>
     )
 }
 
