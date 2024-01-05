@@ -7,6 +7,7 @@ import { Button } from "../../../../ui/Button"
 import AdminContext from "../../../../../contexts/AdminContext"
 import styled from "styled-components"
 import { theme } from "../../../../../theme"
+import { ImgPreview } from "./ImgPreview"
 
 const EMPTY_PRODUCT = {
     id: '',
@@ -48,6 +49,7 @@ const AddProductForm = () => {
 
     return (
         <AddProductFormStyled action='submit' onSubmit={handleSubmit}>
+            <ImgPreview />
             <div className='img-container'>
                 {productValues.imageSource ? (
                     <img src={productValues.imageSource} alt={productValues.title} />
