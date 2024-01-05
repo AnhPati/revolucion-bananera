@@ -86,7 +86,12 @@ const AddProductForm = () => {
                     label={'Ajouter un nouveau produit au menu'}
                     variant={'success'}
                 />
-                {isAdding && <><SubmitMessage /><span className="succes-message"><FiCheck /> Ajouté avec succès !</span></>}
+                {isAdding && (
+                    <SubmitMessage
+                        label={'Ajouté avec succès !'}
+                        Icon={<FiCheck />}
+                    />
+                )}
             </div>
         </AddProductFormStyled>
     )
@@ -113,21 +118,5 @@ const AddProductFormStyled = styled.form`
         align-items: center;
         grid-area: 4 / 2 / 5 / 5;
         margin-top: 10px;
-
-        .succes-message {
-            display: flex;
-            align-items: center;
-            margin-left: 5px;
-            padding-left: 10px;
-            color: #60BD4F;
-            font-size: 15px;
-
-            svg {
-                font-size: 18px;
-                border: solid 1px #60BD4F;
-                border-radius: 50%;
-                margin-right: 5px;
-            }
-        }
     }
 `;
