@@ -93,6 +93,7 @@ const AdminPanelContent = () => {
                     <div className='button-container'>
                         <PrimaryButton
                             label={'Ajouter un nouveau produit au menu'}
+                            variant={'success'}
                         />
                         {isAdding && <span className="succes-message"><FiCheck /> Ajouté avec succès !</span>}
                     </div>
@@ -161,26 +162,6 @@ const AdminPanelContentStyled = styled.div`
             align-items: center;
             grid-area: 4 / 2 / 5 / 5;
             margin-top: 10px;
-
-            button {
-                width: 275.25px;
-                height: auto;
-                padding-top: 10px;
-                padding-bottom: 10px;
-                background: #60BD4F;
-                border-color: #60BD4F;
-
-                &:hover {
-                    color: #60BD4F;
-                    background: #FFF;
-                }
-
-                &:active {
-                    color: ${theme.colors.white};
-                    background: #60BD4F;
-                    transition: none;
-                }
-            }
 
             .succes-message {
                 display: flex;
