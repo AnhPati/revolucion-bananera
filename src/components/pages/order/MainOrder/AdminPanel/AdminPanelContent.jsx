@@ -9,6 +9,7 @@ import { FaHamburger } from 'react-icons/fa'
 import { BsFillCameraFill } from 'react-icons/bs'
 import { MdOutlineEuro } from 'react-icons/md'
 import { FiCheck } from "react-icons/fi";
+import AddProductForm from "./AddProductForm";
 
 const EMPTY_PRODUCT = {
     id: '',
@@ -56,49 +57,50 @@ const AdminPanelContent = () => {
     return (
         <AdminPanelContentStyled className={isOpen ? '' : 'closed'}>
             {currentTabSelected.id === 'tab-add' ? (
-                <form action='submit' onSubmit={handleSubmit}>
-                    <div className='img-container'>
-                        {productValues.imageSource ? (
-                            <img src={productValues.imageSource} alt={productValues.title} />
-                        ) : (
-                            <p>Aucune image</p>
-                        )}
-                    </div>
-                    <div className='inputs-container'>
-                        <TextInput
-                            name={'title'}
-                            value={productValues.title}
-                            onChange={handleChange}
-                            placeholder={'Nom du produit (ex: Super Burger)'}
-                            Icon={<FaHamburger />}
-                            variant={'secondary'}
-                        />
-                        <TextInput
-                            name={'imageSource'}
-                            value={productValues.imageSource}
-                            onChange={handleChange}
-                            placeholder={`Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)`}
-                            Icon={<BsFillCameraFill />}
-                            variant={'secondary'}
-                        />
-                        <TextInput
-                            name={'price'}
-                            value={productValues.price > 0 ? productValues.price : ''}
-                            onChange={handleChange}
-                            placeholder={'Prix'}
-                            Icon={<MdOutlineEuro />}
-                            variant={'secondary'}
-                        />
-                    </div>
-                    <div className='button-container'>
-                        <Button
-                            label={'Ajouter un nouveau produit au menu'}
-                            variant={'success'}
-                        />
-                        {isAdding && <span className="succes-message"><FiCheck /> Ajouté avec succès !</span>}
-                    </div>
+                <><AddProductForm />
+                    <form action='submit' onSubmit={handleSubmit}>
+                        <div className='img-container'>
+                            {productValues.imageSource ? (
+                                <img src={productValues.imageSource} alt={productValues.title} />
+                            ) : (
+                                <p>Aucune image</p>
+                            )}
+                        </div>
+                        <div className='inputs-container'>
+                            <TextInput
+                                name={'title'}
+                                value={productValues.title}
+                                onChange={handleChange}
+                                placeholder={'Nom du produit (ex: Super Burger)'}
+                                Icon={<FaHamburger />}
+                                variant={'secondary'}
+                            />
+                            <TextInput
+                                name={'imageSource'}
+                                value={productValues.imageSource}
+                                onChange={handleChange}
+                                placeholder={`Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)`}
+                                Icon={<BsFillCameraFill />}
+                                variant={'secondary'}
+                            />
+                            <TextInput
+                                name={'price'}
+                                value={productValues.price > 0 ? productValues.price : ''}
+                                onChange={handleChange}
+                                placeholder={'Prix'}
+                                Icon={<MdOutlineEuro />}
+                                variant={'secondary'}
+                            />
+                        </div>
+                        <div className='button-container'>
+                            <Button
+                                label={'Ajouter un nouveau produit au menu'}
+                                variant={'success'}
+                            />
+                            {isAdding && <span className="succes-message"><FiCheck /> Ajouté avec succès !</span>}
+                        </div>
 
-                </form>
+                    </form></>
             ) : (
                 <>
                     {currentTabSelected.label}
