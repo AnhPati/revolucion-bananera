@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PrimaryButton } from "../../../../ui/PrimaryButton"
+import { Button } from "../../../../ui/Button"
 import AdminContext from "../../../../../contexts/AdminContext";
 import { useContext } from "react";
 
@@ -17,7 +17,7 @@ const EmptyMenu = () => {
                     <h2>
                         Cliquez ci-dessous pour le réinitialiser
                     </h2>
-                    <PrimaryButton
+                    <Button
                         label={'Générer de nouveaux produits'}
                         onClick={handleGenerateNewProducts}
                     />

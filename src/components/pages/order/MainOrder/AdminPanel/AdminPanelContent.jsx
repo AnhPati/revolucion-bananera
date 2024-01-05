@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import AdminContext from "../../../../../contexts/AdminContext";
 import { getAdminTabsConfig, getCurrentTabSelected } from "./helpers/getAdminTabsConfig";
 import { TextInput } from "../../../../ui/TextInput"
-import { PrimaryButton } from "../../../../ui/PrimaryButton";
+import { Button } from "../../../../ui/Button";
 import { FaHamburger } from 'react-icons/fa'
 import { BsFillCameraFill } from 'react-icons/bs'
 import { MdOutlineEuro } from 'react-icons/md'
@@ -91,7 +91,7 @@ const AdminPanelContent = () => {
                         />
                     </div>
                     <div className='button-container'>
-                        <PrimaryButton
+                        <Button
                             label={'Ajouter un nouveau produit au menu'}
                             variant={'success'}
                         />

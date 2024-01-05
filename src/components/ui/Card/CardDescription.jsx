@@ -1,4 +1,4 @@
-import { PrimaryButton } from '../PrimaryButton'
+import { Button } from '../Button'
 import styled from 'styled-components';
 import { theme } from '../../../theme';
 
@@ -9,7 +9,7 @@ export const CardDescription = ({ leftDescription }) => {
                 {leftDescription}
             </p>
             <div className={'add_button-container'}>
-                <PrimaryButton label={'Ajouter'} />
+                <Button label={'Ajouter'} />
             </div>
         </CardDescriptionStyled>
     )
