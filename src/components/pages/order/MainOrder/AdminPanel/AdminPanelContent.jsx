@@ -71,6 +71,7 @@ const AdminPanelContent = () => {
                             onChange={handleChange}
                             placeholder={'Nom du produit (ex: Super Burger)'}
                             Icon={<FaHamburger />}
+                            variant={'secondary'}
                         />
                         <TextInput
                             name={'imageSource'}
@@ -78,6 +79,7 @@ const AdminPanelContent = () => {
                             onChange={handleChange}
                             placeholder={`Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)`}
                             Icon={<BsFillCameraFill />}
+                            variant={'secondary'}
                         />
                         <TextInput
                             name={'price'}
@@ -85,6 +87,7 @@ const AdminPanelContent = () => {
                             onChange={handleChange}
                             placeholder={'Prix'}
                             Icon={<MdOutlineEuro />}
+                            variant={'secondary'}
                         />
                     </div>
                     <div className='button-container'>
@@ -151,32 +154,6 @@ const AdminPanelContentStyled = styled.div`
             grid-area: 1 / 2 / 4 / 5;
             display: grid;
             grid-template-rows: repeat(3, 1fr);
-        }
-
-        .input-container {
-                margin: 0;
-
-            > svg {
-                color: ${theme.colors.greyBlue};
-                top: ${theme.gridUnit}px;
-            }
-
-            input {
-                background: ${theme.colors.background_white};
-                font-size: ${theme.fonts.size.SM};
-                padding-top: ${theme.gridUnit}px;
-                padding-bottom: ${theme.gridUnit}px;
-
-                &::placeholder {
-                    color:  ${theme.colors.greyMedium};
-                }
-
-                &:focus-visible {
-                    &::placeholder {
-                        color: transparent;
-                    }
-                }
-            }
         }
 
         .button-container {

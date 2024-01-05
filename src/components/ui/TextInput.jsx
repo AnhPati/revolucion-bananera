@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
-export const TextInput = ({ value, onChange, Icon, ...optionalsProps }) => {
+export const TextInput = ({ value, onChange, Icon, variant = 'primary', ...optionalsProps }) => {
     return (
-        <TextInputStyled className='input-container'>
+        <TextInputStyled className='input-container' $variant={variant}>
             {Icon && Icon}
             <input
                 value={value}
@@ -18,11 +18,9 @@ export const TextInput = ({ value, onChange, Icon, ...optionalsProps }) => {
 const TextInputStyled = styled.div`
     position: relative;
     width: 100%;
-    margin: ${theme.spacing.sm} 0;
 
     > svg {
         position: absolute;
-        top: ${theme.gridUnit * 2.25}px;
         left: ${theme.gridUnit * 2.5}px;
         color: ${theme.colors.greyBlue};
         font-size: ${theme.fonts.size.SM};
@@ -31,17 +29,11 @@ const TextInputStyled = styled.div`
     input {
         width: 100%;
         border-radius: ${theme.borderRadius.round};
-        padding-top: ${theme.gridUnit * 2.25}px;
-        padding-bottom: ${theme.gridUnit * 2.25}px;
         color: ${theme.colors.dark};
         font-weight: ${theme.fonts.weights.regular};
         padding-left: ${theme.gridUnit * 5.75}px;
         padding-right: ${theme.gridUnit * 3}px;
         border: none;
-
-        &::placeholder {
-            color: ${theme.colors.greyUltraLight};
-        }
 
         &:focus-visible {
             outline: none;
@@ -51,4 +43,54 @@ const TextInputStyled = styled.div`
             }
         }
     }
+
+    ${({ $variant }) => inputStyles[$variant]}
 `;
+
+const extraPrimaryStyles = css`
+    margin: ${theme.spacing.sm} 0;
+
+    > svg {
+        top: ${theme.gridUnit * 2.25}px;
+    }
+
+    input {
+        padding-top: ${theme.gridUnit * 2.25}px;
+        padding-bottom: ${theme.gridUnit * 2.25}px;
+
+        &::placeholder {
+            color: ${theme.colors.greyUltraLight};
+        }
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+`
+
+const extraSecondaryStyles = css`
+    margin: 0;
+
+    > svg {
+        top: ${theme.gridUnit}px;
+    }
+
+    input {
+        background: ${theme.colors.background_white};
+        font-size: ${theme.fonts.size.SM};
+        padding-top: ${theme.gridUnit}px;
+        padding-bottom: ${theme.gridUnit}px;
+
+        &::placeholder {
+            color:  ${theme.colors.greyMedium};
+        }
+
+        &:focus-visible {
+        }
+    }
+`
+
+const inputStyles = {
+    primary: extraPrimaryStyles,
+    secondary: extraSecondaryStyles
+}
