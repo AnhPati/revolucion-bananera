@@ -1,8 +1,5 @@
 import { useContext, useState } from "react"
 import { TextInput } from "../../../../ui/TextInput"
-import { FaHamburger } from "react-icons/fa"
-import { BsFillCameraFill } from "react-icons/bs"
-import { MdOutlineEuro } from "react-icons/md"
 import { FiCheck } from "react-icons/fi"
 import { Button } from "../../../../ui/Button"
 import AdminContext from "../../../../../contexts/AdminContext"
@@ -10,6 +7,7 @@ import styled from "styled-components"
 import { theme } from "../../../../../theme"
 import { ImgPreview } from "./ImgPreview"
 import { SubmitMessage } from "./SubmitMessage"
+import { getTextInputsConfig } from "./helpers/getTextInputsConfig"
 
 const EMPTY_PRODUCT = {
     id: '',
@@ -39,7 +37,8 @@ const AddProductForm = () => {
 
         displaySuccesMessage()
         handleAddProduct(newProduct)
-        setProductValues({ id: '', title: '', imageSource: '', price: 0 })
+        setProductValues(EMPTY_PRODUCT)
+        console.log(productValues)
     }
 
     const displaySuccesMessage = () => {
@@ -49,6 +48,8 @@ const AddProductForm = () => {
         }, 2000)
     }
 
+    const textInputs = getTextInputsConfig(productValues)
+
     return (
         <AddProductFormStyled action='submit' onSubmit={handleSubmit}>
             <ImgPreview
@@ -56,30 +57,16 @@ const AddProductForm = () => {
                 alt={productValues.title}
             />
             <div className='inputs-container'>
-                <TextInput
-                    name={'title'}
-                    value={productValues.title}
-                    onChange={handleChange}
-                    placeholder={'Nom du produit (ex: Super Burger)'}
-                    Icon={<FaHamburger />}
-                    variant={'secondary'}
-                />
-                <TextInput
-                    name={'imageSource'}
-                    value={productValues.imageSource}
-                    onChange={handleChange}
-                    placeholder={`Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)`}
-                    Icon={<BsFillCameraFill />}
-                    variant={'secondary'}
-                />
-                <TextInput
-                    name={'price'}
-                    value={productValues.price > 0 ? productValues.price : ''}
-                    onChange={handleChange}
-                    placeholder={'Prix'}
-                    Icon={<MdOutlineEuro />}
-                    variant={'secondary'}
-                />
+                {textInputs.map(textInput => {
+                    return (
+                        <TextInput
+                            key={textInput.id}
+                            {...textInput}
+                            onChange={handleChange}
+                            variant={'secondary'}
+                        />
+                    )
+                })}
             </div>
             <div className='button-container'>
                 <Button
