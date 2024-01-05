@@ -3,6 +3,7 @@ import { TextInput } from "../../../../ui/TextInput"
 import { FaHamburger } from "react-icons/fa"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
+import { FiCheck } from "react-icons/fi"
 import { Button } from "../../../../ui/Button"
 import AdminContext from "../../../../../contexts/AdminContext"
 import styled from "styled-components"
@@ -49,14 +50,10 @@ const AddProductForm = () => {
 
     return (
         <AddProductFormStyled action='submit' onSubmit={handleSubmit}>
-            <ImgPreview />
-            <div className='img-container'>
-                {productValues.imageSource ? (
-                    <img src={productValues.imageSource} alt={productValues.title} />
-                ) : (
-                    <p>Aucune image</p>
-                )}
-            </div>
+            <ImgPreview
+                src={productValues.imageSource}
+                alt={productValues.title}
+            />
             <div className='inputs-container'>
                 <TextInput
                     name={'title'}
@@ -103,24 +100,6 @@ const AddProductFormStyled = styled.form`
     grid-template-rows: repeat(5, 1fr);
     height: 100%;
     width: 100%;
-
-    .img-container {
-        grid-area: 1 / 1 / 4 / 2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: solid 1px #E4E5E9;
-        border-radius: ${theme.borderRadius.round};
-
-        img {
-            width: 100%;
-        }
-
-        p {
-            font-size: 16px;
-            color: #93A2B1;
-        }
-    }
 
     .inputs-container {
         grid-area: 1 / 2 / 4 / 5;
