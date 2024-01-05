@@ -9,6 +9,7 @@ import AdminContext from "../../../../../contexts/AdminContext"
 import styled from "styled-components"
 import { theme } from "../../../../../theme"
 import { ImgPreview } from "./ImgPreview"
+import { SubmitMessage } from "./SubmitMessage"
 
 const EMPTY_PRODUCT = {
     id: '',
@@ -85,7 +86,7 @@ const AddProductForm = () => {
                     label={'Ajouter un nouveau produit au menu'}
                     variant={'success'}
                 />
-                {isAdding && <span className="succes-message"><FiCheck /> Ajouté avec succès !</span>}
+                {isAdding && <><SubmitMessage /><span className="succes-message"><FiCheck /> Ajouté avec succès !</span></>}
             </div>
         </AddProductFormStyled>
     )
