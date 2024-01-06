@@ -18,8 +18,6 @@ const SubmitMessageStyled = styled.span`
 
     svg {
         font-size: 18px;
-        border: solid 1px ${theme.colors.success};
-        border-radius: 50%;
         margin-right: 5px;
     }
 
@@ -28,6 +26,11 @@ const SubmitMessageStyled = styled.span`
 
 const submitSuccesStyles = css`
     color: ${theme.colors.success};
+    
+    svg {
+        border: solid 1px ${theme.colors.success};
+        border-radius: 50%;
+    }
 `
 
 const submitErrorStyles = css`
@@ -35,6 +38,6 @@ const submitErrorStyles = css`
 `
 
 const extraSubmitMessageStyles = {
-    succes: submitSuccesStyles,
+    success: submitSuccesStyles,
     error: submitErrorStyles
 }
