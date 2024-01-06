@@ -6,7 +6,7 @@ import AdminContext from "../../../../../contexts/AdminContext"
 import styled from "styled-components"
 import { theme } from "../../../../../theme"
 import { ImgPreview } from "./ImgPreview"
-import { SubmitMessage } from "./SubmitMessage"
+import { SubmitMessage } from "../../../../ui/SubmitMessage"
 import { getTextInputsConfig } from "./helpers/getTextInputsConfig"
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths"
 
