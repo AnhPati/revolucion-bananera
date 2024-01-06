@@ -32,7 +32,8 @@ const AddProductForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        const newProductPrice = replaceFrenchCommaWithDot(productValues.price)
+        const newProductPrice = productValues.price === '' ? 0 : replaceFrenchCommaWithDot(productValues.price)
+
         if (isNaN(newProductPrice)) {
             setProductValues({ ...productValues, price: '' })
             setSubmitMessageType('error')
