@@ -22,7 +22,8 @@ const ImgPreviewStyled = styled.div`
     border-radius: ${theme.borderRadius.round};
 
     img {
-        width: 100%;
+        max-width: 100px;
+        max-height: 100px;
     }
 
     p {
