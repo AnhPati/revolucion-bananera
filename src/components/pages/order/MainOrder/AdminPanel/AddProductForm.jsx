@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { TextInput } from "../../../../ui/TextInput"
-import { FiCheck } from "react-icons/fi"
+import { FiAlertCircle, FiCheck } from "react-icons/fi"
 import { Button } from "../../../../ui/Button"
 import AdminContext from "../../../../../contexts/AdminContext"
 import styled from "styled-components"
@@ -20,6 +20,7 @@ const EMPTY_PRODUCT = {
 const AddProductForm = () => {
     const [productValues, setProductValues] = useState(EMPTY_PRODUCT)
     const [isAdding, setIsAdding] = useState(false)
+    const [submitMessageType, setSubmitMessageType] = useState('')
     const { handleAddProduct } = useContext(AdminContext)
 
     const handleChange = (e) => {
@@ -34,6 +35,7 @@ const AddProductForm = () => {
         const newProductPrice = replaceFrenchCommaWithDot(productValues.price)
         if (isNaN(newProductPrice)) {
             setProductValues({ ...productValues, price: '' })
+            setSubmitMessageType('error')
 
         } else {
             const newProduct = {
@@ -41,13 +43,15 @@ const AddProductForm = () => {
                 id: crypto.randomUUID()
             }
 
-            displaySuccesMessage()
             handleAddProduct(newProduct)
             setProductValues(EMPTY_PRODUCT)
+            setSubmitMessageType('success')
         }
+
+        displayMessage()
     }
 
-    const displaySuccesMessage = () => {
+    const displayMessage = () => {
         setIsAdding(true)
         setTimeout(() => {
             setIsAdding(false)
@@ -64,7 +68,6 @@ const AddProductForm = () => {
             />
             <div className='inputs-container'>
                 {textInputs.map(textInput => {
-                    console.log(typeof textInput.value)
                     return (
                         <TextInput
                             key={textInput.id}
@@ -82,8 +85,9 @@ const AddProductForm = () => {
                 />
                 {isAdding && (
                     <SubmitMessage
-                        label={'Ajouté avec succès !'}
-                        Icon={<FiCheck />}
+                        label={submitMessageType === 'success' ? 'Ajouté avec succès !' : `Le prix n'est pas au bon format.`}
+                        Icon={submitMessageType === 'success' ? <FiCheck /> : <FiAlertCircle />}
+                        variant={submitMessageType}
                     />
                 )}
             </div>
