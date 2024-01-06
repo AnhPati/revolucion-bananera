@@ -20,7 +20,7 @@ export const getTextInputsConfig = (productValues) => [
     {
         id: "2",
         name: 'price',
-        value: productValues.price > 0 ? productValues.price : '',
+        value: productValues.price,
         placeholder: 'Prix',
         Icon: <MdOutlineEuro />,
     }

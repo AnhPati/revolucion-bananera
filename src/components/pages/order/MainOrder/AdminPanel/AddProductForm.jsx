@@ -8,12 +8,13 @@ import { theme } from "../../../../../theme"
 import { ImgPreview } from "./ImgPreview"
 import { SubmitMessage } from "./SubmitMessage"
 import { getTextInputsConfig } from "./helpers/getTextInputsConfig"
+import { replaceFrenchCommaWithDot } from "../../../../../utils/maths"
 
 const EMPTY_PRODUCT = {
     id: '',
     title: '',
     imageSource: '',
-    price: 0
+    price: ''
 }
 
 const AddProductForm = () => {
@@ -30,15 +31,20 @@ const AddProductForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        const newProduct = {
-            ...productValues,
-            id: crypto.randomUUID()
-        }
+        const newProductPrice = replaceFrenchCommaWithDot(productValues.price)
+        if (isNaN(newProductPrice)) {
+            setProductValues({ ...productValues, price: '' })
 
-        displaySuccesMessage()
-        handleAddProduct(newProduct)
-        setProductValues(EMPTY_PRODUCT)
-        console.log(productValues)
+        } else {
+            const newProduct = {
+                ...productValues,
+                id: crypto.randomUUID()
+            }
+
+            displaySuccesMessage()
+            handleAddProduct(newProduct)
+            setProductValues(EMPTY_PRODUCT)
+        }
     }
 
     const displaySuccesMessage = () => {
@@ -58,6 +64,7 @@ const AddProductForm = () => {
             />
             <div className='inputs-container'>
                 {textInputs.map(textInput => {
+                    console.log(typeof textInput.value)
                     return (
                         <TextInput
                             key={textInput.id}
