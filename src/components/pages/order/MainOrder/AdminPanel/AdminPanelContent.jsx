@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
-import { useContext } from "react";
 import AdminContext from "../../../../../contexts/AdminContext";
 import { getAdminTabsConfig, getCurrentTabSelected } from "./helpers/getAdminTabsConfig";
+import AddProductForm from "./AddProductForm";
+import { useContext } from "react";
 
 const AdminPanelContent = () => {
     const { adminMode } = useContext(AdminContext)
@@ -14,7 +15,13 @@ const AdminPanelContent = () => {
 
     return (
         <AdminPanelContentStyled className={isOpen ? '' : 'closed'}>
-            {currentTabSelected.label}
+            {currentTabSelected.id === 'tab-add' ? (
+                <AddProductForm />
+            ) : (
+                <>
+                    {currentTabSelected.label}
+                </>
+            )}
         </AdminPanelContentStyled>
     )
 }
@@ -24,7 +31,8 @@ export default AdminPanelContent
 const AdminPanelContentStyled = styled.div`
     width: 100%;
     height: 250px;
-    padding: 17px;
+    padding-top: 31px;
+    padding-left: 71px;
     background-color: ${theme.colors.white};
     color: #000;
     box-shadow: ${theme.shadows.subtle};
@@ -32,5 +40,6 @@ const AdminPanelContentStyled = styled.div`
     &.closed {
         height: 0;
         padding: 0;
+        overflow: hidden;
     }
 `

@@ -8,7 +8,13 @@ const AdminContext = createContext({
             tabSelected: 'tab-add'
         }
     },
-    setAdminMode: () => { }
+    setAdminMode: () => { },
+
+    products: [],
+    setProducts: () => { },
+    handleAddProduct: () => { },
+    handleDeleteProduct: () => { },
+    handleGenerateNewProducts: () => { }
 })
 
 export default AdminContext
