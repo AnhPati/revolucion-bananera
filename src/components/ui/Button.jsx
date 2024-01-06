@@ -50,10 +50,7 @@ const extraNormalStyles = css`
 `
 
 const extraSuccessStyles = css`
-    width: 275.25px;
-    height: auto;
-    padding-top: ${theme.gridUnit * 1.25}px;
-    padding-bottom: ${theme.gridUnit * 1.25}px;
+    padding: ${theme.gridUnit * 1.25}px 29px;
     background: ${theme.colors.success};
     border-color: ${theme.colors.success};
 
