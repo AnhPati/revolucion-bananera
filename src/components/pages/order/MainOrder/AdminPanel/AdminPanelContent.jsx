@@ -4,6 +4,7 @@ import AdminContext from "../../../../../contexts/AdminContext";
 import { getAdminTabsConfig, getCurrentTabSelected } from "./helpers/getAdminTabsConfig";
 import AddProductForm from "./AddProductForm";
 import { useContext } from "react";
+import UpdateProductForm from "./UpdateProductForm";
 
 const AdminPanelContent = () => {
     const { adminMode } = useContext(AdminContext)
@@ -17,6 +18,8 @@ const AdminPanelContent = () => {
         <AdminPanelContentStyled className={isOpen ? '' : 'closed'}>
             {currentTabSelected.id === 'tab-add' ? (
                 <AddProductForm />
+            ) : currentTabSelected.id === 'tab-update' ? (
+                <UpdateProductForm />
             ) : (
                 <>
                     {currentTabSelected.label}
