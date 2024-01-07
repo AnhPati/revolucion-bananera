@@ -3,8 +3,6 @@ import { theme } from '../../../theme';
 import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
 import { TiDelete } from 'react-icons/ti'
-import AdminContext from '../../../contexts/AdminContext';
-import { useContext } from 'react';
 
 export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete }) => {
 
