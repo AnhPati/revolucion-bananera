@@ -4,10 +4,10 @@ import { theme } from "../../../theme";
 import { MainOrder } from "./MainOrder/MainOrder";
 import { useState } from "react";
 import AdminContext from "../../../contexts/AdminContext";
-import { fakeMenu2 } from "../../../fakeData/fakeMenu";
+import { fakeMenu } from "../../../fakeData/fakeMenu";
 
 const OrderPage = () => {
-    const [products, setProducts] = useState(fakeMenu2)
+    const [products, setProducts] = useState(fakeMenu.LARGE)
     const [adminMode, setAdminMode] = useState({
         isAdminMode: false,
         adminPanel: {
@@ -30,8 +30,7 @@ const OrderPage = () => {
     }
 
     const handleGenerateNewProducts = () => {
-        console.log(fakeMenu2)
-        setProducts(fakeMenu2)
+        setProducts(fakeMenu.LARGE)
     }
 
     const adminContextValue = {
