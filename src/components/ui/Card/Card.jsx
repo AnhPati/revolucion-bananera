@@ -4,10 +4,10 @@ import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
 import { TiDelete } from 'react-icons/ti'
 
-export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete }) => {
+export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isAdminMode }) => {
 
     return (
-        <CardStyled key={id} id={id} className={'card'}>
+        <CardStyled key={id} id={id} className={isAdminMode ? 'card admin-mode' : 'card'}>
             {hasDeleteButton && (
                 <span className='remove-button' onClick={onDelete}>
                     <TiDelete />
@@ -30,7 +30,13 @@ const CardStyled = styled.li`
     padding: 50px ${theme.spacing.md} 10px ${theme.spacing.md};
     box-shadow: ${theme.shadows.medium};
     border-radius: ${theme.borderRadius.extraRound};
-    transition: box-shadow 0.4s;
+    &.admin-mode {
+        transition: box-shadow 0.4s;
+        
+        &:hover {
+            box-shadow: 0px 0px 8px 0px ${theme.colors.primary};
+        }
+    }
 
     .remove-button {
         position: absolute;
@@ -50,9 +56,5 @@ const CardStyled = styled.li`
             color: #FFA01B;
             cursor: pointer;
         }
-    }
-
-    &:hover {
-        box-shadow: 0px 0px 8px 0px ${theme.colors.primary};
     }
 `;
