@@ -31,10 +31,31 @@ const CardStyled = styled.li`
     box-shadow: ${theme.shadows.medium};
     border-radius: ${theme.borderRadius.extraRound};
     &.admin-mode {
+        cursor: pointer;
         transition: box-shadow 0.4s;
         
         &:hover {
             box-shadow: 0px 0px 8px 0px ${theme.colors.primary};
+        }
+
+        &:active {
+            background-color: #FFA01B;
+            transform: scale(1.05);
+
+            .remove-button {
+                svg {
+                    color: #FFF;
+                }
+            }
+
+            p {
+                color: #FFF;
+            }
+
+            button {
+                background-color: #FFF;
+                color: #FFA01B
+            }
         }
     }
 
