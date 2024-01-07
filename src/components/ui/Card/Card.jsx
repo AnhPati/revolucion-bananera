@@ -30,6 +30,7 @@ const CardStyled = styled.li`
     padding: 50px ${theme.spacing.md} 10px ${theme.spacing.md};
     box-shadow: ${theme.shadows.medium};
     border-radius: ${theme.borderRadius.extraRound};
+    transition: box-shadow 0.4s;
 
     .remove-button {
         position: absolute;
@@ -49,5 +50,9 @@ const CardStyled = styled.li`
             color: #FFA01B;
             cursor: pointer;
         }
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 8px 0px ${theme.colors.primary};
     }
 `;
