@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { HiCursorClick } from 'react-icons/hi'
 
 const UpdateProductForm = () => {
     return (
         <UpdateProductFormStyled>
-            <h2>Cliquer sur un produit pour le modifier</h2>
+            <h2>Cliquer sur un produit pour le modifier <HiCursorClick /></h2>
         </UpdateProductFormStyled>
     )
 }
