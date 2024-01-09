@@ -16,5 +16,10 @@ const UpdateProductFormStyled = styled.div`
         margin-top: 49px;
         color: #747B91;
         font-weight: 400;
+
+        svg {
+            margin-bottom: -3.195px;
+            margin-left: 3.875px;
+        }
     }
 `;
