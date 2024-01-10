@@ -1,24 +1,31 @@
 import styled from "styled-components";
 import { HiCursorClick } from 'react-icons/hi'
 import AdminContext from "../../../../../contexts/AdminContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ImgPreview } from "./ImgPreview";
 import { getTextInputsConfig } from "./helpers/getTextInputsConfig";
 import { TextInput } from "../../../../ui/TextInput";
 import { Button } from "../../../../ui/Button";
 import { theme } from "../../../../../theme";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 const UpdateProductForm = () => {
     const { adminMode, products } = useContext(AdminContext)
     const cardSelected = adminMode.adminPanel.cardSelected
-    const productSelected = products.find((product) => product.id === cardSelected)
+    const productSelected = cardSelected ? products.find((product) => product.id === cardSelected) : EMPTY_PRODUCT
+    const [productValues, setProductValues] = useState(productSelected)
 
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        console.log(e.target)
 
+        setProductValues({ ...productValues, [name]: value })
+    }
 
-    const textInputs = cardSelected ? getTextInputsConfig(productSelected) : undefined
+    const textInputs = cardSelected && getTextInputsConfig(productValues)
     return (
         <UpdateProductFormStyled>
-            {productSelected ? (
+            {cardSelected ? (
                 <form action='submit'>
                     <ImgPreview
                         src={productSelected.imageSource}
@@ -29,6 +36,7 @@ const UpdateProductForm = () => {
                             return (
                                 <TextInput
                                     key={textInput.id}
+                                    onChange={handleChange}
                                     {...textInput}
                                     variant={'secondary'}
                                 />
