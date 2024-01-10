@@ -9,13 +9,7 @@ import { ImgPreview } from "./ImgPreview"
 import { SubmitMessage } from "../../../../ui/SubmitMessage"
 import { getTextInputsConfig } from "./helpers/getTextInputsConfig"
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths"
-
-const EMPTY_PRODUCT = {
-    id: '',
-    title: '',
-    imageSource: '',
-    price: ''
-}
+import { EMPTY_PRODUCT } from "../../../../../enums/product"
 
 const AddProductForm = () => {
     const [productValues, setProductValues] = useState(EMPTY_PRODUCT)
@@ -69,6 +63,7 @@ const AddProductForm = () => {
             />
             <div className='inputs-container'>
                 {textInputs.map(textInput => {
+                    console.log(textInput)
                     return (
                         <TextInput
                             key={textInput.id}
