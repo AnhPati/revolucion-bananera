@@ -1,10 +1,18 @@
 import styled from "styled-components";
 import { HiCursorClick } from 'react-icons/hi'
+import AdminContext from "../../../../../contexts/AdminContext";
+import { useContext } from "react";
 
 const UpdateProductForm = () => {
+    const { adminMode } = useContext(AdminContext)
+    const cardSelected = adminMode.adminPanel.cardSelected
     return (
         <UpdateProductFormStyled>
-            <h2>Cliquer sur un produit pour le modifier <HiCursorClick /></h2>
+            {cardSelected ? (
+                <h2>{cardSelected}</h2>
+            ) : (
+                <h2>Cliquer sur un produit pour le modifier <HiCursorClick /></h2>
+            )}
         </UpdateProductFormStyled>
     )
 }
