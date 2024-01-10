@@ -14,7 +14,8 @@ const AdminContext = createContext({
     setProducts: () => { },
     handleAddProduct: () => { },
     handleDeleteProduct: () => { },
-    handleGenerateNewProducts: () => { }
+    handleGenerateNewProducts: () => { },
+    handleUpdateProduct: () => { }
 })
 
 export default AdminContext

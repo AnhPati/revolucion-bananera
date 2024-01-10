@@ -33,13 +33,20 @@ const OrderPage = () => {
         setProducts(fakeMenu.LARGE)
     }
 
+    const handleUpdateProduct = (currentProduct) => {
+        const newProducts = products.map(product => product.id === currentProduct.id ? product = currentProduct : product)
+
+        setProducts(newProducts)
+    }
+
     const adminContextValue = {
         adminMode,
         setAdminMode,
         products,
         handleAddProduct,
         handleDeleteProduct,
-        handleGenerateNewProducts
+        handleGenerateNewProducts,
+        handleUpdateProduct
     }
 
     return (
