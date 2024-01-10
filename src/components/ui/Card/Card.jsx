@@ -4,10 +4,10 @@ import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
 import { TiDelete } from 'react-icons/ti'
 
-export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isAdminMode, onClick }) => {
+export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isAdminMode, onClick, selected }) => {
 
     return (
-        <CardStyled key={id} id={id} className={isAdminMode ? 'card admin-mode' : 'card'} onClick={onClick}>
+        <CardStyled key={id} id={id} className={isAdminMode ? selected ? 'admin-mode selected' : 'admin-mode' : ''} onClick={onClick}>
             {hasDeleteButton && (
                 <span className='remove-button' onClick={onDelete}>
                     <TiDelete />
@@ -38,7 +38,7 @@ const CardStyled = styled.li`
             box-shadow: 0px 0px 8px 0px ${theme.colors.primary};
         }
 
-        &:active {
+        &:active, &.selected {
             background-color: #FFA01B;
             transform: scale(1.05);
 
