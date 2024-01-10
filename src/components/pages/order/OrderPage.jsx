@@ -14,6 +14,7 @@ const OrderPage = () => {
             isOpen: true,
             tabSelected: 'tab-add'
         },
+        cardSelected: null,
         setAdminMode: () => { }
     })
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Card } from "../../../../ui/Card/Card";
 import { formatPrice } from "../../../../../utils/maths";
 import { theme } from "../../../../../theme";
@@ -9,21 +9,19 @@ import EmptyMenu from "./EmptyMenu";
 const DEFAULT_IMG = '/images/coming-soon.png'
 
 export const MenuOrder = () => {
-    const [cardSelected, setCardSelected] = useState(null)
     const { products, adminMode, setAdminMode, handleDeleteProduct } = useContext(AdminContext)
     const isAdminMode = adminMode.isAdminMode
+    const cardSelected = adminMode.adminPanel.cardSelected
 
     const handleSelectProduct = (id) => {
         setAdminMode(prevAdminMode => ({
             ...prevAdminMode,
             adminPanel: {
                 isOpen: true,
-                tabSelected: 'tab-update'
+                tabSelected: 'tab-update',
+                cardSelected: id
             }
         }))
-        console.log(id)
-        setCardSelected(id)
-        console.log(cardSelected)
     }
 
     return (
