@@ -35,12 +35,12 @@ const CardStyled = styled.li`
         transition: box-shadow 0.4s;
         
         &:hover {
-            box-shadow: 0px 0px 8px 0px ${theme.colors.primary};
+            box-shadow: 0px 0px 8px 0px ${theme.colors.primary};          
+            transform: scale(1.05);
         }
 
         &:active, &.selected {
             background-color: #FFA01B;
-            transform: scale(1.05);
 
             .remove-button {
                 svg {
@@ -54,7 +54,13 @@ const CardStyled = styled.li`
 
             button {
                 background-color: #FFF;
-                color: #FFA01B
+                color: #FFA01B;
+
+                &:hover {
+                    background-color: #FFA01B;
+                    color: #FFF;
+                    border-color: #FFF;
+                }
             }
         }
     }
