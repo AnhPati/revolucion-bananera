@@ -9,8 +9,18 @@ import EmptyMenu from "./EmptyMenu";
 const DEFAULT_IMG = '/images/coming-soon.png'
 
 export const MenuOrder = () => {
-    const { products, adminMode, handleDeleteProduct } = useContext(AdminContext)
+    const { products, adminMode, setAdminMode, handleDeleteProduct } = useContext(AdminContext)
     const isAdminMode = adminMode.isAdminMode
+
+    const handleSelectProduct = () => {
+        setAdminMode(prevAdminMode => ({
+            ...prevAdminMode,
+            adminPanel: {
+                isOpen: true,
+                tabSelected: 'tab-update'
+            }
+        }))
+    }
 
     return (
         <MenuOrderStyled>
@@ -26,6 +36,7 @@ export const MenuOrder = () => {
                                 hasDeleteButton={isAdminMode}
                                 onDelete={() => handleDeleteProduct(id)}
                                 isAdminMode={isAdminMode}
+                                onClick={isAdminMode && handleSelectProduct}
                             />
                         )
                     })}
