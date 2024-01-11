@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import AdminContext from "../../../contexts/AdminContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
+import { getDeepClone } from "../../../utils/array";
 
 const OrderPage = () => {
     const [products, setProducts] = useState(fakeMenu.LARGE)
@@ -22,7 +23,7 @@ const OrderPage = () => {
     const titleInputRef = useRef()
 
     const handleAddProduct = (newProduct) => {
-        const newProducts = JSON.parse(JSON.stringify(products))
+        const newProducts = getDeepClone(products)
 
         setProducts([newProduct, ...newProducts])
     }
@@ -56,7 +57,7 @@ const OrderPage = () => {
 
     const handleUpdateProduct = (productSelected) => {
         const productId = productSelected.id
-        const newProducts = JSON.parse(JSON.stringify(products))
+        const newProducts = getDeepClone(products)
         const indexOfProduct = products.findIndex(product => product.id === productId)
 
         newProducts[indexOfProduct] = productSelected
