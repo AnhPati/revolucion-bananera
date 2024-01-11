@@ -22,7 +22,7 @@ const OrderPage = () => {
     const titleInputRef = useRef()
 
     const handleAddProduct = (newProduct) => {
-        const newProducts = [...products]
+        const newProducts = JSON.parse(JSON.stringify(products))
 
         setProducts([newProduct, ...newProducts])
     }
@@ -56,7 +56,7 @@ const OrderPage = () => {
 
     const handleUpdateProduct = (productSelected) => {
         const productId = productSelected.id
-        const newProducts = [...products]
+        const newProducts = JSON.parse(JSON.stringify(products))
         const indexOfProduct = products.findIndex(product => product.id === productId)
 
         newProducts[indexOfProduct] = productSelected
