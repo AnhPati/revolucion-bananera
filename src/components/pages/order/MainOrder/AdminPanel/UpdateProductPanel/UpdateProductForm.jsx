@@ -3,7 +3,7 @@ import { Button } from "../../../../../ui/Button";
 import { TextInput } from "../../../../../ui/TextInput";
 import { theme } from "../../../../../../theme";
 import { ImgPreview } from "../ImgPreview";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import AdminContext from "../../../../../../contexts/AdminContext";
 import { getTextInputsConfig } from "../helpers/getTextInputsConfig";
 
