@@ -9,8 +9,9 @@ import { Button } from "../../../../ui/Button";
 import { theme } from "../../../../../theme";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
-const UpdateProductForm = () => {
+const UpdateProductPanel = () => {
     const { adminMode, products } = useContext(AdminContext)
+    console.log
     const cardSelected = adminMode.adminPanel.cardSelected
     const productSelected = cardSelected ? products.find((product) => product.id === cardSelected) : EMPTY_PRODUCT
     const [productValues, setProductValues] = useState(productSelected)
@@ -24,7 +25,7 @@ const UpdateProductForm = () => {
 
     const textInputs = cardSelected && getTextInputsConfig(productValues)
     return (
-        <UpdateProductFormStyled>
+        <UpdateProductPanelStyled>
             {cardSelected ? (
                 <form action='submit'>
                     <ImgPreview
@@ -53,13 +54,13 @@ const UpdateProductForm = () => {
             ) : (
                 <h2>Cliquer sur un produit pour le modifier <HiCursorClick /></h2>
             )}
-        </UpdateProductFormStyled>
+        </UpdateProductPanelStyled>
     )
 }
 
-export default UpdateProductForm
+export default UpdateProductPanel
 
-const UpdateProductFormStyled = styled.div`
+const UpdateProductPanelStyled = styled.div`
     form {
         display: grid;
         grid-column-gap: ${theme.spacing.md};

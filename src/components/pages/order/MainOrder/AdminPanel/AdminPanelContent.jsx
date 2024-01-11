@@ -3,8 +3,8 @@ import { theme } from "../../../../../theme";
 import AdminContext from "../../../../../contexts/AdminContext";
 import { getAdminTabsConfig, getCurrentTabSelected } from "./helpers/getAdminTabsConfig";
 import AddProductForm from "./AddProductForm";
-import { useContext } from "react";
-import UpdateProductForm from "./UpdateProductForm";
+import { useContext } from "react"; d
+import UpdateProductPanel from "./UpdateProductPanel";
 
 const AdminPanelContent = () => {
     const { adminMode } = useContext(AdminContext)
@@ -19,7 +19,7 @@ const AdminPanelContent = () => {
             {currentTabSelected.id === 'tab-add' ? (
                 <AddProductForm />
             ) : currentTabSelected.id === 'tab-update' ? (
-                <UpdateProductForm />
+                <UpdateProductPanel />
             ) : (
                 <>
                     {currentTabSelected.label}
