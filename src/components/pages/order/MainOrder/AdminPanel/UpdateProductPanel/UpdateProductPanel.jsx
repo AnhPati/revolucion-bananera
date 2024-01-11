@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { HiCursorClick } from 'react-icons/hi'
-import AdminContext from "../../../../../contexts/AdminContext";
+import AdminContext from "../../../../../../contexts/AdminContext";
 import { useContext, useState } from "react";
-import { ImgPreview } from "./ImgPreview";
-import { getTextInputsConfig } from "./helpers/getTextInputsConfig";
-import { TextInput } from "../../../../ui/TextInput";
-import { Button } from "../../../../ui/Button";
-import { theme } from "../../../../../theme";
-import { EMPTY_PRODUCT } from "../../../../../enums/product";
+import { ImgPreview } from "../ImgPreview";
+import { getTextInputsConfig } from "../helpers/getTextInputsConfig";
+import { TextInput } from "../../../../../ui/TextInput";
+import { Button } from "../../../../../ui/Button";
+import { theme } from "../../../../../../theme";
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 const UpdateProductPanel = () => {
     const { adminMode, products } = useContext(AdminContext)

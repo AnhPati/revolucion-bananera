@@ -3,8 +3,8 @@ import { theme } from "../../../../../theme";
 import AdminContext from "../../../../../contexts/AdminContext";
 import { getAdminTabsConfig, getCurrentTabSelected } from "./helpers/getAdminTabsConfig";
 import AddProductForm from "./AddProductForm";
-import { useContext } from "react"; d
-import UpdateProductPanel from "./UpdateProductPanel";
+import { useContext } from "react";
+import UpdateProductPanel from "./UpdateProductPanel/UpdateProductPanel";
 
 const AdminPanelContent = () => {
     const { adminMode } = useContext(AdminContext)
