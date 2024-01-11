@@ -9,19 +9,13 @@ import EmptyMenu from "./EmptyMenu";
 const DEFAULT_IMG = '/images/coming-soon.png'
 
 export const MenuOrder = () => {
-    const { products, adminMode, setAdminMode, handleDeleteProduct } = useContext(AdminContext)
+    const { products, adminMode, handleDeleteProduct, handleUpdateProduct } = useContext(AdminContext)
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = adminMode.adminPanel.cardSelected
 
     const handleSelectProduct = (id) => {
-        setAdminMode(prevAdminMode => ({
-            ...prevAdminMode,
-            adminPanel: {
-                isOpen: true,
-                tabSelected: 'tab-update',
-                cardSelected: id
-            }
-        }))
+        const productSelected = products.find(product => product.id === id)
+        handleUpdateProduct(productSelected)
     }
 
     return (

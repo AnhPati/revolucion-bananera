@@ -3,15 +3,14 @@ import { Button } from "../../../../../ui/Button";
 import { TextInput } from "../../../../../ui/TextInput";
 import { theme } from "../../../../../../theme";
 import { ImgPreview } from "../ImgPreview";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import AdminContext from "../../../../../../contexts/AdminContext";
 import { getTextInputsConfig } from "../helpers/getTextInputsConfig";
 
 const UpdateProductForm = ({ productId }) => {
-    const { products } = useContext(AdminContext)
+    const { products, titleInputRef } = useContext(AdminContext)
     const productSelected = products.find((product) => product.id === productId)
     const [productValues, setProductValues] = useState(productSelected)
-    const titleInputRef = useRef()
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -27,7 +26,6 @@ const UpdateProductForm = ({ productId }) => {
                 src={productSelected.imageSource}
                 alt={productSelected.title}
             />
-            <span className={'test'} onClick={() => { titleInputRef.current.focus() }}>Test</span>
             <div className='inputs-container'>
                 {textInputs.map(textInput => {
                     return (

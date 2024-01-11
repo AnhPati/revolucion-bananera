@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Navbar from "./Navbar/Navbar"
 import { theme } from "../../../theme";
 import { MainOrder } from "./MainOrder/MainOrder";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import AdminContext from "../../../contexts/AdminContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
 
@@ -17,6 +17,7 @@ const OrderPage = () => {
         cardSelected: null,
         setAdminMode: () => { }
     })
+    const titleInputRef = useRef()
 
     const handleAddProduct = (newProduct) => {
         const newProducts = [...products]
@@ -34,10 +35,17 @@ const OrderPage = () => {
         setProducts(fakeMenu.LARGE)
     }
 
-    const handleUpdateProduct = (currentProduct) => {
-        const newProducts = products.map(product => product.id === currentProduct.id ? product = currentProduct : product)
-
-        setProducts(newProducts)
+    const handleUpdateProduct = (productSelected) => {
+        const productId = productSelected.id
+        setAdminMode(prevAdminMode => ({
+            ...prevAdminMode,
+            adminPanel: {
+                isOpen: true,
+                tabSelected: 'tab-update',
+                cardSelected: productId
+            }
+        }))
+        titleInputRef.current.focus()
     }
 
     const adminContextValue = {
@@ -47,7 +55,8 @@ const OrderPage = () => {
         handleAddProduct,
         handleDeleteProduct,
         handleGenerateNewProducts,
-        handleUpdateProduct
+        handleUpdateProduct,
+        titleInputRef
     }
 
     return (
