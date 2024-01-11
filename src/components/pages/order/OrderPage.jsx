@@ -5,6 +5,7 @@ import { MainOrder } from "./MainOrder/MainOrder";
 import { useRef, useState } from "react";
 import AdminContext from "../../../contexts/AdminContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "../../../enums/product";
 
 const OrderPage = () => {
     const [products, setProducts] = useState(fakeMenu.LARGE)
@@ -17,6 +18,7 @@ const OrderPage = () => {
         cardSelected: null,
         setAdminMode: () => { }
     })
+    const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
     const titleInputRef = useRef()
 
     const handleAddProduct = (newProduct) => {
@@ -35,8 +37,9 @@ const OrderPage = () => {
         setProducts(fakeMenu.LARGE)
     }
 
-    const handleUpdateProduct = async (productSelected) => {
+    const handleSelectProduct = async (productSelected) => {
         const productId = productSelected.id
+
         await setAdminMode(prevAdminMode => ({
             ...prevAdminMode,
             adminPanel: {
@@ -45,7 +48,21 @@ const OrderPage = () => {
                 cardSelected: productId
             }
         }))
+        await setProductSelected(productSelected)
+        await handleUpdateProduct(productSelected)
+
         titleInputRef.current.focus()
+    }
+
+    const handleUpdateProduct = (productSelected) => {
+        const productId = productSelected.id
+        const newProducts = [...products]
+        const indexOfProduct = products.findIndex(product => product.id === productId)
+
+        newProducts[indexOfProduct] = productSelected
+
+        setProductSelected(productSelected)
+        setProducts(newProducts)
     }
 
     const adminContextValue = {
@@ -55,8 +72,11 @@ const OrderPage = () => {
         handleAddProduct,
         handleDeleteProduct,
         handleGenerateNewProducts,
+        handleSelectProduct,
         handleUpdateProduct,
-        titleInputRef
+        productSelected,
+        setProductSelected,
+        titleInputRef,
     }
 
     return (

@@ -16,7 +16,10 @@ const AdminContext = createContext({
     handleAddProduct: () => { },
     handleDeleteProduct: () => { },
     handleGenerateNewProducts: () => { },
+    handleSelectProduct: () => { },
     handleUpdateProduct: () => { },
+    productSelected: {},
+    setProductSelected: () => { },
     titleInputRef: {}
 })
 

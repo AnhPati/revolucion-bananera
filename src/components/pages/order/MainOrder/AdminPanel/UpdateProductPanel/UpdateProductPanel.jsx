@@ -10,7 +10,7 @@ const UpdateProductPanel = () => {
     return (
         <div>
             {cardSelected ? (
-                <UpdateProductForm productId={cardSelected} />
+                <UpdateProductForm />
             ) : (
                 <HintMessage />
             )}

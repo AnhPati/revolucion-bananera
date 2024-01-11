@@ -7,19 +7,20 @@ import { useContext, useState } from "react";
 import AdminContext from "../../../../../../contexts/AdminContext";
 import { getTextInputsConfig } from "../helpers/getTextInputsConfig";
 
-const UpdateProductForm = ({ productId }) => {
-    const { products, titleInputRef } = useContext(AdminContext)
-    const productSelected = products.find((product) => product.id === productId)
-    const [productValues, setProductValues] = useState(productSelected)
+const UpdateProductForm = () => {
+    const { productSelected, titleInputRef, handleUpdateProduct } = useContext(AdminContext)
 
     const handleChange = (e) => {
         const { name, value } = e.target
-        console.log(e.target)
+        const productBeingUpdated = {
+            ...productSelected,
+            [name]: value
+        }
 
-        setProductValues({ ...productValues, [name]: value })
+        handleUpdateProduct(productBeingUpdated)
     }
 
-    const textInputs = getTextInputsConfig(productValues)
+    const textInputs = getTextInputsConfig(productSelected)
     return (
         <UpdateProductFormStyled action='submit'>
             <ImgPreview

@@ -9,13 +9,13 @@ import EmptyMenu from "./EmptyMenu";
 const DEFAULT_IMG = '/images/coming-soon.png'
 
 export const MenuOrder = () => {
-    const { products, adminMode, handleDeleteProduct, handleUpdateProduct } = useContext(AdminContext)
+    const { products, adminMode, handleDeleteProduct, handleSelectProduct } = useContext(AdminContext)
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = adminMode.adminPanel.cardSelected
 
-    const handleSelectProduct = (id) => {
+    const onClick = (id) => {
         const productSelected = products.find(product => product.id === id)
-        handleUpdateProduct(productSelected)
+        handleSelectProduct(productSelected)
     }
 
     return (
@@ -32,7 +32,7 @@ export const MenuOrder = () => {
                                 hasDeleteButton={isAdminMode}
                                 onDelete={() => handleDeleteProduct(id)}
                                 isAdminMode={isAdminMode}
-                                onClick={isAdminMode ? (() => handleSelectProduct(id)) : undefined}
+                                onClick={isAdminMode ? (() => onClick(id)) : undefined}
                                 selected={id === cardSelected ? true : false}
                             />
                         )
