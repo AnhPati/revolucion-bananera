@@ -1,7 +1,12 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
+import { forwardRef } from "react";
 
-export const TextInput = ({ value, onChange, Icon, variant = 'primary', ...optionalsProps }) => {
+export const TextInput = forwardRef(({
+    value, onChange,
+    Icon,
+    variant = 'primary',
+    ...optionalsProps }, ref) => {
     return (
         <TextInputStyled className='input-container' $variant={variant}>
             {Icon && Icon}
@@ -10,10 +15,12 @@ export const TextInput = ({ value, onChange, Icon, variant = 'primary', ...optio
                 onChange={onChange}
                 type="text"
                 {...optionalsProps}
+                ref={ref}
             />
         </TextInputStyled>
     )
-}
+})
+TextInput.displayName = "TextInput";
 
 const TextInputStyled = styled.div`
     position: relative;
