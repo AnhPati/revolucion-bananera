@@ -35,9 +35,9 @@ const OrderPage = () => {
         setProducts(fakeMenu.LARGE)
     }
 
-    const handleUpdateProduct = (productSelected) => {
+    const handleUpdateProduct = async (productSelected) => {
         const productId = productSelected.id
-        setAdminMode(prevAdminMode => ({
+        await setAdminMode(prevAdminMode => ({
             ...prevAdminMode,
             adminPanel: {
                 isOpen: true,
