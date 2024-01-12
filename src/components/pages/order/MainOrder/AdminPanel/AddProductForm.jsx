@@ -63,7 +63,6 @@ const AddProductForm = () => {
             />
             <div className='inputs-container'>
                 {textInputs.map(textInput => {
-                    console.log(textInput)
                     return (
                         <TextInput
                             key={textInput.id}

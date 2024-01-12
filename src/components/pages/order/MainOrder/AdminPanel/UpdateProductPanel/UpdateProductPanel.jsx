@@ -6,7 +6,7 @@ import { HintMessage } from "./HintMessage";
 const UpdateProductPanel = () => {
     const { productSelected } = useContext(AdminContext)
     const cardSelected = productSelected.id ? true : false
-    console.log(cardSelected)
+
     return (
         <div>
             {cardSelected ? (

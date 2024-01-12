@@ -15,7 +15,6 @@ export const MenuOrder = () => {
 
     const onDelete = (productId, event) => {
         event.stopPropagation()
-        console.log(productId)
         handleDeleteProduct(productId)
     }
 
