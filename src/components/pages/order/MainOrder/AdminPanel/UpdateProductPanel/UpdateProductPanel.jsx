@@ -4,9 +4,9 @@ import UpdateProductForm from "./UpdateProductForm";
 import { HintMessage } from "./HintMessage";
 
 const UpdateProductPanel = () => {
-    const { adminMode } = useContext(AdminContext)
-    const cardSelected = adminMode.adminPanel.cardSelected
-
+    const { productSelected } = useContext(AdminContext)
+    const cardSelected = productSelected.id ? true : false
+    console.log(cardSelected)
     return (
         <div>
             {cardSelected ? (

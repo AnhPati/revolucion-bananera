@@ -29,7 +29,13 @@ const OrderPage = () => {
     }
 
     const handleDeleteProduct = (id) => {
-        const newProducts = products.filter(product => product.id.toString() !== id.toString())
+        const newProducts = products.filter(product => product.id !== id)
+
+        if (id === productSelected.id) {
+            setAdminMode({ ...adminMode, cardSelected: null })
+            setProductSelected(EMPTY_PRODUCT)
+            console.log()
+        }
 
         setProducts(newProducts)
     }
@@ -49,6 +55,7 @@ const OrderPage = () => {
                 cardSelected: productId
             }
         }))
+
         await setProductSelected(productSelected)
         await handleUpdateProduct(productSelected)
 

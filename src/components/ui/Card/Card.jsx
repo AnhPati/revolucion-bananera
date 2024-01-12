@@ -30,6 +30,7 @@ const CardStyled = styled.li`
     padding: 50px ${theme.spacing.md} 10px ${theme.spacing.md};
     box-shadow: ${theme.shadows.medium};
     border-radius: ${theme.borderRadius.extraRound};
+
     &.admin-mode {
         cursor: pointer;
         transition: box-shadow 0.4s;
@@ -43,7 +44,12 @@ const CardStyled = styled.li`
             background-color: #FFA01B;
 
             .remove-button {
+                z-index: 10;
                 svg {
+                    color: #FFF;
+                }
+
+                :active {
                     color: #FFF;
                 }
             }
@@ -55,6 +61,7 @@ const CardStyled = styled.li`
             button {
                 background-color: #FFF;
                 color: #FFA01B;
+                z-index: 10;
 
                 &:hover {
                     background-color: #FFA01B;

@@ -13,6 +13,11 @@ export const MenuOrder = () => {
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = adminMode.adminPanel.cardSelected
 
+    const onDelete = (productId, event) => {
+        event.stopPropagation()
+        handleDeleteProduct(productId)
+    }
+
     const onClick = (id) => {
         const productSelected = products.find(product => product.id === id)
         handleSelectProduct(productSelected)
@@ -30,7 +35,7 @@ export const MenuOrder = () => {
                                 title={title}
                                 leftDescription={formatPrice(price)}
                                 hasDeleteButton={isAdminMode}
-                                onDelete={() => handleDeleteProduct(id)}
+                                onDelete={(event) => onDelete(id, event)}
                                 isAdminMode={isAdminMode}
                                 onClick={isAdminMode ? (() => onClick(id)) : undefined}
                                 selected={id === cardSelected ? true : false}
