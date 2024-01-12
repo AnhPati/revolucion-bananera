@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Button } from "../../../../../ui/Button";
 import { TextInput } from "../../../../../ui/TextInput";
 import { theme } from "../../../../../../theme";
 import { ImgPreview } from "../ImgPreview";
@@ -40,11 +39,8 @@ const UpdateProductForm = () => {
                     )
                 })}
             </div>
-            <div className='button-container'>
-                <Button
-                    label={'Ajouter un nouveau produit au menu'}
-                    variant={'success'}
-                />
+            <div className="update-message">
+                <span>Cliquer sur un produit du menu pour le modifier <u>en temps réel</u></span>
             </div>
         </UpdateProductFormStyled>
     )
@@ -65,17 +61,17 @@ const UpdateProductFormStyled = styled.form`
         grid-template-rows: repeat(3, 1fr);
     }
 
-    .button-container {
+    .update-message {
         display: flex;
         align-items: center;
         grid-area: 4 / 2 / 5 / 5;
+        grid-row-gap: 15px;
+        color: #FFA01B;
         margin-top: 10px;
-    }
-
-    .test {
-        background: red;
-        color: #FFF;
         font-size: 15px;
-        font-weight: 700;
+
+        span {
+            padding: ${theme.gridUnit * 0.75}px 0;
+        }
     }
 `;
