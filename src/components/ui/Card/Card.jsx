@@ -2,16 +2,14 @@ import styled from 'styled-components';
 import { theme } from '../../../theme';
 import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
-import { TiDelete } from 'react-icons/ti'
+import { RemoveButton } from './RemoveButton';
 
 export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isAdminMode, onClick, selected }) => {
 
     return (
         <CardStyled key={id} id={id} className={isAdminMode ? selected ? 'admin-mode selected' : 'admin-mode' : ''} onClick={onClick}>
             {hasDeleteButton && (
-                <span className='remove-button' onClick={onDelete}>
-                    <TiDelete />
-                </span>
+                <RemoveButton onClick={onDelete} />
             )}
             <CardImg src={imgSrc} alt={title} />
             <CardInfos title={title} leftDescription={leftDescription} />
@@ -76,24 +74,4 @@ const CardStyled = styled.li`
             }
         }
     }
-
-    .remove-button {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-
-        :hover {
-                color: #E25549;
-            }
-
-        :active {
-            color: #FFA01B;
-        }
-
-        svg {
-            font-size: 30px;
-            color: #FFA01B;
-            cursor: pointer;
-        }
-    }
-`;
+`
