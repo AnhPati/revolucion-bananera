@@ -9,7 +9,7 @@ export const CardDescription = ({ leftDescription }) => {
                 {leftDescription}
             </p>
             <div className={'add_button-container'}>
-                <Button label={'Ajouter'} />
+                <Button label={'Ajouter'} onClick={(event) => event.stopPropagation()} />
             </div>
         </CardDescriptionStyled>
     )

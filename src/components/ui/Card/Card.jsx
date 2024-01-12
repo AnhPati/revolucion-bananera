@@ -68,6 +68,11 @@ const CardStyled = styled.li`
                     color: #FFF;
                     border-color: #FFF;
                 }
+
+                &:active {
+                    color: ${theme.colors.primary};
+                    background: ${theme.colors.white};
+                }
             }
         }
     }
