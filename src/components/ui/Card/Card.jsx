@@ -39,32 +39,32 @@ const CardStyled = styled.li`
         }
 
         &:active, &.selected {
-            background-color: #FFA01B;
+            background-color: ${theme.colors.primary};
 
             .remove-button {
                 z-index: 10;
                 svg {
-                    color: #FFF;
+                    color: ${theme.colors.white};
                 }
 
                 :active {
-                    color: #FFF;
+                    color: ${theme.colors.white};
                 }
             }
 
             p {
-                color: #FFF;
+                color: ${theme.colors.white};
             }
 
             button {
-                background-color: #FFF;
-                color: #FFA01B;
+                background-color: ${theme.colors.white};
+                color: ${theme.colors.primary};
                 z-index: 10;
 
                 &:hover {
-                    background-color: #FFA01B;
-                    color: #FFF;
-                    border-color: #FFF;
+                    background-color: ${theme.colors.primary};
+                    color: ${theme.colors.white};
+                    border-color: ${theme.colors.white};
                 }
 
                 &:active {

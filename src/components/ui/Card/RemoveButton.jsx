@@ -1,5 +1,6 @@
 import { TiDelete } from "react-icons/ti";
 import styled from "styled-components";
+import { theme } from "../../../theme";
 
 export const RemoveButton = ({ onClick }) => {
     return (
@@ -15,16 +16,16 @@ const RemoveButtonStyled = styled.span`
     top: 15px;
 
     :hover {
-            color: #E25549;
+            color: ${theme.colors.red};
         }
 
     :active {
-        color: #FFA01B;
+        color: ${theme.colors.primary};
     }
 
     svg {
         font-size: 30px;
-        color: #FFA01B;
+        color: ${theme.colors.primary};
         cursor: pointer;
     }
 `;
