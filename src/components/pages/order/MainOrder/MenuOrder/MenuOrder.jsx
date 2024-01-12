@@ -9,9 +9,9 @@ import EmptyMenu from "./EmptyMenu";
 const DEFAULT_IMG = '/images/coming-soon.png'
 
 export const MenuOrder = () => {
-    const { products, adminMode, handleDeleteProduct, handleSelectProduct } = useContext(AdminContext)
+    const { products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct } = useContext(AdminContext)
     const isAdminMode = adminMode.isAdminMode
-    const cardSelected = adminMode.adminPanel.cardSelected
+    const cardSelected = productSelected.id
 
     const onDelete = (productId, event) => {
         event.stopPropagation()
