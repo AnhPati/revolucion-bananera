@@ -34,7 +34,6 @@ const OrderPage = () => {
         if (id === productSelected.id) {
             setAdminMode({ ...adminMode, cardSelected: null })
             setProductSelected(EMPTY_PRODUCT)
-            console.log()
         }
 
         setProducts(newProducts)
