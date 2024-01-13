@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme } from '../../../theme';
 import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
@@ -7,7 +7,7 @@ import { RemoveButton } from './RemoveButton';
 export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected }) => {
 
     return (
-        <CardStyled key={id} id={id} className={isHoverable ? selected ? 'admin-mode selected' : 'admin-mode' : ''} onClick={onClick}>
+        <CardStyled key={id} id={id} className={selected ? 'selected' : ''} onClick={onClick} $isHoverable={isHoverable}>
             {hasDeleteButton && (
                 <RemoveButton onClick={onDelete} />
             )}
@@ -18,6 +18,8 @@ export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDe
 }
 
 const CardStyled = styled.li`
+    ${({ $isHoverable }) => $isHoverable && hoverableStyles}
+
     position: relative;
     display: flex;
     flex-direction: column;
@@ -28,49 +30,49 @@ const CardStyled = styled.li`
     padding: 50px ${theme.spacing.md} 10px ${theme.spacing.md};
     box-shadow: ${theme.shadows.medium};
     border-radius: ${theme.borderRadius.extraRound};
+`
 
-    &.admin-mode {
-        cursor: pointer;
-        transition: box-shadow 0.4s;
-        
-        &:hover {
-            box-shadow: 0px 0px 8px 0px ${theme.colors.primary};          
-            transform: scale(1.05);
-        }
+const hoverableStyles = css`
+    cursor: pointer;
+    transition: box-shadow 0.4s;
+    
+    &:hover {
+        box-shadow: ${theme.shadows.orangeHighlight};          
+        transform: scale(1.05);
+    }
 
-        &:active, &.selected {
-            background-color: ${theme.colors.primary};
+    &:active, &.selected {
+        background-color: ${theme.colors.primary};
 
-            .remove-button {
-                z-index: 10;
-                svg {
-                    color: ${theme.colors.white};
-                }
-
-                :active {
-                    color: ${theme.colors.white};
-                }
-            }
-
-            p {
+        .remove-button {
+            z-index: 10;
+            svg {
                 color: ${theme.colors.white};
             }
 
-            button {
-                background-color: ${theme.colors.white};
+            :active {
+                color: ${theme.colors.white};
+            }
+        }
+
+        p {
+            color: ${theme.colors.white};
+        }
+
+        button {
+            background-color: ${theme.colors.white};
+            color: ${theme.colors.primary};
+            z-index: 10;
+
+            &:hover {
+                background-color: ${theme.colors.primary};
+                color: ${theme.colors.white};
+                border-color: ${theme.colors.white};
+            }
+
+            &:active {
                 color: ${theme.colors.primary};
-                z-index: 10;
-
-                &:hover {
-                    background-color: ${theme.colors.primary};
-                    color: ${theme.colors.white};
-                    border-color: ${theme.colors.white};
-                }
-
-                &:active {
-                    color: ${theme.colors.primary};
-                    background: ${theme.colors.white};
-                }
+                background: ${theme.colors.white};
             }
         }
     }
