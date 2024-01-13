@@ -5,6 +5,7 @@ import { formatPrice } from "../../../../../utils/maths";
 import { theme } from "../../../../../theme";
 import AdminContext from "../../../../../contexts/AdminContext";
 import EmptyMenu from "./EmptyMenu";
+import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
 
 const DEFAULT_IMG = '/images/coming-soon.png'
 
@@ -23,10 +24,6 @@ export const MenuOrder = () => {
         handleSelectProduct(productSelected)
     }
 
-    const checkCardIsSelected = (id) => {
-        return id === cardSelected
-    }
-
     return (
         <MenuOrderStyled>
             {products.length > 0 ? (
@@ -42,7 +39,7 @@ export const MenuOrder = () => {
                                 onDelete={(event) => onDelete(id, event)}
                                 isHoverable={isAdminMode}
                                 onClick={isAdminMode ? (() => onClick(id)) : undefined}
-                                selected={checkCardIsSelected(id)}
+                                selected={checkCardIsSelected(id, cardSelected)}
                             />
                         )
                     })}
