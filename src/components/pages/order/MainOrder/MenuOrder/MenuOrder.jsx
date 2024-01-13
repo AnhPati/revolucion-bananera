@@ -23,6 +23,10 @@ export const MenuOrder = () => {
         handleSelectProduct(productSelected)
     }
 
+    const checkCardIsSelected = (id) => {
+        return id === cardSelected
+    }
+
     return (
         <MenuOrderStyled>
             {products.length > 0 ? (
@@ -38,7 +42,7 @@ export const MenuOrder = () => {
                                 onDelete={(event) => onDelete(id, event)}
                                 isHoverable={isAdminMode}
                                 onClick={isAdminMode ? (() => onClick(id)) : undefined}
-                                selected={id === cardSelected ? true : false}
+                                selected={checkCardIsSelected(id)}
                             />
                         )
                     })}
