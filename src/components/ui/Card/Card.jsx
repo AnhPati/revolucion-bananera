@@ -7,7 +7,7 @@ import { RemoveButton } from './RemoveButton';
 export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected }) => {
 
     return (
-        <CardStyled key={id} id={id} className={selected ? 'selected' : ''} onClick={onClick} $isHoverable={isHoverable}>
+        <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected}>
             {hasDeleteButton && (
                 <RemoveButton onClick={onDelete} />
             )}
@@ -30,6 +30,8 @@ const CardStyled = styled.li`
     padding: 50px ${theme.spacing.md} 10px ${theme.spacing.md};
     box-shadow: ${theme.shadows.medium};
     border-radius: ${theme.borderRadius.extraRound};
+
+    ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyles}
 `
 
 const hoverableStyles = css`
@@ -39,41 +41,41 @@ const hoverableStyles = css`
     &:hover {
         box-shadow: ${theme.shadows.orangeHighlight};          
         transform: scale(1.05);
-    }
+    }    
+`
 
-    &:active, &.selected {
-        background-color: ${theme.colors.primary};
+const selectedStyles = css`
+    background-color: ${theme.colors.primary};
 
-        .remove-button {
-            z-index: 10;
-            svg {
-                color: ${theme.colors.white};
-            }
-
-            :active {
-                color: ${theme.colors.white};
-            }
-        }
-
-        p {
+    .remove-button {
+        z-index: 10;
+        svg {
             color: ${theme.colors.white};
         }
 
-        button {
-            background-color: ${theme.colors.white};
+        :active {
+            color: ${theme.colors.white};
+        }
+    }
+
+    p {
+        color: ${theme.colors.white};
+    }
+
+    button {
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.primary};
+        z-index: 10;
+
+        &:hover {
+            background-color: ${theme.colors.primary};
+            color: ${theme.colors.white};
+            border-color: ${theme.colors.white};
+        }
+
+        &:active {
             color: ${theme.colors.primary};
-            z-index: 10;
-
-            &:hover {
-                background-color: ${theme.colors.primary};
-                color: ${theme.colors.white};
-                border-color: ${theme.colors.white};
-            }
-
-            &:active {
-                color: ${theme.colors.primary};
-                background: ${theme.colors.white};
-            }
+            background: ${theme.colors.white};
         }
     }
 `
