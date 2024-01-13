@@ -4,10 +4,10 @@ import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
 import { RemoveButton } from './RemoveButton';
 
-export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isAdminMode, onClick, selected }) => {
+export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected }) => {
 
     return (
-        <CardStyled key={id} id={id} className={isAdminMode ? selected ? 'admin-mode selected' : 'admin-mode' : ''} onClick={onClick}>
+        <CardStyled key={id} id={id} className={isHoverable ? selected ? 'admin-mode selected' : 'admin-mode' : ''} onClick={onClick}>
             {hasDeleteButton && (
                 <RemoveButton onClick={onDelete} />
             )}

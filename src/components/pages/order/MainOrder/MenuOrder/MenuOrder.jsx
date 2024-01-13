@@ -36,7 +36,7 @@ export const MenuOrder = () => {
                                 leftDescription={formatPrice(price)}
                                 hasDeleteButton={isAdminMode}
                                 onDelete={(event) => onDelete(id, event)}
-                                isAdminMode={isAdminMode}
+                                isHoverable={isAdminMode}
                                 onClick={isAdminMode ? (() => onClick(id)) : undefined}
                                 selected={id === cardSelected ? true : false}
                             />
