@@ -1,0 +1,59 @@
+import styled from "styled-components"
+import { TextInput } from "../../../../ui/TextInput"
+import { ImgPreview } from "./ImgPreview"
+import { SubmitButton } from "./SubmitButton"
+import { getTextInputsConfig } from "./helpers/getTextInputsConfig"
+import { theme } from "../../../../../theme"
+
+export const ProductForm = ({ product, onSubmit, onChange, isAdding, submitMessageType }) => {
+    const textInputs = getTextInputsConfig(product)
+
+    return (
+        <ProductFormStyled action='submit' onSubmit={onSubmit}>
+            <ImgPreview
+                src={product.imageSource}
+                alt={product.title}
+            />
+            <div className='inputs-container'>
+                {textInputs.map(textInput => {
+                    return (
+                        <TextInput
+                            key={textInput.id}
+                            {...textInput}
+                            onChange={onChange}
+                            variant={'secondary'}
+                        />
+                    )
+                })}
+            </div>
+            <div className='submit'>
+                <SubmitButton
+                    isAdding={isAdding}
+                    submitMessageType={submitMessageType}
+                />
+            </div>
+        </ProductFormStyled>
+    )
+}
+
+const ProductFormStyled = styled.form`
+    display: grid;
+    grid-column-gap: ${theme.spacing.md};
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    height: 100%;
+    width: 100%;
+
+    .inputs-container {
+        grid-area: 1 / 2 / 4 / 5;
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .submit {
+        display: flex;
+        align-items: center;
+        grid-area: 4 / 2 / 5 / 5;
+        margin-top: 10px;
+    }
+`
