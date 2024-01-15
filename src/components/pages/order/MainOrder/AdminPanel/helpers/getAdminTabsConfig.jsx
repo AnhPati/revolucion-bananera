@@ -1,12 +1,16 @@
 import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { MdModeEditOutline } from "react-icons/md"
+import AddProductForm from "../AddProductForm"
+import UpdateProductForm from "../UpdateProductPanel/UpdateProductForm"
+import { HintMessage } from "../UpdateProductPanel/HintMessage"
 
-export const getAdminTabsConfig = (
+export const getAdminTabsConfig = ({
     isOpen,
     onClickOpenPanel,
-    onClickSelectTab
-) => [
+    onClickSelectTab,
+    isCardSelected
+}) => [
         {
             id: 'tab-collapse',
             className: isOpen ? 'tab-control' : 'tab-control tab-active',
@@ -17,13 +21,15 @@ export const getAdminTabsConfig = (
             id: 'tab-add',
             label: 'Ajouter un produit',
             Icon: <AiOutlinePlus />,
-            onClick: onClickSelectTab
+            onClick: onClickSelectTab,
+            Content: <AddProductForm />
         },
         {
             id: 'tab-update',
             label: 'Modifier un produit',
             Icon: <MdModeEditOutline />,
-            onClick: onClickSelectTab
+            onClick: onClickSelectTab,
+            Content: isCardSelected ? <UpdateProductForm /> : <HintMessage />
         }
     ]
 
