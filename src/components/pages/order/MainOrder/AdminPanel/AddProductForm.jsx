@@ -3,6 +3,7 @@ import AdminContext from "../../../../../contexts/AdminContext"
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths"
 import { EMPTY_PRODUCT } from "../../../../../enums/product"
 import { ProductForm } from "./ProductForm"
+import { SubmitButton } from "./SubmitButton"
 
 const AddProductForm = () => {
     const [productValues, setProductValues] = useState(EMPTY_PRODUCT)
@@ -55,7 +56,12 @@ const AddProductForm = () => {
             onChange={handleChange}
             isAdding={isAdding}
             submitMessageType={submitMessageType}
-        />
+        >
+            <SubmitButton
+                isAdding={isAdding}
+                submitMessageType={submitMessageType}
+            />
+        </ProductForm>
     )
 }
 

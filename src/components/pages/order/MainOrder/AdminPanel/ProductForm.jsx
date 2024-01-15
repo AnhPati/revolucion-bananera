@@ -1,12 +1,11 @@
 import styled from "styled-components"
 import { TextInput } from "../../../../ui/TextInput"
 import { ImgPreview } from "./ImgPreview"
-import { SubmitButton } from "./SubmitButton"
 import { getTextInputsConfig } from "./helpers/getTextInputsConfig"
 import { theme } from "../../../../../theme"
 import { forwardRef } from "react"
 
-export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, submitMessageType }, ref) => {
+export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, submitMessageType, children }, ref) => {
     const textInputs = getTextInputsConfig(product)
 
     return (
@@ -28,11 +27,8 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, 
                     )
                 })}
             </div>
-            <div className='submit'>
-                <SubmitButton
-                    isAdding={isAdding}
-                    submitMessageType={submitMessageType}
-                />
+            <div className='form-footer'>
+                {children}
             </div>
         </ProductFormStyled>
     )
@@ -53,7 +49,7 @@ const ProductFormStyled = styled.form`
         grid-template-rows: repeat(3, 1fr);
     }
 
-    .submit {
+    .form-footer {
         display: flex;
         align-items: center;
         grid-area: 4 / 2 / 5 / 5;

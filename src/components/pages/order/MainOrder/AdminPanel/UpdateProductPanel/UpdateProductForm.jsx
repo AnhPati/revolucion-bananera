@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import AdminContext from "../../../../../../contexts/AdminContext";
 import { ProductForm } from "../ProductForm";
+import { UpdateFormMessage } from "./UpdateFormMessage";
 
 const UpdateProductForm = () => {
     const { productSelected, titleInputRef, handleUpdateProduct } = useContext(AdminContext)
@@ -20,7 +21,9 @@ const UpdateProductForm = () => {
             product={productSelected}
             onChange={handleChange}
             ref={titleInputRef}
-        />
+        >
+            <UpdateFormMessage />
+        </ProductForm>
     )
 }
 
