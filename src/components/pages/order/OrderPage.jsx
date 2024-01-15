@@ -37,6 +37,7 @@ const OrderPage = () => {
         }
 
         setProducts(newProducts)
+        titleInputRef.current.focus()
     }
 
     const handleGenerateNewProducts = () => {
