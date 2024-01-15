@@ -10,6 +10,7 @@ import { SubmitMessage } from "../../../../ui/SubmitMessage"
 import { getTextInputsConfig } from "./helpers/getTextInputsConfig"
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths"
 import { EMPTY_PRODUCT } from "../../../../../enums/product"
+import { SubmitButton } from "./SubmitButton"
 
 const AddProductForm = () => {
     const [productValues, setProductValues] = useState(EMPTY_PRODUCT)
@@ -73,18 +74,11 @@ const AddProductForm = () => {
                     )
                 })}
             </div>
-            <div className='button-container'>
-                <Button
-                    label={'Ajouter un nouveau produit au menu'}
-                    variant={'success'}
+            <div className='submit'>
+                <SubmitButton
+                    isAdding={isAdding}
+                    submitMessageType={submitMessageType}
                 />
-                {isAdding && (
-                    <SubmitMessage
-                        label={submitMessageType === 'success' ? 'Ajouté avec succès !' : `Le prix n'est pas au bon format.`}
-                        Icon={submitMessageType === 'success' ? <FiCheck /> : <FiAlertCircle />}
-                        variant={submitMessageType}
-                    />
-                )}
             </div>
         </AddProductFormStyled>
     )
@@ -106,7 +100,7 @@ const AddProductFormStyled = styled.form`
         grid-template-rows: repeat(3, 1fr);
     }
 
-    .button-container {
+    .submit {
         display: flex;
         align-items: center;
         grid-area: 4 / 2 / 5 / 5;
