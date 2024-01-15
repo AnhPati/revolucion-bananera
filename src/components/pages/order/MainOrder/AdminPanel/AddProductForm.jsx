@@ -58,7 +58,7 @@ const AddProductForm = () => {
             submitMessageType={submitMessageType}
         >
             <SubmitButton
-                isAdding={isAdding}
+                isSubmitted={isAdding}
                 submitMessageType={submitMessageType}
             />
         </ProductForm>
