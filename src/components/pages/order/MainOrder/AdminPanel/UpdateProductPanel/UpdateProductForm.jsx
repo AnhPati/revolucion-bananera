@@ -5,6 +5,7 @@ import { ImgPreview } from "../ImgPreview";
 import { useContext } from "react";
 import AdminContext from "../../../../../../contexts/AdminContext";
 import { getTextInputsConfig } from "../helpers/getTextInputsConfig";
+import { UpdateFormMessage } from "./UpdateFormMessage";
 
 const UpdateProductForm = () => {
     const { productSelected, titleInputRef, handleUpdateProduct } = useContext(AdminContext)
@@ -39,8 +40,8 @@ const UpdateProductForm = () => {
                     )
                 })}
             </div>
-            <div className="update-message">
-                <span>Cliquer sur un produit du menu pour le modifier <u>en temps réel</u></span>
+            <div className="submit">
+                <UpdateFormMessage />
             </div>
         </UpdateProductFormStyled>
     )
@@ -61,17 +62,10 @@ const UpdateProductFormStyled = styled.form`
         grid-template-rows: repeat(3, 1fr);
     }
 
-    .update-message {
+    .submit {
         display: flex;
         align-items: center;
         grid-area: 4 / 2 / 5 / 5;
-        grid-row-gap: 15px;
-        color: #FFA01B;
         margin-top: 10px;
-        font-size: 15px;
-
-        span {
-            padding: ${theme.gridUnit * 0.75}px 0;
-        }
     }
 `;
