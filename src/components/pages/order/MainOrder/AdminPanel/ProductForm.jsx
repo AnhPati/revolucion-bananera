@@ -4,8 +4,9 @@ import { ImgPreview } from "./ImgPreview"
 import { SubmitButton } from "./SubmitButton"
 import { getTextInputsConfig } from "./helpers/getTextInputsConfig"
 import { theme } from "../../../../../theme"
+import { forwardRef } from "react"
 
-export const ProductForm = ({ product, onSubmit, onChange, isAdding, submitMessageType }) => {
+export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, submitMessageType }, ref) => {
     const textInputs = getTextInputsConfig(product)
 
     return (
@@ -22,6 +23,7 @@ export const ProductForm = ({ product, onSubmit, onChange, isAdding, submitMessa
                             {...textInput}
                             onChange={onChange}
                             variant={'secondary'}
+                            ref={ref && textInput.name === 'title' ? ref : null}
                         />
                     )
                 })}
@@ -34,7 +36,8 @@ export const ProductForm = ({ product, onSubmit, onChange, isAdding, submitMessa
             </div>
         </ProductFormStyled>
     )
-}
+})
+ProductForm.displayName = "ProductForm"
 
 const ProductFormStyled = styled.form`
     display: grid;
