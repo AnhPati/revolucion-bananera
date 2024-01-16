@@ -15,6 +15,6 @@ export default AdminPanel
 
 const AdminPanelStyled = styled.div`
     position: sticky;
-    bottom: 0;
+    bottom: -1px;
     overflow: hidden;
 `
