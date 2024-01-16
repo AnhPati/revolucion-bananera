@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import { MainRightSide } from "./MainRightSide";
-import { Basket } from "./BASKET";
+import { Basket } from "./Basket/Basket";
 
 export const MainOrder = () => {
 
