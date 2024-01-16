@@ -1,26 +1,22 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import { MenuOrder } from "./MenuOrder/MenuOrder";
-import AdminPanel from "./AdminPanel/AdminPanel";
-import { useContext } from "react";
-import AdminContext from "../../../../contexts/AdminContext";
+import { MainRightSide } from "./MainRightSide";
 
 export const MainOrder = () => {
-    const { adminMode } = useContext(AdminContext)
-    const isAdminMode = adminMode.isAdminMode
+
 
     return (
         <MainOrderStyled>
-            <MenuOrder />
-            {isAdminMode && <AdminPanel />}
+            <MainRightSide />
         </MainOrderStyled>
     )
 }
 
 const MainOrderStyled = styled.main`
     flex: 1;
-    display: flex;
+    display: grid;
+    grid-template-columns: 25% 1fr;
     border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
-    box-shadow: ${theme.shadows.strong};    
-    overflow-y: scroll;
+    box-shadow: ${theme.shadows.strong};
+    overflow: hidden;
 `
