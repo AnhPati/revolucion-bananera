@@ -18,4 +18,6 @@ const BasketStyled = styled.div`
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    background: #F5F5F7;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20) inset;
 `;
