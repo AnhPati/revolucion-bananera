@@ -1,15 +1,12 @@
 import styled from "styled-components";
 import { BasketHeader } from "./BasketHeader";
+import { BasketContent } from "./BasketContent";
 
 export const Basket = () => {
     return (
         <BasketStyled>
             <BasketHeader />
-            <div className={'basket-content'}>
-                <h2>
-                    Votre commande est vide.
-                </h2>
-            </div>
+            <BasketContent />
             <div className={'basket-footer'}>
                 <h4>
                     Codé avec ❤️ et React.JS
@@ -28,21 +25,6 @@ const BasketStyled = styled.div`
     .basket-footer {
         height: 70px;
         background-color: #000;
-    }
-
-    .basket-content {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        h2 {
-            margin: 0;
-            color: #747B91;
-            font-size: 36px;
-            font-weight: 400;
-            line-height: 72px; 
-        }
     }
 
     .basket-footer {
