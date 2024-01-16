@@ -2,26 +2,21 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import AdminContext from "../../../../../contexts/AdminContext";
 import { getAdminTabsConfig, getCurrentTabSelected } from "./helpers/getAdminTabsConfig";
-import AddProductForm from "./AddProductForm";
 import { useContext } from "react";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 const AdminPanelContent = () => {
-    const { adminMode } = useContext(AdminContext)
+    const { adminMode, productSelected } = useContext(AdminContext)
     const isOpen = adminMode.adminPanel.isOpen
     const tabSelected = adminMode.adminPanel.tabSelected
 
-    const tabs = getAdminTabsConfig().slice(1)
+    const isCardSelected = productSelected !== EMPTY_PRODUCT
+    const tabs = getAdminTabsConfig({ isCardSelected: isCardSelected }).slice(1)
     const currentTabSelected = getCurrentTabSelected(tabs, tabSelected)
 
     return (
         <AdminPanelContentStyled className={isOpen ? '' : 'closed'}>
-            {currentTabSelected.id === 'tab-add' ? (
-                <AddProductForm />
-            ) : (
-                <>
-                    {currentTabSelected.label}
-                </>
-            )}
+            {currentTabSelected.Content}
         </AdminPanelContentStyled>
     )
 }

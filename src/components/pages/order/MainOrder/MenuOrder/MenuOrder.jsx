@@ -5,12 +5,24 @@ import { formatPrice } from "../../../../../utils/maths";
 import { theme } from "../../../../../theme";
 import AdminContext from "../../../../../contexts/AdminContext";
 import EmptyMenu from "./EmptyMenu";
+import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
 
 const DEFAULT_IMG = '/images/coming-soon.png'
 
 export const MenuOrder = () => {
-    const { products, adminMode, handleDeleteProduct } = useContext(AdminContext)
+    const { products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct } = useContext(AdminContext)
     const isAdminMode = adminMode.isAdminMode
+    const cardSelected = productSelected.id
+
+    const onDelete = (productId, event) => {
+        event.stopPropagation()
+        handleDeleteProduct(productId)
+    }
+
+    const onClick = (id) => {
+        const productSelected = products.find(product => product.id === id)
+        handleSelectProduct(productSelected)
+    }
 
     return (
         <MenuOrderStyled>
@@ -24,7 +36,10 @@ export const MenuOrder = () => {
                                 title={title}
                                 leftDescription={formatPrice(price)}
                                 hasDeleteButton={isAdminMode}
-                                onDelete={() => handleDeleteProduct(id)}
+                                onDelete={(event) => onDelete(id, event)}
+                                isHoverable={isAdminMode}
+                                onClick={isAdminMode ? (() => onClick(id)) : undefined}
+                                selected={checkCardIsSelected(id, cardSelected)}
                             />
                         )
                     })}

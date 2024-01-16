@@ -5,7 +5,8 @@ const AdminContext = createContext({
         isAdminMode: false,
         adminPanel: {
             isOpen: true,
-            tabSelected: 'tab-add'
+            tabSelected: 'tab-add',
+            cardSelected: null
         }
     },
     setAdminMode: () => { },
@@ -14,7 +15,12 @@ const AdminContext = createContext({
     setProducts: () => { },
     handleAddProduct: () => { },
     handleDeleteProduct: () => { },
-    handleGenerateNewProducts: () => { }
+    handleGenerateNewProducts: () => { },
+    handleSelectProduct: () => { },
+    handleUpdateProduct: () => { },
+    productSelected: {},
+    setProductSelected: () => { },
+    titleInputRef: {}
 })
 
 export default AdminContext

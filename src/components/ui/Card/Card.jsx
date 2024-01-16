@@ -1,19 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme } from '../../../theme';
 import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
-import { TiDelete } from 'react-icons/ti'
-import AdminContext from '../../../contexts/AdminContext';
-import { useContext } from 'react';
+import { RemoveButton } from './RemoveButton';
 
-export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete }) => {
+export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected }) => {
 
     return (
-        <CardStyled key={id} id={id} className={'card'}>
+        <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected}>
             {hasDeleteButton && (
-                <span className='remove-button' onClick={onDelete}>
-                    <TiDelete />
-                </span>
+                <RemoveButton onClick={onDelete} />
             )}
             <CardImg src={imgSrc} alt={title} />
             <CardInfos title={title} leftDescription={leftDescription} />
@@ -22,6 +18,8 @@ export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDe
 }
 
 const CardStyled = styled.li`
+    ${({ $isHoverable }) => $isHoverable && hoverableStyles}
+
     position: relative;
     display: flex;
     flex-direction: column;
@@ -33,23 +31,51 @@ const CardStyled = styled.li`
     box-shadow: ${theme.shadows.medium};
     border-radius: ${theme.borderRadius.extraRound};
 
-    .remove-button {
-        position: absolute;
-        right: 15px;
-        top: 15px;
+    ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyles}
+`
 
-        :hover {
-                color: #E25549;
-            }
+const hoverableStyles = css`
+    cursor: pointer;
+    transition: box-shadow 0.4s;
+    
+    &:hover {
+        box-shadow: ${theme.shadows.orangeHighlight};          
+        transform: scale(1.05);
+    }    
+`
+
+const selectedStyles = css`
+    background-color: ${theme.colors.primary};
+
+    .remove-button {
+        z-index: 10;
+        svg {
+            color: ${theme.colors.white};
+        }
 
         :active {
-            color: #FFA01B;
-        }
-
-        svg {
-            font-size: 30px;
-            color: #FFA01B;
-            cursor: pointer;
+            color: ${theme.colors.white};
         }
     }
-`;
+
+    p {
+        color: ${theme.colors.white};
+    }
+
+    button {
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.primary};
+        z-index: 10;
+
+        &:hover {
+            background-color: ${theme.colors.primary};
+            color: ${theme.colors.white};
+            border-color: ${theme.colors.white};
+        }
+
+        &:active {
+            color: ${theme.colors.primary};
+            background: ${theme.colors.white};
+        }
+    }
+`

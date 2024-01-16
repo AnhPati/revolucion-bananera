@@ -28,7 +28,7 @@ const AdminPanelNavbar = () => {
         }))
     }
 
-    const tabs = getAdminTabsConfig(isOpen, handleOpenPanel, handleActiveTab)
+    const tabs = getAdminTabsConfig({ isOpen: isOpen, onClickOpenPanel: handleOpenPanel, onClickSelectTab: handleActiveTab })
 
     return (
         <AdminPanelNavbarStyled className='admin_panel-nav'>

@@ -1,21 +1,9 @@
 import { useContext, useState } from "react"
-import { TextInput } from "../../../../ui/TextInput"
-import { FiAlertCircle, FiCheck } from "react-icons/fi"
-import { Button } from "../../../../ui/Button"
 import AdminContext from "../../../../../contexts/AdminContext"
-import styled from "styled-components"
-import { theme } from "../../../../../theme"
-import { ImgPreview } from "./ImgPreview"
-import { SubmitMessage } from "../../../../ui/SubmitMessage"
-import { getTextInputsConfig } from "./helpers/getTextInputsConfig"
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths"
-
-const EMPTY_PRODUCT = {
-    id: '',
-    title: '',
-    imageSource: '',
-    price: ''
-}
+import { EMPTY_PRODUCT } from "../../../../../enums/product"
+import { ProductForm } from "./ProductForm"
+import { SubmitButton } from "./SubmitButton"
 
 const AddProductForm = () => {
     const [productValues, setProductValues] = useState(EMPTY_PRODUCT)
@@ -59,63 +47,22 @@ const AddProductForm = () => {
         }, 2000)
     }
 
-    const textInputs = getTextInputsConfig(productValues)
+
 
     return (
-        <AddProductFormStyled action='submit' onSubmit={handleSubmit}>
-            <ImgPreview
-                src={productValues.imageSource}
-                alt={productValues.title}
+        <ProductForm
+            product={productValues}
+            onSubmit={handleSubmit}
+            onChange={handleChange}
+            isAdding={isAdding}
+            submitMessageType={submitMessageType}
+        >
+            <SubmitButton
+                isSubmitted={isAdding}
+                submitMessageType={submitMessageType}
             />
-            <div className='inputs-container'>
-                {textInputs.map(textInput => {
-                    return (
-                        <TextInput
-                            key={textInput.id}
-                            {...textInput}
-                            onChange={handleChange}
-                            variant={'secondary'}
-                        />
-                    )
-                })}
-            </div>
-            <div className='button-container'>
-                <Button
-                    label={'Ajouter un nouveau produit au menu'}
-                    variant={'success'}
-                />
-                {isAdding && (
-                    <SubmitMessage
-                        label={submitMessageType === 'success' ? 'Ajouté avec succès !' : `Le prix n'est pas au bon format.`}
-                        Icon={submitMessageType === 'success' ? <FiCheck /> : <FiAlertCircle />}
-                        variant={submitMessageType}
-                    />
-                )}
-            </div>
-        </AddProductFormStyled>
+        </ProductForm>
     )
 }
 
 export default AddProductForm
-
-const AddProductFormStyled = styled.form`
-    display: grid;
-    grid-column-gap: ${theme.spacing.md};
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    height: 100%;
-    width: 100%;
-
-    .inputs-container {
-        grid-area: 1 / 2 / 4 / 5;
-        display: grid;
-        grid-template-rows: repeat(3, 1fr);
-    }
-
-    .button-container {
-        display: flex;
-        align-items: center;
-        grid-area: 4 / 2 / 5 / 5;
-        margin-top: 10px;
-    }
-`;
