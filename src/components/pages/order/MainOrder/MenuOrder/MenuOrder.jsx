@@ -59,7 +59,7 @@ const MenuOrderStyled = styled.section`
 
     .cards-list {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         gap: ${theme.gridUnit * 7.5}px ${theme.gridUnit * 10.625}px;
         padding-top: ${theme.gridUnit * 6.25}px;
         padding-bottom: ${theme.gridUnit * 6.25}px;

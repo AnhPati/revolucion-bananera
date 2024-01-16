@@ -14,9 +14,7 @@ const AdminPanel = () => {
 export default AdminPanel
 
 const AdminPanelStyled = styled.div`
-    position: fixed;
-    bottom: 24px;
-    width: 1400px;
-    border-radius: 0 0 0 15px;
+    position: sticky;
+    bottom: 0;
     overflow: hidden;
 `
