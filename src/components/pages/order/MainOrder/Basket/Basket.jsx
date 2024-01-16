@@ -1,16 +1,10 @@
 import styled from "styled-components";
+import { BasketHeader } from "./BasketHeader";
 
 export const Basket = () => {
     return (
         <BasketStyled>
-            <div className={'basket-header'}>
-                <h3>
-                    Total
-                </h3>
-                <h3>
-                    0,00 €
-                </h3>
-            </div>
+            <BasketHeader />
             <div className={'basket-content'}>
                 <h2>
                     Votre commande est vide.
@@ -31,25 +25,9 @@ const BasketStyled = styled.div`
     justify-content: space-between;
     height: 100%;
 
-    .basket-header, .basket-footer {
+    .basket-footer {
         height: 70px;
         background-color: #000;
-    }
-
-    .basket-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-left: 16px;
-        padding-right: 16px;
-
-        h3 {
-            margin: 0;
-            color: #FFA01B;
-            font-size: 36px;
-            font-weight: 400;
-            letter-spacing: 2px;
-        }
     }
 
     .basket-content {
