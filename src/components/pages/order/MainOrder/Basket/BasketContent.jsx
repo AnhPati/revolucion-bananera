@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BasketProduct } from "./BasketProduct";
 
 export const BasketContent = () => {
     return (
@@ -6,6 +7,7 @@ export const BasketContent = () => {
             <h2>
                 Votre commande est vide.
             </h2>
+            <BasketProduct />
         </BasketContentStyled>
     )
 }
@@ -13,6 +15,7 @@ export const BasketContent = () => {
 const BasketContentStyled = styled.div`
     flex: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20) inset;
