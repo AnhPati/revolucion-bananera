@@ -4,12 +4,13 @@ import { replaceFrenchCommaWithDot } from "../../../../../utils/maths"
 import { EMPTY_PRODUCT } from "../../../../../enums/product"
 import { ProductForm } from "./ProductForm"
 import { SubmitButton } from "./SubmitButton"
+import { useDisplayMessage } from "../../../../../hooks/useDisplayMessage"
 
 const AddProductForm = () => {
     const [productValues, setProductValues] = useState(EMPTY_PRODUCT)
-    const [isAdding, setIsAdding] = useState(false)
     const [submitMessageType, setSubmitMessageType] = useState('')
     const { handleAddProduct } = useContext(AdminContext)
+    const { isAdding, displayMessage } = useDisplayMessage()
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -39,15 +40,6 @@ const AddProductForm = () => {
 
         displayMessage()
     }
-
-    const displayMessage = () => {
-        setIsAdding(true)
-        setTimeout(() => {
-            setIsAdding(false)
-        }, 2000)
-    }
-
-
 
     return (
         <ProductForm
