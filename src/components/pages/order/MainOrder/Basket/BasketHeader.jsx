@@ -1,13 +1,14 @@
 import styled from "styled-components";
+import { formatPrice } from "../../../../../utils/maths";
 
-export const BasketHeader = () => {
+export const BasketHeader = ({ amountToPay = 0 }) => {
     return (
         <BasketHeaderStyled>
             <h3>
                 Total
             </h3>
             <h3>
-                0,00 €
+                {formatPrice(amountToPay)}
             </h3>
         </BasketHeaderStyled>
     )
