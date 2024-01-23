@@ -53,9 +53,10 @@ export const MenuOrder = () => {
 
 const MenuOrderStyled = styled.section`
     position: relative;
-    flex: 1;
+    min-height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 
     .cards-list {
         display: grid;
