@@ -5,7 +5,7 @@ export const BasketContent = ({ products }) => {
     return (
         <BasketContentStyled>
             {products.length > 0 ? (
-                <BasketProduct />
+                products.map(product => <BasketProduct key={product.id} product={product} />)
             ) : (
                 <h2>
                     Votre commande est vide.

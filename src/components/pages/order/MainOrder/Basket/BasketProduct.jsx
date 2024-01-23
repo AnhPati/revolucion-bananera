@@ -1,15 +1,17 @@
-export const BasketProduct = () => {
+export const BasketProduct = ({ product }) => {
     return (
-        <div className="basket-product">
+        <div>
             <div className="basket-product_img">
-                <img src="/images/coming-soon.png" alt="" />
+                <div className="img-container">
+                    <img src={product.imageSource} alt={product.title} />
+                </div>
             </div>
             <div className="basket-product_infos">
-                <h5>Product Title</h5>
-                <p>0,00 €</p>
+                <h5>{product.title}</h5>
+                <p>{product.price}</p>
             </div>
             <div className="basket-product_quantity">
-                x1
+                x{product.quantity}
             </div>
         </div>
     )
