@@ -1,19 +1,19 @@
 import styled from "styled-components";
 import { formatPrice } from "../../../../../utils/maths";
 
-export const BasketProduct = ({ product }) => {
+export const BasketProduct = ({ imageSource, title, price, quantity }) => {
     return (
         <BasketProductStyled>
             <div className="basket-product_img">
-                <img src={product.imageSource} alt={product.title} />
+                <img src={imageSource} alt={title} />
             </div>
             <div className="basket-product_infos">
                 <div className="basket-product_left-infos">
-                    <h5>{product.title}</h5>
-                    <p>{formatPrice(product.price)}</p>
+                    <h5>{title}</h5>
+                    <p>{formatPrice(price)}</p>
                 </div>
                 <div className="basket-product_quantity">
-                    <span>x{product.quantity}</span>
+                    <span>x{quantity}</span>
                 </div>
             </div>
 

@@ -6,7 +6,7 @@ export const BasketContent = ({ products }) => {
         <BasketContentStyled>
             {products.length > 0 ? (
                 <ul>
-                    {products.map(product => <BasketProduct key={product.id} product={product} />)}
+                    {products.map(product => <BasketProduct key={product.id} {...product} />)}
                 </ul>
             ) : (
                 <h2>
