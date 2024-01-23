@@ -21,7 +21,8 @@ const OrderContext = createContext({
     productSelected: {},
     setProductSelected: () => { },
     titleInputRef: {},
-    basketProducts: []
+    basketProducts: [],
+    handleAddBasketProduct: () => { }
 })
 
 export default OrderContext

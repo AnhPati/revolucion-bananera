@@ -21,7 +21,8 @@ const OrderPage = () => {
     } = useAdminProducts()
 
     const {
-        basketProducts
+        basketProducts,
+        handleAddBasketProduct
     } = useBasketProducts()
 
 
@@ -36,7 +37,8 @@ const OrderPage = () => {
         handleUpdateProduct,
         productSelected,
         titleInputRef,
-        basketProducts
+        basketProducts,
+        handleAddBasketProduct
     }
 
     return (

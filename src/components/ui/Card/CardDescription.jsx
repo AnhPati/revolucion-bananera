@@ -2,14 +2,14 @@ import { Button } from '../Button'
 import styled from 'styled-components';
 import { theme } from '../../../theme';
 
-export const CardDescription = ({ leftDescription }) => {
+export const CardDescription = ({ leftDescription, onClick }) => {
     return (
         <CardDescriptionStyled>
             <p>
                 {leftDescription}
             </p>
             <div className={'add_button-container'}>
-                <Button label={'Ajouter'} onClick={(event) => event.stopPropagation()} />
+                <Button label={'Ajouter'} onClick={onClick} />
             </div>
         </CardDescriptionStyled>
     )

@@ -10,7 +10,7 @@ import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
 const DEFAULT_IMG = '/images/coming-soon.png'
 
 export const MenuOrder = () => {
-    const { products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct } = useContext(OrderContext)
+    const { products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = productSelected.id
 
@@ -22,6 +22,12 @@ export const MenuOrder = () => {
     const onClick = (id) => {
         const productSelected = products.find(product => product.id === id)
         handleSelectProduct(productSelected)
+    }
+
+    const addToBasket = (id, event) => {
+        event.stopPropagation()
+        const productToAdd = products.find(product => product.id === id)
+        handleAddBasketProduct(productToAdd)
     }
 
     return (
@@ -40,6 +46,7 @@ export const MenuOrder = () => {
                                 isHoverable={isAdminMode}
                                 onClick={isAdminMode ? (() => onClick(id)) : undefined}
                                 selected={checkCardIsSelected(id, cardSelected)}
+                                onAdd={(event) => addToBasket(id, event)}
                             />
                         )
                     })}
