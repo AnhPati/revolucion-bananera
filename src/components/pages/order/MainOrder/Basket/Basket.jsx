@@ -5,12 +5,13 @@ import { BasketFooter } from "./BasketFooter";
 import { useBasketProducts } from "../../../../../hooks/useBasketProducts";
 
 export const Basket = () => {
-    const products = useBasketProducts()
+    const { basketProducts } = useBasketProducts()
+    console.log(`Combien de produits ? ${basketProducts.length}`)
 
     return (
         <BasketStyled>
             <BasketHeader />
-            <BasketContent />
+            <BasketContent products={basketProducts} />
             <BasketFooter />
         </BasketStyled>
     )

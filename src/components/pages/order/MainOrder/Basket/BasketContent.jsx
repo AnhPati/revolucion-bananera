@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import { BasketProduct } from "./BasketProduct";
 
-export const BasketContent = () => {
+export const BasketContent = ({ products }) => {
     return (
         <BasketContentStyled>
-            <h2>
-                Votre commande est vide.
-            </h2>
-            <BasketProduct />
+            {products.length > 0 ? (
+                <BasketProduct />
+            ) : (
+                <h2>
+                    Votre commande est vide.
+                </h2>
+            )}
         </BasketContentStyled>
     )
 }
