@@ -16,6 +16,8 @@ const BasketFooterStyled = styled.div`
     justify-content: center;
     height: 70px;
     background-color: #000;
+    position: sticky;
+    bottom: 0;
 
     h4 {
         margin: 0;

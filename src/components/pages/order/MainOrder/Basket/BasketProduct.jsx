@@ -21,7 +21,7 @@ export const BasketProduct = ({ product }) => {
     )
 }
 
-const BasketProductStyled = styled.div`
+const BasketProductStyled = styled.li`
     width: 100%;
     height: 86px;
     display: grid;
