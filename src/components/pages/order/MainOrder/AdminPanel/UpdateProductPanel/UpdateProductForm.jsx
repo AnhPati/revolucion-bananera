@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import AdminContext from "../../../../../../contexts/AdminContext";
+import OrderContext from "../../../../../../contexts/OrderContext";
 import { ProductForm } from "../ProductForm";
 import { UpdateFormMessage } from "./UpdateFormMessage";
 
 const UpdateProductForm = () => {
-    const { productSelected, titleInputRef, handleUpdateProduct } = useContext(AdminContext)
+    const { productSelected, titleInputRef, handleUpdateProduct } = useContext(OrderContext)
 
     const handleChange = (e) => {
         const { name, value } = e.target

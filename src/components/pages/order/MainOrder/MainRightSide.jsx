@@ -1,11 +1,11 @@
 import { useContext } from "react"
 import AdminPanel from "./AdminPanel/AdminPanel"
 import { MenuOrder } from "./MenuOrder/MenuOrder"
-import AdminContext from "../../../../contexts/AdminContext"
+import OrderContext from "../../../../contexts/OrderContext"
 import styled from "styled-components"
 
 export const MainRightSide = () => {
-    const { adminMode } = useContext(AdminContext)
+    const { adminMode } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
 
     return (

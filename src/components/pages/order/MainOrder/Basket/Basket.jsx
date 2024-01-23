@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { BasketHeader } from "./BasketHeader";
 import { BasketContent } from "./BasketContent";
 import { BasketFooter } from "./BasketFooter";
-import { useBasketProducts } from "../../../../../hooks/useBasketProducts";
+import { useContext } from "react";
+import OrderContext from "../../../../../contexts/OrderContext";
 
 export const Basket = () => {
-    const { basketProducts } = useBasketProducts()
+    const { basketProducts } = useContext(OrderContext)
     console.log(`Combien de produits ? ${basketProducts.length}`)
 
     return (

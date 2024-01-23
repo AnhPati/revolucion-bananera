@@ -2,8 +2,9 @@ import styled from "styled-components";
 import Navbar from "./Navbar/Navbar"
 import { theme } from "../../../theme";
 import { MainOrder } from "./MainOrder/MainOrder";
-import AdminContext from "../../../contexts/AdminContext";
+import OrderContext from "../../../contexts/OrderContext";
 import { useAdminProducts } from "../../../hooks/useAdminProducts";
+import { useBasketProducts } from "../../../hooks/useBasketProducts";
 
 const OrderPage = () => {
     const {
@@ -19,8 +20,12 @@ const OrderPage = () => {
         titleInputRef
     } = useAdminProducts()
 
+    const {
+        basketProducts
+    } = useBasketProducts()
 
-    const adminContextValue = {
+
+    const orderContextValue = {
         adminMode,
         setAdminMode,
         products,
@@ -30,16 +35,17 @@ const OrderPage = () => {
         handleSelectProduct,
         handleUpdateProduct,
         productSelected,
-        titleInputRef
+        titleInputRef,
+        basketProducts
     }
 
     return (
         <OrderPageStyled>
             <div className={'order-container'}>
-                <AdminContext.Provider value={adminContextValue}>
+                <OrderContext.Provider value={orderContextValue}>
                     <Navbar />
                     <MainOrder />
-                </AdminContext.Provider>
+                </OrderContext.Provider>
             </div>
         </OrderPageStyled>
     )

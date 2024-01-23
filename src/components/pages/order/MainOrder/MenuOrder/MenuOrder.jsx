@@ -3,14 +3,14 @@ import { useContext } from "react";
 import { Card } from "../../../../ui/Card/Card";
 import { formatPrice } from "../../../../../utils/maths";
 import { theme } from "../../../../../theme";
-import AdminContext from "../../../../../contexts/AdminContext";
+import OrderContext from "../../../../../contexts/OrderContext";
 import EmptyMenu from "./EmptyMenu";
 import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
 
 const DEFAULT_IMG = '/images/coming-soon.png'
 
 export const MenuOrder = () => {
-    const { products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct } = useContext(AdminContext)
+    const { products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = productSelected.id
 

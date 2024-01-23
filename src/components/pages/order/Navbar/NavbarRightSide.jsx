@@ -6,11 +6,11 @@ import { IoMdInformationCircle } from "react-icons/io";
 import styled from "styled-components"
 import { AdminToast } from "./AdminToast";
 import { useContext } from "react";
-import AdminContext from "../../../../contexts/AdminContext";
+import OrderContext from "../../../../contexts/OrderContext";
 
 
 export default function NavbarRightSide() {
-  const { adminMode, setAdminMode } = useContext(AdminContext)
+  const { adminMode, setAdminMode } = useContext(OrderContext)
 
   const toggleLabelUnchecked = `Activer le mode admin`
   const toggleLabelChecked = `Désactiver le mode admin`
