@@ -4,7 +4,6 @@ import { find, findIndex, getDeepClone } from "../utils/array"
 
 export const useBasketProducts = () => {
     const [basketProducts, setBasketProducts] = useState(fakeBasket.EMPTY)
-    const [basketProductsAmount, setBasketProductsAmount] = useState(0)
 
     const handleAddBasketProduct = (productToAdd) => {
         const newBasketProducts = getDeepClone(basketProducts)
@@ -33,10 +32,6 @@ export const useBasketProducts = () => {
         } else {
             addProduct()
         }
-
-        const newAmount = basketProductsAmount + productToAdd.price
-
-        setBasketProductsAmount(newAmount)
     }
 
     const handleDeleteBasketProduct = (productToDelete) => {
@@ -54,14 +49,11 @@ export const useBasketProducts = () => {
 
             setBasketProducts(basketAfterDeleteProduct)
         }
-
-
     }
 
     return {
         basketProducts,
         handleAddBasketProduct,
-        basketProductsAmount,
         handleDeleteBasketProduct
     }
 }
