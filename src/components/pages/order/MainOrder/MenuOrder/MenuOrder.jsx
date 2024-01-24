@@ -7,6 +7,7 @@ import OrderContext from "../../../../../contexts/OrderContext";
 import EmptyMenu from "./EmptyMenu";
 import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
 import { DEFAULT_IMG } from "../../../../../enums/product";
+import { find } from "../../../../../utils/array";
 
 
 
@@ -21,13 +22,13 @@ export const MenuOrder = () => {
     }
 
     const onClick = (id) => {
-        const productSelected = products.find(product => product.id === id)
+        const productSelected = find(id, products)
         handleSelectProduct(productSelected)
     }
 
     const addToBasket = (id, event) => {
         event.stopPropagation()
-        const productToAdd = products.find(product => product.id === id)
+        const productToAdd = find(id, products)
         handleAddBasketProduct(productToAdd)
     }
 
