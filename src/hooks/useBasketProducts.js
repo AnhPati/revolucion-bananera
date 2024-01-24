@@ -11,19 +11,27 @@ export const useBasketProducts = () => {
 
         const isAlready = find(productToAdd.id, newBasketProducts) !== undefined
 
-        if (isAlready) {
+        const incrementQuantityProduct = () => {
             const productIndex = findIndex(productToAdd.id, newBasketProducts)
             newBasketProducts[productIndex].quantity += 1
 
             setBasketProducts(newBasketProducts)
+        }
 
-        } else {
+        const addProduct = () => {
             const productToAddUpdated = {
                 ...productToAdd,
                 quantity: 1
             }
 
             setBasketProducts([productToAddUpdated, ...newBasketProducts])
+        }
+
+        if (isAlready) {
+            incrementQuantityProduct()
+
+        } else {
+            addProduct()
         }
 
         const newAmount = basketProductsAmount + productToAdd.price
