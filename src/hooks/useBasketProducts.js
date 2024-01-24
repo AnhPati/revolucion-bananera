@@ -40,12 +40,9 @@ export const useBasketProducts = () => {
     }
 
     const handleDeleteBasketProduct = (productToDelete) => {
-        console.log(productToDelete)
         const newBasketProducts = getDeepClone(basketProducts)
 
         const isMoreThanOne = productToDelete.quantity > 1
-
-        console.log(isMoreThanOne)
 
         if (isMoreThanOne) {
             const productIndex = findIndex(productToDelete.id, newBasketProducts)
