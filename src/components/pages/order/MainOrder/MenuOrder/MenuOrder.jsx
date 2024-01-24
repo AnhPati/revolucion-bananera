@@ -12,12 +12,13 @@ import { find } from "../../../../../utils/array";
 
 
 export const MenuOrder = () => {
-    const { products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct } = useContext(OrderContext)
+    const { products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct, handleDeleteBasketProduct } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = productSelected.id
 
     const onDelete = (productId, event) => {
         event.stopPropagation()
+        handleDeleteBasketProduct(productId)
         handleDeleteProduct(productId)
     }
 

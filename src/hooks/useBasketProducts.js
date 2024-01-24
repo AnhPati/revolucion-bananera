@@ -34,21 +34,10 @@ export const useBasketProducts = () => {
         }
     }
 
-    const handleDeleteBasketProduct = (productToDelete) => {
-        const newBasketProducts = getDeepClone(basketProducts)
+    const handleDeleteBasketProduct = (id) => {
+        const newBasketProducts = basketProducts.filter(product => product.id !== id)
 
-        const isMoreThanOne = productToDelete.quantity > 1
-
-        if (isMoreThanOne) {
-            const productIndex = findIndex(productToDelete.id, newBasketProducts)
-            newBasketProducts[productIndex].quantity -= 1
-
-            setBasketProducts(newBasketProducts)
-        } else {
-            const basketAfterDeleteProduct = newBasketProducts.filter(product => product.id !== productToDelete.id)
-
-            setBasketProducts(basketAfterDeleteProduct)
-        }
+        setBasketProducts(newBasketProducts)
     }
 
     return {

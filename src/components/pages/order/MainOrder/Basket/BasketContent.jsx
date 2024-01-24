@@ -7,8 +7,8 @@ import OrderContext from "../../../../../contexts/OrderContext";
 export const BasketContent = ({ products }) => {
     const { handleDeleteBasketProduct } = useContext(OrderContext)
 
-    const onClick = (product) => {
-        handleDeleteBasketProduct(product)
+    const onClick = (productId) => {
+        handleDeleteBasketProduct(productId)
     }
 
     return (
@@ -20,7 +20,7 @@ export const BasketContent = ({ products }) => {
                             key={product.id}
                             {...product}
                             imageSource={product.imageSource.length > 0 ? product.imageSource : DEFAULT_IMG}
-                            onClick={() => onClick(product)}
+                            onClick={() => onClick(product.id)}
                         />)}
                 </ul>
             ) : (
