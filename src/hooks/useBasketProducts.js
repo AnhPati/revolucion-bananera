@@ -39,9 +39,32 @@ export const useBasketProducts = () => {
         setBasketProductsAmount(newAmount)
     }
 
+    const handleDeleteBasketProduct = (productToDelete) => {
+        console.log(productToDelete)
+        const newBasketProducts = getDeepClone(basketProducts)
+
+        const isMoreThanOne = productToDelete.quantity > 1
+
+        console.log(isMoreThanOne)
+
+        if (isMoreThanOne) {
+            const productIndex = findIndex(productToDelete.id, newBasketProducts)
+            newBasketProducts[productIndex].quantity -= 1
+
+            setBasketProducts(newBasketProducts)
+        } else {
+            const basketAfterDeleteProduct = newBasketProducts.filter(product => product.id !== productToDelete.id)
+
+            setBasketProducts(basketAfterDeleteProduct)
+        }
+
+
+    }
+
     return {
         basketProducts,
         handleAddBasketProduct,
-        basketProductsAmount
+        basketProductsAmount,
+        handleDeleteBasketProduct
     }
 }

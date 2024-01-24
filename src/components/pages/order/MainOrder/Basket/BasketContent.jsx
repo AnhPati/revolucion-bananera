@@ -1,8 +1,16 @@
 import styled from "styled-components";
 import { BasketProduct } from "./BasketProduct";
 import { DEFAULT_IMG } from "../../../../../enums/product";
+import { useContext } from "react";
+import OrderContext from "../../../../../contexts/OrderContext";
 
 export const BasketContent = ({ products }) => {
+    const { handleDeleteBasketProduct } = useContext(OrderContext)
+
+    const onClick = (product) => {
+        handleDeleteBasketProduct(product)
+    }
+
     return (
         <BasketContentStyled>
             {products.length > 0 ? (
@@ -12,6 +20,7 @@ export const BasketContent = ({ products }) => {
                             key={product.id}
                             {...product}
                             imageSource={product.imageSource.length > 0 ? product.imageSource : DEFAULT_IMG}
+                            onClick={() => onClick(product)}
                         />)}
                 </ul>
             ) : (
