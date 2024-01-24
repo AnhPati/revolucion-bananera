@@ -17,7 +17,8 @@ export const MainRightSide = () => {
 }
 
 const MainRightSideStyled = styled.div`
-    width: 100%;
+    position: relative;
+    display: grid;
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.20) inset;
-    overflow-y: scroll;    
+    overflow-y: hidden;    
 `

@@ -36,24 +36,22 @@ export const MenuOrder = () => {
     return (
         <MenuOrderStyled>
             {products.length > 0 ? (
-                <ul className="cards-list">
-                    {products.map(({ id, imageSource, title, price }) => {
-                        return (
-                            <Card key={id}
-                                id={id}
-                                imgSrc={imageSource ? imageSource : DEFAULT_IMG}
-                                title={title}
-                                leftDescription={formatPrice(price)}
-                                hasDeleteButton={isAdminMode}
-                                onDelete={(event) => onDelete(id, event)}
-                                isHoverable={isAdminMode}
-                                onClick={isAdminMode ? (() => onClick(id)) : undefined}
-                                selected={checkCardIsSelected(id, cardSelected)}
-                                onAdd={(event) => addToBasket(id, event)}
-                            />
-                        )
-                    })}
-                </ul>
+                products.map(({ id, imageSource, title, price }) => {
+                    return (
+                        <Card key={id}
+                            id={id}
+                            imgSrc={imageSource ? imageSource : DEFAULT_IMG}
+                            title={title}
+                            leftDescription={formatPrice(price)}
+                            hasDeleteButton={isAdminMode}
+                            onDelete={(event) => onDelete(id, event)}
+                            isHoverable={isAdminMode}
+                            onClick={isAdminMode ? (() => onClick(id)) : undefined}
+                            selected={checkCardIsSelected(id, cardSelected)}
+                            onAdd={(event) => addToBasket(id, event)}
+                        />
+                    )
+                })
             ) : (
                 <EmptyMenu />
             )}
@@ -61,19 +59,12 @@ export const MenuOrder = () => {
     )
 }
 
-const MenuOrderStyled = styled.section`
-    position: relative;
-    min-height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .cards-list {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: ${theme.gridUnit * 7.5}px ${theme.gridUnit * 10.625}px;
-        padding-top: ${theme.gridUnit * 6.25}px;
-        padding-bottom: ${theme.gridUnit * 6.25}px;
-        list-style: none;
-    }
+const MenuOrderStyled = styled.ul`
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: ${theme.gridUnit * 7.5}px ${theme.gridUnit * 10.625}px;
+    padding: ${theme.gridUnit * 6.25}px ${theme.gridUnit * 6.25}px ${theme.gridUnit * 18.75}px ${theme.gridUnit * 6.25}px;
+    list-style: none;
+    overflow-y: scroll;
 `;

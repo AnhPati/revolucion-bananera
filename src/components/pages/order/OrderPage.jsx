@@ -62,14 +62,14 @@ const OrderPageStyled = styled.div`
     background: ${theme.colors.primary};
     display: flex;
     justify-content: center;
-    padding-top: 24.5px;
-    padding-bottom: 24.5px;
+    align-items: center;
 
     .order-container {
         width: 1400px;
+        height: 95vh;
         display: flex;
         flex-direction: column;
-        border-radius: ${theme.borderRadius.extraRound};
         background: ${theme.colors.background_white};
+        border-radius: ${theme.borderRadius.extraRound};
     }
 `;

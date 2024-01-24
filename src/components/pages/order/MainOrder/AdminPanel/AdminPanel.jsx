@@ -1,12 +1,17 @@
 import styled from "styled-components";
 import AdminPanelNavbar from "./AdminPanelNavbar";
 import AdminPanelContent from "./AdminPanelContent";
+import OrderContext from "../../../../../contexts/OrderContext";
+import { useContext } from "react";
 
 const AdminPanel = () => {
+    const { adminMode } = useContext(OrderContext)
+    const isOpen = adminMode.adminPanel.isOpen
+
     return (
         <AdminPanelStyled>
             <AdminPanelNavbar />
-            <AdminPanelContent />
+            {isOpen && <AdminPanelContent />}
         </AdminPanelStyled>
     )
 }
@@ -14,7 +19,9 @@ const AdminPanel = () => {
 export default AdminPanel
 
 const AdminPanelStyled = styled.div`
-    position: sticky;
-    bottom: -1px;
-    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
 `
