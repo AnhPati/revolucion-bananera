@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { formatPrice } from "../../../../../utils/maths";
+import { MdDeleteForever } from "react-icons/md";
 
 export const BasketProduct = ({ imageSource, title, price, quantity }) => {
     return (
@@ -14,6 +15,7 @@ export const BasketProduct = ({ imageSource, title, price, quantity }) => {
                 </div>
                 <div className="basket-product_quantity">
                     <span>x{quantity}</span>
+                    <MdDeleteForever />
                 </div>
             </div>
 
@@ -22,6 +24,7 @@ export const BasketProduct = ({ imageSource, title, price, quantity }) => {
 }
 
 const BasketProductStyled = styled.li`
+    position: relative; 
     width: 100%;
     height: 86px;
     display: grid;
@@ -77,6 +80,34 @@ const BasketProductStyled = styled.li`
             span {
                 color: #FFA01B;
                 font-size: 15px;
+            }
+
+            svg {
+                display: none;
+            }
+        }
+    }
+
+    &:hover {
+        .basket-product_quantity {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 73px;
+            background: #E25549;
+            justify-content: center;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+
+            span {
+                display: none;
+            }
+
+            svg {
+                display: inline-block;
+                color: #FFF;
+                font-size: 24px;
             }
         }
     }
