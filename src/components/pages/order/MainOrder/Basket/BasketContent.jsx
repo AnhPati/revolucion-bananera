@@ -1,12 +1,18 @@
 import styled from "styled-components";
 import { BasketProduct } from "./BasketProduct";
+import { DEFAULT_IMG } from "../../../../../enums/product";
 
 export const BasketContent = ({ products }) => {
     return (
         <BasketContentStyled>
             {products.length > 0 ? (
                 <ul>
-                    {products.map(product => <BasketProduct key={product.id} {...product} />)}
+                    {products.map(product =>
+                        <BasketProduct
+                            key={product.id}
+                            {...product}
+                            imageSource={product.imageSource.length > 0 ? product.imageSource : DEFAULT_IMG}
+                        />)}
                 </ul>
             ) : (
                 <h2>

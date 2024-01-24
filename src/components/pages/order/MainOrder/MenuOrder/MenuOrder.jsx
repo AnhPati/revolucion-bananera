@@ -6,8 +6,9 @@ import { theme } from "../../../../../theme";
 import OrderContext from "../../../../../contexts/OrderContext";
 import EmptyMenu from "./EmptyMenu";
 import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
+import { DEFAULT_IMG } from "../../../../../enums/product";
 
-const DEFAULT_IMG = '/images/coming-soon.png'
+
 
 export const MenuOrder = () => {
     const { products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct } = useContext(OrderContext)
