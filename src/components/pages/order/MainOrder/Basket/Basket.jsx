@@ -6,11 +6,12 @@ import { useContext } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
 
 export const Basket = () => {
-    const { basketProducts, basketProductsAmount } = useContext(OrderContext)
+    const { basketProducts } = useContext(OrderContext)
+    const amountToPay = basketProducts.reduce((amount, product) => amount += product.quantity * product.price, 0)
 
     return (
         <BasketStyled>
-            <BasketHeader amountToPay={basketProductsAmount} />
+            <BasketHeader amountToPay={amountToPay} />
             <BasketContent products={basketProducts} />
             <BasketFooter />
         </BasketStyled>
