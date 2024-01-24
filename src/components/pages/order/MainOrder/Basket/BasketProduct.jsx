@@ -89,6 +89,7 @@ const BasketProductStyled = styled.li`
     }
 
     &:hover {
+        user-select: none;
         .basket-product_quantity {
             position: absolute;
             right: 0;
@@ -108,6 +109,18 @@ const BasketProductStyled = styled.li`
                 display: inline-block;
                 color: #FFF;
                 font-size: 24px;
+            }
+
+            &:hover {
+                svg {
+                    color: #17161A;
+                }
+            }
+
+            &:active {
+                svg {
+                    color: #FFF;
+                }
             }
         }
     }
