@@ -2,13 +2,12 @@ import styled from "styled-components";
 import { formatPrice } from "../../../../../utils/maths";
 import { MdDeleteForever } from "react-icons/md";
 import { theme } from "../../../../../theme";
+import { BasketProductImg } from "./BasketProductImg";
 
 export const BasketProduct = ({ imageSource, title, price, quantity, onClick }) => {
     return (
         <BasketProductStyled>
-            <div className="basket-product_img">
-                <img src={imageSource} alt={title} />
-            </div>
+            <BasketProductImg src={imageSource} alt={title} />
             <div className="basket-product_infos">
                 <div className="basket-product_left-infos">
                     <h5>{title}</h5>
@@ -34,16 +33,6 @@ const BasketProductStyled = styled.li`
     box-shadow: ${theme.shadows.basketProductShadow};
     border-radius: ${theme.borderRadius.round};
     padding: 8px 16px;
-
-    .basket-product_img {
-        height: 70px;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-    }
 
     .basket-product_infos {
         display: grid;
