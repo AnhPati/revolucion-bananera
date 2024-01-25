@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { HiCursorClick } from 'react-icons/hi'
+import { theme } from "../../../../../../theme";
 
 export const HintMessage = () => {
     return (
@@ -11,8 +12,8 @@ export const HintMessage = () => {
 
 const HintMessageStyled = styled.h2`
     margin-top: 49px;
-    color: #747B91;
-    font-weight: 400;
+    color: ${theme.colors.greyBlue};
+    font-weight: ${theme.fonts.weights.regular};
 
     svg {
         margin-bottom: -3.195px;

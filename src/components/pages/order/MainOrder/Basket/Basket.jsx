@@ -5,6 +5,7 @@ import { BasketFooter } from "./BasketFooter";
 import { useContext } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
 import EmptyBasket from "./EmptyBasket";
+import { theme } from "../../../../../theme";
 
 export const Basket = () => {
     const { basketProducts } = useContext(OrderContext)
@@ -29,5 +30,5 @@ const BasketStyled = styled.div`
     flex-direction: column;
     justify-content: space-between;
     height: 85vh;
-    background: #F5F5F7;
+    background: ${theme.colors.background_white};
 `;

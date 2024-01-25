@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../../../../theme";
 
 export const BasketFooter = () => {
     return (
@@ -15,11 +16,11 @@ const BasketFooterStyled = styled.div`
     align-items: center;
     justify-content: center;
     height: 70px;
-    background-color: #000;
+    background-color: ${theme.colors.dark};
 
     h4 {
         margin: 0;
-        color: #FFF;
-        font-size: 20px;
+        color: ${theme.colors.white};
+        font-size: ${theme.fonts.size.P2};
     }
 `;

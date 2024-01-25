@@ -14,7 +14,7 @@ export default function EmptyBasket() {
 const EmptyBasketStyled = styled.div`
     flex: 1;
     background: ${theme.colors.background_white};
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20) inset;
+    box-shadow: ${theme.shadows.basketShadow};
 
     .empty-message {
         flex: 1;
@@ -25,9 +25,9 @@ const EmptyBasketStyled = styled.div`
         
         h2 {
             margin: 0;
-            color: #747B91;
-            font-size: 36px;
-            font-weight: 400;
+            color: ${theme.colors.greyBlue};
+            font-size: ${theme.fonts.size.P4};
+            font-weight: ${theme.fonts.weights.regular};
             text-align: center;
         }
     }

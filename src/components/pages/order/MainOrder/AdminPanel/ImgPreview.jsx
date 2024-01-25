@@ -26,13 +26,13 @@ const ImgPreviewStyled = styled.div`
 
     p {
         font-size: 16px;
-        color: #93A2B1;
+        color: ${theme.colors.greySemiDark};
     }
 
     ${({ $empty }) => $empty && ImgEmptyStyles}
 `;
 
 const ImgEmptyStyles = css`
-    border: solid 1px #E4E5E9;
+    border: solid 1px ${theme.colors.greyLight};
     border-radius: ${theme.borderRadius.round};
 `

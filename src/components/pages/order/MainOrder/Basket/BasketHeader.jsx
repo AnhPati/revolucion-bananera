@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { formatPrice } from "../../../../../utils/maths";
+import { theme } from "../../../../../theme";
 
 export const BasketHeader = ({ amountToPay }) => {
     return (
@@ -21,13 +22,13 @@ const BasketHeaderStyled = styled.div`
     padding-left: 16px;
     padding-right: 16px;
     height: 70px;
-    background-color: #000;
+    background-color: ${theme.colors.dark};
 
     h3 {
         margin: 0;
-        color: #FFA01B;
-        font-size: 36px;
-        font-weight: 400;
+        color: ${theme.colors.primary};
+        font-size: ${theme.fonts.size.P4};
+        font-weight: ${theme.fonts.weights.regular};
         letter-spacing: 2px;
     }
 `;

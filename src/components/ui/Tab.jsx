@@ -18,9 +18,9 @@ const TabStyled = styled.button`
     padding: 10px 22px 11px 22px;
     background-color: ${theme.colors.white};
     font-family: 'Open Sans';
-    color: #93A2B1;
+    color: ${theme.colors.greySemiDark};
     font-size: ${theme.fonts.size.P0};
-    border: 1px solid #E4E5E9;
+    border: 1px solid ${theme.colors.greyLight};
     border-radius: ${theme.borderRadius.round} ${theme.borderRadius.round}  0px 0px;
     box-shadow: ${theme.shadows.subtle};
     cursor: pointer;
@@ -35,7 +35,7 @@ const TabStyled = styled.button`
         border-bottom-color: ${theme.colors.white};
 
         .nav-text {
-            border-bottom: #93A2B1 solid 2px;
+            border-bottom: ${theme.colors.greySemiDark} solid 2px;
         }
 
         &.tab-active {

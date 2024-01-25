@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { formatPrice } from "../../../../../utils/maths";
 import { MdDeleteForever } from "react-icons/md";
+import { theme } from "../../../../../theme";
 
 export const BasketProduct = ({ imageSource, title, price, quantity, onClick }) => {
     return (
@@ -29,9 +30,9 @@ const BasketProductStyled = styled.li`
     height: 86px;
     display: grid;
     grid-template-columns: 30% 1fr;
-    background: #FFF;
-    box-shadow: -4px 4px 15px 0px rgba(0, 0, 0, 0.20);
-    border-radius: 5px;
+    background: ${theme.colors.white};
+    box-shadow: ${theme.shadows.basketProductShadow};
+    border-radius: ${theme.borderRadius.round};
     padding: 8px 16px;
 
     .basket-product_img {
@@ -48,7 +49,7 @@ const BasketProductStyled = styled.li`
         display: grid;
         grid-template-columns: 70% 1fr;
         margin-left: 21px;
-        margin-right: 20px;
+        margin-right: ${theme.spacing.md};
 
         .basket-product_left-infos {
             display: grid;
@@ -61,14 +62,14 @@ const BasketProductStyled = styled.li`
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                color: #17161A;
-                font-size: 24px;
+                color: ${theme.colors.dark};
+                font-size: ${theme.fonts.size.P3};
             }
 
             p {
                 margin: 0;
-                color: #FFA01B;
-                font-size: 15px;
+                color: ${theme.colors.primary};
+                font-size: ${theme.fonts.size.SM};
             }
         }
 
@@ -78,8 +79,8 @@ const BasketProductStyled = styled.li`
             align-items: center;
 
             span {
-                color: #FFA01B;
-                font-size: 15px;
+                color: ${theme.colors.primary};
+                font-size: ${theme.fonts.size.SM};
             }
 
             svg {
@@ -96,9 +97,9 @@ const BasketProductStyled = styled.li`
             top: 0;
             bottom: 0;
             width: 73px;
-            background: #E25549;
+            background: ${theme.colors.red};
             justify-content: center;
-            border-radius: 0 5px 5px 0;
+            border-radius: 0 ${theme.borderRadius.round} ${theme.borderRadius.round} 0;
             cursor: pointer;
 
             span {
@@ -107,19 +108,19 @@ const BasketProductStyled = styled.li`
 
             svg {
                 display: inline-block;
-                color: #FFF;
-                font-size: 24px;
+                color: ${theme.colors.white};
+                font-size: ${theme.fonts.size.P3};
             }
 
             &:hover {
                 svg {
-                    color: #17161A;
+                    color: ${theme.colors.dark};
                 }
             }
 
             &:active {
                 svg {
-                    color: #FFF;
+                    color: ${theme.colors.white};
                 }
             }
         }

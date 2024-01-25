@@ -21,7 +21,7 @@ const AdminToastStyled = styled.div`
 
     .body-toast {
         .Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter {
-        margin-right: 20px;
+        margin-right: ${theme.spacing.md};
         margin-left: 5px;
         }
 

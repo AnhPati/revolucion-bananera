@@ -3,6 +3,7 @@ import AdminPanel from "./AdminPanel/AdminPanel"
 import { MenuOrder } from "./MenuOrder/MenuOrder"
 import OrderContext from "../../../../contexts/OrderContext"
 import styled from "styled-components"
+import { theme } from "../../../../theme"
 
 export const MainRightSide = () => {
     const { adminMode } = useContext(OrderContext)
@@ -19,6 +20,6 @@ export const MainRightSide = () => {
 const MainRightSideStyled = styled.div`
     position: relative;
     display: grid;
-    box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.20) inset;
+    box-shadow: ${theme.shadows.strong};
     overflow-y: hidden;    
 `
