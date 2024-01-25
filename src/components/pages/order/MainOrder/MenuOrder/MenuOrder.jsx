@@ -64,7 +64,13 @@ const MenuOrderStyled = styled.ul`
     justify-items: center;
     grid-template-columns: repeat(3, 1fr);
     gap: ${theme.gridUnit * 7.5}px ${theme.gridUnit * 10.625}px;
+    margin: 0;
     padding: ${theme.gridUnit * 6.25}px ${theme.gridUnit * 6.25}px ${theme.gridUnit * 18.75}px ${theme.gridUnit * 6.25}px;
     list-style: none;
     overflow-y: scroll;
+    scrollbar-color: transparent transparent;
+
+    &:hover { 
+        scrollbar-color: initial;
+    }
 `;
