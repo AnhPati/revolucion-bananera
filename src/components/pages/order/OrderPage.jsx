@@ -23,7 +23,8 @@ const OrderPage = () => {
     const {
         basketProducts,
         handleAddBasketProduct,
-        handleDeleteBasketProduct
+        handleDeleteBasketProduct,
+        handleUpdateBasketProduct
     } = useBasketProducts()
 
 
@@ -40,7 +41,8 @@ const OrderPage = () => {
         titleInputRef,
         basketProducts,
         handleAddBasketProduct,
-        handleDeleteBasketProduct
+        handleDeleteBasketProduct,
+        handleUpdateBasketProduct
     }
 
     return (
