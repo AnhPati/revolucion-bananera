@@ -6,7 +6,8 @@ import OrderContext from "../../../../../contexts/OrderContext";
 import { theme } from "../../../../../theme";
 
 export const BasketContent = ({ products }) => {
-    const { handleDeleteBasketProduct } = useContext(OrderContext)
+    const { handleDeleteBasketProduct, adminMode } = useContext(OrderContext)
+    const isAdminMode = adminMode.isAdminMode
 
     const onClick = (productId) => {
         handleDeleteBasketProduct(productId)
@@ -21,6 +22,7 @@ export const BasketContent = ({ products }) => {
                         {...product}
                         imageSource={product.imageSource.length > 0 ? product.imageSource : DEFAULT_IMG}
                         onClick={() => onClick(product.id)}
+                        isAdminMode={isAdminMode}
                     />)}
             </ul>
         </BasketContentStyled>

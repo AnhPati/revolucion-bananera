@@ -3,9 +3,9 @@ import { theme } from "../../../../../../theme";
 import { BasketProductImg } from "./BasketProductImg";
 import { BasketProductInfos } from "./BasketProductInfos";
 
-export const BasketProduct = ({ imageSource, title, price, quantity, onClick }) => {
+export const BasketProduct = ({ imageSource, title, price, quantity, onClick, isAdminMode }) => {
     return (
-        <BasketProductStyled>
+        <BasketProductStyled $isAdminMode={isAdminMode}>
             <BasketProductImg src={imageSource} alt={title} />
             <BasketProductInfos
                 title={title}
@@ -29,6 +29,7 @@ const BasketProductStyled = styled.li`
     padding: 8px 16px;
 
     &:hover {
+        cursor: ${({ $isAdminMode }) => $isAdminMode ? 'pointer' : 'default'};
         user-select: none;
         
         .basket-product_quantity {
