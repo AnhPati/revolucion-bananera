@@ -10,7 +10,7 @@ export const UpdateFormMessage = () => {
 }
 
 const UpdateFormMessageStyled = styled.span`
-        color: #FFA01B;
+        color: ${theme.colors.primary};
         padding: ${theme.gridUnit * 0.75}px 0;
         font-size: 15px;
 `;

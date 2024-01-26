@@ -1,27 +1,45 @@
 import styled from "styled-components";
+import { BasketProduct } from "./BasketProduct/BasketProduct";
+import { DEFAULT_IMG } from "../../../../../enums/product";
+import { useContext } from "react";
+import OrderContext from "../../../../../contexts/OrderContext";
+import { theme } from "../../../../../theme";
 
-export const BasketContent = () => {
+export const BasketContent = ({ products }) => {
+    const { handleDeleteBasketProduct } = useContext(OrderContext)
+
+    const onClick = (productId) => {
+        handleDeleteBasketProduct(productId)
+    }
+
     return (
         <BasketContentStyled>
-            <h2>
-                Votre commande est vide.
-            </h2>
+            <ul>
+                {products.map(product =>
+                    <BasketProduct
+                        key={product.id}
+                        {...product}
+                        imageSource={product.imageSource.length > 0 ? product.imageSource : DEFAULT_IMG}
+                        onClick={() => onClick(product.id)}
+                    />)}
+            </ul>
         </BasketContentStyled>
     )
 }
 
 const BasketContentStyled = styled.div`
     flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20) inset;
+    display: grid;
+    box-shadow: ${theme.shadows.basketShadow};
+    overflow-y: scroll;
 
-    h2 {
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: ${theme.spacing.md};
         margin: 0;
-        color: #747B91;
-        font-size: 36px;
-        font-weight: 400;
-        line-height: 72px; 
+        padding: 20px 16px;
     }
 `;

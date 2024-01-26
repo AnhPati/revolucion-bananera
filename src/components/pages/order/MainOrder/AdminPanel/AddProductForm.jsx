@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import AdminContext from "../../../../../contexts/AdminContext"
+import OrderContext from "../../../../../contexts/OrderContext"
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths"
 import { EMPTY_PRODUCT } from "../../../../../enums/product"
 import { ProductForm } from "./ProductForm"
@@ -9,7 +9,7 @@ import { useDisplayMessage } from "../../../../../hooks/useDisplayMessage"
 const AddProductForm = () => {
     const [productValues, setProductValues] = useState(EMPTY_PRODUCT)
     const [submitMessageType, setSubmitMessageType] = useState('')
-    const { handleAddProduct } = useContext(AdminContext)
+    const { handleAddProduct } = useContext(OrderContext)
     const { isAdding, displayMessage } = useDisplayMessage()
 
     const handleChange = (e) => {

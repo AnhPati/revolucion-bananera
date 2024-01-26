@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { Button } from "../../../../ui/Button"
-import AdminContext from "../../../../../contexts/AdminContext";
+import OrderContext from "../../../../../contexts/OrderContext";
 import { useContext } from "react";
+import { theme } from "../../../../../theme";
 
 const EmptyMenu = () => {
-    const { adminMode, handleGenerateNewProducts } = useContext(AdminContext)
+    const { adminMode, handleGenerateNewProducts } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
 
     return (
@@ -52,13 +53,13 @@ const EmptyMenuStyled = styled.div`
 
     h1, h2 {
         text-align: center;
-        color: #747B91;
-        font-size: 36px;
+        color: ${theme.colors.greyBlue};
+        font-size: ${theme.fonts.size.P4};
         margin: 0;
     }
 
     h2 {
-        font-weight: 400;
+        font-weight: ${theme.fonts.weights.regular};
     }
 
     button {

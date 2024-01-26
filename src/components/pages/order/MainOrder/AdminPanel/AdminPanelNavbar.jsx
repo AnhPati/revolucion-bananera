@@ -2,10 +2,10 @@ import styled from "styled-components"
 import { Tab } from "../../../../ui/Tab"
 import { getAdminTabsConfig } from "./helpers/getAdminTabsConfig"
 import { useContext } from "react"
-import AdminContext from "../../../../../contexts/AdminContext"
+import OrderContext from "../../../../../contexts/OrderContext"
 
 const AdminPanelNavbar = () => {
-    const { adminMode, setAdminMode } = useContext(AdminContext)
+    const { adminMode, setAdminMode } = useContext(OrderContext)
     const isOpen = adminMode.adminPanel.isOpen
     const tabSelected = adminMode.adminPanel.tabSelected
 

@@ -24,7 +24,7 @@ const LogoStyled = styled.div`
     color: ${theme.colors.primary};
 
     h1 {
-        font-size: 36px;
+        font-size: ${theme.fonts.size.P4};
         font-weight: ${theme.fonts.weights.bold};
         line-height: 1.5px;
         margin: 0;

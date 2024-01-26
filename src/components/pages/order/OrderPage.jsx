@@ -2,8 +2,9 @@ import styled from "styled-components";
 import Navbar from "./Navbar/Navbar"
 import { theme } from "../../../theme";
 import { MainOrder } from "./MainOrder/MainOrder";
-import AdminContext from "../../../contexts/AdminContext";
+import OrderContext from "../../../contexts/OrderContext";
 import { useAdminProducts } from "../../../hooks/useAdminProducts";
+import { useBasketProducts } from "../../../hooks/useBasketProducts";
 
 const OrderPage = () => {
     const {
@@ -19,8 +20,14 @@ const OrderPage = () => {
         titleInputRef
     } = useAdminProducts()
 
+    const {
+        basketProducts,
+        handleAddBasketProduct,
+        handleDeleteBasketProduct
+    } = useBasketProducts()
 
-    const adminContextValue = {
+
+    const orderContextValue = {
         adminMode,
         setAdminMode,
         products,
@@ -30,16 +37,19 @@ const OrderPage = () => {
         handleSelectProduct,
         handleUpdateProduct,
         productSelected,
-        titleInputRef
+        titleInputRef,
+        basketProducts,
+        handleAddBasketProduct,
+        handleDeleteBasketProduct
     }
 
     return (
         <OrderPageStyled>
             <div className={'order-container'}>
-                <AdminContext.Provider value={adminContextValue}>
+                <OrderContext.Provider value={orderContextValue}>
                     <Navbar />
                     <MainOrder />
-                </AdminContext.Provider>
+                </OrderContext.Provider>
             </div>
         </OrderPageStyled>
     )
@@ -52,14 +62,14 @@ const OrderPageStyled = styled.div`
     background: ${theme.colors.primary};
     display: flex;
     justify-content: center;
-    padding-top: 24.5px;
-    padding-bottom: 24.5px;
+    align-items: center;
 
     .order-container {
         width: 1400px;
+        height: 95vh;
         display: flex;
         flex-direction: column;
-        border-radius: ${theme.borderRadius.extraRound};
         background: ${theme.colors.background_white};
+        border-radius: ${theme.borderRadius.extraRound};
     }
 `;

@@ -28,7 +28,7 @@ const NavbarProfileStyled = styled.div`
     padding-left: 50px;
 
     .text-container {
-        color: #747B91;
+        color: ${theme.colors.greyBlue};
         text-align: end;
 
         p {
@@ -42,8 +42,8 @@ const NavbarProfileStyled = styled.div`
         }
 
         a {
-            color: #747B91;
-            font-size: 10px;
+            color: ${theme.colors.greyBlue};
+            font-size: ${theme.fonts.size.XXS};
 
             &:hover {
                 text-decoration: underline;
@@ -57,7 +57,7 @@ const NavbarProfileStyled = styled.div`
         margin-left: 10px;
 
         svg {
-            color: #747B91;
+            color: ${theme.colors.greyBlue};
             font-size: ${theme.fonts.size.P4};
         }
     }

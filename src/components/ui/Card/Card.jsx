@@ -4,7 +4,7 @@ import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
 import { RemoveButton } from './RemoveButton';
 
-export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected }) => {
+export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd }) => {
 
     return (
         <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected}>
@@ -12,7 +12,7 @@ export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDe
                 <RemoveButton onClick={onDelete} />
             )}
             <CardImg src={imgSrc} alt={title} />
-            <CardInfos title={title} leftDescription={leftDescription} />
+            <CardInfos title={title} leftDescription={leftDescription} onClick={onAdd} />
         </CardStyled>
     )
 }

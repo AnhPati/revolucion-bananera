@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-const AdminContext = createContext({
+const OrderContext = createContext({
     adminMode: {
         isAdminMode: false,
         adminPanel: {
@@ -20,7 +20,10 @@ const AdminContext = createContext({
     handleUpdateProduct: () => { },
     productSelected: {},
     setProductSelected: () => { },
-    titleInputRef: {}
+    titleInputRef: {},
+    basketProducts: [],
+    handleAddBasketProduct: () => { },
+    handleDeleteBasketProduct: () => { }
 })
 
-export default AdminContext
+export default OrderContext
