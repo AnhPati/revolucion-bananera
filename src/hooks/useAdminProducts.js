@@ -32,7 +32,7 @@ export const useAdminProducts = () => {
         }
 
         setProducts(newProducts)
-        titleInputRef.current.focus()
+        adminMode.cardSelected && titleInputRef.current.focus()
     }
 
     const handleGenerateNewProducts = () => {
