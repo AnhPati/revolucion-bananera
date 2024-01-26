@@ -12,7 +12,7 @@ import { find } from "../../../../../utils/array";
 
 
 export const MenuOrder = () => {
-    const { products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct, handleDeleteBasketProduct } = useContext(OrderContext)
+    const { products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct, handleDeleteBasketProduct, handleUpdateBasketProduct } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = productSelected.id
 
@@ -25,6 +25,8 @@ export const MenuOrder = () => {
     const onClick = (id) => {
         const productSelected = find(id, products)
         handleSelectProduct(productSelected)
+        handleUpdateBasketProduct(productSelected)
+
     }
 
     const addToBasket = (id, event) => {

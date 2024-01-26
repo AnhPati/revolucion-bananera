@@ -4,13 +4,20 @@ import { DEFAULT_IMG } from "../../../../../enums/product";
 import { useContext } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
 import { theme } from "../../../../../theme";
+import { find } from "../../../../../utils/array";
 
 export const BasketContent = ({ products }) => {
-    const { handleDeleteBasketProduct, adminMode } = useContext(OrderContext)
+    const { handleDeleteBasketProduct, adminMode, handleUpdateBasketProduct, handleSelectProduct } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
 
     const handleDelete = (productId) => {
         handleDeleteBasketProduct(productId)
+    }
+
+    const onClick = (id) => {
+        const productSelected = find(id, products)
+        handleUpdateBasketProduct(productSelected)
+        handleSelectProduct(productSelected)
     }
 
     return (
@@ -23,6 +30,7 @@ export const BasketContent = ({ products }) => {
                         imageSource={product.imageSource.length > 0 ? product.imageSource : DEFAULT_IMG}
                         onDelete={() => handleDelete(product.id)}
                         isAdminMode={isAdminMode}
+                        onClick={isAdminMode ? (() => onClick(product.id)) : undefined}
                     />)}
             </ul>
         </BasketContentStyled>
