@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { formatPrice } from "../../../../../../utils/maths";
 import { theme } from "../../../../../../theme";
 
-export const BasketProductLabel = ({ title, price }) => {
+export const BasketProductLabel = ({ title, price, selected }) => {
     return (
-        <BasketProductLabelStyled>
+        <BasketProductLabelStyled $selected={selected}>
             <h5>{title}</h5>
             <p>{formatPrice(price)}</p>
         </BasketProductLabelStyled>
@@ -31,4 +31,16 @@ const BasketProductLabelStyled = styled.div`
         color: ${theme.colors.primary};
         font-size: ${theme.fonts.size.SM};
     }
+
+    ${({ $selected }) => $selected && selectedStyles}
 `;
+
+const selectedStyles = css`
+    h5 {
+        color: ${theme.colors.dark};
+    }
+
+    p {
+        color: ${theme.colors.white};
+    }
+`

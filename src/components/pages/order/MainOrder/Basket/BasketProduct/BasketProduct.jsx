@@ -13,6 +13,7 @@ export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, i
                 price={price}
                 quantity={quantity}
                 onDelete={onDelete}
+                selected={selected}
             />
         </BasketProductStyled>
     )

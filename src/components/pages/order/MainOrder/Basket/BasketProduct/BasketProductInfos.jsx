@@ -3,11 +3,11 @@ import { theme } from "../../../../../../theme";
 import { BasketProductLabel } from "./BasketProductLabel";
 import { BasketProductQuantity } from "./BasketProductQuantity";
 
-export const BasketProductInfos = ({ title, price, quantity, onDelete }) => {
+export const BasketProductInfos = ({ title, price, quantity, onDelete, selected }) => {
     return (
         <BasketProductInfosStyled>
-            <BasketProductLabel title={title} price={price} />
-            <BasketProductQuantity quantity={quantity} onClick={onDelete} />
+            <BasketProductLabel title={title} price={price} selected={selected} />
+            <BasketProductQuantity quantity={quantity} onClick={onDelete} selected={selected} />
         </BasketProductInfosStyled>
     )
 }
