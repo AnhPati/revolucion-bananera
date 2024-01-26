@@ -5,10 +5,12 @@ import { useContext } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
 import { theme } from "../../../../../theme";
 import { find } from "../../../../../utils/array";
+import { checkCardIsSelected } from "../MenuOrder/helpers/checkCardIsSelected";
 
 export const BasketContent = ({ products }) => {
-    const { handleDeleteBasketProduct, adminMode, handleUpdateBasketProduct, handleSelectProduct } = useContext(OrderContext)
+    const { handleDeleteBasketProduct, adminMode, handleUpdateBasketProduct, handleSelectProduct, basketProductSelected } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
+    const cardSelected = basketProductSelected.id
 
     const handleDelete = (productId) => {
         handleDeleteBasketProduct(productId)
@@ -31,6 +33,7 @@ export const BasketContent = ({ products }) => {
                         onDelete={() => handleDelete(product.id)}
                         isAdminMode={isAdminMode}
                         onClick={isAdminMode ? (() => onClick(product.id)) : undefined}
+                        selected={checkCardIsSelected(product.id, cardSelected)}
                     />)}
             </ul>
         </BasketContentStyled>

@@ -1,11 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../../../../../theme";
 import { BasketProductImg } from "./BasketProductImg";
 import { BasketProductInfos } from "./BasketProductInfos";
 
-export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, isAdminMode, onClick }) => {
+export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, isAdminMode, onClick, selected }) => {
+
     return (
-        <BasketProductStyled $isAdminMode={isAdminMode} onClick={onClick}>
+        <BasketProductStyled $isAdminMode={isAdminMode} onClick={onClick} $isSelected={selected}>
             <BasketProductImg src={imageSource} alt={title} />
             <BasketProductInfos
                 title={title}
@@ -66,4 +67,10 @@ const BasketProductStyled = styled.li`
             }
         }
     }
+
+    ${({ $isAdminMode, $isSelected }) => $isAdminMode && $isSelected && selectedStyles}
 `;
+
+const selectedStyles = css`
+    background-color: ${theme.colors.primary};
+`

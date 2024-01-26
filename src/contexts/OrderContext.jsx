@@ -24,7 +24,8 @@ const OrderContext = createContext({
     basketProducts: [],
     handleAddBasketProduct: () => { },
     handleDeleteBasketProduct: () => { },
-    handleUpdateBasketProduct: () => { }
+    handleUpdateBasketProduct: () => { },
+    basketProductSelected: {}
 })
 
 export default OrderContext

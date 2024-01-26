@@ -62,6 +62,7 @@ export const useBasketProducts = () => {
         basketProducts,
         handleAddBasketProduct,
         handleDeleteBasketProduct,
-        handleUpdateBasketProduct
+        handleUpdateBasketProduct,
+        basketProductSelected
     }
 }
