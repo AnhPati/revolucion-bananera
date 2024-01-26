@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { formatPrice } from "../../../../../utils/maths";
-import { theme } from "../../../../../theme";
+import { formatPrice } from "../../../../../../utils/maths";
+import { theme } from "../../../../../../theme";
 
 export const BasketProductLabel = ({ title, price }) => {
     return (

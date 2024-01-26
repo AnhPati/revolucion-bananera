@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
+import { theme } from "../../../../../../theme";
 import { BasketProductImg } from "./BasketProductImg";
 import { BasketProductInfos } from "./BasketProductInfos";
 

@@ -1,6 +1,6 @@
 import { MdDeleteForever } from "react-icons/md";
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
+import { theme } from "../../../../../../theme";
 
 export const BasketProductQuantity = ({ quantity, onClick }) => {
     return (
