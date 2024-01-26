@@ -9,7 +9,7 @@ export const BasketContent = ({ products }) => {
     const { handleDeleteBasketProduct, adminMode } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
 
-    const onClick = (productId) => {
+    const handleDelete = (productId) => {
         handleDeleteBasketProduct(productId)
     }
 
@@ -21,7 +21,7 @@ export const BasketContent = ({ products }) => {
                         key={product.id}
                         {...product}
                         imageSource={product.imageSource.length > 0 ? product.imageSource : DEFAULT_IMG}
-                        onClick={() => onClick(product.id)}
+                        onDelete={() => handleDelete(product.id)}
                         isAdminMode={isAdminMode}
                     />)}
             </ul>

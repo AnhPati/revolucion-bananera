@@ -3,7 +3,7 @@ import { theme } from "../../../../../../theme";
 import { BasketProductImg } from "./BasketProductImg";
 import { BasketProductInfos } from "./BasketProductInfos";
 
-export const BasketProduct = ({ imageSource, title, price, quantity, onClick, isAdminMode }) => {
+export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, isAdminMode }) => {
     return (
         <BasketProductStyled $isAdminMode={isAdminMode}>
             <BasketProductImg src={imageSource} alt={title} />
@@ -11,7 +11,7 @@ export const BasketProduct = ({ imageSource, title, price, quantity, onClick, is
                 title={title}
                 price={price}
                 quantity={quantity}
-                onClick={onClick}
+                onDelete={onDelete}
             />
         </BasketProductStyled>
     )
