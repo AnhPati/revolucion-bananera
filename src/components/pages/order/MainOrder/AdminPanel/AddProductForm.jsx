@@ -30,6 +30,7 @@ const AddProductForm = () => {
         } else {
             const newProduct = {
                 ...productValues,
+                price: newProductPrice,
                 id: crypto.randomUUID()
             }
 
