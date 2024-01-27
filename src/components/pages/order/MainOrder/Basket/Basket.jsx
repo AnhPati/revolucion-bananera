@@ -6,16 +6,12 @@ import { useContext } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
 import EmptyBasket from "./EmptyBasket";
 import { theme } from "../../../../../theme";
-import { findObjectById, isEmptyArray } from "../../../../../utils/array";
+import { isEmptyArray } from "../../../../../utils/array";
+import { calculateAmountToPay } from "../../../../../utils/maths";
 
 export const Basket = () => {
     const { basketProducts, products } = useContext(OrderContext)
-    const amountToPay = basketProducts.reduce((amount, basketProduct) => {
-        const menuProduct = findObjectById(basketProduct.id, products)
-        amount += basketProduct.quantity * menuProduct.price
-
-        return amount
-    }, 0)
+    const amountToPay = calculateAmountToPay(basketProducts, products)
 
     return (
         <BasketStyled>
