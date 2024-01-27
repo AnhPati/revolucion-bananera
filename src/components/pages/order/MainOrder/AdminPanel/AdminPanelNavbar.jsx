@@ -54,10 +54,15 @@ const AdminPanelNavbar = () => {
 export default AdminPanelNavbar
 
 const AdminPanelNavbarStyled = styled.nav`
+    width: max-content;
+    position: relative;
+
     ul {
+        position: absolute;
+        top: -45px;
         display: flex;
-        margin: 0;
-        padding-left: 71px;
+        margin: 0 0 0 71px;
+        padding: 0;
         list-style-type: none;
 
         button {
