@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { fakeBasket } from "../fakeData/fakeBasket"
 import { filterArrayWithId, findObjectById, findIndexById, getDeepClone } from "../utils/array"
-import { EMPTY_PRODUCT } from "../enums/product"
 
 export const useBasketProducts = () => {
     const [basketProducts, setBasketProducts] = useState(fakeBasket.EMPTY)
