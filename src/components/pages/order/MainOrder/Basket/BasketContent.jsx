@@ -4,7 +4,7 @@ import { DEFAULT_IMG } from "../../../../../enums/product";
 import { useContext } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
 import { theme } from "../../../../../theme";
-import { find } from "../../../../../utils/array";
+import { findObjectById } from "../../../../../utils/array";
 import { checkCardIsSelected } from "../MenuOrder/helpers/checkCardIsSelected";
 
 export const BasketContent = ({ products }) => {
@@ -18,7 +18,7 @@ export const BasketContent = ({ products }) => {
     }
 
     const onClick = (id) => {
-        const productSelected = find(id, products)
+        const productSelected = findObjectById(id, products)
         handleUpdateBasketProduct(productSelected)
         handleSelectProduct(productSelected)
     }
