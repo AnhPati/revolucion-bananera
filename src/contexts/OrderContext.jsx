@@ -23,8 +23,7 @@ const OrderContext = createContext({
     titleInputRef: {},
     basketProducts: [],
     handleAddBasketProduct: () => { },
-    handleDeleteBasketProduct: () => { },
-    basketProductSelected: {}
+    handleDeleteBasketProduct: () => { }
 })
 
 export default OrderContext

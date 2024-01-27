@@ -5,7 +5,6 @@ import { EMPTY_PRODUCT } from "../enums/product"
 
 export const useBasketProducts = () => {
     const [basketProducts, setBasketProducts] = useState(fakeBasket.EMPTY)
-    const [basketProductSelected, setBasketProductSelected] = useState(EMPTY_PRODUCT)
 
     const handleAddBasketProduct = (productToAdd) => {
         const newBasketProducts = getDeepClone(basketProducts)
@@ -40,17 +39,12 @@ export const useBasketProducts = () => {
     const handleDeleteBasketProduct = (id) => {
         const newBasketProducts = filterArrayWithId(id, basketProducts)
 
-        if (id === basketProductSelected.id) {
-            setBasketProductSelected(EMPTY_PRODUCT)
-        }
-
         setBasketProducts(newBasketProducts)
     }
 
     return {
         basketProducts,
         handleAddBasketProduct,
-        handleDeleteBasketProduct,
-        basketProductSelected
+        handleDeleteBasketProduct
     }
 }
