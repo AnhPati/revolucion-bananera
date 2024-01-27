@@ -6,16 +6,16 @@ import { useContext } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
 import EmptyBasket from "./EmptyBasket";
 import { theme } from "../../../../../theme";
+import { isEmptyArray } from "../../../../../utils/array";
 
 export const Basket = () => {
     const { basketProducts } = useContext(OrderContext)
     const amountToPay = basketProducts.reduce((amount, product) => amount += product.quantity * product.price, 0)
-    const isEmptyBasket = basketProducts.length === 0
 
     return (
         <BasketStyled>
             <BasketHeader amountToPay={amountToPay} />
-            {isEmptyBasket ? (
+            {isEmptyArray(basketProducts) ? (
                 <EmptyBasket />
             ) : (
                 <BasketContent products={basketProducts} />

@@ -7,7 +7,7 @@ import OrderContext from "../../../../../contexts/OrderContext";
 import EmptyMenu from "./EmptyMenu";
 import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
 import { DEFAULT_IMG } from "../../../../../enums/product";
-import { findObjectById } from "../../../../../utils/array";
+import { findObjectById, isEmptyArray } from "../../../../../utils/array";
 
 
 
@@ -37,7 +37,9 @@ export const MenuOrder = () => {
 
     return (
         <MenuOrderStyled>
-            {products.length > 0 ? (
+            {isEmptyArray(products) ? (
+                <EmptyMenu />
+            ) : (
                 products.map(({ id, imageSource, title, price }) => {
                     return (
                         <Card key={id}
@@ -54,8 +56,6 @@ export const MenuOrder = () => {
                         />
                     )
                 })
-            ) : (
-                <EmptyMenu />
             )}
         </MenuOrderStyled>
     )
