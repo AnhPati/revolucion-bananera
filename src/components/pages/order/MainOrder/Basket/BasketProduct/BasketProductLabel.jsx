@@ -36,10 +36,6 @@ const BasketProductLabelStyled = styled.div`
 `;
 
 const selectedStyles = css`
-    h5 {
-        color: ${theme.colors.dark};
-    }
-
     p {
         color: ${theme.colors.white};
     }
