@@ -7,7 +7,7 @@ import OrderContext from "../../../../../contexts/OrderContext";
 import EmptyBasket from "./EmptyBasket";
 import { theme } from "../../../../../theme";
 import { isEmptyArray } from "../../../../../utils/array";
-import { calculateAmountToPay } from "../../../../../utils/maths";
+import { calculateAmountToPay } from "./helpers/calculateAmountToPay";
 
 export const Basket = () => {
     const { basketProducts, products } = useContext(OrderContext)
