@@ -34,7 +34,7 @@ export const BasketContent = ({ products }) => {
                         {...product}
                         imageSource={product.imageSource.length > 0 ? product.imageSource : DEFAULT_IMG}
                         onDelete={(event) => handleDelete(product.id, event)}
-                        isAdminMode={isAdminMode}
+                        isClickable={isAdminMode}
                         onClick={isAdminMode ? (() => onClick(product.id)) : undefined}
                         selected={checkCardIsSelected(product.id, cardSelected)}
                     />)}

@@ -3,11 +3,11 @@ import { theme } from "../../../../../../theme";
 import { BasketProductLabel } from "./BasketProductLabel";
 import { BasketProductQuantity } from "./BasketProductQuantity";
 
-export const BasketProductInfos = ({ title, price, quantity, onDelete, selected, isAdminMode }) => {
+export const BasketProductInfos = ({ title, price, quantity, onDelete, selected, isClickable }) => {
     return (
         <BasketProductInfosStyled>
-            <BasketProductLabel title={title} price={price} selected={selected} isAdminMode={isAdminMode} />
-            <BasketProductQuantity quantity={quantity} onClick={onDelete} selected={selected} isAdminMode={isAdminMode} />
+            <BasketProductLabel title={title} price={price} selected={selected} isClickable={isClickable} />
+            <BasketProductQuantity quantity={quantity} onClick={onDelete} selected={selected} isClickable={isClickable} />
         </BasketProductInfosStyled>
     )
 }

@@ -3,17 +3,17 @@ import { theme } from "../../../../../../theme";
 import { BasketProductImg } from "./BasketProductImg";
 import { BasketProductInfos } from "./BasketProductInfos";
 
-export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, isAdminMode, onClick, selected }) => {
+export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, isClickable, onClick, selected }) => {
 
     return (
-        <BasketProductStyled $isAdminMode={isAdminMode} onClick={onClick} $isSelected={selected}>
+        <BasketProductStyled $isClickable={isClickable} onClick={onClick} $isSelected={selected}>
             <BasketProductImg src={imageSource} alt={title} />
             <BasketProductInfos
                 title={title}
                 price={price}
                 quantity={quantity}
                 onDelete={onDelete}
-                isAdminMode={isAdminMode}
+                isClickable={isClickable}
                 selected={selected}
             />
         </BasketProductStyled>
@@ -32,7 +32,7 @@ const BasketProductStyled = styled.li`
     padding: 8px 16px;
 
     &:hover {
-        cursor: ${({ $isAdminMode }) => $isAdminMode ? 'pointer' : 'default'};
+        cursor: ${({ $isClickable }) => $isClickable ? 'pointer' : 'default'};
         user-select: none;
         
         .basket-product_quantity {
@@ -70,7 +70,7 @@ const BasketProductStyled = styled.li`
         }
     }
 
-    ${({ $isAdminMode, $isSelected }) => $isAdminMode && $isSelected && selectedStyles}
+    ${({ $isClickable, $isSelected }) => $isClickable && $isSelected && selectedStyles}
 `;
 
 const selectedStyles = css`
