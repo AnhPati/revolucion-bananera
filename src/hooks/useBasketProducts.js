@@ -9,8 +9,9 @@ export const useBasketProducts = () => {
 
     const handleAddBasketProduct = (productToAdd) => {
         const newBasketProducts = getDeepClone(basketProducts)
+        const idProductToAdd = productToAdd.id
 
-        const isAlready = findObjectById(productToAdd.id, newBasketProducts) !== undefined
+        const isAlready = findObjectById(idProductToAdd, newBasketProducts) !== undefined
 
         const incrementQuantityProduct = () => {
             const productIndex = findIndexById(productToAdd.id, newBasketProducts)
@@ -21,7 +22,7 @@ export const useBasketProducts = () => {
 
         const addProduct = () => {
             const productToAddUpdated = {
-                ...productToAdd,
+                id: idProductToAdd,
                 quantity: 1
             }
 
