@@ -12,7 +12,8 @@ export const BasketContent = ({ products }) => {
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = basketProductSelected.id
 
-    const handleDelete = (productId) => {
+    const handleDelete = (productId, event) => {
+        event.stopPropagation()
         handleDeleteBasketProduct(productId)
     }
 
@@ -25,12 +26,14 @@ export const BasketContent = ({ products }) => {
     return (
         <BasketContentStyled>
             <ul>
+                {console.log('Produit dans le basket avant la liste')}
+                {console.log(products)}
                 {products.map(product =>
                     <BasketProduct
                         key={product.id}
                         {...product}
                         imageSource={product.imageSource.length > 0 ? product.imageSource : DEFAULT_IMG}
-                        onDelete={() => handleDelete(product.id)}
+                        onDelete={(event) => handleDelete(product.id, event)}
                         isAdminMode={isAdminMode}
                         onClick={isAdminMode ? (() => onClick(product.id)) : undefined}
                         selected={checkCardIsSelected(product.id, cardSelected)}
