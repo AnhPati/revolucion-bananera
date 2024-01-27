@@ -2,9 +2,9 @@ import { MdDeleteForever } from "react-icons/md";
 import styled, { css } from "styled-components";
 import { theme } from "../../../../../../theme";
 
-export const BasketProductQuantity = ({ quantity, onClick, selected }) => {
+export const BasketProductQuantity = ({ quantity, onClick, selected, isAdminMode }) => {
     return (
-        <BasketProductQuantityStyled className="basket-product_quantity" onClick={onClick} $selected={selected}>
+        <BasketProductQuantityStyled className="basket-product_quantity" onClick={onClick} $selected={selected} $isAdminMode={isAdminMode}>
             <span>x{quantity}</span>
             <MdDeleteForever />
         </BasketProductQuantityStyled>
@@ -25,7 +25,7 @@ const BasketProductQuantityStyled = styled.div`
         display: none;
     }
 
-    ${({ $selected }) => $selected && selectedStyles}
+    ${({ $selected, $isAdminMode }) => $selected && $isAdminMode && selectedStyles}
 `;
 
 const selectedStyles = css`

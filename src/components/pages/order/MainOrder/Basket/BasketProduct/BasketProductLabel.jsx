@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 import { formatPrice } from "../../../../../../utils/maths";
 import { theme } from "../../../../../../theme";
 
-export const BasketProductLabel = ({ title, price, selected }) => {
+export const BasketProductLabel = ({ title, price, selected, isAdminMode }) => {
     return (
-        <BasketProductLabelStyled $selected={selected}>
+        <BasketProductLabelStyled $selected={selected} $isAdminMode={isAdminMode}>
             <h5>{title}</h5>
             <p>{formatPrice(price)}</p>
         </BasketProductLabelStyled>
@@ -32,7 +32,7 @@ const BasketProductLabelStyled = styled.div`
         font-size: ${theme.fonts.size.SM};
     }
 
-    ${({ $selected }) => $selected && selectedStyles}
+    ${({ $selected, $isAdminMode }) => $selected && $isAdminMode && selectedStyles}
 `;
 
 const selectedStyles = css`
