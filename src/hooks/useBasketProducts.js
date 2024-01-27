@@ -47,23 +47,10 @@ export const useBasketProducts = () => {
         setBasketProducts(newBasketProducts)
     }
 
-    const handleUpdateBasketProduct = async (productSelected) => {
-        const productId = productSelected.id
-
-        const newBasketProducts = getDeepClone(basketProducts)
-        const indexOfProduct = basketProducts.findIndex(product => product.id === productId)
-
-        newBasketProducts[indexOfProduct] = productSelected
-
-        setBasketProductSelected(productSelected)
-        setBasketProducts(newBasketProducts)
-    }
-
     return {
         basketProducts,
         handleAddBasketProduct,
         handleDeleteBasketProduct,
-        handleUpdateBasketProduct,
         basketProductSelected
     }
 }
