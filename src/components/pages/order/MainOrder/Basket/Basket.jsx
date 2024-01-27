@@ -18,7 +18,7 @@ export const Basket = () => {
             {isEmptyArray(basketProducts) ? (
                 <EmptyBasket />
             ) : (
-                <BasketContent products={basketProducts} />
+                <BasketContent />
             )}
             <BasketFooter />
         </BasketStyled>

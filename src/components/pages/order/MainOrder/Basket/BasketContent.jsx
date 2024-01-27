@@ -7,8 +7,8 @@ import { theme } from "../../../../../theme";
 import { findObjectById } from "../../../../../utils/array";
 import { checkCardIsSelected } from "../MenuOrder/helpers/checkCardIsSelected";
 
-export const BasketContent = ({ products }) => {
-    const { handleDeleteBasketProduct, adminMode, handleUpdateBasketProduct, handleSelectProduct, basketProductSelected } = useContext(OrderContext)
+export const BasketContent = () => {
+    const { basketProducts, handleDeleteBasketProduct, adminMode, handleUpdateBasketProduct, handleSelectProduct, basketProductSelected, products } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = basketProductSelected.id
 
@@ -26,18 +26,22 @@ export const BasketContent = ({ products }) => {
     return (
         <BasketContentStyled>
             <ul>
-                {console.log('Produit dans le basket avant la liste')}
-                {console.log(products)}
-                {products.map(product =>
-                    <BasketProduct
-                        key={product.id}
-                        {...product}
-                        imageSource={product.imageSource.length > 0 ? product.imageSource : DEFAULT_IMG}
-                        onDelete={(event) => handleDelete(product.id, event)}
-                        isClickable={isAdminMode}
-                        onClick={isAdminMode ? (() => onClick(product.id)) : undefined}
-                        selected={checkCardIsSelected(product.id, cardSelected)}
-                    />)}
+                {basketProducts.map(basketProduct => {
+                    const menuProduct = findObjectById(basketProduct.id, products)
+
+                    return (
+                        <BasketProduct
+                            key={basketProduct.id}
+                            {...menuProduct}
+                            quantity={basketProduct.quantity}
+                            imageSource={menuProduct.imageSource.length > 0 ? menuProduct.imageSource : DEFAULT_IMG}
+                            onDelete={(event) => handleDelete(basketProduct.id, event)}
+                            isClickable={isAdminMode}
+                            onClick={isAdminMode ? (() => onClick(basketProduct.id)) : undefined}
+                            selected={checkCardIsSelected(basketProduct.id, cardSelected)}
+                        />
+                    )
+                })}
             </ul>
         </BasketContentStyled>
     )
