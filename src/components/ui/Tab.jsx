@@ -20,6 +20,7 @@ const TabStyled = styled.button`
     font-family: 'Open Sans';
     color: ${theme.colors.greySemiDark};
     font-size: ${theme.fonts.size.P0};
+    white-space: nowrap;
     border: 1px solid ${theme.colors.greyLight};
     border-radius: ${theme.borderRadius.round} ${theme.borderRadius.round}  0px 0px;
     box-shadow: ${theme.shadows.subtle};

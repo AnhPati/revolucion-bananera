@@ -1,17 +1,20 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../../../../../theme";
 import { BasketProductImg } from "./BasketProductImg";
 import { BasketProductInfos } from "./BasketProductInfos";
 
-export const BasketProduct = ({ imageSource, title, price, quantity, onClick }) => {
+export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, isClickable, onClick, selected }) => {
+
     return (
-        <BasketProductStyled>
+        <BasketProductStyled $isClickable={isClickable} onClick={onClick} $isSelected={selected}>
             <BasketProductImg src={imageSource} alt={title} />
             <BasketProductInfos
                 title={title}
                 price={price}
                 quantity={quantity}
-                onClick={onClick}
+                onDelete={onDelete}
+                isClickable={isClickable}
+                selected={selected}
             />
         </BasketProductStyled>
     )
@@ -29,6 +32,7 @@ const BasketProductStyled = styled.li`
     padding: 8px 16px;
 
     &:hover {
+        cursor: ${({ $isClickable }) => $isClickable ? 'pointer' : 'default'};
         user-select: none;
         
         .basket-product_quantity {
@@ -65,4 +69,10 @@ const BasketProductStyled = styled.li`
             }
         }
     }
+
+    ${({ $isClickable, $isSelected }) => $isClickable && $isSelected && selectedStyles}
 `;
+
+const selectedStyles = css`
+    background-color: ${theme.colors.primary};
+`

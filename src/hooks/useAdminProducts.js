@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import { fakeMenu } from "../fakeData/fakeMenu"
 import { EMPTY_PRODUCT } from "../enums/product"
-import { filter, getDeepClone } from "../utils/array"
+import { filterArrayWithId, getDeepClone } from "../utils/array"
 
 export const useAdminProducts = () => {
     const [products, setProducts] = useState(fakeMenu.LARGE)
@@ -24,7 +24,7 @@ export const useAdminProducts = () => {
     }
 
     const handleDeleteProduct = (id) => {
-        const newProducts = filter(id, products)
+        const newProducts = filterArrayWithId(id, products)
 
         if (id === productSelected.id) {
             setAdminMode({ ...adminMode, cardSelected: null })
@@ -32,7 +32,7 @@ export const useAdminProducts = () => {
         }
 
         setProducts(newProducts)
-        titleInputRef.current.focus()
+        adminMode.cardSelected && titleInputRef.current.focus()
     }
 
     const handleGenerateNewProducts = () => {
