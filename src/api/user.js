@@ -19,13 +19,11 @@ export const getUser = async (userId) => {
     }
 }
 
-export const createUser = (username) => {
-    const userId = username + '_' + crypto.randomUUID()
-
+export const createUser = (userId) => {
     const docRef = doc(db, 'users', userId)
 
     const newUser = {
-        username: username,
+        username: userId,
         products: fakeMenu.LARGE
     }
 
