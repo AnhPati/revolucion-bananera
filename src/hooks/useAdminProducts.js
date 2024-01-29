@@ -2,7 +2,7 @@ import { useRef, useState } from "react"
 import { fakeMenu } from "../fakeData/fakeMenu"
 import { EMPTY_PRODUCT } from "../enums/product"
 import { filterArrayWithId, getDeepClone } from "../utils/array"
-import { syncProducts } from "../api/product"
+import { getUserProducts, syncProducts } from "../api/product"
 import { useLocation } from "react-router-dom"
 
 export const useAdminProducts = () => {
@@ -74,6 +74,12 @@ export const useAdminProducts = () => {
         setProducts(newProducts)
     }
 
+
+    const initialiseUserProducts = async () => {
+        const userProducts = await getUserProducts(userId)
+        setProducts(userProducts)
+    }
+
     return {
         userId,
         adminMode,
@@ -84,6 +90,7 @@ export const useAdminProducts = () => {
         handleGenerateNewProducts,
         handleSelectProduct,
         handleUpdateProduct,
+        initialiseUserProducts,
         productSelected,
         titleInputRef
     }

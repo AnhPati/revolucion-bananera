@@ -5,6 +5,7 @@ import { MainOrder } from "./MainOrder/MainOrder";
 import OrderContext from "../../../contexts/OrderContext";
 import { useAdminProducts } from "../../../hooks/useAdminProducts";
 import { useBasketProducts } from "../../../hooks/useBasketProducts";
+import { useEffect } from "react";
 
 const OrderPage = () => {
     const {
@@ -17,6 +18,7 @@ const OrderPage = () => {
         handleGenerateNewProducts,
         handleSelectProduct,
         handleUpdateProduct,
+        initialiseUserProducts,
         productSelected,
         titleInputRef
     } = useAdminProducts()
@@ -44,6 +46,11 @@ const OrderPage = () => {
         handleAddBasketProduct,
         handleDeleteBasketProduct
     }
+
+    useEffect(() => {
+        initialiseUserProducts()
+    }, [])
+
 
     return (
         <OrderPageStyled>
