@@ -2,10 +2,14 @@ import { useRef, useState } from "react"
 import { fakeMenu } from "../fakeData/fakeMenu"
 import { EMPTY_PRODUCT } from "../enums/product"
 import { filterArrayWithId, getDeepClone } from "../utils/array"
+import { syncProducts } from "../api/product"
+import { useLocation } from "react-router-dom"
 
 export const useAdminProducts = () => {
+    const location = useLocation()
     const [products, setProducts] = useState(fakeMenu.LARGE)
     const [adminMode, setAdminMode] = useState({
+        userId: location.state.username,
         isAdminMode: false,
         adminPanel: {
             isOpen: true,
@@ -21,6 +25,7 @@ export const useAdminProducts = () => {
         const newProducts = getDeepClone(products)
 
         setProducts([newProduct, ...newProducts])
+        syncProducts(adminMode.userId, products)
     }
 
     const handleDeleteProduct = (id) => {
