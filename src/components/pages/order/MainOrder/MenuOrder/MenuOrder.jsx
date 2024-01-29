@@ -36,32 +36,34 @@ export const MenuOrder = () => {
     const isLoading = products === undefined
 
     return (
-        <MenuOrderStyled>
+        <>
             {isLoading ? (
-                <div className="loader">
+                <LoaderStyled>
                     <h1>Chargement en cours ...</h1>
-                </div>
+                </LoaderStyled>
             ) : isEmptyArray(products) ? (
                 <EmptyMenu />
             ) : (
-                products.map(({ id, imageSource, title, price }) => {
-                    return (
-                        <Card key={id}
-                            id={id}
-                            imgSrc={imageSource ? imageSource : DEFAULT_IMG}
-                            title={title}
-                            leftDescription={formatPrice(price)}
-                            hasDeleteButton={isAdminMode}
-                            onDelete={(event) => onDelete(id, event)}
-                            isHoverable={isAdminMode}
-                            onClick={isAdminMode ? (() => onClick(id)) : undefined}
-                            selected={checkCardIsSelected(id, cardSelected)}
-                            onAdd={(event) => addToBasket(id, event)}
-                        />
-                    )
-                })
+                <MenuOrderStyled>
+                    {products.map(({ id, imageSource, title, price }) => {
+                        return (
+                            <Card key={id}
+                                id={id}
+                                imgSrc={imageSource ? imageSource : DEFAULT_IMG}
+                                title={title}
+                                leftDescription={formatPrice(price)}
+                                hasDeleteButton={isAdminMode}
+                                onDelete={(event) => onDelete(id, event)}
+                                isHoverable={isAdminMode}
+                                onClick={isAdminMode ? (() => onClick(id)) : undefined}
+                                selected={checkCardIsSelected(id, cardSelected)}
+                                onAdd={(event) => addToBasket(id, event)}
+                            />
+                        )
+                    })}
+                </MenuOrderStyled>
             )}
-        </MenuOrderStyled>
+        </>
     )
 }
 
@@ -79,21 +81,21 @@ const MenuOrderStyled = styled.ul`
     &:hover { 
         scrollbar-color: initial;
     }
+`;
 
-    .loader {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+const LoaderStyled = styled.div`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-        h1 {
-            text-align: center;
-            color: ${theme.colors.greyBlue};
-            font-size: ${theme.fonts.size.P4};
-            font-weight: ${theme.fonts.weights.regular};
-            margin: 0;
-        }
+    h1 {
+        text-align: center;
+        color: ${theme.colors.greyBlue};
+        font-size: ${theme.fonts.size.P4};
+        font-weight: ${theme.fonts.weights.regular};
+        margin: 0;
     }
 `;
