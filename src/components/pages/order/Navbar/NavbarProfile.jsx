@@ -6,7 +6,7 @@ import { theme } from '../../../../theme';
 
 export const NavbarProfile = () => {
     const location = useLocation()
-    const username = location.state.userName
+    const username = location.state.username
 
     return (
         <NavbarProfileStyled>

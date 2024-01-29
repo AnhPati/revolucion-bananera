@@ -24,7 +24,7 @@ export const LoginForm = () => {
         setUsername('')
         navigate('/order', {
             state: {
-                userName: username
+                username: username
             }
         })
     }
