@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { theme } from "../../../theme/index"
 import { TextInput } from "../../ui/TextInput";
 import { Button } from "../../ui/Button";
+import { createUser } from "../../../api/user";
 
 export const LoginForm = () => {
     const [inputValue, setInputValue] = useState('')
@@ -17,6 +18,8 @@ export const LoginForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        createUser(inputValue)
         setInputValue('')
         navigate('/order', {
             state: {
