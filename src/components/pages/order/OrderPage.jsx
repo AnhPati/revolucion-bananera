@@ -8,6 +8,7 @@ import { useBasketProducts } from "../../../hooks/useBasketProducts";
 
 const OrderPage = () => {
     const {
+        userId,
         adminMode,
         setAdminMode,
         products,
@@ -28,6 +29,7 @@ const OrderPage = () => {
 
 
     const orderContextValue = {
+        userId,
         adminMode,
         setAdminMode,
         products,

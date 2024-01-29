@@ -1,6 +1,7 @@
 import { createContext } from "react";
 
 const OrderContext = createContext({
+    userId: '',
     adminMode: {
         isAdminMode: false,
         adminPanel: {

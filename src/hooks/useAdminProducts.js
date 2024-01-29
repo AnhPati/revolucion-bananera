@@ -6,10 +6,9 @@ import { syncProducts } from "../api/product"
 import { useLocation } from "react-router-dom"
 
 export const useAdminProducts = () => {
-    const location = useLocation()
+    const userId = useLocation().state.username
     const [products, setProducts] = useState(fakeMenu.LARGE)
     const [adminMode, setAdminMode] = useState({
-        userId: location.state.username,
         isAdminMode: false,
         adminPanel: {
             isOpen: true,
@@ -21,23 +20,24 @@ export const useAdminProducts = () => {
     const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
     const titleInputRef = useRef()
 
-    const handleAddProduct = (newProduct) => {
-        const newProducts = getDeepClone(products)
+    const handleAddProduct = (newProduct, userId) => {
+        const productsCopy = getDeepClone(products)
+        const newProducts = [newProduct, ...productsCopy]
 
-        setProducts([newProduct, ...newProducts])
-        syncProducts(adminMode.userId, products)
+        setProducts(newProducts)
+        syncProducts(userId, newProducts)
     }
 
-    const handleDeleteProduct = (id) => {
-        const newProducts = filterArrayWithId(id, products)
+    const handleDeleteProduct = (productId, userId) => {
+        const newProducts = filterArrayWithId(productId, products)
 
-        if (id === productSelected.id) {
+        if (productId === productSelected.id) {
             setAdminMode({ ...adminMode, cardSelected: null })
             setProductSelected(EMPTY_PRODUCT)
         }
 
         setProducts(newProducts)
-        syncProducts(adminMode.userId, products)
+        syncProducts(userId, newProducts)
         adminMode.cardSelected && titleInputRef.current.focus()
     }
 
@@ -75,6 +75,7 @@ export const useAdminProducts = () => {
     }
 
     return {
+        userId,
         adminMode,
         setAdminMode,
         products,
