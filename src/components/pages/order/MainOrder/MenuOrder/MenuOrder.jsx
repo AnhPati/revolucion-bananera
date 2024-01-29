@@ -8,6 +8,7 @@ import EmptyMenu from "./EmptyMenu";
 import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
 import { DEFAULT_IMG } from "../../../../../enums/product";
 import { findObjectById, isEmptyArray } from "../../../../../utils/array";
+import { Loader } from "./Loader";
 
 
 
@@ -38,9 +39,7 @@ export const MenuOrder = () => {
     return (
         <>
             {isLoading ? (
-                <LoaderStyled>
-                    <h1>Chargement en cours ...</h1>
-                </LoaderStyled>
+                <Loader />
             ) : isEmptyArray(products) ? (
                 <EmptyMenu />
             ) : (
@@ -80,22 +79,5 @@ const MenuOrderStyled = styled.ul`
 
     &:hover { 
         scrollbar-color: initial;
-    }
-`;
-
-const LoaderStyled = styled.div`
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    h1 {
-        text-align: center;
-        color: ${theme.colors.greyBlue};
-        font-size: ${theme.fonts.size.P4};
-        font-weight: ${theme.fonts.weights.regular};
-        margin: 0;
     }
 `;
