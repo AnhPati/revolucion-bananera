@@ -33,9 +33,15 @@ export const MenuOrder = () => {
         handleAddBasketProduct(productToAdd)
     }
 
+    const isLoading = products === undefined
+
     return (
         <MenuOrderStyled>
-            {isEmptyArray(products) ? (
+            {isLoading ? (
+                <div className="loader">
+                    <h1>Chargement en cours ...</h1>
+                </div>
+            ) : isEmptyArray(products) ? (
                 <EmptyMenu />
             ) : (
                 products.map(({ id, imageSource, title, price }) => {
@@ -72,5 +78,22 @@ const MenuOrderStyled = styled.ul`
 
     &:hover { 
         scrollbar-color: initial;
+    }
+
+    .loader {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            text-align: center;
+            color: ${theme.colors.greyBlue};
+            font-size: ${theme.fonts.size.P4};
+            font-weight: ${theme.fonts.weights.regular};
+            margin: 0;
+        }
     }
 `;

@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom"
 
 export const useAdminProducts = () => {
     const userId = useLocation().state.username
-    const [products, setProducts] = useState(fakeMenu.LARGE)
+    const [products, setProducts] = useState(undefined)
     const [adminMode, setAdminMode] = useState({
         isAdminMode: false,
         adminPanel: {
