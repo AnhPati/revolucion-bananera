@@ -6,24 +6,24 @@ import styled from "styled-components"
 import { theme } from "../../../theme/index"
 import { TextInput } from "../../ui/TextInput";
 import { Button } from "../../ui/Button";
-import { createUser } from "../../../api/user";
+import { authenticateUser } from "../../../api/user";
 
 export const LoginForm = () => {
-    const [inputValue, setInputValue] = useState('')
+    const [username, setUsername] = useState('')
     const navigate = useNavigate()
 
     const handleChange = (e) => {
-        setInputValue(e.target.value)
+        setUsername(e.target.value)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        createUser(inputValue)
-        setInputValue('')
+        await authenticateUser(username)
+        setUsername('')
         navigate('/order', {
             state: {
-                userName: inputValue
+                userName: username
             }
         })
     }
@@ -34,7 +34,7 @@ export const LoginForm = () => {
             <hr />
             <h2>Connectez-vous :</h2>
             <TextInput
-                value={inputValue}
+                value={username}
                 onChange={handleChange}
                 placeholder={'Entrer votre prénom'}
                 required

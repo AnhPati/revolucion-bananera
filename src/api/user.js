@@ -12,10 +12,6 @@ export const getUser = async (userId) => {
 
         return userReceived
 
-    } else {
-        const errorUser = `L'utilisateur n'existe pas.`
-
-        return errorUser
     }
 }
 
@@ -28,4 +24,12 @@ export const createUser = (userId) => {
     }
 
     setDoc(docRef, newUser)
+}
+
+export const authenticateUser = async (userId) => {
+    const existingUser = await getUser(userId)
+
+    if (!existingUser) {
+        createUser(userId)
+    }
 }
