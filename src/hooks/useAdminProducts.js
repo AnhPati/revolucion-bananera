@@ -37,6 +37,7 @@ export const useAdminProducts = () => {
         }
 
         setProducts(newProducts)
+        syncProducts(adminMode.userId, products)
         adminMode.cardSelected && titleInputRef.current.focus()
     }
 
