@@ -9,7 +9,7 @@ import { useDisplayMessage } from "../../../../../hooks/useDisplayMessage"
 const AddProductForm = () => {
     const [productValues, setProductValues] = useState(EMPTY_PRODUCT)
     const [submitMessageType, setSubmitMessageType] = useState('')
-    const { handleAddProduct } = useContext(OrderContext)
+    const { handleAddProduct, userId } = useContext(OrderContext)
     const { isAdding, displayMessage } = useDisplayMessage()
 
     const handleChange = (e) => {
@@ -34,7 +34,8 @@ const AddProductForm = () => {
                 id: crypto.randomUUID()
             }
 
-            handleAddProduct(newProduct)
+            console.log("ADDFORM > nouveau produit :", newProduct)
+            handleAddProduct(newProduct, userId)
             setProductValues(EMPTY_PRODUCT)
             setSubmitMessageType('success')
         }
