@@ -26,5 +26,6 @@ const LoginPageStyled = styled.div`
 
     .login_page-logo {
         transform: scale(2.5);
+        margin: 40px 0;
     }
 `;
