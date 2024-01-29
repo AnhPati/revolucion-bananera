@@ -7,6 +7,7 @@ import { theme } from "../../../theme/index"
 import { TextInput } from "../../ui/TextInput";
 import { Button } from "../../ui/Button";
 import { authenticateUser } from "../../../api/user";
+import { LoginFormTitle } from "./LoginFormTitle";
 
 export const LoginForm = () => {
     const [username, setUsername] = useState('')
@@ -30,9 +31,7 @@ export const LoginForm = () => {
 
     return (
         <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-            <h1>Bienvenue chez nous !</h1>
-            <hr />
-            <h2>Connectez-vous :</h2>
+            <LoginFormTitle />
             <TextInput
                 value={username}
                 onChange={handleChange}
@@ -56,20 +55,4 @@ const LoginFormStyled = styled.form`
     align-items: center;
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.SM};
-
-    h1 {
-        font-size: ${theme.fonts.size.P5};
-        font-weight: ${theme.fonts.weights.bold};
-    }
-
-    h2 {
-        font-size: ${theme.fonts.size.P4};
-        font-weight: ${theme.fonts.weights.bold};
-        margin-bottom: ${theme.spacing.sm}
-    }
-
-    hr {
-        width: 100%;
-        border: solid 1.5px ${theme.colors.loginLine};
-    }
 `
