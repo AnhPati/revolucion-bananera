@@ -41,8 +41,9 @@ export const useAdminProducts = () => {
         adminMode.cardSelected && titleInputRef.current.focus()
     }
 
-    const handleGenerateNewProducts = () => {
+    const handleGenerateNewProducts = (userId) => {
         setProducts(fakeMenu.LARGE)
+        syncProducts(userId, fakeMenu.LARGE)
     }
 
     const handleSelectProduct = async (productSelected) => {

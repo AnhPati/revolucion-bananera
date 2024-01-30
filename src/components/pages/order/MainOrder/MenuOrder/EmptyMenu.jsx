@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { theme } from "../../../../../theme";
 
 const EmptyMenu = () => {
-    const { adminMode, handleGenerateNewProducts } = useContext(OrderContext)
+    const { adminMode, handleGenerateNewProducts, userId } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
 
     return (
@@ -20,7 +20,7 @@ const EmptyMenu = () => {
                     </h2>
                     <Button
                         label={'Générer de nouveaux produits'}
-                        onClick={handleGenerateNewProducts}
+                        onClick={() => handleGenerateNewProducts(userId)}
                     />
                 </>
             ) : (
