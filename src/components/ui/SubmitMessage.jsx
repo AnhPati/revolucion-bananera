@@ -37,7 +37,12 @@ const submitErrorStyles = css`
     color: ${theme.colors.red};
 `
 
+const submitUpdateStyles = css`
+    color: ${theme.colors.blue};
+`
+
 const extraSubmitMessageStyles = {
     success: submitSuccesStyles,
-    error: submitErrorStyles
+    error: submitErrorStyles,
+    update: submitUpdateStyles
 }
