@@ -59,12 +59,11 @@ export const useAdminProducts = () => {
         }))
 
         await setProductSelected(productSelected)
-        await handleUpdateProduct(productSelected)
 
         titleInputRef.current.focus()
     }
 
-    const handleUpdateProduct = (productSelected) => {
+    const handleUpdateProduct = async (productSelected, userId) => {
         const productId = productSelected.id
         const newProducts = getDeepClone(products)
         const indexOfProduct = products.findIndex(product => product.id === productId)
@@ -73,6 +72,7 @@ export const useAdminProducts = () => {
 
         setProductSelected(productSelected)
         setProducts(newProducts)
+        syncProducts(userId, newProducts)
     }
 
 

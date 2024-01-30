@@ -4,7 +4,7 @@ import { ProductForm } from "../ProductForm";
 import { UpdateFormMessage } from "./UpdateFormMessage";
 
 const UpdateProductForm = () => {
-    const { productSelected, titleInputRef, handleUpdateProduct } = useContext(OrderContext)
+    const { productSelected, titleInputRef, handleUpdateProduct, userId } = useContext(OrderContext)
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -13,7 +13,7 @@ const UpdateProductForm = () => {
             [name]: value
         }
 
-        handleUpdateProduct(productBeingUpdated)
+        handleUpdateProduct(productBeingUpdated, userId)
     }
 
     return (
