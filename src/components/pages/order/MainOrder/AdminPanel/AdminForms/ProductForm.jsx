@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { TextInput } from "../../../../ui/TextInput"
+import { TextInput } from "../../../../../ui/TextInput"
 import { ImgPreview } from "./ImgPreview"
-import { getTextInputsConfig } from "./helpers/getTextInputsConfig"
-import { theme } from "../../../../../theme"
+import { getTextInputsConfig } from "../helpers/getTextInputsConfig"
+import { theme } from "../../../../../../theme"
 import { forwardRef } from "react"
 
 export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, submitMessageType, children, onFocus, onBlur }, ref) => {

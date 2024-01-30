@@ -1,10 +1,10 @@
 import { useContext, useState } from "react"
-import OrderContext from "../../../../../contexts/OrderContext"
-import { replaceFrenchCommaWithDot } from "../../../../../utils/maths"
-import { EMPTY_PRODUCT } from "../../../../../enums/product"
+import OrderContext from "../../../../../../contexts/OrderContext"
+import { replaceFrenchCommaWithDot } from "../../../../../../utils/maths"
+import { EMPTY_PRODUCT } from "../../../../../../enums/product"
 import { ProductForm } from "./ProductForm"
 import { SubmitButton } from "./SubmitButton"
-import { useDisplayMessage } from "../../../../../hooks/useDisplayMessage"
+import { useDisplayMessage } from "../../../../../../hooks/useDisplayMessage"
 
 const AddProductForm = () => {
     const [productValues, setProductValues] = useState(EMPTY_PRODUCT)
