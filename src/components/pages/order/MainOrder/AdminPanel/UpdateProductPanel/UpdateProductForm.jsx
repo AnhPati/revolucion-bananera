@@ -9,7 +9,7 @@ import { BsCloudCheck } from "react-icons/bs";
 const UpdateProductForm = () => {
     const { productSelected, titleInputRef, handleUpdateProduct, userId } = useContext(OrderContext)
     const [valueOnFocus, setValueOnFocus] = useState(null)
-    const { isAdding: isUpdating, displayMessage } = useDisplayMessage()
+    const { isSubmitting: isUpdating, displayMessage } = useDisplayMessage()
 
     const handleChange = (e) => {
         const { name, value } = e.target

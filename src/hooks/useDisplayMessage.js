@@ -1,14 +1,14 @@
 import { useState } from "react"
 
 export const useDisplayMessage = () => {
-    const [isAdding, setIsAdding] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     const displayMessage = () => {
-        setIsAdding(true)
+        setIsSubmitting(true)
         setTimeout(() => {
-            setIsAdding(false)
+            setIsSubmitting(false)
         }, 2000)
     }
 
-    return { isAdding, displayMessage }
+    return { isSubmitting, displayMessage }
 }

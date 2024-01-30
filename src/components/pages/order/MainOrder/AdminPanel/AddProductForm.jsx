@@ -10,7 +10,7 @@ const AddProductForm = () => {
     const [productValues, setProductValues] = useState(EMPTY_PRODUCT)
     const [submitMessageType, setSubmitMessageType] = useState('')
     const { handleAddProduct, userId } = useContext(OrderContext)
-    const { isAdding, displayMessage } = useDisplayMessage()
+    const { isSubmitting: isAdding, displayMessage } = useDisplayMessage()
 
     const handleChange = (e) => {
         const { name, value } = e.target
