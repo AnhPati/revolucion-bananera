@@ -26,7 +26,8 @@ const OrderPage = () => {
     const {
         basketProducts,
         handleAddBasketProduct,
-        handleDeleteBasketProduct
+        handleDeleteBasketProduct,
+        initialiseUserBasketProducts
     } = useBasketProducts()
 
 
@@ -49,6 +50,7 @@ const OrderPage = () => {
 
     useEffect(() => {
         initialiseUserProducts()
+        initialiseUserBasketProducts(userId)
     }, [])
 
 
