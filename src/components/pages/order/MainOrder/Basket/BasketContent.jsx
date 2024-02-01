@@ -8,13 +8,13 @@ import { findObjectById } from "../../../../../utils/array";
 import { checkCardIsSelected } from "../MenuOrder/helpers/checkCardIsSelected";
 
 export const BasketContent = () => {
-    const { basketProducts, handleDeleteBasketProduct, adminMode, handleSelectProduct, products } = useContext(OrderContext)
+    const { userId, basketProducts, handleDeleteBasketProduct, adminMode, handleSelectProduct, products } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = adminMode.adminPanel.cardSelected
 
     const handleDelete = (productId, event) => {
         event.stopPropagation()
-        handleDeleteBasketProduct(productId)
+        handleDeleteBasketProduct(productId, userId)
     }
 
     const onClick = (id) => {

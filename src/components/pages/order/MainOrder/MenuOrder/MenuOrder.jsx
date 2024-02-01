@@ -19,7 +19,7 @@ export const MenuOrder = () => {
 
     const onDelete = (productId, event) => {
         event.stopPropagation()
-        handleDeleteBasketProduct(productId)
+        handleDeleteBasketProduct(productId, userId)
         handleDeleteProduct(productId, userId)
     }
 
@@ -31,7 +31,7 @@ export const MenuOrder = () => {
     const addToBasket = (id, event) => {
         event.stopPropagation()
         const productToAdd = findObjectById(id, products)
-        handleAddBasketProduct(productToAdd)
+        handleAddBasketProduct(productToAdd, userId)
     }
 
     const isLoading = products === undefined
