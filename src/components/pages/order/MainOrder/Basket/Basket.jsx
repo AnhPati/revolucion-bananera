@@ -7,24 +7,29 @@ import OrderContext from "../../../../../contexts/OrderContext";
 import EmptyBasket from "./EmptyBasket";
 import { theme } from "../../../../../theme";
 import { isEmptyArray } from "../../../../../utils/array";
+import { Loader } from "../MenuOrder/Loader";
 
 export const Basket = () => {
     const { basketProducts, products } = useContext(OrderContext)
-
+    const isLoading = products === undefined
     if (products === undefined) {
-        return <h2>Chargement...</h2>
+        return <Loader />
     }
 
     return (
-        <BasketStyled>
-            <BasketHeader />
-            {isEmptyArray(basketProducts) ? (
-                <EmptyBasket />
-            ) : (
-                <BasketContent />
-            )}
-            <BasketFooter />
-        </BasketStyled>
+        isLoading ? (
+            <Loader />
+        ) : (
+            <BasketStyled>
+                <BasketHeader />
+                {isEmptyArray(basketProducts) ? (
+                    <EmptyBasket />
+                ) : (
+                    <BasketContent />
+                )}
+                <BasketFooter />
+            </BasketStyled>
+        )
     )
 }
 
