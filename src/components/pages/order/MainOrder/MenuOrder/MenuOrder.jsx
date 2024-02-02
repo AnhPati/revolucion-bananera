@@ -8,18 +8,19 @@ import EmptyMenu from "./EmptyMenu";
 import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
 import { DEFAULT_IMG } from "../../../../../enums/product";
 import { findObjectById, isEmptyArray } from "../../../../../utils/array";
+import { Loader } from "./Loader";
 
 
 
 export const MenuOrder = () => {
-    const { products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct, handleDeleteBasketProduct } = useContext(OrderContext)
+    const { userId, products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct, handleDeleteBasketProduct } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = productSelected.id
 
     const onDelete = (productId, event) => {
         event.stopPropagation()
-        handleDeleteBasketProduct(productId)
-        handleDeleteProduct(productId)
+        handleDeleteBasketProduct(productId, userId)
+        handleDeleteProduct(productId, userId)
     }
 
     const onClick = (id) => {
@@ -30,32 +31,38 @@ export const MenuOrder = () => {
     const addToBasket = (id, event) => {
         event.stopPropagation()
         const productToAdd = findObjectById(id, products)
-        handleAddBasketProduct(productToAdd)
+        handleAddBasketProduct(productToAdd, userId)
     }
 
+    const isLoading = products === undefined
+
     return (
-        <MenuOrderStyled>
-            {isEmptyArray(products) ? (
+        <>
+            {isLoading ? (
+                <Loader />
+            ) : isEmptyArray(products) ? (
                 <EmptyMenu />
             ) : (
-                products.map(({ id, imageSource, title, price }) => {
-                    return (
-                        <Card key={id}
-                            id={id}
-                            imgSrc={imageSource ? imageSource : DEFAULT_IMG}
-                            title={title}
-                            leftDescription={formatPrice(price)}
-                            hasDeleteButton={isAdminMode}
-                            onDelete={(event) => onDelete(id, event)}
-                            isHoverable={isAdminMode}
-                            onClick={isAdminMode ? (() => onClick(id)) : undefined}
-                            selected={checkCardIsSelected(id, cardSelected)}
-                            onAdd={(event) => addToBasket(id, event)}
-                        />
-                    )
-                })
+                <MenuOrderStyled>
+                    {products.map(({ id, imageSource, title, price }) => {
+                        return (
+                            <Card key={id}
+                                id={id}
+                                imgSrc={imageSource ? imageSource : DEFAULT_IMG}
+                                title={title}
+                                leftDescription={formatPrice(price)}
+                                hasDeleteButton={isAdminMode}
+                                onDelete={(event) => onDelete(id, event)}
+                                isHoverable={isAdminMode}
+                                onClick={isAdminMode ? (() => onClick(id)) : undefined}
+                                selected={checkCardIsSelected(id, cardSelected)}
+                                onAdd={(event) => addToBasket(id, event)}
+                            />
+                        )
+                    })}
+                </MenuOrderStyled>
             )}
-        </MenuOrderStyled>
+        </>
     )
 }
 

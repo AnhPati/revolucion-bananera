@@ -6,32 +6,34 @@ import styled from "styled-components"
 import { theme } from "../../../theme/index"
 import { TextInput } from "../../ui/TextInput";
 import { Button } from "../../ui/Button";
+import { authenticateUser } from "../../../api/user";
+import { LoginFormTitle } from "./LoginFormTitle";
 
 export const LoginForm = () => {
-    const [inputValue, setInputValue] = useState('')
+    const [username, setUsername] = useState('')
     const navigate = useNavigate()
 
     const handleChange = (e) => {
-        setInputValue(e.target.value)
+        setUsername(e.target.value)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        setInputValue('')
+
+        await authenticateUser(username)
+        setUsername('')
         navigate('/order', {
             state: {
-                userName: inputValue
+                username: username
             }
         })
     }
 
     return (
         <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-            <h1>Bienvenue chez nous !</h1>
-            <hr />
-            <h2>Connectez-vous :</h2>
+            <LoginFormTitle />
             <TextInput
-                value={inputValue}
+                value={username}
                 onChange={handleChange}
                 placeholder={'Entrer votre prénom'}
                 required
@@ -53,20 +55,4 @@ const LoginFormStyled = styled.form`
     align-items: center;
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.SM};
-
-    h1 {
-        font-size: ${theme.fonts.size.P5};
-        font-weight: ${theme.fonts.weights.bold};
-    }
-
-    h2 {
-        font-size: ${theme.fonts.size.P4};
-        font-weight: ${theme.fonts.weights.bold};
-        margin-bottom: ${theme.spacing.sm}
-    }
-
-    hr {
-        width: 100%;
-        border: solid 1.5px ${theme.colors.loginLine};
-    }
 `

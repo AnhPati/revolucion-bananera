@@ -5,12 +5,16 @@ import { MainOrder } from "./MainOrder/MainOrder";
 import OrderContext from "../../../contexts/OrderContext";
 import { useAdminProducts } from "../../../hooks/useAdminProducts";
 import { useBasketProducts } from "../../../hooks/useBasketProducts";
+import { useEffect } from "react";
+import { initialiseUserSession } from "./helpers/initialiseUserSession";
 
 const OrderPage = () => {
     const {
+        userId,
         adminMode,
         setAdminMode,
         products,
+        setProducts,
         handleAddProduct,
         handleDeleteProduct,
         handleGenerateNewProducts,
@@ -22,12 +26,14 @@ const OrderPage = () => {
 
     const {
         basketProducts,
+        setBasketProducts,
         handleAddBasketProduct,
-        handleDeleteBasketProduct
+        handleDeleteBasketProduct,
     } = useBasketProducts()
 
 
     const orderContextValue = {
+        userId,
         adminMode,
         setAdminMode,
         products,
@@ -42,6 +48,11 @@ const OrderPage = () => {
         handleAddBasketProduct,
         handleDeleteBasketProduct
     }
+
+    useEffect(() => {
+        initialiseUserSession(userId, setProducts, setBasketProducts)
+    }, [])
+
 
     return (
         <OrderPageStyled>

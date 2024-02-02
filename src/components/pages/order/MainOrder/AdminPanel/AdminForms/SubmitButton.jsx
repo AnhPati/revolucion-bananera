@@ -1,6 +1,6 @@
 import { FiAlertCircle, FiCheck } from "react-icons/fi"
-import { Button } from "../../../../ui/Button"
-import { SubmitMessage } from "../../../../ui/SubmitMessage"
+import { Button } from "../../../../../ui/Button"
+import { SubmitMessage } from "../../../../../ui/SubmitMessage"
 
 export const SubmitButton = ({ isSubmitted, submitMessageType }) => {
     return (

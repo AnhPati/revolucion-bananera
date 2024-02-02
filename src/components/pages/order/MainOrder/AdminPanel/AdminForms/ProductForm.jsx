@@ -1,11 +1,11 @@
 import styled from "styled-components"
-import { TextInput } from "../../../../ui/TextInput"
+import { TextInput } from "../../../../../ui/TextInput"
 import { ImgPreview } from "./ImgPreview"
-import { getTextInputsConfig } from "./helpers/getTextInputsConfig"
-import { theme } from "../../../../../theme"
+import { getTextInputsConfig } from "../helpers/getTextInputsConfig"
+import { theme } from "../../../../../../theme"
 import { forwardRef } from "react"
 
-export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, submitMessageType, children }, ref) => {
+export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, submitMessageType, children, onFocus, onBlur }, ref) => {
     const textInputs = getTextInputsConfig(product)
 
     return (
@@ -21,6 +21,8 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, 
                             key={textInput.id}
                             {...textInput}
                             onChange={onChange}
+                            onFocus={onFocus}
+                            onBlur={onBlur}
                             variant={'secondary'}
                             ref={ref && textInput.name === 'title' ? ref : null}
                         />

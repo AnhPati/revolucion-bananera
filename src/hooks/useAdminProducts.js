@@ -2,9 +2,12 @@ import { useRef, useState } from "react"
 import { fakeMenu } from "../fakeData/fakeMenu"
 import { EMPTY_PRODUCT } from "../enums/product"
 import { filterArrayWithId, getDeepClone } from "../utils/array"
+import { syncProducts } from "../api/product"
+import { useLocation } from "react-router-dom"
 
 export const useAdminProducts = () => {
-    const [products, setProducts] = useState(fakeMenu.LARGE)
+    const userId = useLocation().state.username
+    const [products, setProducts] = useState(undefined)
     const [adminMode, setAdminMode] = useState({
         isAdminMode: false,
         adminPanel: {
@@ -17,26 +20,30 @@ export const useAdminProducts = () => {
     const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
     const titleInputRef = useRef()
 
-    const handleAddProduct = (newProduct) => {
-        const newProducts = getDeepClone(products)
+    const handleAddProduct = (newProduct, userId) => {
+        const productsCopy = getDeepClone(products)
+        const newProducts = [newProduct, ...productsCopy]
 
-        setProducts([newProduct, ...newProducts])
+        setProducts(newProducts)
+        syncProducts(userId, newProducts)
     }
 
-    const handleDeleteProduct = (id) => {
-        const newProducts = filterArrayWithId(id, products)
+    const handleDeleteProduct = (productId, userId) => {
+        const newProducts = filterArrayWithId(productId, products)
 
-        if (id === productSelected.id) {
+        if (productId === productSelected.id) {
             setAdminMode({ ...adminMode, cardSelected: null })
             setProductSelected(EMPTY_PRODUCT)
         }
 
         setProducts(newProducts)
+        syncProducts(userId, newProducts)
         adminMode.cardSelected && titleInputRef.current.focus()
     }
 
-    const handleGenerateNewProducts = () => {
+    const handleGenerateNewProducts = (userId) => {
         setProducts(fakeMenu.LARGE)
+        syncProducts(userId, fakeMenu.LARGE)
     }
 
     const handleSelectProduct = async (productSelected) => {
@@ -52,12 +59,11 @@ export const useAdminProducts = () => {
         }))
 
         await setProductSelected(productSelected)
-        await handleUpdateProduct(productSelected)
 
         titleInputRef.current.focus()
     }
 
-    const handleUpdateProduct = (productSelected) => {
+    const handleUpdateProduct = async (productSelected, userId) => {
         const productId = productSelected.id
         const newProducts = getDeepClone(products)
         const indexOfProduct = products.findIndex(product => product.id === productId)
@@ -66,12 +72,18 @@ export const useAdminProducts = () => {
 
         setProductSelected(productSelected)
         setProducts(newProducts)
+        syncProducts(userId, newProducts)
     }
 
+
+
+
     return {
+        userId,
         adminMode,
         setAdminMode,
         products,
+        setProducts,
         handleAddProduct,
         handleDeleteProduct,
         handleGenerateNewProducts,

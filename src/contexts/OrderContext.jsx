@@ -1,6 +1,7 @@
 import { createContext } from "react";
 
 const OrderContext = createContext({
+    userId: '',
     adminMode: {
         isAdminMode: false,
         adminPanel: {
@@ -23,7 +24,8 @@ const OrderContext = createContext({
     titleInputRef: {},
     basketProducts: [],
     handleAddBasketProduct: () => { },
-    handleDeleteBasketProduct: () => { }
+    handleDeleteBasketProduct: () => { },
+    initialiseUserProducts: () => { }
 })
 
 export default OrderContext

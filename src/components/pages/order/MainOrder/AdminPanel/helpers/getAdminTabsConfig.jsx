@@ -1,9 +1,9 @@
 import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { MdModeEditOutline } from "react-icons/md"
-import AddProductForm from "../AddProductForm"
-import UpdateProductForm from "../UpdateProductPanel/UpdateProductForm"
-import { HintMessage } from "../UpdateProductPanel/HintMessage"
+import AddProductForm from "../AdminForms/AddProductForm"
+import UpdateProductForm from "../AdminForms/UpdateProductPanel/UpdateProductForm"
+import { HintMessage } from "../AdminForms/UpdateProductPanel/HintMessage"
 
 export const getAdminTabsConfig = ({
     isOpen,

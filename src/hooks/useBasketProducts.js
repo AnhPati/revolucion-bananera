@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { fakeBasket } from "../fakeData/fakeBasket"
 import { filterArrayWithId, findObjectById, findIndexById, getDeepClone } from "../utils/array"
+import { syncBasketProducts } from "../api/basketProduct"
 
 export const useBasketProducts = () => {
     const [basketProducts, setBasketProducts] = useState(fakeBasket.EMPTY)
 
-    const handleAddBasketProduct = (productToAdd) => {
+    const handleAddBasketProduct = (productToAdd, userId) => {
         const newBasketProducts = getDeepClone(basketProducts)
         const idProductToAdd = productToAdd.id
 
@@ -25,6 +26,7 @@ export const useBasketProducts = () => {
             }
 
             setBasketProducts([productToAddUpdated, ...newBasketProducts])
+            syncBasketProducts(userId, [productToAddUpdated, ...newBasketProducts])
         }
 
         if (isAlready) {
@@ -35,15 +37,17 @@ export const useBasketProducts = () => {
         }
     }
 
-    const handleDeleteBasketProduct = (id) => {
+    const handleDeleteBasketProduct = (id, userId) => {
         const newBasketProducts = filterArrayWithId(id, basketProducts)
 
         setBasketProducts(newBasketProducts)
+        syncBasketProducts(userId, newBasketProducts)
     }
 
     return {
         basketProducts,
+        setBasketProducts,
         handleAddBasketProduct,
-        handleDeleteBasketProduct
+        handleDeleteBasketProduct,
     }
 }
