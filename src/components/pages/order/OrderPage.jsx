@@ -48,9 +48,13 @@ const OrderPage = () => {
         handleDeleteBasketProduct
     }
 
-    useEffect(() => {
-        initialiseUserProducts()
+    const initialiseUserSession = async () => {
+        await initialiseUserProducts()
         initialiseUserBasketProducts(userId)
+    }
+
+    useEffect(() => {
+        initialiseUserSession()
     }, [])
 
 
