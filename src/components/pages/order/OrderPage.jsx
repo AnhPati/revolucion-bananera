@@ -6,6 +6,7 @@ import OrderContext from "../../../contexts/OrderContext";
 import { useAdminProducts } from "../../../hooks/useAdminProducts";
 import { useBasketProducts } from "../../../hooks/useBasketProducts";
 import { useEffect } from "react";
+import { initialiseUserSession } from "./helpers/initialiseUserSession";
 
 const OrderPage = () => {
     const {
@@ -13,21 +14,21 @@ const OrderPage = () => {
         adminMode,
         setAdminMode,
         products,
+        setProducts,
         handleAddProduct,
         handleDeleteProduct,
         handleGenerateNewProducts,
         handleSelectProduct,
         handleUpdateProduct,
-        initialiseUserProducts,
         productSelected,
         titleInputRef
     } = useAdminProducts()
 
     const {
         basketProducts,
+        setBasketProducts,
         handleAddBasketProduct,
         handleDeleteBasketProduct,
-        initialiseUserBasketProducts
     } = useBasketProducts()
 
 
@@ -48,13 +49,8 @@ const OrderPage = () => {
         handleDeleteBasketProduct
     }
 
-    const initialiseUserSession = async () => {
-        await initialiseUserProducts()
-        initialiseUserBasketProducts(userId)
-    }
-
     useEffect(() => {
-        initialiseUserSession()
+        initialiseUserSession(userId, setProducts, setBasketProducts)
     }, [])
 
 

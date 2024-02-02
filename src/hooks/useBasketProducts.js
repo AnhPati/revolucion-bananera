@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { fakeBasket } from "../fakeData/fakeBasket"
 import { filterArrayWithId, findObjectById, findIndexById, getDeepClone } from "../utils/array"
-import { getUserBasketProducts, syncBasketProducts } from "../api/basketProduct"
+import { syncBasketProducts } from "../api/basketProduct"
 
 export const useBasketProducts = () => {
     const [basketProducts, setBasketProducts] = useState(fakeBasket.EMPTY)
@@ -44,17 +44,10 @@ export const useBasketProducts = () => {
         syncBasketProducts(userId, newBasketProducts)
     }
 
-    const initialiseUserBasketProducts = (userId) => {
-        const userProducts = getUserBasketProducts(userId)
-
-        userProducts && setBasketProducts(userProducts)
-        console.log('userProducts', userProducts)
-    }
-
     return {
         basketProducts,
+        setBasketProducts,
         handleAddBasketProduct,
         handleDeleteBasketProduct,
-        initialiseUserBasketProducts
     }
 }
