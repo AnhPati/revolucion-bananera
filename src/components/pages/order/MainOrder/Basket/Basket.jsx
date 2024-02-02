@@ -12,24 +12,18 @@ import { Loader } from "../MenuOrder/Loader";
 export const Basket = () => {
     const { basketProducts, products } = useContext(OrderContext)
     const isLoading = products === undefined
-    if (products === undefined) {
-        return <Loader />
-    }
 
     return (
-        isLoading ? (
-            <Loader />
-        ) : (
-            <BasketStyled>
-                <BasketHeader />
-                {isEmptyArray(basketProducts) ? (
-                    <EmptyBasket />
-                ) : (
-                    <BasketContent />
-                )}
-                <BasketFooter />
-            </BasketStyled>
-        )
+
+        <BasketStyled>
+            <BasketHeader />
+            {isEmptyArray(basketProducts) ? (
+                <EmptyBasket isLoading={isLoading} />
+            ) : (
+                <BasketContent />
+            )}
+            <BasketFooter />
+        </BasketStyled>
     )
 }
 
