@@ -9,7 +9,7 @@ export const AdminPanelAnimation = css`
 
     &.admin_panel-animation-appear-active {    
         transform: translateY(0);
-        transition: ${theme.animations.speed.quick};
+        transition: ${theme.animations.speed.quick} ease-out;
         opacity: 100%;
     }
 `;
@@ -85,7 +85,7 @@ export const BasketProductAnimation = css`
 
     .basket_product-animation-appear-active {    
         transform: translateX(0);
-        transition: ${theme.animations.speed.extraQuick};
+        transition: ${theme.animations.speed.extraQuick} ease-out;
         opacity: 100%;
     }
 
@@ -96,7 +96,7 @@ export const BasketProductAnimation = css`
 
     .basket_product-animation-enter-active {    
         transform: translateX(0);
-        transition: ${theme.animations.speed.extraQuick};
+        transition: ${theme.animations.speed.extraQuick} ease-out;
         opacity: 100%;
     }
 
@@ -108,6 +108,6 @@ export const BasketProductAnimation = css`
     .basket_product-animation-exit-active {  
         transform: translateX(-100px);
         opacity: 0%;  
-        transition: ${theme.animations.speed.extraQuick};
+        transition: ${theme.animations.speed.extraQuick} ease-in;
     }
 `;
