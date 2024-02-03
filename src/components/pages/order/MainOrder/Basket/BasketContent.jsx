@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { BasketProduct } from "./BasketProduct/BasketProduct";
 import { DEFAULT_IMG } from "../../../../../enums/product";
 import { useContext } from "react";
@@ -7,6 +7,7 @@ import { theme } from "../../../../../theme";
 import { findObjectById } from "../../../../../utils/array";
 import { checkCardIsSelected } from "../MenuOrder/helpers/checkCardIsSelected";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { BasketProductAnimation } from "../../../../../theme/animations";
 
 export const BasketContent = () => {
     const { userId, basketProducts, handleDeleteBasketProduct, adminMode, handleSelectProduct, products } = useContext(OrderContext)
@@ -33,7 +34,7 @@ export const BasketContent = () => {
                             <CSSTransition
                                 key={basketProduct.id}
                                 appear={true}
-                                classNames={'basket_card-transition'}
+                                classNames={'basket-product'}
                                 timeout={500}
                             >
                                 <BasketProduct
@@ -69,37 +70,6 @@ const BasketContentStyled = styled.div`
         margin: 0;
         padding: 20px 16px;
 
-        .basket_card-transition-appear {
-            transform: translateX(100px);
-            opacity: 0%;
-        }
-
-        .basket_card-transition-appear-active {    
-            transform: translateX(0);
-            transition: 0.5s;
-            opacity: 100%;
-        }
-
-        .basket_card-transition-enter {
-            transform: translateX(100px);
-            opacity: 0%;
-        }
-
-        .basket_card-transition-enter-active {    
-            transform: translateX(0);
-            transition: 0.5s;
-            opacity: 100%;
-        }
-
-        .basket_card-transition-exit {    
-            transform: translateX(0);     
-            opacity: 100%;
-        }
-
-        .basket_card-transition-exit-active {  
-            transform: translateX(-100px);
-            opacity: 0%;  
-            transition: 0.5s;
-        }
+        ${BasketProductAnimation}
     }
 `;

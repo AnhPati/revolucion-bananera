@@ -40,3 +40,38 @@ export const ImgPreviewAnimation = css`
     opacity: 0%;
     }
 `;
+
+export const BasketProductAnimation = css`
+    .basket-product-appear {
+        transform: translateX(100px);
+        opacity: 0%;
+    }
+
+    .basket-product-appear-active {    
+        transform: translateX(0);
+        transition: 0.5s;
+        opacity: 100%;
+    }
+
+    .basket-product-enter {
+        transform: translateX(100px);
+        opacity: 0%;
+    }
+
+    .basket-product-enter-active {    
+        transform: translateX(0);
+        transition: 0.5s;
+        opacity: 100%;
+    }
+
+    .basket-product-exit {    
+        transform: translateX(0);     
+        opacity: 100%;
+    }
+
+    .basket-product-exit-active {  
+        transform: translateX(-100px);
+        opacity: 0%;  
+        transition: 0.5s;
+    }
+`;
