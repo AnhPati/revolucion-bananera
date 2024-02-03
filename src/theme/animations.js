@@ -12,3 +12,31 @@ export const AdminPanelAnimation = css`
         opacity: 100%;
     }
 `;
+
+export const ImgPreviewAnimation = css`
+    &.img-preview-appear {
+    opacity: 0%;
+    }
+
+    &.img-preview-appear-active {
+    transition: 1s;
+    opacity: 100%;
+    }
+
+    &.img-preview-enter {
+    opacity: 0%;
+    }
+
+    &.img-preview-enter-active {
+    transition: 1s;
+    opacity: 100%;
+    }
+
+    &.img-preview-exit {
+    opacity: 100%;
+    }
+
+    &.img-preview-exit-active {
+    opacity: 0%;
+    }
+`;

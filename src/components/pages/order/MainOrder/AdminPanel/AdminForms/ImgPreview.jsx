@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../../../../../theme";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { ImgPreviewAnimation } from "../../../../../../theme/animations";
 
 export const ImgPreview = ({ src, alt }) => {
     return (
@@ -34,31 +35,7 @@ const ImgPreviewStyled = styled.div`
         max-width: 100px;
         max-height: 100px;
 
-        &.img-preview-appear {
-            opacity: 0%;
-        }
-
-        &.img-preview-appear-active {
-            transition: 1s;
-            opacity: 100%;
-        }
-
-        &.img-preview-enter {
-            opacity: 0%;
-        }
-
-        &.img-preview-enter-active {
-            transition: 1s;
-            opacity: 100%;
-        }
-
-        &.img-preview-exit {
-            opacity: 100%;
-        }
-
-        &.img-preview-exit-active {
-            opacity: 0%;
-        }
+        ${ImgPreviewAnimation}
     }
 
     p {
