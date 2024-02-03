@@ -70,30 +70,30 @@ const BasketContentStyled = styled.div`
         padding: 20px 16px;
 
         .basket_card-transition-appear {
-                transform: translateX(100px);
-                opacity: 0%;
+            transform: translateX(100px);
+            opacity: 0%;
         }
 
         .basket_card-transition-appear-active {    
-                transform: translateX(0);
-                transition: 0.5s;
-                opacity: 100%;
+            transform: translateX(0);
+            transition: 0.5s;
+            opacity: 100%;
         }
 
         .basket_card-transition-enter {
-                transform: translateX(100px);
-                opacity: 0%;
+            transform: translateX(100px);
+            opacity: 0%;
         }
 
         .basket_card-transition-enter-active {    
-                transform: translateX(0);
-                transition: 0.5s;
-                opacity: 100%;
+            transform: translateX(0);
+            transition: 0.5s;
+            opacity: 100%;
         }
 
         .basket_card-transition-exit {    
-                transform: translateX(0);     
-                opacity: 100%;
+            transform: translateX(0);     
+            opacity: 100%;
         }
 
         .basket_card-transition-exit-active {  
