@@ -34,7 +34,7 @@ export const BasketContent = () => {
                             <CSSTransition
                                 key={basketProduct.id}
                                 appear={true}
-                                classNames={'basket-product'}
+                                classNames={'basket_product-animation'}
                                 timeout={500}
                             >
                                 <BasketProduct

@@ -15,7 +15,7 @@ const AdminPanel = () => {
             <CSSTransition
                 key={'admin-panel'}
                 appear={true}
-                classNames={'admin-panel'}
+                classNames={'admin_panel-animation'}
                 timeout={500}
             >
                 <AdminPanelStyled>

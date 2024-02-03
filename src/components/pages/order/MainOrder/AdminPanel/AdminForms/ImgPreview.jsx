@@ -11,7 +11,7 @@ export const ImgPreview = ({ src, alt }) => {
                     <CSSTransition
                         key={alt}
                         appear={true}
-                        classNames={'img-preview'}
+                        classNames={'img_preview-animation'}
                         timeout={{ enter: 1000, exit: 0 }}
                     >
                         <img src={src} alt={alt} />
