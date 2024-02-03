@@ -4,6 +4,7 @@ import AdminPanelContent from "./AdminPanelContent";
 import OrderContext from "../../../../../contexts/OrderContext";
 import { useContext } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { AdminPanelAnimation } from "../../../../../theme/animations";
 
 const AdminPanel = () => {
     const { adminMode } = useContext(OrderContext)
@@ -35,14 +36,5 @@ const AdminPanelStyled = styled.div`
     right: 0;
     z-index: 10;
 
-    &.admin-panel-appear {
-        transform: translateY(250px);
-        opacity: 0%;
-    }
-
-    &.admin-panel-appear-active {    
-        transform: translateY(0);
-        transition: 0.5s;
-        opacity: 100%;
-    }
+    ${AdminPanelAnimation}
 `
