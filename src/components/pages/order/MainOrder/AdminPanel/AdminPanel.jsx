@@ -45,15 +45,4 @@ const AdminPanelStyled = styled.div`
         transition: 0.5s;
         opacity: 100%;
     }
-
-    &.admin-panel-exit {    
-        transform: translateY(0);     
-        opacity: 100%;
-    }
-
-    &.admin-panel-exit-active {  
-        transform: translateY(-250px);
-        opacity: 0%;  
-        transition: 0.5s;
-    }
 `
