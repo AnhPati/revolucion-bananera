@@ -1,11 +1,12 @@
 import { MdDeleteForever } from "react-icons/md";
 import styled, { css } from "styled-components";
 import { theme } from "../../../../../../theme";
+import { CasinoEffect } from "../../../../../ui/CasinoEffect";
 
 export const BasketProductQuantity = ({ quantity, onClick, selected, isClickable }) => {
     return (
         <BasketProductQuantityStyled className="basket-product_quantity" onClick={onClick} $selected={selected} $isClickable={isClickable}>
-            <span>x{quantity}</span>
+            <CasinoEffect count={`x${quantity}`} />
             <MdDeleteForever />
         </BasketProductQuantityStyled>
     )
