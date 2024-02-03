@@ -1,6 +1,7 @@
 import { TiDelete } from "react-icons/ti";
 import styled from "styled-components";
 import { theme } from "../../../theme";
+import { fadeInRight } from "../../../theme/animations";
 
 export const RemoveButton = ({ onClick }) => {
     return (
@@ -14,6 +15,7 @@ const RemoveButtonStyled = styled.span`
     position: absolute;
     right: 15px;
     top: 15px;
+    animation: ${fadeInRight} ${theme.animations.speed.quick} ease-out;
 
     :hover {
             color: ${theme.colors.red};

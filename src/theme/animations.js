@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css, keyframes } from "styled-components";
 import { theme } from ".";
 
 export const AdminPanelAnimation = css`
@@ -13,6 +13,18 @@ export const AdminPanelAnimation = css`
         opacity: 100%;
     }
 `;
+
+export const fadeInRight = keyframes`
+    0% {
+        transform: translateX(100%);
+        opacity: 0%;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 100%;
+    }
+`
 
 export const ImgPreviewAnimation = css`
     &.img_preview-animation-appear {

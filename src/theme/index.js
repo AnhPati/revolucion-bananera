@@ -71,7 +71,7 @@ const shadows = {
 
 const animations = {
   speed: {
-    extraQuick: '3000ms',
+    extraQuick: '300ms',
     quick: '500ms',
     normal: '1000ms'
   }
