@@ -54,6 +54,29 @@ export const ImgPreviewAnimation = css`
     }
 `;
 
+export const ProductCardAnimation = css`
+    .product-card-enter {
+        transform: translateX(-120px);
+        opacity: 10%;
+    }
+
+    .product-card-enter-active {    
+        transform: translateX(0);
+        transition: ${theme.animations.speed.extraQuick} ease-out;
+        opacity: 100%;
+    }
+
+    .product-card-exit {
+        transform: translateX(0);
+        opacity: 100%;
+    }
+
+    .product-card-exit-active {   
+        transition: ${theme.animations.speed.extraQuick} ease-out;
+        opacity: 10%;
+    }
+`;
+
 export const BasketProductAnimation = css`
     .basket_product-animation-appear {
         transform: translateX(100px);

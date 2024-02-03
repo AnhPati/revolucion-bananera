@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useContext } from "react";
 import { Card } from "../../../../ui/Card/Card";
 import { formatPrice } from "../../../../../utils/maths";
@@ -10,6 +10,7 @@ import { DEFAULT_IMG } from "../../../../../enums/product";
 import { findObjectById, isEmptyArray } from "../../../../../utils/array";
 import { Loader } from "./Loader";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { ProductCardAnimation } from "../../../../../theme/animations";
 
 
 
@@ -90,24 +91,5 @@ const MenuOrderStyled = styled.ul`
         scrollbar-color: initial;
     }
 
-    .product-card-enter {
-        transform: translateX(-120px);
-        opacity: 10%;
-    }
-
-    .product-card-enter-active {    
-        transform: translateX(0);
-        transition: ${theme.animations.speed.extraQuick} ease-out;
-        opacity: 100%;
-    }
-
-    .product-card-exit {
-        transform: translateX(0);
-        opacity: 100%;
-    }
-
-    .product-card-exit-active {   
-        transition: ${theme.animations.speed.extraQuick} ease-out;
-        opacity: 10%;
-    }
+    ${ProductCardAnimation}
 `;
