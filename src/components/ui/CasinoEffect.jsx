@@ -1,5 +1,6 @@
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components";
+import { theme } from "../../theme";
 
 export const CasinoEffect = ({ count }) => {
     return (
@@ -29,7 +30,7 @@ const CasinoEffectStyled = styled.div`
 
         &.casino-count-enter-active {    
                 transform: translateY(0);
-                transition: 0.3s;
+                transition: ${theme.animations.speed.extraQuick};;
                 opacity: 100%;
         }
 
@@ -44,7 +45,7 @@ const CasinoEffectStyled = styled.div`
         &.casino-count-exit-active {  
             transform: translateY(-50px);
             opacity: 0%;  
-            transition: 0.3s;
+            transition: ${theme.animations.speed.quick};;
         }
     }
 `;

@@ -35,7 +35,7 @@ export const BasketContent = () => {
                                 key={basketProduct.id}
                                 appear={true}
                                 classNames={'basket_product-animation'}
-                                timeout={500}
+                                timeout={300}
                             >
                                 <BasketProduct
                                     {...menuProduct}

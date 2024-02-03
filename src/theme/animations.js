@@ -1,4 +1,5 @@
 import { css } from "styled-components";
+import { theme } from ".";
 
 export const AdminPanelAnimation = css`
     &.admin_panel-animation-appear {
@@ -8,7 +9,7 @@ export const AdminPanelAnimation = css`
 
     &.admin_panel-animation-appear-active {    
         transform: translateY(0);
-        transition: 0.5s;
+        transition: ${theme.animations.speed.quick};
         opacity: 100%;
     }
 `;
@@ -19,7 +20,7 @@ export const ImgPreviewAnimation = css`
     }
 
     &.img_preview-animation-appear-active {
-        transition: 1s;
+        transition: ${theme.animations.speed.normal};
         opacity: 100%;
     }
 
@@ -28,7 +29,7 @@ export const ImgPreviewAnimation = css`
     }
 
     &.img_preview-animation-enter-active {
-        transition: 1s;
+        transition: ${theme.animations.speed.normal};
         opacity: 100%;
     }
 
@@ -49,7 +50,7 @@ export const BasketProductAnimation = css`
 
     .basket_product-animation-appear-active {    
         transform: translateX(0);
-        transition: 0.5s;
+        transition: ${theme.animations.speed.extraQuick};
         opacity: 100%;
     }
 
@@ -60,7 +61,7 @@ export const BasketProductAnimation = css`
 
     .basket_product-animation-enter-active {    
         transform: translateX(0);
-        transition: 0.5s;
+        transition: ${theme.animations.speed.extraQuick};
         opacity: 100%;
     }
 
@@ -72,6 +73,6 @@ export const BasketProductAnimation = css`
     .basket_product-animation-exit-active {  
         transform: translateX(-100px);
         opacity: 0%;  
-        transition: 0.5s;
+        transition: ${theme.animations.speed.extraQuick};
     }
 `;
