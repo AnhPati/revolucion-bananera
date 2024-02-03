@@ -7,7 +7,7 @@ export const CasinoEffect = ({ count }) => {
             <CSSTransition
                 key={count}
                 classNames={'casino-count'}
-                timeout={500}
+                timeout={300}
             >
                 <span>{count}</span>
             </CSSTransition>
