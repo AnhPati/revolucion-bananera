@@ -69,6 +69,14 @@ const shadows = {
   basketProductShadow: "-4px 4px 15px 0px rgba(0, 0, 0, 0.20)",
 }
 
+const animations = {
+  speed: {
+    extraQuick: '300ms',
+    quick: '500ms',
+    normal: '1000ms'
+  }
+}
+
 export const theme = {
   colors,
   fonts,
@@ -76,4 +84,5 @@ export const theme = {
   borderRadius,
   shadows,
   spacing,
+  animations
 }

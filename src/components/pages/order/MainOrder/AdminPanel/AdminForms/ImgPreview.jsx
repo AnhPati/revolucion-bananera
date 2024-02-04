@@ -1,15 +1,27 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../../../../../theme";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { ImgPreviewAnimation } from "../../../../../../theme/animations";
 
 export const ImgPreview = ({ src, alt }) => {
     return (
         <ImgPreviewStyled $empty={src ? false : true}>
             {src ? (
-                <img src={src} alt={alt} />
+                <TransitionGroup component={null}>
+                    <CSSTransition
+                        key={alt}
+                        appear={true}
+                        classNames={'img_preview-animation'}
+                        timeout={{ enter: 1000, exit: 0 }}
+                    >
+                        <img src={src} alt={alt} />
+                    </CSSTransition>
+                </TransitionGroup>
             ) : (
                 <p>Aucune image</p>
-            )}
-        </ImgPreviewStyled>
+            )
+            }
+        </ImgPreviewStyled >
     )
 }
 
@@ -22,6 +34,8 @@ const ImgPreviewStyled = styled.div`
     img {
         max-width: 100px;
         max-height: 100px;
+
+        ${ImgPreviewAnimation}
     }
 
     p {

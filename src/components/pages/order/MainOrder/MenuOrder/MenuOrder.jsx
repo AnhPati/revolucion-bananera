@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useContext } from "react";
 import { Card } from "../../../../ui/Card/Card";
 import { formatPrice } from "../../../../../utils/maths";
@@ -9,6 +9,8 @@ import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
 import { DEFAULT_IMG } from "../../../../../enums/product";
 import { findObjectById, isEmptyArray } from "../../../../../utils/array";
 import { Loader } from "./Loader";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { ProductCardAnimation } from "../../../../../theme/animations";
 
 
 
@@ -44,22 +46,30 @@ export const MenuOrder = () => {
                 <EmptyMenu />
             ) : (
                 <MenuOrderStyled>
-                    {products.map(({ id, imageSource, title, price }) => {
-                        return (
-                            <Card key={id}
-                                id={id}
-                                imgSrc={imageSource ? imageSource : DEFAULT_IMG}
-                                title={title}
-                                leftDescription={formatPrice(price)}
-                                hasDeleteButton={isAdminMode}
-                                onDelete={(event) => onDelete(id, event)}
-                                isHoverable={isAdminMode}
-                                onClick={isAdminMode ? (() => onClick(id)) : undefined}
-                                selected={checkCardIsSelected(id, cardSelected)}
-                                onAdd={(event) => addToBasket(id, event)}
-                            />
-                        )
-                    })}
+                    <TransitionGroup component={null}>
+                        {products.map(({ id, imageSource, title, price }) => {
+                            return (
+                                <CSSTransition
+                                    key={id}
+                                    classNames={'product-card'}
+                                    timeout={300}
+                                >
+                                    <Card
+                                        id={id}
+                                        imgSrc={imageSource ? imageSource : DEFAULT_IMG}
+                                        title={title}
+                                        leftDescription={formatPrice(price)}
+                                        hasDeleteButton={isAdminMode}
+                                        onDelete={(event) => onDelete(id, event)}
+                                        isHoverable={isAdminMode}
+                                        onClick={isAdminMode ? (() => onClick(id)) : undefined}
+                                        selected={checkCardIsSelected(id, cardSelected)}
+                                        onAdd={(event) => addToBasket(id, event)}
+                                    />
+                                </CSSTransition>
+                            )
+                        })}
+                    </TransitionGroup>
                 </MenuOrderStyled>
             )}
         </>
@@ -80,4 +90,6 @@ const MenuOrderStyled = styled.ul`
     &:hover { 
         scrollbar-color: initial;
     }
+
+    ${ProductCardAnimation}
 `;

@@ -4,10 +4,12 @@ import { theme } from "../../../../../theme";
 import { calculateAmountToPay } from "./helpers/calculateAmountToPay";
 import { useContext } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
+import { CasinoEffect } from "../../../../ui/CasinoEffect";
 
 export const BasketHeader = () => {
     const { basketProducts, products } = useContext(OrderContext)
     const amountToPay = calculateAmountToPay(basketProducts, products)
+
 
     return (
         <BasketHeaderStyled>
@@ -15,7 +17,7 @@ export const BasketHeader = () => {
                 Total
             </h3>
             <h3>
-                {formatPrice(amountToPay)}
+                <CasinoEffect count={formatPrice(amountToPay)} />
             </h3>
         </BasketHeaderStyled>
     )
@@ -36,5 +38,9 @@ const BasketHeaderStyled = styled.div`
         font-size: ${theme.fonts.size.P4};
         font-weight: ${theme.fonts.weights.regular};
         letter-spacing: 2px;
+
+        .casino-container {
+            
+        }
     }
 `;
