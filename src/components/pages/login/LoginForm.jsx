@@ -20,11 +20,12 @@ export const LoginForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        await authenticateUser(username)
+        const userReceived = await authenticateUser(username)
+
         setUsername('')
         navigate('/order', {
             state: {
-                username: username
+                username: userReceived.username
             }
         })
     }

@@ -34,7 +34,6 @@ const AddProductForm = () => {
                 id: crypto.randomUUID()
             }
 
-            console.log("ADDFORM > nouveau produit :", newProduct)
             handleAddProduct(newProduct, userId)
             setProductValues(EMPTY_PRODUCT)
             setSubmitMessageType('success')

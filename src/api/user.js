@@ -15,7 +15,7 @@ export const getUser = async (userId) => {
     }
 }
 
-export const createUser = (userId) => {
+export const createUser = async (userId) => {
     const docRef = doc(db, 'users', userId)
 
     const newUser = {
@@ -23,13 +23,17 @@ export const createUser = (userId) => {
         products: fakeMenu.LARGE
     }
 
-    setDoc(docRef, newUser)
+    await setDoc(docRef, newUser)
+
+    return newUser
 }
 
 export const authenticateUser = async (userId) => {
     const existingUser = await getUser(userId)
 
     if (!existingUser) {
-        createUser(userId)
+        return await createUser(userId)
     }
+
+    return existingUser
 }
