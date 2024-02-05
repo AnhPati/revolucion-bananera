@@ -9,6 +9,7 @@ import { GoMegaphone } from "react-icons/go"
 
 export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, submitMessageType, children, onFocus, onBlur }, ref) => {
     const textInputs = getTextInputsConfig(product)
+    const priceTextInput = textInputs[2]
 
     return (
         <ProductFormStyled action='submit' onSubmit={onSubmit}>
@@ -18,19 +19,29 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, 
             />
             <div className='inputs-container'>
                 {textInputs.map(textInput => {
-                    return (
-                        <TextInput
-                            key={textInput.id}
-                            {...textInput}
-                            onChange={onChange}
-                            onFocus={onFocus}
-                            onBlur={onBlur}
-                            variant={'secondary'}
-                            ref={ref && textInput.name === 'title' ? ref : null}
-                        />
-                    )
+                    if (textInput.id < 2) {
+                        return (
+                            <TextInput
+                                key={textInput.id}
+                                {...textInput}
+                                onChange={onChange}
+                                onFocus={onFocus}
+                                onBlur={onBlur}
+                                variant={'secondary'}
+                                ref={ref && textInput.name === 'title' ? ref : null}
+                            />
+                        )
+                    }
                 })}
                 <div className='last-inputs-container'>
+                    <TextInput
+                        {...priceTextInput}
+                        onChange={onChange}
+                        onFocus={onFocus}
+                        onBlur={onBlur}
+                        variant={'secondary'}
+                        ref={null}
+                    />
                     <div className="input-select">
                         <FiPackage />
                         <select name="is-available" id="stock">
