@@ -67,6 +67,39 @@ const ProductFormStyled = styled.form`
         grid-area: 1 / 2 / 4 / 5;
         display: grid;
         grid-template-rows: repeat(3, 1fr);
+
+        .last-inputs-container {
+            display: flex;
+            gap: 8px;
+
+            .input-select {
+                display: inline-flex;
+                padding: 9.75px 16px;
+                align-items: center;
+                gap: 13px;
+                background-color: #F5F5F7;
+                border-radius: 5px;
+
+                select {
+                    background-color: #F5F5F7;
+                    border: none;
+                    color: #17161A;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+
+                    &:focus-visible {
+                        outline: none;
+                    }
+                }
+
+                svg {
+                    font-size: 16px;
+                    color: #747B91;
+                }
+            }
+        }
     }
 
     .form-footer {
