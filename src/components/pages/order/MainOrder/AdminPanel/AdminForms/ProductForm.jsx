@@ -80,22 +80,24 @@ const ProductFormStyled = styled.form`
         grid-template-rows: repeat(3, 1fr);
 
         .last-inputs-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 8px;
 
             .input-select {
                 display: inline-flex;
-                padding: 9.75px 16px;
+                padding: 8px 16px;
                 align-items: center;
                 gap: 13px;
                 background-color: #F5F5F7;
                 border-radius: 5px;
 
                 select {
+                    width: 100%;
                     background-color: #F5F5F7;
                     border: none;
                     color: #17161A;
-                    font-size: 14px;
+                    font-size: 15px;
                     font-style: normal;
                     font-weight: 400;
                     line-height: normal;
