@@ -3,11 +3,14 @@ import { theme } from '../../../theme';
 import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
 import { RemoveButton } from './RemoveButton';
+import { Ribbon } from '../Ribbon';
 
-export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd }) => {
 
+export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, isPublicised }) => {
+    console.log(isPublicised)
     return (
         <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected}>
+            {isPublicised && <Ribbon />}
             {hasDeleteButton && (
                 <RemoveButton onClick={onDelete} />
             )}

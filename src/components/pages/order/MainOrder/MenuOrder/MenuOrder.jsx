@@ -37,7 +37,7 @@ export const MenuOrder = () => {
     }
 
     const isLoading = products === undefined
-
+    console.log(products)
     return (
         <>
             {isLoading ? (
@@ -47,7 +47,7 @@ export const MenuOrder = () => {
             ) : (
                 <MenuOrderStyled>
                     <TransitionGroup component={null}>
-                        {products.map(({ id, imageSource, title, price }) => {
+                        {products.map(({ id, imageSource, title, price, isPublicised }) => {
                             return (
                                 <CSSTransition
                                     key={id}
@@ -65,6 +65,7 @@ export const MenuOrder = () => {
                                         onClick={isAdminMode ? (() => onClick(id)) : undefined}
                                         selected={checkCardIsSelected(id, cardSelected)}
                                         onAdd={(event) => addToBasket(id, event)}
+                                        isPublicised={isPublicised}
                                     />
                                 </CSSTransition>
                             )

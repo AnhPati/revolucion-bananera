@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { theme } from "../../theme"
 
-export default function Ribbon({ label = "new", className }) {
+export const Ribbon = ({ label = "Nouveauté", className }) => {
   return (
     <RibbonStyled className={className}>
       <div className="ribbon ribbon-top-left">
