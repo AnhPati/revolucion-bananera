@@ -4,6 +4,8 @@ import { ImgPreview } from "./ImgPreview"
 import { getTextInputsConfig } from "../helpers/getTextInputsConfig"
 import { theme } from "../../../../../../theme"
 import { forwardRef } from "react"
+import { FiPackage } from "react-icons/fi"
+import { GoMegaphone } from "react-icons/go"
 
 export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, submitMessageType, children, onFocus, onBlur }, ref) => {
     const textInputs = getTextInputsConfig(product)
@@ -28,6 +30,22 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, 
                         />
                     )
                 })}
+                <div className='last-inputs-container'>
+                    <div className="input-select">
+                        <FiPackage />
+                        <select name="is-available" id="stock">
+                            <option value="true">En stock</option>
+                            <option value="false">En rupture</option>
+                        </select>
+                    </div>
+                    <div className="input-select">
+                        <GoMegaphone />
+                        <select name="is-advertising" id="advertising">
+                            <option value="true">Sans pub</option>
+                            <option value="false">Avec pub</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div className='form-footer'>
                 {children}
