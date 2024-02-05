@@ -2,7 +2,9 @@ export const EMPTY_PRODUCT = Object.freeze({
     id: '',
     title: '',
     imageSource: '',
-    price: ''
+    price: '',
+    isAvailable: false,
+    isPublicised: false
 })
 
 export const DEFAULT_IMG = '/images/coming-soon.png'
