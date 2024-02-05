@@ -24,10 +24,11 @@ const CardStyled = styled.li`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     height: 330px;
     width: 240px;
     background: ${theme.colors.white};
-    padding: 50px ${theme.spacing.md} 10px ${theme.spacing.md};
+    padding: 50px ${theme.spacing.md} 19.25px ${theme.spacing.md};
     box-shadow: ${theme.shadows.medium};
     border-radius: ${theme.borderRadius.extraRound};
 

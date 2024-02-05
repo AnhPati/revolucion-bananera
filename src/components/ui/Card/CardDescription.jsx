@@ -20,7 +20,7 @@ const CardDescriptionStyled = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    margin-top: 7.5px;
+    margin-top: auto;
 
     p {
         margin: 0;
