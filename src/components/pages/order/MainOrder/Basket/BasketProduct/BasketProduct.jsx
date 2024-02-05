@@ -2,11 +2,13 @@ import styled, { css } from "styled-components";
 import { theme } from "../../../../../../theme";
 import { BasketProductImg } from "./BasketProductImg";
 import { BasketProductInfos } from "./BasketProductInfos";
+import { Sticker } from "../../../../../ui/Sticker";
 
-export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, isClickable, onClick, selected }) => {
+export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, isClickable, onClick, selected, isPublicised }) => {
 
     return (
         <BasketProductStyled $isClickable={isClickable} onClick={onClick} $isSelected={selected}>
+            {isPublicised && <Sticker className={'basket-advertising'} />}
             <BasketProductImg src={imageSource} alt={title} />
             <BasketProductInfos
                 title={title}
@@ -30,6 +32,12 @@ const BasketProductStyled = styled.li`
     box-shadow: ${theme.shadows.basketProductShadow};
     border-radius: ${theme.borderRadius.round};
     padding: 8px 16px;
+
+    .basket-advertising {
+        position: absolute;
+        left: 20%;
+        bottom: 10%;
+    }
 
     &:hover {
         cursor: ${({ $isClickable }) => $isClickable ? 'pointer' : 'default'};
