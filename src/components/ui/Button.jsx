@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
-export const Button = ({ label, Icon, onClick, variant = 'primary' }) => {
+export const Button = ({ label, Icon, onClick, variant = 'primary', disabled }) => {
     return (
-        <ButtonStyled onClick={onClick} $variant={variant}>
+        <ButtonStyled onClick={onClick} $variant={variant} disabled={disabled}>
             {label}{Icon && Icon}
         </ButtonStyled>
     )
@@ -26,6 +26,10 @@ const ButtonStyled = styled.button`
     &:active {
         color: ${theme.colors.white};
         transition: none;
+    }
+
+    &:disabled {  
+        cursor: not-allowed;
     }
 
     ${({ $variant }) => ButtonStyles[$variant]}
