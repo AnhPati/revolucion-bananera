@@ -9,13 +9,13 @@ import { Ribbon } from '../Ribbon';
 export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, isPublicised, isAvailable }) => {
     console.log(isPublicised)
     return (
-        <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected}>
+        <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected} $isAvailable={isAvailable}>
             {isPublicised && <Ribbon />}
             {hasDeleteButton && (
                 <RemoveButton onClick={onDelete} />
             )}
             <CardImg src={imgSrc} alt={title} isAvailable={isAvailable} />
-            <CardInfos title={title} leftDescription={leftDescription} onClick={onAdd} />
+            <CardInfos title={title} leftDescription={leftDescription} onClick={onAdd} isAvailable={isAvailable} />
         </CardStyled>
     )
 }
@@ -35,7 +35,14 @@ const CardStyled = styled.li`
     box-shadow: ${theme.shadows.medium};
     border-radius: ${theme.borderRadius.extraRound};
 
+    button {
+        position: relative;
+        z-index: 2;
+    }
+
     ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyles}
+    ${({ $isAvailable }) => !$isAvailable && unavailableStyles
+    }
 `
 
 const hoverableStyles = css`
@@ -52,7 +59,6 @@ const selectedStyles = css`
     background-color: ${theme.colors.primary};
 
     .remove-button {
-        z-index: 10;
         svg {
             color: ${theme.colors.white};
         }
@@ -69,7 +75,6 @@ const selectedStyles = css`
     button {
         background-color: ${theme.colors.white};
         color: ${theme.colors.primary};
-        z-index: 10;
 
         &:hover {
             background-color: ${theme.colors.primary};
@@ -81,5 +86,11 @@ const selectedStyles = css`
             color: ${theme.colors.primary};
             background: ${theme.colors.white};
         }
+    }
+`
+
+const unavailableStyles = css`
+    button {
+        opacity: 0.5;
     }
 `
