@@ -6,7 +6,7 @@ import { RemoveButton } from './RemoveButton';
 import { Ribbon } from '../Ribbon';
 
 
-export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, isPublicised }) => {
+export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, isPublicised, isAvailable }) => {
     console.log(isPublicised)
     return (
         <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected}>
@@ -14,7 +14,7 @@ export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDe
             {hasDeleteButton && (
                 <RemoveButton onClick={onDelete} />
             )}
-            <CardImg src={imgSrc} alt={title} />
+            <CardImg src={imgSrc} alt={title} isAvailable={isAvailable} />
             <CardInfos title={title} leftDescription={leftDescription} onClick={onAdd} />
         </CardStyled>
     )
