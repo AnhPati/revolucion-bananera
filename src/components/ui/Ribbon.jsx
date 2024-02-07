@@ -34,6 +34,7 @@ const RibbonStyled = styled.div`
     height: 150px;
     overflow: hidden;
     position: absolute;
+    z-index: 1;
   }
   .ribbon::before,
   .ribbon::after {
