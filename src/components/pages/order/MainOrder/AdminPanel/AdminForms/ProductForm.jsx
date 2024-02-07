@@ -44,16 +44,20 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, 
                     />
                     <div className="input-select">
                         <FiPackage />
-                        <select name="is-available" id="stock">
-                            <option value="true">En stock</option>
-                            <option value="false">En rupture</option>
+                        <select onChange={onChange}
+                            name="isAvailable"
+                            id="stock">
+                            <option value={true}>En stock</option>
+                            <option value={false}>En rupture</option>
                         </select>
                     </div>
                     <div className="input-select">
                         <GoMegaphone />
-                        <select name="is-advertising" id="advertising">
-                            <option value="true">Sans pub</option>
-                            <option value="false">Avec pub</option>
+                        <select onChange={onChange}
+                            name="isPublicised"
+                            id="advertising">
+                            <option value={false}>Sans pub</option>
+                            <option value={true}>Avec pub</option>
                         </select>
                     </div>
                 </div>
