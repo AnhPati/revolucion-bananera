@@ -12,7 +12,19 @@ export const AdminPanelAnimation = css`
         transition: ${theme.animations.speed.quick} ease-out;
         opacity: 100%;
     }
-`;
+`
+
+export const fadeInTop = keyframes`
+    0% {
+        transform: translateY(-40%);
+        opacity: 0%;
+    }
+
+    100% {
+        transform: translateY(0%);
+        opacity: 100%;
+    }
+`
 
 export const fadeInRight = keyframes`
     0% {

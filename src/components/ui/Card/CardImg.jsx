@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { fadeInTop } from "../../../theme/animations";
+import { theme } from "../../../theme";
 
 export const CardImg = ({ src, alt, isAvailable }) => {
     return (
@@ -43,6 +45,7 @@ const CardImgStyled = styled.div`
             left: 20px;
             width: 80%;
             height: 100%;
+            animation: ${fadeInTop} ${theme.animations.speed.quick} ease-out;
         }
     }
 `;
