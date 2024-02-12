@@ -1,15 +1,14 @@
 import styled from "styled-components"
 import { TextInput } from "../../../../../ui/TextInput"
 import { ImgPreview } from "./ImgPreview"
-import { getTextInputsConfig } from "../helpers/getTextInputsConfig"
+import { getSelectInputsConfig, getTextInputsConfig } from "../helpers/getTextInputsConfig"
 import { theme } from "../../../../../../theme"
 import { forwardRef } from "react"
-import { FiPackage } from "react-icons/fi"
-import { GoMegaphone } from "react-icons/go"
 
 export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
     const textInputs = getTextInputsConfig(product)
     const priceTextInput = textInputs[2]
+    const selectInputs = getSelectInputsConfig(product)
 
     return (
         <ProductFormStyled action='submit' onSubmit={onSubmit}>
@@ -42,30 +41,27 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, 
                         variant={'secondary'}
                         ref={null}
                     />
-                    <div className="input-select">
-                        <FiPackage />
-                        <select
-                            onChange={onChange}
-                            name="isAvailable"
-                            id="stock"
-                            value={product.isAvailable ? product.isAvailable : true}
-                        >
-                            <option value={true}>En stock</option>
-                            <option value={false}>En rupture</option>
-                        </select>
-                    </div>
-                    <div className="input-select">
-                        <GoMegaphone />
-                        <select
-                            onChange={onChange}
-                            name="isPublicised"
-                            id="advertising"
-                            value={product.isPublicised ? product.isPublicised : false}
-                        >
-                            <option value={false}>Sans pub</option>
-                            <option value={true}>Avec pub</option>
-                        </select>
-                    </div>
+                    {selectInputs.map(selectInput => {
+                        console.log(selectInput)
+                        return (
+                            <div className="input-select" key={selectInput.id}>
+                                {selectInput.Icon}
+                                <select
+                                    onChange={onChange}
+                                    name={selectInput.name}
+                                    id={selectInput.id}
+                                    value={selectInput.value === 'true' ? true : false}
+                                >
+                                    <option value={selectInput.options[0].value}>
+                                        {selectInput.options[0].label}
+                                    </option>
+                                    <option value={selectInput.options[1].value}>
+                                        {selectInput.options[1].label}
+                                    </option>
+                                </select>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
             <div className='form-footer'>
