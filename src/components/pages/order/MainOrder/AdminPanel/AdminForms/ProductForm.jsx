@@ -4,6 +4,7 @@ import { ImgPreview } from "./ImgPreview"
 import { getSelectInputsConfig, getTextInputsConfig } from "../helpers/getTextInputsConfig"
 import { theme } from "../../../../../../theme"
 import { forwardRef } from "react"
+import { SelectInput } from "../../../../../ui/Card/SelectInput"
 
 export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
     const textInputs = getTextInputsConfig(product)
@@ -43,22 +44,18 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, 
                     />
                     {selectInputs.map(selectInput => {
                         return (
-                            <div className="input-select" key={selectInput.id}>
-                                {selectInput.Icon}
-                                <select
-                                    onChange={onChange}
-                                    name={selectInput.name}
-                                    id={selectInput.id}
-                                    value={selectInput.value === 'true' ? true : false}
-                                >
-                                    <option value={selectInput.options[0].value}>
-                                        {selectInput.options[0].label}
-                                    </option>
-                                    <option value={selectInput.options[1].value}>
-                                        {selectInput.options[1].label}
-                                    </option>
-                                </select>
-                            </div>
+                            <SelectInput
+                                key={selectInput.id}
+                                onChange={onChange}
+                                name={selectInput.name}
+                                id={selectInput.id}
+                                Icon={selectInput.Icon}
+                                value={selectInput.value === 'true' ? true : false}
+                                firstOptionName={selectInput.options[0].label}
+                                firstOptionValue={selectInput.options[0].value}
+                                secondOptionName={selectInput.options[1].label}
+                                secondOptionValue={selectInput.options[1].value}
+                            />
                         )
                     })}
                 </div>
@@ -88,35 +85,6 @@ const ProductFormStyled = styled.form`
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
-
-            .input-select {
-                display: inline-flex;
-                padding: 8px 16px;
-                align-items: center;
-                gap: 13px;
-                background-color: #F5F5F7;
-                border-radius: 5px;
-
-                select {
-                    width: 100%;
-                    background-color: #F5F5F7;
-                    border: none;
-                    color: #17161A;
-                    font-size: 15px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-
-                    &:focus-visible {
-                        outline: none;
-                    }
-                }
-
-                svg {
-                    font-size: 16px;
-                    color: #747B91;
-                }
-            }
         }
     }
 
