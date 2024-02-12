@@ -42,7 +42,6 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, 
                         ref={null}
                     />
                     {selectInputs.map(selectInput => {
-                        console.log(selectInput)
                         return (
                             <div className="input-select" key={selectInput.id}>
                                 {selectInput.Icon}

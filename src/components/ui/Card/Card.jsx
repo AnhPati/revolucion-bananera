@@ -7,7 +7,6 @@ import { Ribbon } from '../Ribbon';
 
 
 export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, isPublicised, isAvailable }) => {
-    console.log(isPublicised)
     return (
         <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected} $isAvailable={isAvailable}>
             {isPublicised && <Ribbon />}
