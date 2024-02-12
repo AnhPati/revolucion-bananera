@@ -3,7 +3,7 @@ export const EMPTY_PRODUCT = Object.freeze({
     title: '',
     imageSource: '',
     price: '',
-    isAvailable: false,
+    isAvailable: true,
     isPublicised: false
 })
 

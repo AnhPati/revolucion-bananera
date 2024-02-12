@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { useContext } from "react";
 import { Card } from "../../../../ui/Card/Card";
 import { formatPrice } from "../../../../../utils/maths";
@@ -11,6 +11,7 @@ import { findObjectById, isEmptyArray } from "../../../../../utils/array";
 import { Loader } from "./Loader";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { ProductCardAnimation } from "../../../../../theme/animations";
+import { convertStringToBoolean } from "../../../../../utils/string";
 
 
 
@@ -65,8 +66,8 @@ export const MenuOrder = () => {
                                         onClick={isAdminMode ? (() => onClick(id)) : undefined}
                                         selected={checkCardIsSelected(id, cardSelected)}
                                         onAdd={(event) => addToBasket(id, event)}
-                                        isPublicised={isPublicised === "true" ? true : false}
-                                        isAvailable={isAvailable === "true" ? true : false}
+                                        isPublicised={convertStringToBoolean(isPublicised)}
+                                        isAvailable={convertStringToBoolean(isAvailable)}
                                     />
                                 </CSSTransition>
                             )

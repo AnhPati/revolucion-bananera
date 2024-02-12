@@ -5,6 +5,7 @@ import { getSelectInputsConfig, getTextInputsConfig } from "../helpers/getTextIn
 import { theme } from "../../../../../../theme"
 import { forwardRef } from "react"
 import { SelectInput } from "../../../../../ui/Card/SelectInput"
+import { convertStringToBoolean } from "../../../../../../utils/string"
 
 export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
     const textInputs = getTextInputsConfig(product)
@@ -43,6 +44,7 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, 
                         ref={null}
                     />
                     {selectInputs.map(selectInput => {
+                        console.log(selectInput)
                         return (
                             <SelectInput
                                 key={selectInput.id}
@@ -50,7 +52,7 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, 
                                 name={selectInput.name}
                                 id={selectInput.id}
                                 Icon={selectInput.Icon}
-                                value={selectInput.value === 'true' ? true : false}
+                                value={convertStringToBoolean(selectInput.value)}
                                 firstOptionName={selectInput.options[0].label}
                                 firstOptionValue={selectInput.options[0].value}
                                 secondOptionName={selectInput.options[1].label}
