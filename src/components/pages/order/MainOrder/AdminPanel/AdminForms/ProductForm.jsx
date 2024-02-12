@@ -7,7 +7,7 @@ import { forwardRef } from "react"
 import { FiPackage } from "react-icons/fi"
 import { GoMegaphone } from "react-icons/go"
 
-export const ProductForm = forwardRef(({ product, onSubmit, onChange, isAdding, submitMessageType, children, onFocus, onBlur }, ref) => {
+export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
     const textInputs = getTextInputsConfig(product)
     const priceTextInput = textInputs[2]
 
