@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { TextInput } from "../../../../../ui/TextInput"
 import { ImgPreview } from "./ImgPreview"
-import { getSelectInputsConfig, getTextInputsConfig } from "../helpers/getTextInputsConfig"
+import { getSelectInputsConfig, getTextInputsConfig } from "../helpers/getInputsConfig"
 import { theme } from "../../../../../../theme"
 import { forwardRef } from "react"
 import { SelectInput } from "../../../../../ui/SelectInput"
