@@ -44,13 +44,11 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, 
                     />
                     {selectInputs.map(selectInput => (
                         <SelectInput
+                            {...selectInput}
                             key={selectInput.id}
                             onChange={onChange}
-                            name={selectInput.name}
-                            id={selectInput.id}
-                            Icon={selectInput.Icon}
-                            value={selectInput.value}
-                            options={selectInput.options}
+                            onFocus={onFocus}
+                            onBlur={onBlur}
                         />
                     ))}
                 </div>

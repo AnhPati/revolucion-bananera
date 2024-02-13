@@ -1,15 +1,17 @@
 import styled from "styled-components";
 
-export const SelectInput = ({ id, value, name, Icon, options, onChange }) => {
+export const SelectInput = ({ id, name, value, Icon, options, onChange, onFocus, onBlur }) => {
     console.log(options)
     return (
         <SelectInputStyled>
             {Icon}
             <select
-                onChange={onChange}
-                name={name}
                 id={id}
+                name={name}
                 value={value}
+                onChange={onChange}
+                onFocus={onFocus}
+                onBlur={onBlur}
             >
                 {options.map(option => (
                     <option key={option.label} value={option.value}>
