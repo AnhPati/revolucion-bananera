@@ -38,6 +38,16 @@ export const fadeInRight = keyframes`
     }
 `
 
+export const pulse = keyframes`
+    0% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+`
+
 export const ImgPreviewAnimation = css`
     &.img_preview-animation-appear {
         opacity: 0%;

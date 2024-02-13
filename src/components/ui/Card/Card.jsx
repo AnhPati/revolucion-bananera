@@ -4,6 +4,7 @@ import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
 import { RemoveButton } from './RemoveButton';
 import { Ribbon } from '../Ribbon';
+import { pulse } from '../../../theme/animations';
 
 
 export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, isPublicised, isAvailable }) => {
@@ -37,6 +38,10 @@ const CardStyled = styled.li`
     button {
         position: relative;
         z-index: 2;
+    }
+
+    .ribbon {
+        animation: ${pulse} ${theme.animations.speed.quick} ease-in;
     }
 
     ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyles}
