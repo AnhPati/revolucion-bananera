@@ -5,7 +5,6 @@ import { getSelectInputsConfig, getTextInputsConfig } from "../helpers/getInputs
 import { theme } from "../../../../../../theme"
 import { forwardRef } from "react"
 import { SelectInput } from "../../../../../ui/SelectInput"
-import { convertStringToBoolean } from "../../../../../../utils/string"
 
 export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
     const textInputs = getTextInputsConfig(product)
@@ -50,7 +49,7 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, 
                             name={selectInput.name}
                             id={selectInput.id}
                             Icon={selectInput.Icon}
-                            value={convertStringToBoolean(selectInput.value)}
+                            value={selectInput.value}
                             options={selectInput.options}
                         />
                     ))}
