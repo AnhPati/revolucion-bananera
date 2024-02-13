@@ -43,23 +43,17 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, 
                         variant={'secondary'}
                         ref={null}
                     />
-                    {selectInputs.map(selectInput => {
-                        console.log(selectInput)
-                        return (
-                            <SelectInput
-                                key={selectInput.id}
-                                onChange={onChange}
-                                name={selectInput.name}
-                                id={selectInput.id}
-                                Icon={selectInput.Icon}
-                                value={convertStringToBoolean(selectInput.value)}
-                                firstOptionName={selectInput.options[0].label}
-                                firstOptionValue={selectInput.options[0].value}
-                                secondOptionName={selectInput.options[1].label}
-                                secondOptionValue={selectInput.options[1].value}
-                            />
-                        )
-                    })}
+                    {selectInputs.map(selectInput => (
+                        <SelectInput
+                            key={selectInput.id}
+                            onChange={onChange}
+                            name={selectInput.name}
+                            id={selectInput.id}
+                            Icon={selectInput.Icon}
+                            value={convertStringToBoolean(selectInput.value)}
+                            options={selectInput.options}
+                        />
+                    ))}
                 </div>
             </div>
             <div className='form-footer'>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const SelectInput = ({ id, value, name, Icon, onChange, firstOptionName, firstOptionValue, secondOptionName, secondOptionValue }) => {
+export const SelectInput = ({ id, value, name, Icon, options, onChange }) => {
+    console.log(options)
     return (
         <SelectInputStyled>
             {Icon}
@@ -10,12 +11,11 @@ export const SelectInput = ({ id, value, name, Icon, onChange, firstOptionName, 
                 id={id}
                 value={value}
             >
-                <option value={firstOptionValue}>
-                    {firstOptionName}
-                </option>
-                <option value={secondOptionValue}>
-                    {secondOptionName}
-                </option>
+                {options.map(option => (
+                    <option key={option.label} value={option.value}>
+                        {option.label}
+                    </option>
+                ))}
             </select>
         </SelectInputStyled>
     )
