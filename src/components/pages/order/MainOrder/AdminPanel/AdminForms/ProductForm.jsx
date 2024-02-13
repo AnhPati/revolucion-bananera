@@ -9,7 +9,7 @@ import { convertStringToBoolean } from "../../../../../../utils/string"
 
 export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
     const textInputs = getTextInputsConfig(product)
-    const priceTextInput = textInputs[2]
+    const priceTextInput = textInputs.find(input => input.name === 'price')
     const selectInputs = getSelectInputsConfig(product)
 
     return (
@@ -20,7 +20,7 @@ export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, 
             />
             <div className='inputs-container'>
                 {textInputs.map(textInput => {
-                    if (textInput.id < 2) {
+                    if (textInput.name !== "price") {
                         return (
                             <TextInput
                                 key={textInput.id}
