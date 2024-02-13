@@ -4,7 +4,7 @@ import { ImgPreview } from "./ImgPreview"
 import { getSelectInputsConfig, getTextInputsConfig } from "../helpers/getTextInputsConfig"
 import { theme } from "../../../../../../theme"
 import { forwardRef } from "react"
-import { SelectInput } from "../../../../../ui/Card/SelectInput"
+import { SelectInput } from "../../../../../ui/SelectInput"
 import { convertStringToBoolean } from "../../../../../../utils/string"
 
 export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
