@@ -7,14 +7,14 @@ import { Ribbon } from '../Ribbon';
 import { pulse } from '../../../theme/animations';
 
 
-export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, isPublicised, isUnavailable }) => {
+export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, isPublicised, isUnavailable, unavailableImage }) => {
     return (
         <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected} $isUnavailable={isUnavailable}>
             {isPublicised && <Ribbon />}
             {hasDeleteButton && (
                 <RemoveButton onClick={onDelete} />
             )}
-            <CardImg src={imgSrc} alt={title} isUnavailable={isUnavailable} />
+            <CardImg src={imgSrc} alt={title} isUnavailable={isUnavailable} unavailableImage={unavailableImage} />
             <CardInfos title={title} leftDescription={leftDescription} onClick={onAdd} isUnavailable={isUnavailable} />
         </CardStyled>
     )
