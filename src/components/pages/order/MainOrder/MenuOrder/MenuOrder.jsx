@@ -67,7 +67,7 @@ export const MenuOrder = () => {
                                         selected={checkCardIsSelected(id, cardSelected)}
                                         onAdd={(event) => addToBasket(id, event)}
                                         isPublicised={convertStringToBoolean(isPublicised)}
-                                        isAvailable={convertStringToBoolean(isAvailable)}
+                                        isUnavailable={convertStringToBoolean(isAvailable) === false}
                                     />
                                 </CSSTransition>
                             )

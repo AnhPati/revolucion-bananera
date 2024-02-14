@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { fadeInTop } from "../../../theme/animations";
 import { theme } from "../../../theme";
 
-export const CardImg = ({ src, alt, isAvailable }) => {
+export const CardImg = ({ src, alt, isUnavailable }) => {
     return (
         <CardImgStyled>
-            {!isAvailable && (
+            {isUnavailable && (
                 <div className="unavailable-container">
                     <div className="unavailable-layer"></div>
                     <img src='/images/stock-epuise.png' alt='Rupture de stock' />

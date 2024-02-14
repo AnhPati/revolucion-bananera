@@ -7,15 +7,15 @@ import { Ribbon } from '../Ribbon';
 import { pulse } from '../../../theme/animations';
 
 
-export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, isPublicised, isAvailable }) => {
+export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, isPublicised, isUnavailable }) => {
     return (
-        <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected} $isAvailable={isAvailable}>
+        <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected} $isUnavailable={isUnavailable}>
             {isPublicised && <Ribbon />}
             {hasDeleteButton && (
                 <RemoveButton onClick={onDelete} />
             )}
-            <CardImg src={imgSrc} alt={title} isAvailable={isAvailable} />
-            <CardInfos title={title} leftDescription={leftDescription} onClick={onAdd} isAvailable={isAvailable} />
+            <CardImg src={imgSrc} alt={title} isUnavailable={isUnavailable} />
+            <CardInfos title={title} leftDescription={leftDescription} onClick={onAdd} isUnavailable={isUnavailable} />
         </CardStyled>
     )
 }
@@ -45,8 +45,7 @@ const CardStyled = styled.li`
     }
 
     ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyles}
-    ${({ $isAvailable }) => !$isAvailable && unavailableStyles
-    }
+    ${({ $isUnavailable }) => $isUnavailable && unavailableStyles}
 `
 
 const hoverableStyles = css`
