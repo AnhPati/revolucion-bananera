@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { useContext } from "react";
 import { Card } from "../../../../ui/Card/Card";
 import { formatPrice } from "../../../../../utils/maths";
@@ -6,11 +6,12 @@ import { theme } from "../../../../../theme";
 import OrderContext from "../../../../../contexts/OrderContext";
 import EmptyMenu from "./EmptyMenu";
 import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
-import { DEFAULT_IMG } from "../../../../../enums/product";
+import { DEFAULT_IMG, UNAVAILABLE_PRODUCT_IMG } from "../../../../../enums/product";
 import { findObjectById, isEmptyArray } from "../../../../../utils/array";
 import { Loader } from "./Loader";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { ProductCardAnimation } from "../../../../../theme/animations";
+import { convertStringToBoolean } from "../../../../../utils/string";
 
 
 
@@ -47,7 +48,7 @@ export const MenuOrder = () => {
             ) : (
                 <MenuOrderStyled>
                     <TransitionGroup component={null}>
-                        {products.map(({ id, imageSource, title, price }) => {
+                        {products.map(({ id, imageSource, title, price, isPublicised, isAvailable }) => {
                             return (
                                 <CSSTransition
                                     key={id}
@@ -65,6 +66,9 @@ export const MenuOrder = () => {
                                         onClick={isAdminMode ? (() => onClick(id)) : undefined}
                                         selected={checkCardIsSelected(id, cardSelected)}
                                         onAdd={(event) => addToBasket(id, event)}
+                                        isPublicised={convertStringToBoolean(isPublicised)}
+                                        isUnavailable={convertStringToBoolean(isAvailable) === false}
+                                        unavailableImage={UNAVAILABLE_PRODUCT_IMG}
                                     />
                                 </CSSTransition>
                             )

@@ -3,12 +3,14 @@ import { theme } from "../../theme";
 import { forwardRef } from "react";
 
 export const TextInput = forwardRef(({
-    value, onChange,
+    value,
+    onChange,
     Icon,
+    className = '',
     variant = 'primary',
     ...optionalsProps }, ref) => {
     return (
-        <TextInputStyled className='input-container' $variant={variant}>
+        <TextInputStyled className={className} $variant={variant}>
             {Icon && Icon}
             <input
                 value={value}
@@ -25,6 +27,7 @@ TextInput.displayName = "TextInput";
 const TextInputStyled = styled.div`
     position: relative;
     width: 100%;
+    border-radius: ${theme.borderRadius.round};
 
     > svg {
         position: absolute;
@@ -35,7 +38,6 @@ const TextInputStyled = styled.div`
 
     input {
         width: 100%;
-        border-radius: ${theme.borderRadius.round};
         color: ${theme.colors.dark};
         font-weight: ${theme.fonts.weights.regular};
         padding-left: ${theme.gridUnit * 5.75}px;
@@ -77,6 +79,7 @@ const extraPrimaryStyles = css`
 
 const extraSecondaryStyles = css`
     margin: 0;
+    background: ${theme.colors.background_white};
 
     > svg {
         top: ${theme.gridUnit}px;

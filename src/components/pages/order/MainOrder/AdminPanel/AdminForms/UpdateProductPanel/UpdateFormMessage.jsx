@@ -12,5 +12,5 @@ export const UpdateFormMessage = () => {
 const UpdateFormMessageStyled = styled.span`
         color: ${theme.colors.primary};
         padding: ${theme.gridUnit * 0.75}px 0;
-        font-size: 15px;
+        font-size: ${theme.fonts.size.SM};
 `;

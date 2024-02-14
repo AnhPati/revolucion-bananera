@@ -1,6 +1,9 @@
 import { BsFillCameraFill } from "react-icons/bs"
 import { FaHamburger } from "react-icons/fa"
+import { FiPackage } from "react-icons/fi"
+import { GoMegaphone } from "react-icons/go"
 import { MdOutlineEuro } from "react-icons/md"
+import { isAvailableOptions, isPublicisedOptions } from "../../../../../../../../enums/select"
 
 export const getTextInputsConfig = (productValues) => [
     {
@@ -9,6 +12,7 @@ export const getTextInputsConfig = (productValues) => [
         value: productValues.title,
         placeholder: 'Nom du produit (ex: Super Burger)',
         Icon: <FaHamburger />,
+        className: 'input-title'
     },
     {
         id: "1",
@@ -16,6 +20,7 @@ export const getTextInputsConfig = (productValues) => [
         value: productValues.imageSource,
         placeholder: `Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)`,
         Icon: <BsFillCameraFill />,
+        className: 'input-img'
     },
     {
         id: "2",
@@ -23,5 +28,23 @@ export const getTextInputsConfig = (productValues) => [
         value: productValues.price,
         placeholder: 'Prix',
         Icon: <MdOutlineEuro />,
+        className: 'input-price'
+    }
+]
+
+export const getSelectInputsConfig = (productValues) => [
+    {
+        id: "3",
+        name: "isAvailable",
+        value: productValues.isAvailable,
+        options: isAvailableOptions,
+        Icon: <FiPackage />
+    },
+    {
+        id: "4",
+        name: "isPublicised",
+        value: productValues.isPublicised,
+        options: isPublicisedOptions,
+        Icon: <GoMegaphone />
     }
 ]

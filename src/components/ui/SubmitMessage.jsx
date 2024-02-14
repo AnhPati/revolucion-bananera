@@ -17,7 +17,7 @@ const SubmitMessageStyled = styled.span`
     font-size: ${theme.fonts.size.SM};
 
     svg {
-        font-size: 18px;
+        font-size: ${theme.fonts.size.P1};
         margin-right: 5px;
     }
 
@@ -29,7 +29,7 @@ const submitSuccesStyles = css`
     
     svg {
         border: solid 1px ${theme.colors.success};
-        border-radius: 50%;
+        border-radius: ${theme.borderRadius.circle};
     }
 `
 

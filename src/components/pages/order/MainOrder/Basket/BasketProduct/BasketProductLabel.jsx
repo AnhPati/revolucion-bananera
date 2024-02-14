@@ -1,12 +1,11 @@
 import styled, { css } from "styled-components";
-import { formatPrice } from "../../../../../../utils/maths";
 import { theme } from "../../../../../../theme";
 
 export const BasketProductLabel = ({ title, price, selected, isClickable }) => {
     return (
         <BasketProductLabelStyled $selected={selected} $isClickable={isClickable}>
             <h5>{title}</h5>
-            <p>{formatPrice(price)}</p>
+            <p>{price}</p>
         </BasketProductLabelStyled>
     )
 }
@@ -14,7 +13,7 @@ export const BasketProductLabel = ({ title, price, selected, isClickable }) => {
 const BasketProductLabelStyled = styled.div`
     display: grid;
     grid-template-rows: 60% 40%;
-    padding: 5px 0 8px 0;
+    padding: 5px 0 ${theme.spacing.xs} 0;
     gap: 5px;
 
     h5 {
@@ -30,6 +29,7 @@ const BasketProductLabelStyled = styled.div`
         margin: 0;
         color: ${theme.colors.primary};
         font-size: ${theme.fonts.size.SM};
+        white-space: nowrap;
     }
 
     ${({ $selected, $isClickable }) => $selected && $isClickable && selectedStyles}

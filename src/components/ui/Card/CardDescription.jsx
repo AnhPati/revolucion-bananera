@@ -2,14 +2,14 @@ import { Button } from '../Button'
 import styled from 'styled-components';
 import { theme } from '../../../theme';
 
-export const CardDescription = ({ leftDescription, onClick }) => {
+export const CardDescription = ({ leftDescription, onClick, isUnavailable }) => {
     return (
         <CardDescriptionStyled>
             <p>
                 {leftDescription}
             </p>
             <div className={'add_button-container'}>
-                <Button label={'Ajouter'} onClick={onClick} />
+                <Button label={'Ajouter'} onClick={onClick} isDisabled={isUnavailable} />
             </div>
         </CardDescriptionStyled>
     )
@@ -20,7 +20,7 @@ const CardDescriptionStyled = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    margin-top: 7.5px;
+    margin-top: auto;
 
     p {
         margin: 0;

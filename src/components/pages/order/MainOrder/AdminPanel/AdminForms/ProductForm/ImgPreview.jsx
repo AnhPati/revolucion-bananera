@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../../../../../theme";
+import { theme } from "../../../../../../../theme";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { ImgPreviewAnimation } from "../../../../../../theme/animations";
+import { ImgPreviewAnimation } from "../../../../../../../theme/animations";
 
 export const ImgPreview = ({ src, alt }) => {
     return (
@@ -39,7 +39,7 @@ const ImgPreviewStyled = styled.div`
     }
 
     p {
-        font-size: 16px;
+        font-size: ${theme.fonts.size.P0};
         color: ${theme.colors.greySemiDark};
     }
 

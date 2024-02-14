@@ -13,6 +13,7 @@ export const RemoveButton = ({ onClick }) => {
 
 const RemoveButtonStyled = styled.span`
     position: absolute;
+    z-index: 2;
     right: 15px;
     top: 15px;
     animation: ${fadeInRight} ${theme.animations.speed.quick} ease-out;
