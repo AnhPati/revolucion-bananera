@@ -4,7 +4,7 @@ import { BasketProductImg } from "./BasketProductImg";
 import { BasketProductInfos } from "./BasketProductInfos";
 import { Sticker } from "../../../../../ui/Sticker";
 
-export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, isClickable, onClick, selected, isPublicised }) => {
+export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, isClickable, onClick, selected, isPublicised, isUnavailable }) => {
 
     return (
         <BasketProductStyled $isClickable={isClickable} onClick={onClick} $isSelected={selected}>
@@ -17,6 +17,7 @@ export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, i
                 onDelete={onDelete}
                 isClickable={isClickable}
                 selected={selected}
+                isUnavailable={isUnavailable}
             />
         </BasketProductStyled>
     )
