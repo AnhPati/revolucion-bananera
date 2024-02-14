@@ -9,7 +9,7 @@ import { pulse } from '../../../theme/animations';
 
 export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, isPublicised, isUnavailable, unavailableImage }) => {
     return (
-        <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected} $isUnavailable={isUnavailable}>
+        <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected}>
             {isPublicised && <Ribbon />}
             {hasDeleteButton && (
                 <RemoveButton onClick={onDelete} />
@@ -45,7 +45,6 @@ const CardStyled = styled.li`
     }
 
     ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyles}
-    ${({ $isUnavailable }) => $isUnavailable && unavailableStyles}
 `
 
 const hoverableStyles = css`
@@ -89,11 +88,5 @@ const selectedStyles = css`
             color: ${theme.colors.primary};
             background: ${theme.colors.white};
         }
-    }
-`
-
-const unavailableStyles = css`
-    button {
-        opacity: 0.5;
     }
 `

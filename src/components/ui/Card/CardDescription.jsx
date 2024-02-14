@@ -2,16 +2,14 @@ import { Button } from '../Button'
 import styled from 'styled-components';
 import { theme } from '../../../theme';
 
-export const CardDescription = ({ leftDescription, onClick, isAvailable }) => {
-    const isDisabled = !isAvailable
-
+export const CardDescription = ({ leftDescription, onClick, isUnavailable }) => {
     return (
         <CardDescriptionStyled>
             <p>
                 {leftDescription}
             </p>
             <div className={'add_button-container'}>
-                <Button label={'Ajouter'} onClick={onClick} disabled={isDisabled} />
+                <Button label={'Ajouter'} onClick={onClick} isDisabled={isUnavailable} />
             </div>
         </CardDescriptionStyled>
     )
