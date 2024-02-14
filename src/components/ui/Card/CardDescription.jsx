@@ -1,15 +1,17 @@
 import { Button } from '../Button'
 import styled from 'styled-components';
 import { theme } from '../../../theme';
+import { QuantityButton } from '../QuantityButton';
 
 export const CardDescription = ({ leftDescription, onClick, isUnavailable }) => {
     return (
         <CardDescriptionStyled>
-            <p>
+            <p className='left-description'>
                 {leftDescription}
             </p>
             <div className={'add_button-container'}>
-                <Button label={'Ajouter'} onClick={onClick} isDisabled={isUnavailable} />
+                <QuantityButton />
+                {/* <Button label={'Ajouter'} onClick={onClick} isDisabled={isUnavailable} /> */}
             </div>
         </CardDescriptionStyled>
     )
@@ -22,7 +24,7 @@ const CardDescriptionStyled = styled.div`
     align-items: center;
     margin-top: auto;
 
-    p {
+    .left-description {
         margin: 0;
         color: ${theme.colors.primary};
         font-size: ${theme.fonts.size.P0};
@@ -33,9 +35,9 @@ const CardDescriptionStyled = styled.div`
     .add_button-container {
         width: 95px;
 
-        button {
+        /* button {
             padding-top: ${theme.gridUnit * 1.5}px;
             padding-bottom: ${theme.gridUnit * 1.5}px;
-        }
+        } */
     }
 `;
