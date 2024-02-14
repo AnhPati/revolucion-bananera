@@ -13,7 +13,7 @@ export const BasketProductLabel = ({ title, price, selected, isClickable }) => {
 const BasketProductLabelStyled = styled.div`
     display: grid;
     grid-template-rows: 60% 40%;
-    padding: 5px 0 8px 0;
+    padding: 5px 0 ${theme.spacing.xs} 0;
     gap: 5px;
 
     h5 {

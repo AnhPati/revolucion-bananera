@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { getSelectInputsConfig, getTextInputsConfig } from "./helpers/getInputsConfig"
 import { TextInput } from "../../../../../../ui/TextInput"
 import { SelectInput } from "../../../../../../ui/SelectInput"
+import { theme } from "../../../../../../../theme"
 
 const ProductFormFields = forwardRef(({ product, onChange, onFocus, onBlur }, ref) => {
     const textInputs = getTextInputsConfig(product)
@@ -42,7 +43,7 @@ const ProductFormFieldsStyled = styled.div`
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: ${theme.spacing.xs};
 
     .input-title {
         grid-area: 1/1/2/4;

@@ -73,7 +73,7 @@ const BasketContentStyled = styled.div`
         justify-content: flex-start;
         gap: ${theme.spacing.md};
         margin: 0;
-        padding: 20px 16px;
+        padding: ${theme.spacing.md} 16px;
 
         ${BasketProductAnimation}
     }

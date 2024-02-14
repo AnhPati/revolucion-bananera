@@ -36,7 +36,7 @@ const CardImgStyled = styled.div`
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 15px;
+            border-radius: ${theme.borderRadius.extraRound};
         }
 
         img {

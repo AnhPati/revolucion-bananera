@@ -32,7 +32,7 @@ const BasketProductStyled = styled.li`
     background: ${theme.colors.white};
     box-shadow: ${theme.shadows.basketProductShadow};
     border-radius: ${theme.borderRadius.round};
-    padding: 8px 16px;
+    padding: ${theme.spacing.xs} 16px;
 
     .basket-advertising {
         position: absolute;

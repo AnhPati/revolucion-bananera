@@ -39,7 +39,7 @@ const ImgPreviewStyled = styled.div`
     }
 
     p {
-        font-size: 16px;
+        font-size: ${theme.fonts.size.P0};
         color: ${theme.colors.greySemiDark};
     }
 

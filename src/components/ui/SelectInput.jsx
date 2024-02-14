@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../theme";
 
 export const SelectInput = ({ id, name, value, Icon, options, onChange, onFocus, onBlur }) => {
     console.log(options)
@@ -25,21 +26,18 @@ export const SelectInput = ({ id, name, value, Icon, options, onChange, onFocus,
 
 const SelectInputStyled = styled.div`
     display: inline-flex;
-    padding: 8px 16px;
+    padding: ${theme.spacing.xs} 16px;
     align-items: center;
     gap: 13px;
-    background-color: #F5F5F7;
-    border-radius: 5px;
+    background-color: ${theme.colors.background_white};
+    border-radius: ${theme.borderRadius.round};
 
     select {
         width: 100%;
-        background-color: #F5F5F7;
+        background-color: ${theme.colors.background_white};
         border: none;
-        color: #17161A;
-        font-size: 15px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
+        color: ${theme.colors.dark};
+        font-size: ${theme.fonts.size.SM};
 
         &:focus-visible {
             outline: none;
@@ -47,7 +45,7 @@ const SelectInputStyled = styled.div`
     }
 
     svg {
-        font-size: 16px;
-        color: #747B91;
+        font-size: ${theme.fonts.size.P0};
+        color: ${theme.colors.greyBlue};
     }
 `;

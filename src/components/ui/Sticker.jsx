@@ -13,7 +13,7 @@ const StickerStyled = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  border-radius: ${theme.borderRadius.circle};
   background-color: ${theme.colors.redSecondary};
   border: none;
   color: white;

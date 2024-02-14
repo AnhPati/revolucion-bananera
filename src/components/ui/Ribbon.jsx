@@ -24,7 +24,7 @@ const RibbonStyled = styled.div`
     max-width: 600px;
     width: 90%;
     height: 400px;
-    background: #fff;
+    background: ${theme.colors.white};
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   }
 
@@ -51,8 +51,8 @@ const RibbonStyled = styled.div`
     padding: 15px 0;
     background-color: ${theme.colors.red};
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    color: #fff;
-    font: 700 18px/1 "Lato", sans-serif;
+    color: ${theme.colors.white};
+    font: ${theme.fonts.weights.bold} ${theme.fonts.size.P1}/1 "Lato", sans-serif;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     text-transform: uppercase;
     text-align: center;
