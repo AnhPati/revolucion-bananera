@@ -1,7 +1,7 @@
 import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { MdModeEditOutline } from "react-icons/md"
-import AddProductForm from "../AdminForms/AddProductForm"
+import AddProductForm from "../AdminForms/AddProductForm/AddProductForm"
 import UpdateProductForm from "../AdminForms/UpdateProductPanel/UpdateProductForm"
 import { HintMessage } from "../AdminForms/UpdateProductPanel/HintMessage"
 

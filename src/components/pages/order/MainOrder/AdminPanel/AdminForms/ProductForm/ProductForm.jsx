@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { ImgPreview } from "./ImgPreview"
-import { theme } from "../../../../../../theme"
+import { theme } from "../../../../../../../theme"
 import { forwardRef } from "react"
 import ProductFormFields from "./ProductFormFields"
 

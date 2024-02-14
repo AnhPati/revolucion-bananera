@@ -1,8 +1,8 @@
 import { forwardRef } from "react"
 import styled from "styled-components"
-import { getSelectInputsConfig, getTextInputsConfig } from "../helpers/getInputsConfig"
-import { TextInput } from "../../../../../ui/TextInput"
-import { SelectInput } from "../../../../../ui/SelectInput"
+import { getSelectInputsConfig, getTextInputsConfig } from "./helpers/getInputsConfig"
+import { TextInput } from "../../../../../../ui/TextInput"
+import { SelectInput } from "../../../../../../ui/SelectInput"
 
 const ProductFormFields = forwardRef(({ product, onChange, onFocus, onBlur }, ref) => {
     const textInputs = getTextInputsConfig(product)
