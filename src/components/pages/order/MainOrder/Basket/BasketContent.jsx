@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { BasketProduct } from "./BasketProduct/BasketProduct";
-import { DEFAULT_IMG } from "../../../../../enums/product";
+import { BASKET_MESSAGE, DEFAULT_IMG } from "../../../../../enums/product";
 import { useContext } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
 import { theme } from "../../../../../theme";
@@ -8,6 +8,8 @@ import { findObjectById } from "../../../../../utils/array";
 import { checkCardIsSelected } from "../MenuOrder/helpers/checkCardIsSelected";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { BasketProductAnimation } from "../../../../../theme/animations";
+import { convertStringToBoolean } from "../../../../../utils/string";
+import { formatPrice } from "../../../../../utils/maths";
 
 export const BasketContent = () => {
     const { userId, basketProducts, handleDeleteBasketProduct, adminMode, handleSelectProduct, products } = useContext(OrderContext)
@@ -45,6 +47,8 @@ export const BasketContent = () => {
                                     isClickable={isAdminMode}
                                     onClick={isAdminMode ? (() => onClick(basketProduct.id)) : undefined}
                                     selected={checkCardIsSelected(basketProduct.id, cardSelected)}
+                                    isPublicised={convertStringToBoolean(menuProduct.isPublicised)}
+                                    price={convertStringToBoolean(menuProduct.isAvailable) ? formatPrice(menuProduct.price) : BASKET_MESSAGE.UNAVAILABLE}
                                 />
                             </CSSTransition>
                         )
