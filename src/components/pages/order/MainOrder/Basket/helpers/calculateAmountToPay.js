@@ -1,4 +1,5 @@
 import { findObjectById } from "../../../../../../utils/array";
+import { convertStringToBoolean } from "../../../../../../utils/string";
 
 export const calculateAmountToPay = (basketProducts, products) => {
     return basketProducts.reduce((amount, basketProduct) => {
@@ -6,6 +7,8 @@ export const calculateAmountToPay = (basketProducts, products) => {
         let productPrice = menuProduct.price
 
         if (isNaN(menuProduct.price)) {
+            productPrice = 0
+        } else if (convertStringToBoolean(menuProduct.isAvailable) === false) {
             productPrice = 0
         }
 
