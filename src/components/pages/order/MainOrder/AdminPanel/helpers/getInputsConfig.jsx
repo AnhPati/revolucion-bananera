@@ -12,6 +12,7 @@ export const getTextInputsConfig = (productValues) => [
         value: productValues.title,
         placeholder: 'Nom du produit (ex: Super Burger)',
         Icon: <FaHamburger />,
+        className: 'input-title'
     },
     {
         id: "1",
@@ -19,6 +20,7 @@ export const getTextInputsConfig = (productValues) => [
         value: productValues.imageSource,
         placeholder: `Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)`,
         Icon: <BsFillCameraFill />,
+        className: 'input-img'
     },
     {
         id: "2",
@@ -26,6 +28,7 @@ export const getTextInputsConfig = (productValues) => [
         value: productValues.price,
         placeholder: 'Prix',
         Icon: <MdOutlineEuro />,
+        className: 'input-price'
     }
 ]
 
