@@ -10,7 +10,7 @@ export const CardDescription = ({ leftDescription, onAdd, onRemove, isUnavailabl
                 {leftDescription}
             </p>
             <div className={'add_button-container'}>
-                <QuantityButton onAdd={onAdd} onRemove={onRemove} quantity={quantity} />
+                <QuantityButton onAdd={onAdd} onRemove={onRemove} quantity={quantity} isDisabled={isUnavailable} />
                 {/* <Button label={'Ajouter'} onClick={onClick} isDisabled={isUnavailable} /> */}
             </div>
         </CardDescriptionStyled>

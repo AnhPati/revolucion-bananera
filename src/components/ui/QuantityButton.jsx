@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export const QuantityButton = ({ onAdd, onRemove, quantity }) => {
+export const QuantityButton = ({ onAdd, onRemove, quantity, isDisabled }) => {
     console.log(quantity)
     return (
         <QuantityButtonStyled>
-            <button className='decrement-button' onClick={onRemove} disabled={quantity < 1 ? true : false} >-</button>
+            <button className='decrement-button' onClick={onRemove} disabled={quantity < 1 || isDisabled ? true : false} >-</button>
             <p>{quantity}</p>
-            <button className='increment-button' onClick={onAdd} >+</button>
+            <button className='increment-button' onClick={onAdd} disabled={isDisabled} >+</button>
         </QuantityButtonStyled>
     )
 }
@@ -52,7 +52,7 @@ const QuantityButtonStyled = styled.div`
 
         &:disabled {  
             cursor: not-allowed;
-            opacity: 0.5;
+            opacity: 0.3;
         }
     }
 
