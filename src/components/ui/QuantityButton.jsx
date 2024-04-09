@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export const QuantityButton = ({ onClick, quantity }) => {
+export const QuantityButton = ({ onAdd, onRemove, quantity }) => {
     console.log(quantity)
     return (
         <QuantityButtonStyled>
-            <button className='decrement-button' >-</button>
+            <button className='decrement-button' onClick={onRemove} disabled={quantity < 1 ? true : false} >-</button>
             <p>{quantity}</p>
-            <button className='increment-button' onClick={onClick}>+</button>
+            <button className='increment-button' onClick={onAdd} >+</button>
         </QuantityButtonStyled>
     )
 }

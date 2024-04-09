@@ -16,7 +16,7 @@ import { convertStringToBoolean } from "../../../../../utils/string";
 
 
 export const MenuOrder = () => {
-    const { userId, products, basketProducts, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct, handleDeleteBasketProduct } = useContext(OrderContext)
+    const { userId, products, basketProducts, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct, handleDeleteBasketProduct, decrementQuantityProduct } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = productSelected.id
 
@@ -35,6 +35,17 @@ export const MenuOrder = () => {
         event.stopPropagation()
         const productToAdd = findObjectById(id, products)
         handleAddBasketProduct(productToAdd, userId)
+    }
+
+    const removeFromBasket = (id, event) => {
+        event.stopPropagation()
+        decrementQuantityProduct(id)
+
+        const removedProduct = findObjectById(id, basketProducts)
+
+        if (removedProduct.quantity < 2) {
+            handleDeleteBasketProduct(removedProduct.id, userId)
+        }
     }
 
     const isLoading = products === undefined
@@ -66,6 +77,7 @@ export const MenuOrder = () => {
                                         onClick={isAdminMode ? (() => onClick(id)) : undefined}
                                         selected={checkCardIsSelected(id, cardSelected)}
                                         onAdd={(event) => addToBasket(id, event)}
+                                        onRemove={(event) => removeFromBasket(id, event)}
                                         isPublicised={convertStringToBoolean(isPublicised)}
                                         isUnavailable={convertStringToBoolean(isAvailable) === false}
                                         unavailableImage={UNAVAILABLE_PRODUCT_IMG}
