@@ -16,7 +16,7 @@ import { convertStringToBoolean } from "../../../../../utils/string";
 
 
 export const MenuOrder = () => {
-    const { userId, products, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct, handleDeleteBasketProduct } = useContext(OrderContext)
+    const { userId, products, basketProducts, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct, handleDeleteBasketProduct } = useContext(OrderContext)
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = productSelected.id
 
@@ -69,6 +69,7 @@ export const MenuOrder = () => {
                                         isPublicised={convertStringToBoolean(isPublicised)}
                                         isUnavailable={convertStringToBoolean(isAvailable) === false}
                                         unavailableImage={UNAVAILABLE_PRODUCT_IMG}
+                                        quantity={basketProducts.find(basketProduct => basketProduct.id === id) ? basketProducts.find(basketProduct => basketProduct.id === id).quantity : 0}
                                     />
                                 </CSSTransition>
                             )

@@ -1,27 +1,13 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export const QuantityButton = () => {
-    const [quantityToAdd, setQuantityToAdd] = useState(0)
-    const incrementQuantity = () => {
-        const newQuantity = quantityToAdd + 1
-
-        setQuantityToAdd(newQuantity)
-    }
-    const decrementQuantity = () => {
-        const newQuantity = quantityToAdd - 1
-        if (newQuantity < 0) {
-            return
-        }
-
-        setQuantityToAdd(newQuantity)
-    }
+export const QuantityButton = ({ onClick, quantity }) => {
+    console.log(quantity)
     return (
         <QuantityButtonStyled>
-            <button className='decrement-button' onClick={decrementQuantity}>-</button>
-            <p>{quantityToAdd}</p>
-            <button className='increment-button' onClick={incrementQuantity}>+</button>
+            <button className='decrement-button' >-</button>
+            <p>{quantity}</p>
+            <button className='increment-button' onClick={onClick}>+</button>
         </QuantityButtonStyled>
     )
 }
