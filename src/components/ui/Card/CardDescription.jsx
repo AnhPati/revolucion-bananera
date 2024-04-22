@@ -10,8 +10,12 @@ export const CardDescription = ({ leftDescription, onAdd, onRemove, isUnavailabl
                 {leftDescription}
             </p>
             <div className={'add_button-container'}>
-                <QuantityButton onAdd={onAdd} onRemove={onRemove} quantity={quantity} isDisabled={isUnavailable} />
-                {/* <Button label={'Ajouter'} onClick={onClick} isDisabled={isUnavailable} /> */}
+                {
+                    quantity > 0 ?
+                        <QuantityButton onAdd={onAdd} onRemove={onRemove} quantity={quantity} isDisabled={isUnavailable} />
+                        :
+                        <Button label={'Ajouter'} onClick={onAdd} isDisabled={isUnavailable} />
+                }
             </div>
         </CardDescriptionStyled>
     )
@@ -35,9 +39,9 @@ const CardDescriptionStyled = styled.div`
     .add_button-container {
         width: 95px;
 
-        /* button {
+        button {
             padding-top: ${theme.gridUnit * 1.5}px;
             padding-bottom: ${theme.gridUnit * 1.5}px;
-        } */
+        }
     }
 `;
