@@ -29,6 +29,7 @@ const OrderPage = () => {
         setBasketProducts,
         handleAddBasketProduct,
         handleDeleteBasketProduct,
+        decrementQuantityProduct
     } = useBasketProducts()
 
 
@@ -46,7 +47,8 @@ const OrderPage = () => {
         titleInputRef,
         basketProducts,
         handleAddBasketProduct,
-        handleDeleteBasketProduct
+        handleDeleteBasketProduct,
+        decrementQuantityProduct
     }
 
     useEffect(() => {

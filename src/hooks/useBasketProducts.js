@@ -17,6 +17,7 @@ export const useBasketProducts = () => {
             newBasketProducts[productIndex].quantity += 1
 
             setBasketProducts(newBasketProducts)
+            syncBasketProducts(userId, newBasketProducts)
         }
 
         const addProduct = () => {
@@ -37,6 +38,15 @@ export const useBasketProducts = () => {
         }
     }
 
+    const decrementQuantityProduct = (id) => {
+        const newBasketProducts = getDeepClone(basketProducts)
+        const productIndex = findIndexById(id, newBasketProducts)
+
+        newBasketProducts[productIndex].quantity -= 1
+
+        setBasketProducts(newBasketProducts)
+    }
+
     const handleDeleteBasketProduct = (id, userId) => {
         const newBasketProducts = filterArrayWithId(id, basketProducts)
 
@@ -49,5 +59,6 @@ export const useBasketProducts = () => {
         setBasketProducts,
         handleAddBasketProduct,
         handleDeleteBasketProduct,
+        decrementQuantityProduct
     }
 }

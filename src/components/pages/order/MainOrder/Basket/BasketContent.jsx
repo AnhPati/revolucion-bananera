@@ -65,6 +65,11 @@ const BasketContentStyled = styled.div`
     display: grid;
     box-shadow: ${theme.shadows.basketShadow};
     overflow-y: scroll;
+    scrollbar-color: transparent transparent;
+
+    &:hover { 
+        scrollbar-color: initial;
+    }
 
     ul {
         display: flex;
