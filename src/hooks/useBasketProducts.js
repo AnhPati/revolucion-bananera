@@ -17,6 +17,7 @@ export const useBasketProducts = () => {
             newBasketProducts[productIndex].quantity += 1
 
             setBasketProducts(newBasketProducts)
+            syncBasketProducts(userId, newBasketProducts)
         }
 
         const addProduct = () => {
