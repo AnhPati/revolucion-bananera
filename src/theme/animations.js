@@ -28,7 +28,31 @@ export const fadeInTop = keyframes`
 
 export const fadeInRight = keyframes`
     0% {
-        transform: translateX(100%);
+        transform: translateX(40%);
+        opacity: 0%;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 100%;
+    }
+`
+
+export const fadeInBottom = keyframes`
+    0% {
+        transform: translateY(40%);
+        opacity: 0%;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 100%;
+    }
+`
+
+export const fadeInLeft = keyframes`
+    0% {
+        transform: translateX(-40%);
         opacity: 0%;
     }
 
@@ -43,6 +67,15 @@ export const pulse = keyframes`
         transform: scale(1.5);
     }
 
+    100% {
+        transform: scale(1);
+    }
+`
+
+export const bounceIn = keyframes`
+    0% {
+        transform: scale(1.2);
+    }
     100% {
         transform: scale(1);
     }
