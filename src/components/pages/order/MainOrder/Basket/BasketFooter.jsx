@@ -16,7 +16,7 @@ const BasketFooterStyled = styled.div`
     align-items: center;
     justify-content: center;
     height: 70px;
-    background-color: ${theme.colors.dark};
+    background-color: ${theme.colors.background_dark};
 
     h4 {
         margin: 0;

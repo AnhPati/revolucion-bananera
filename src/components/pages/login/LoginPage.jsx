@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { LoginForm } from "./LoginForm"
 import background from "./../../../assets/burger-background.jpg"
 import { Logo } from "../../ui/Logo";
+import { theme } from "../../../theme";
+import { backInBounce, fadeInBottom, slideInSpace } from "../../../theme/animations";
 
 const LoginPage = () => {
     return (
@@ -27,5 +29,21 @@ const LoginPageStyled = styled.div`
     .login_page-logo {
         transform: scale(2.5);
         margin: 40px 0;
+
+        h1:first-child {
+            animation: ${slideInSpace("60%", "-20%", "0%")} ${theme.animations.speed.quick} ease-out;
+        }
+
+        h1:last-child {
+            animation: ${slideInSpace("-60%", "20%", "0%")} ${theme.animations.speed.quick} ease-out;
+        }
+
+        .img-container {
+            animation: ${backInBounce} ${theme.animations.speed.quick} ease-out;
+        }
+    }
+
+    form {
+        animation: ${fadeInBottom} ${theme.animations.speed.quick} ease-out;
     }
 `;
