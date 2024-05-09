@@ -30,7 +30,7 @@ const BasketHeaderStyled = styled.div`
     padding-left: 16px;
     padding-right: 16px;
     height: 70px;
-    background-color: ${theme.colors.dark};
+    background-color: ${theme.colors.background_dark};
 
     h3 {
         margin: 0;
