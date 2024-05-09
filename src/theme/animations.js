@@ -76,8 +76,37 @@ export const bounceIn = keyframes`
     0% {
         transform: scale(1.2);
     }
+
     100% {
         transform: scale(1);
+    }
+`
+
+export const backInBounce = keyframes`
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+`
+
+export const slideInSpace = (appearValue, midValue, endValue) => keyframes`
+    0% {
+        transform: translateX(${appearValue});
+    }
+
+    50% {
+        transform: translateX(${midValue});
+    }
+
+    100% {
+        transform: translateX(${endValue});
     }
 `
 

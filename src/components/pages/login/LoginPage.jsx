@@ -3,7 +3,7 @@ import { LoginForm } from "./LoginForm"
 import background from "./../../../assets/burger-background.jpg"
 import { Logo } from "../../ui/Logo";
 import { theme } from "../../../theme";
-import { bounceIn, fadeInBottom, fadeInLeft, fadeInRight } from "../../../theme/animations";
+import { backInBounce, fadeInBottom, slideInSpace } from "../../../theme/animations";
 
 const LoginPage = () => {
     return (
@@ -31,15 +31,15 @@ const LoginPageStyled = styled.div`
         margin: 40px 0;
 
         h1:first-child {
-            animation: ${fadeInLeft} ${theme.animations.speed.quick} ease-out;
+            animation: ${slideInSpace("60%", "-20%", "0%")} ${theme.animations.speed.quick} ease-out;
         }
 
         h1:last-child {
-            animation: ${fadeInRight} ${theme.animations.speed.quick} ease-out;
+            animation: ${slideInSpace("-60%", "20%", "0%")} ${theme.animations.speed.quick} ease-out;
         }
 
         .img-container {
-            animation: ${bounceIn} ${theme.animations.speed.quick} ease-out;
+            animation: ${backInBounce} ${theme.animations.speed.quick} ease-out;
         }
     }
 
