@@ -27,7 +27,6 @@ TextInput.displayName = "TextInput";
 const TextInputStyled = styled.div`
     position: relative;
     width: 100%;
-    border-radius: ${theme.borderRadius.round};
 
     > svg {
         position: absolute;
@@ -43,6 +42,7 @@ const TextInputStyled = styled.div`
         padding-left: ${theme.gridUnit * 5.75}px;
         padding-right: ${theme.gridUnit * 3}px;
         border: none;
+        border-radius: ${theme.borderRadius.round};
 
         &:focus-visible {
             outline: none;
