@@ -7,7 +7,6 @@ import OrderContext from "../../../../../contexts/OrderContext";
 import EmptyBasket from "./EmptyBasket";
 import { theme } from "../../../../../theme";
 import { isEmptyArray } from "../../../../../utils/array";
-import { Loader } from "../MenuOrder/Loader";
 
 export const Basket = () => {
     const { basketProducts, products } = useContext(OrderContext)
