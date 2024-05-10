@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import { Button } from "../../../../ui/Button"
 
 export const BasketFooter = () => {
     return (
         <BasketFooterStyled>
-            <h4>
-                Codé avec ❤️ et React.JS
-            </h4>
+            <div className="order_button-container">
+                <Button
+                    label="Commander"
+                ></Button>
+            </div>
         </BasketFooterStyled>
     )
 }
@@ -22,5 +25,14 @@ const BasketFooterStyled = styled.div`
         margin: 0;
         color: ${theme.colors.white};
         font-size: ${theme.fonts.size.P2};
+    }
+
+    .order_button-container {
+        width: 115px;
+
+        button {
+            padding-top: ${theme.gridUnit * 1.5}px;
+            padding-bottom: ${theme.gridUnit * 1.5}px;
+        }
     }
 `;
