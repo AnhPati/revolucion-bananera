@@ -7,15 +7,21 @@ import OrderContext from "../../../../../contexts/OrderContext";
 import EmptyBasket from "./EmptyBasket";
 import { theme } from "../../../../../theme";
 import { isEmptyArray } from "../../../../../utils/array";
+import { calculateAmountToPay } from "./helpers/calculateAmountToPay";
 
 export const Basket = () => {
     const { basketProducts, products } = useContext(OrderContext)
+    const amountToPay = calculateAmountToPay(basketProducts, products)
     const isLoading = products === undefined
+
+    // const handlePlaceOrder = () => {
+    //     setIsOrdering(true)
+    // }
 
     return (
 
         <BasketStyled>
-            <BasketHeader />
+            <BasketHeader amountToPay={amountToPay} />
             {isEmptyArray(basketProducts) ? (
                 <EmptyBasket isLoading={isLoading} />
             ) : (
