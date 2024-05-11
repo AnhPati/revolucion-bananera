@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../theme";
+import { Button } from "../../ui/Button";
 
 const OrderMessage = () => {
     return (
@@ -7,6 +8,14 @@ const OrderMessage = () => {
             <div className="order_message-layer"></div>
             <div className="order_message-container">
                 <h1>Votre commande a bien été enregistrée !</h1>
+                <div className="buttons-container">
+                    <Button
+                        label='Confirmer'
+                    />
+                    <Button
+                        label='Annuler'
+                    />
+                </div>
             </div>
         </OrderMessageStyled>
     )
@@ -33,8 +42,21 @@ const OrderMessageStyled = styled.div`
     }
 
     .order_message-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         background: ${theme.colors.background_white};
         color: ${theme.colors.greyBlue};
         z-index: 0;
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            button {
+                width: 95px;
+            }
+        }
     }
 `;
