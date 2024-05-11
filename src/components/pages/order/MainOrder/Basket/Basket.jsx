@@ -10,13 +10,13 @@ import { isEmptyArray } from "../../../../../utils/array";
 import { calculateAmountToPay } from "./helpers/calculateAmountToPay";
 
 export const Basket = () => {
-    const { basketProducts, products } = useContext(OrderContext)
+    const { basketProducts, products, orderStatut, setOrderStatut } = useContext(OrderContext)
     const amountToPay = calculateAmountToPay(basketProducts, products)
     const isLoading = products === undefined
 
-    // const handlePlaceOrder = () => {
-    //     setIsOrdering(true)
-    // }
+    const handlePlaceOrder = () => {
+        setOrderStatut('pending')
+    }
 
     return (
 
@@ -27,7 +27,7 @@ export const Basket = () => {
             ) : (
                 <BasketContent />
             )}
-            <BasketFooter />
+            <BasketFooter handlePlaceOrder={handlePlaceOrder} orderStatut={orderStatut} />
         </BasketStyled>
     )
 }

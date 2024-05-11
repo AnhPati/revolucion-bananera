@@ -5,10 +5,11 @@ import { MainOrder } from "./MainOrder/MainOrder";
 import OrderContext from "../../../contexts/OrderContext";
 import { useAdminProducts } from "../../../hooks/useAdminProducts";
 import { useBasketProducts } from "../../../hooks/useBasketProducts";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { initialiseUserSession } from "./helpers/initialiseUserSession";
 
 const OrderPage = () => {
+    const [orderStatut, setOrderStatut] = useState('none')
     const {
         userId,
         adminMode,
@@ -48,7 +49,9 @@ const OrderPage = () => {
         basketProducts,
         handleAddBasketProduct,
         handleDeleteBasketProduct,
-        decrementQuantityProduct
+        decrementQuantityProduct,
+        orderStatut,
+        setOrderStatut
     }
 
     useEffect(() => {
