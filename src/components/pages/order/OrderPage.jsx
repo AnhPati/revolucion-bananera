@@ -7,6 +7,7 @@ import { useAdminProducts } from "../../../hooks/useAdminProducts";
 import { useBasketProducts } from "../../../hooks/useBasketProducts";
 import { useEffect, useState } from "react";
 import { initialiseUserSession } from "./helpers/initialiseUserSession";
+import OrderMessage from "./OrderMessage";
 
 const OrderPage = () => {
     const [orderStatut, setOrderStatut] = useState('none')
@@ -63,6 +64,7 @@ const OrderPage = () => {
         <OrderPageStyled>
             <div className={'order-container'}>
                 <OrderContext.Provider value={orderContextValue}>
+                    {orderStatut === "pending" && <OrderMessage />}
                     <Navbar />
                     <MainOrder />
                 </OrderContext.Provider>
