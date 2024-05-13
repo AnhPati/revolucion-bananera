@@ -1,8 +1,20 @@
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import { Button } from "../../ui/Button";
+import { useContext } from "react";
+import OrderContext from "../../../contexts/OrderContext";
 
 const OrderMessage = () => {
+    const { setOrderStatut } = useContext(OrderContext)
+
+    const handleAccept = () => {
+        setOrderStatut('accepted')
+    }
+
+    const handleDeny = () => {
+        setOrderStatut('none')
+    }
+
     return (
         <OrderMessageStyled>
             <div className="order_message-layer"></div>
@@ -11,9 +23,11 @@ const OrderMessage = () => {
                 <div className="buttons-container">
                     <Button
                         label='Confirmer'
+                        onClick={handleAccept}
                     />
                     <Button
                         label='Annuler'
+                        onClick={handleDeny}
                     />
                 </div>
             </div>

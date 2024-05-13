@@ -9,7 +9,7 @@ export const BasketFooter = ({ handlePlaceOrder, orderStatut }) => {
                 <Button
                     label="Commander"
                     onClick={handlePlaceOrder}
-                    isDisabled={orderStatut !== "none"}
+                    isDisabled={orderStatut === "pending"}
                 ></Button>
             </div>
         </BasketFooterStyled>
