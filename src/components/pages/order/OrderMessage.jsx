@@ -3,12 +3,14 @@ import { theme } from "../../../theme";
 import { Button } from "../../ui/Button";
 import { useContext } from "react";
 import OrderContext from "../../../contexts/OrderContext";
+import { fakeBasket } from "../../../fakeData/fakeBasket";
 
 const OrderMessage = () => {
-    const { setOrderStatut } = useContext(OrderContext)
+    const { setOrderStatut, setBasketProducts } = useContext(OrderContext)
 
     const handleAccept = () => {
         setOrderStatut('accepted')
+        setBasketProducts(fakeBasket.EMPTY)
     }
 
     const handleDeny = () => {
@@ -60,6 +62,9 @@ const OrderMessageStyled = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 30px;
+        padding: 40px 40px 60px 40px;
+        border-radius: 5px;
         background: ${theme.colors.background_white};
         color: ${theme.colors.greyBlue};
         z-index: 0;

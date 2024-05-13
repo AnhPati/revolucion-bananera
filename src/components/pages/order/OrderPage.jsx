@@ -48,6 +48,7 @@ const OrderPage = () => {
         productSelected,
         titleInputRef,
         basketProducts,
+        setBasketProducts,
         handleAddBasketProduct,
         handleDeleteBasketProduct,
         decrementQuantityProduct,
