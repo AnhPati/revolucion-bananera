@@ -4,12 +4,22 @@ import { Button } from "../../ui/Button";
 import { useContext } from "react";
 import OrderContext from "../../../contexts/OrderContext";
 import { fakeBasket } from "../../../fakeData/fakeBasket";
+import { getDeepClone } from "../../../utils/array";
 
 const OrderMessage = () => {
-    const { setOrderStatut, setBasketProducts } = useContext(OrderContext)
+    const { userId, setOrderStatut, basketProducts, setBasketProducts, orders, setOrders } = useContext(OrderContext)
 
     const handleAccept = () => {
+        const ordersCopy = getDeepClone(orders)
+        const newOrder = {
+            id: 9,
+            userId: userId,
+            orderTime: new Date(),
+            products: basketProducts
+        }
+        const newOrders = [newOrder, ...ordersCopy]
         setOrderStatut('accepted')
+        setOrders(newOrders)
         setBasketProducts(fakeBasket.EMPTY)
     }
 

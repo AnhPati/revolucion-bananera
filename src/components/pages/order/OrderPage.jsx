@@ -11,6 +11,7 @@ import OrderMessage from "./OrderMessage";
 
 const OrderPage = () => {
     const [orderStatut, setOrderStatut] = useState('none')
+    const [orders, setOrders] = useState([])
     const {
         userId,
         adminMode,
@@ -53,7 +54,9 @@ const OrderPage = () => {
         handleDeleteBasketProduct,
         decrementQuantityProduct,
         orderStatut,
-        setOrderStatut
+        setOrderStatut,
+        orders,
+        setOrders
     }
 
     useEffect(() => {
