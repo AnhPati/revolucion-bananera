@@ -10,10 +10,10 @@ export const AdminOrdersPanel = () => {
     const { orders, products } = useContext(OrderContext)
     return (
         <AdminOrdersPanelStyled>
-            <div className="orders-container">
+            <div className="orders_admin-container">
                 {orders.map(order => {
                     return (
-                        <div key={order.id}>
+                        <div className={"order_admin-container"} key={order.id}>
                             <p><b>N° de commande :</b> {order.id}</p>
                             <p><b>Nom :</b> {order.userId}</p>
                             <p><b>Heure de la commande :</b> {order.orderTime.toString()}</p>
@@ -31,6 +31,7 @@ export const AdminOrdersPanel = () => {
                                 })}
                             </ul>
                             <RemoveButton />
+                            {orders.indexOf(order) < orders.length - 1 && <hr />}
                         </div>
                     )
                 })}
@@ -52,11 +53,10 @@ const AdminOrdersPanelStyled = styled.div`
     gap: 10px;
     padding-right: 50px;
 
-    .orders-container {
+    .orders_admin-container {
         height: 150px;
         padding: 10px 15px;
         border: solid 1px ${theme.colors.greyLight};
-        border-radius: ${theme.borderRadius.round};
         overflow: hidden;
         overflow-y: scroll;
         scrollbar-color: transparent transparent;
@@ -65,17 +65,27 @@ const AdminOrdersPanelStyled = styled.div`
             scrollbar-color: initial;
         }
 
-        p, li {
-            font-size: 12px;
-        }
+        .order_admin-container {
+            position: relative;
 
-        p {
-            margin: 0;
-        }
+            p, li {
+                font-size: 12px;
+            }
 
-        ul {
-            margin: 0;
-            padding-left: 10px;
+            p {
+                margin: 0;
+            }
+
+            ul {
+                margin: 0;
+                padding-left: 10px;
+            }
+
+            hr {
+                height: 1px;
+                background: #e4e5e9;
+                border: none;
+            }
         }
     }
 `;
