@@ -20,7 +20,8 @@ export const Basket = () => {
             userId: userId,
             amount: amountToPay,
             orderTime: new Date(),
-            products: basketProducts
+            products: basketProducts,
+            statut: "to process"
         }
 
         handleCheckOrder(newOrder)
