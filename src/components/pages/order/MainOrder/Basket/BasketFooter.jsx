@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import { Button } from "../../../../ui/Button"
 
-export const BasketFooter = ({ handlePlaceOrder, orderStatut }) => {
+export const BasketFooter = ({ handlePlaceOrder, orderStatut, hasOrder }) => {
     return (
         <BasketFooterStyled>
             <div className="order_button-container">
                 <Button
                     label="Commander"
                     onClick={handlePlaceOrder}
-                    isDisabled={orderStatut === "pending"}
+                    isDisabled={orderStatut === "pending" || !hasOrder}
                 ></Button>
             </div>
         </BasketFooterStyled>

@@ -27,7 +27,7 @@ export const Basket = () => {
             ) : (
                 <BasketContent />
             )}
-            <BasketFooter handlePlaceOrder={handlePlaceOrder} orderStatut={orderStatut} />
+            <BasketFooter handlePlaceOrder={handlePlaceOrder} orderStatut={orderStatut} hasOrder={basketProducts.length > 0} />
         </BasketStyled>
     )
 }
