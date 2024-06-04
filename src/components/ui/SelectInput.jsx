@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 
 export const SelectInput = ({ id, name, value, Icon, options, onChange, onFocus, onBlur }) => {
-    console.log(options)
     return (
         <SelectInputStyled>
             {Icon}

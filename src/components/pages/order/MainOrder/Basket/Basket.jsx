@@ -26,12 +26,6 @@ export const Basket = () => {
         setOrderStatut('pending')
     }
 
-    console.log(`BASKET BUTTON ACTIVATION :`)
-    console.log(`Order Statut :`)
-    console.log(orderStatut)
-    console.log(`Temporary order :`)
-    console.log(tempOrder)
-
     return (
 
         <BasketStyled>

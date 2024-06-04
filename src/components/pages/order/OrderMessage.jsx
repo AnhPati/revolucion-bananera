@@ -19,12 +19,6 @@ const OrderMessage = () => {
         setTempOrder({})
     }
 
-    console.log(`MESSAGE BUTTON ACTIVATION :`)
-    console.log(`Orders :`)
-    console.log(orders)
-    console.log(`Temporary order :`)
-    console.log(tempOrder)
-
     const handleDeny = () => {
         setOrderStatut('none')
     }
