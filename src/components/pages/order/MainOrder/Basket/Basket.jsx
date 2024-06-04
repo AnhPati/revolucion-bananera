@@ -10,13 +10,27 @@ import { isEmptyArray } from "../../../../../utils/array";
 import { calculateAmountToPay } from "./helpers/calculateAmountToPay";
 
 export const Basket = () => {
-    const { basketProducts, products, orderStatut, setOrderStatut } = useContext(OrderContext)
+    const { basketProducts, products, orderStatut, setOrderStatut, tempOrder, setTempOrder, userId } = useContext(OrderContext)
     const amountToPay = calculateAmountToPay(basketProducts, products)
     const isLoading = products === undefined
 
     const handlePlaceOrder = () => {
+        const newOrder = {
+            id: crypto.randomUUID(),
+            userId: userId,
+            amount: amountToPay,
+            orderTime: new Date(),
+            products: basketProducts
+        }
+        setTempOrder(newOrder)
         setOrderStatut('pending')
     }
+
+    console.log(`BASKET BUTTON ACTIVATION :`)
+    console.log(`Order Statut :`)
+    console.log(orderStatut)
+    console.log(`Temporary order :`)
+    console.log(tempOrder)
 
     return (
 

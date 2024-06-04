@@ -7,31 +7,36 @@ import { fakeBasket } from "../../../fakeData/fakeBasket";
 import { getDeepClone } from "../../../utils/array";
 
 const OrderMessage = () => {
-    const { userId, setOrderStatut, basketProducts, setBasketProducts, orders, setOrders } = useContext(OrderContext)
+    const { userId, setOrderStatut, basketProducts, setBasketProducts, orders, setOrders, tempOrder, setTempOrder } = useContext(OrderContext)
 
     const handleAccept = () => {
         const ordersCopy = getDeepClone(orders)
-        const newOrder = {
-            id: 9,
-            userId: userId,
-            orderTime: new Date(),
-            products: basketProducts
-        }
-        const newOrders = [newOrder, ...ordersCopy]
+        const newOrders = [tempOrder, ...ordersCopy]
         setOrderStatut('accepted')
         setOrders(newOrders)
         setBasketProducts(fakeBasket.EMPTY)
+        setTempOrder({})
     }
+
+    console.log(`MESSAGE BUTTON ACTIVATION :`)
+    console.log(`Orders :`)
+    console.log(orders)
+    console.log(`Temporary order :`)
+    console.log(tempOrder)
 
     const handleDeny = () => {
         setOrderStatut('none')
     }
 
+    console.log(orders)
     return (
         <OrderMessageStyled>
             <div className="order_message-layer"></div>
             <div className="order_message-container">
                 <h1>Votre commande a bien été enregistrée !</h1>
+                <div className="order_message-summary">
+                    <h4>Total à payer</h4>
+                </div>
                 <div className="buttons-container">
                     <Button
                         label='Confirmer'
