@@ -1,15 +1,9 @@
 import styled from "styled-components";
 import { formatPrice } from "../../../../../utils/maths";
 import { theme } from "../../../../../theme";
-import { calculateAmountToPay } from "./helpers/calculateAmountToPay";
-import { useContext } from "react";
-import OrderContext from "../../../../../contexts/OrderContext";
 import { CasinoEffect } from "../../../../ui/CasinoEffect";
 
-export const BasketHeader = () => {
-    const { basketProducts, products } = useContext(OrderContext)
-    const amountToPay = calculateAmountToPay(basketProducts, products)
-
+export const BasketHeader = ({ amountToPay }) => {
 
     return (
         <BasketHeaderStyled>
