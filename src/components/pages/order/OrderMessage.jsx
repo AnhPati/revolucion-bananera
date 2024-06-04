@@ -5,9 +5,10 @@ import { useContext } from "react";
 import OrderContext from "../../../contexts/OrderContext";
 import { fakeBasket } from "../../../fakeData/fakeBasket";
 import { getDeepClone } from "../../../utils/array";
+import { formatPrice } from "../../../utils/maths";
 
 const OrderMessage = () => {
-    const { userId, setOrderStatut, basketProducts, setBasketProducts, orders, setOrders, tempOrder, setTempOrder } = useContext(OrderContext)
+    const { setOrderStatut, setBasketProducts, orders, setOrders, tempOrder, setTempOrder } = useContext(OrderContext)
 
     const handleAccept = () => {
         const ordersCopy = getDeepClone(orders)
@@ -27,15 +28,13 @@ const OrderMessage = () => {
     const handleDeny = () => {
         setOrderStatut('none')
     }
-
-    console.log(orders)
     return (
         <OrderMessageStyled>
             <div className="order_message-layer"></div>
             <div className="order_message-container">
                 <h1>Votre commande a bien été enregistrée !</h1>
                 <div className="order_message-summary">
-                    <h4>Total à payer</h4>
+                    <h2>Total à payer : {formatPrice(tempOrder.amount)}</h2>
                 </div>
                 <div className="buttons-container">
                     <Button
