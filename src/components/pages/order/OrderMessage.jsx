@@ -3,24 +3,17 @@ import { theme } from "../../../theme";
 import { Button } from "../../ui/Button";
 import { useContext } from "react";
 import OrderContext from "../../../contexts/OrderContext";
-import { fakeBasket } from "../../../fakeData/fakeBasket";
-import { getDeepClone } from "../../../utils/array";
 import { formatPrice } from "../../../utils/maths";
 
 const OrderMessage = () => {
-    const { setOrderStatut, setBasketProducts, orders, setOrders, tempOrder, setTempOrder } = useContext(OrderContext)
+    const { tempOrder, handleValidOrder, handleDenyOrder } = useContext(OrderContext)
 
     const handleAccept = () => {
-        const ordersCopy = getDeepClone(orders)
-        const newOrders = [tempOrder, ...ordersCopy]
-        setOrderStatut('accepted')
-        setOrders(newOrders)
-        setBasketProducts(fakeBasket.EMPTY)
-        setTempOrder({})
+        handleValidOrder()
     }
 
     const handleDeny = () => {
-        setOrderStatut('none')
+        handleDenyOrder()
     }
     return (
         <OrderMessageStyled>
@@ -81,6 +74,7 @@ const OrderMessageStyled = styled.div`
             display: flex;
             justify-content: center;
             gap: 20px;
+
             button {
                 width: 95px;
             }

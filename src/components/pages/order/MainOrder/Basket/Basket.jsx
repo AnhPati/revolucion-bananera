@@ -10,7 +10,7 @@ import { isEmptyArray } from "../../../../../utils/array";
 import { calculateAmountToPay } from "./helpers/calculateAmountToPay";
 
 export const Basket = () => {
-    const { basketProducts, products, orderStatut, setOrderStatut, setTempOrder, userId } = useContext(OrderContext)
+    const { basketProducts, products, orderStatut, handleCheckOrder, userId } = useContext(OrderContext)
     const amountToPay = calculateAmountToPay(basketProducts, products)
     const isLoading = products === undefined
 
@@ -22,8 +22,8 @@ export const Basket = () => {
             orderTime: new Date(),
             products: basketProducts
         }
-        setTempOrder(newOrder)
-        setOrderStatut('pending')
+
+        handleCheckOrder(newOrder)
     }
 
     return (
