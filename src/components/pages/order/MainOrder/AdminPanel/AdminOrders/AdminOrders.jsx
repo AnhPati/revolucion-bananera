@@ -6,7 +6,7 @@ import styled from "styled-components"
 import { OrdersContainer } from "./OrdersContainer"
 
 export const AdminOrders = () => {
-    const { orders, products, handleDeleteOrder } = useContext(OrderContext)
+    const { orders, handleDeleteOrder } = useContext(OrderContext)
 
     const onDelete = (orderId, event) => {
         event.stopPropagation()
@@ -17,7 +17,6 @@ export const AdminOrders = () => {
         <AdminOrdersStyled>
             <OrdersContainer
                 orders={orders}
-                products={products}
                 onDelete={onDelete}
             />
             <Button
