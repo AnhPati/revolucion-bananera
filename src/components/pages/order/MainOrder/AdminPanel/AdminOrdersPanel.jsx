@@ -5,7 +5,6 @@ import OrderContext from "../../../../../contexts/OrderContext"
 import { RemoveButton } from "../../../../ui/Card/RemoveButton"
 import styled from "styled-components"
 import { theme } from "../../../../../theme"
-import { filterArrayWithId } from "../../../../../utils/array"
 
 export const AdminOrdersPanel = () => {
     const { orders, products, handleDeleteOrder } = useContext(OrderContext)
@@ -14,6 +13,7 @@ export const AdminOrdersPanel = () => {
         event.stopPropagation()
         handleDeleteOrder(orderId)
     }
+
     return (
         <AdminOrdersPanelStyled>
             <div className="orders_admin-container">
