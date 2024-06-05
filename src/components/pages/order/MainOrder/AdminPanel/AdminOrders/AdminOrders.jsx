@@ -1,12 +1,12 @@
 import { MdOutlineHistory } from "react-icons/md"
-import { Button } from "../../../../ui/Button"
+import { Button } from "../../../../../ui/Button"
 import { useContext } from "react"
-import OrderContext from "../../../../../contexts/OrderContext"
-import { RemoveButton } from "../../../../ui/Card/RemoveButton"
+import OrderContext from "../../../../../../contexts/OrderContext"
+import { RemoveButton } from "../../../../../ui/Card/RemoveButton"
 import styled from "styled-components"
-import { theme } from "../../../../../theme"
+import { theme } from "../../../../../../theme"
 
-export const AdminOrdersPanel = () => {
+export const AdminOrders = () => {
     const { orders, products, handleDeleteOrder } = useContext(OrderContext)
 
     const onDelete = (orderId, event) => {
@@ -15,7 +15,7 @@ export const AdminOrdersPanel = () => {
     }
 
     return (
-        <AdminOrdersPanelStyled>
+        <AdminOrdersStyled>
             <div className="orders_admin-container">
                 {orders.map(order => {
                     if (order.statut === "to process") {
@@ -52,11 +52,11 @@ export const AdminOrdersPanel = () => {
                     Icon={<MdOutlineHistory />}
                 />
             </div>
-        </AdminOrdersPanelStyled>
+        </AdminOrdersStyled>
     )
 }
 
-const AdminOrdersPanelStyled = styled.div`
+const AdminOrdersStyled = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;

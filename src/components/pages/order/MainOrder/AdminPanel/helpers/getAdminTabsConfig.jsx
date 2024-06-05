@@ -4,7 +4,7 @@ import { MdModeEditOutline } from "react-icons/md"
 import AddProductForm from "../AdminForms/AddProductForm/AddProductForm"
 import UpdateProductForm from "../AdminForms/UpdateProductPanel/UpdateProductForm"
 import { HintMessage } from "../AdminForms/UpdateProductPanel/HintMessage"
-import { AdminOrdersPanel } from "../AdminOrdersPanel"
+import { AdminOrders } from "../AdminOrders/AdminOrders"
 
 export const getAdminTabsConfig = ({
     isOpen,
@@ -37,7 +37,7 @@ export const getAdminTabsConfig = ({
             label: 'Commandes en cours',
             Icon: <MdModeEditOutline />,
             onClick: onClickSelectTab,
-            Content: <AdminOrdersPanel />
+            Content: <AdminOrders />
         }
     ]
 
