@@ -1,8 +1,10 @@
+import styled from "styled-components"
 import { RemoveButton } from "../../../../../ui/Card/RemoveButton"
+import { theme } from "../../../../../../theme"
 
 export const OrdersContainer = ({ orders, products, onDelete }) => {
     return (
-        <div className="orders_admin-container">
+        <OrdersContainerStyled>
             {orders.map(order => {
                 if (order.statut === "to process") {
                     return (
@@ -30,6 +32,43 @@ export const OrdersContainer = ({ orders, products, onDelete }) => {
                     )
                 }
             })}
-        </div>
+        </OrdersContainerStyled>
     )
 }
+
+const OrdersContainerStyled = styled.div`
+    height: 150px;
+    padding: 10px 15px;
+    border: solid 1px ${theme.colors.greyLight};
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-color: transparent transparent;
+
+    &:hover { 
+        scrollbar-color: initial;
+    }
+
+    .order_admin-container {
+        position: relative;
+
+        p, li {
+            font-size: 12px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 10px;
+        }
+
+        hr {
+            height: 1px;
+            background: #e4e5e9;
+            border: none;
+        }
+    }
+  
+`;
