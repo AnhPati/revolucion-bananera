@@ -8,6 +8,7 @@ import EmptyBasket from "./EmptyBasket";
 import { theme } from "../../../../../theme";
 import { isEmptyArray } from "../../../../../utils/array";
 import { calculateAmountToPay } from "./helpers/calculateAmountToPay";
+import { formatDate } from "../../../../../utils/date";
 
 export const Basket = () => {
     const { basketProducts, products, orderStatut, handleCheckOrder, userId } = useContext(OrderContext)
@@ -19,8 +20,9 @@ export const Basket = () => {
             id: crypto.randomUUID(),
             userId: userId,
             amount: amountToPay,
-            orderTime: new Date(),
-            products: basketProducts
+            orderTime: formatDate(new Date()),
+            products: basketProducts,
+            statut: "to process"
         }
 
         handleCheckOrder(newOrder)

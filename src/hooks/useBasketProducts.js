@@ -75,6 +75,15 @@ export const useBasketProducts = () => {
         setOrderStatut('none')
     }
 
+    const handleDeleteOrder = (id) => {
+        const newOrders = getDeepClone(orders)
+        const orderIndex = findIndexById(id, newOrders)
+
+        newOrders[orderIndex].statut = "archived"
+
+        setOrders(newOrders)
+    }
+
     return {
         basketProducts,
         setBasketProducts,
@@ -86,6 +95,7 @@ export const useBasketProducts = () => {
         tempOrder,
         handleCheckOrder,
         handleValidOrder,
-        handleDenyOrder
+        handleDenyOrder,
+        handleDeleteOrder
     }
 }

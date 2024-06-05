@@ -36,7 +36,8 @@ const OrderPage = () => {
         tempOrder,
         handleCheckOrder,
         handleValidOrder,
-        handleDenyOrder
+        handleDenyOrder,
+        handleDeleteOrder
     } = useBasketProducts()
 
 
@@ -62,7 +63,8 @@ const OrderPage = () => {
         tempOrder,
         handleCheckOrder,
         handleValidOrder,
-        handleDenyOrder
+        handleDenyOrder,
+        handleDeleteOrder
     }
 
     useEffect(() => {
