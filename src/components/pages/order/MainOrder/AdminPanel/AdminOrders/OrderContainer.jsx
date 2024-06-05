@@ -10,7 +10,7 @@ export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderInde
         <OrderContainerStyled>
             <p><b>N° de commande :</b> {id}</p>
             <p><b>Nom :</b> {userId}</p>
-            <p><b>Heure de la commande :</b> {orderTime.toString()}</p>
+            <p><b>Heure de la commande :</b> {orderTime}</p>
             <p><b>Commande :</b></p>
             <ul>
                 {orderProducts.map(product => {
