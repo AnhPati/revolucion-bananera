@@ -31,6 +31,7 @@ const OrdersContainerStyled = styled.div`
     height: 150px;
     padding: 10px 15px;
     border: solid 1px ${theme.colors.greyLight};
+    box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.075) inset;
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-color: transparent transparent;
