@@ -7,15 +7,17 @@ export const OrdersContainer = ({ orders, onDelete }) => {
 
     return (
         <OrdersContainerStyled>
-            {orders.map(({ id, userId, orderTime, products, statut }) => {
-                if (statut === "to process") {
+            {orders.map(order => {
+                if (order.statut === "to process") {
                     return (
                         <OrderContainer
-                            key={id}
-                            id={id}
-                            userId={userId}
-                            orderTime={orderTime}
-                            orderProducts={products}
+                            key={order.id}
+                            id={order.id}
+                            userId={order.userId}
+                            orderTime={order.orderTime}
+                            orderProducts={order.products}
+                            orderIndex={orders.indexOf(order)}
+                            lastOrderIndex={lastOrderIndex}
                             onDelete={onDelete}
                         />
                     )
@@ -36,28 +38,4 @@ const OrdersContainerStyled = styled.div`
     &:hover { 
         scrollbar-color: initial;
     }
-
-    .order_admin-container {
-        position: relative;
-
-        p, li {
-            font-size: 12px;
-        }
-
-        p {
-            margin: 0;
-        }
-
-        ul {
-            margin: 0;
-            padding-left: 10px;
-        }
-
-        hr {
-            height: 1px;
-            background: #e4e5e9;
-            border: none;
-        }
-    }
-  
 `;
