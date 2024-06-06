@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { theme } from "../../../../../../theme"
 import { OrderContainer } from "./OrderContainer"
+import { EmptyOrders } from "./EmptyOrders"
 
 export const OrdersContainer = ({ orders, onDelete }) => {
     const lastOrderIndex = orders.length - 1
@@ -26,9 +27,7 @@ export const OrdersContainer = ({ orders, onDelete }) => {
                     }
                 })
             ) : (
-                <div className="empty-message">
-                    <h2>Aucune commande en cours.</h2>
-                </div>
+                <EmptyOrders />
             )}
         </OrdersContainerStyled>
     )
