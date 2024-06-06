@@ -4,25 +4,32 @@ import { OrderContainer } from "./OrderContainer"
 
 export const OrdersContainer = ({ orders, onDelete }) => {
     const lastOrderIndex = orders.length - 1
-
+    const hasOrders = orders.filter(order => order.statut === "to process").length > 0
+    console.log(`hasOrders : ${hasOrders}`)
     return (
         <OrdersContainerStyled>
-            {orders.map(order => {
-                if (order.statut === "to process") {
-                    return (
-                        <OrderContainer
-                            key={order.id}
-                            id={order.id}
-                            userId={order.userId}
-                            orderTime={order.orderTime}
-                            orderProducts={order.products}
-                            orderIndex={orders.indexOf(order)}
-                            lastOrderIndex={lastOrderIndex}
-                            onDelete={onDelete}
-                        />
-                    )
-                }
-            })}
+            {hasOrders ? (
+                orders.map(order => {
+                    if (order.statut === "to process") {
+                        return (
+                            <OrderContainer
+                                key={order.id}
+                                id={order.id}
+                                userId={order.userId}
+                                orderTime={order.orderTime}
+                                orderProducts={order.products}
+                                orderIndex={orders.indexOf(order)}
+                                lastOrderIndex={lastOrderIndex}
+                                onDelete={onDelete}
+                            />
+                        )
+                    }
+                })
+            ) : (
+                <div className="empty-message">
+                    <h2>Aucune commande en cours.</h2>
+                </div>
+            )}
         </OrdersContainerStyled>
     )
 }
@@ -38,5 +45,19 @@ const OrdersContainerStyled = styled.div`
 
     &:hover { 
         scrollbar-color: initial;
+    }
+    .empty-message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        h2 {
+            margin: 0;
+            color: #747b91;
+            font-size: 36px;
+            font-weight: 400;
+            text-align: center;
+        }
     }
 `;
