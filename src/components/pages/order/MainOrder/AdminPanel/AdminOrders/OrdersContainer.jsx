@@ -2,15 +2,37 @@ import styled from "styled-components"
 import { theme } from "../../../../../../theme"
 import { OrderContainer } from "./OrderContainer"
 import { EmptyOrders } from "./EmptyOrders"
+import { getOrders } from "../../../../../../api/orders"
+import { useEffect } from "react"
 
 export const OrdersContainer = ({ orders, onDelete }) => {
     const lastOrderIndex = orders.length - 1
-    const hasOrders = orders.filter(order => order.statut === "to process").length > 0
+    const hasOrders = orders.filter(order => {
+        console.log('order solo')
+        console.log(order)
+        order.statut === "to process"
+    }).length > 0
     console.log(`hasOrders : ${hasOrders}`)
+
+    useEffect(() => {
+        const fetchOrders = async () => {
+            const orders = await getOrders()
+            console.log(`Firebase orders : `)
+            console.log(orders)
+        }
+
+        fetchOrders()
+
+    }, [])
+
     return (
         <OrdersContainerStyled>
+            {console.log('Orders ???')}
+            {console.log(hasOrders)}
             {hasOrders ? (
                 orders.map(order => {
+                    console.log("Order en cours")
+                    console.log(order.products)
                     if (order.statut === "to process") {
                         return (
                             <OrderContainer
@@ -44,19 +66,5 @@ const OrdersContainerStyled = styled.div`
 
     &:hover { 
         scrollbar-color: initial;
-    }
-    .empty-message {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-
-        h2 {
-            margin: 0;
-            color: #747b91;
-            font-size: 36px;
-            font-weight: 400;
-            text-align: center;
-        }
     }
 `;
