@@ -2,7 +2,11 @@ import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export const CasinoEffect = ({ count }) => {
+type CasinoEffectPropsType = {
+    count: number
+}
+
+export const CasinoEffect = ({ count }: CasinoEffectPropsType) => {
     return (
         <TransitionGroup component={CasinoEffectStyled}>
             <CSSTransition
@@ -48,4 +52,4 @@ const CasinoEffectStyled = styled.div`
             transition: ${theme.animations.speed.quick};;
         }
     }
-`;
+`
