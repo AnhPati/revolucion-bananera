@@ -1,10 +1,10 @@
-import { Button } from "../ui/Button"
+import { ErrorButton } from "../ui/ErrorButton"
 
 const ErrorPage = () => {
     return (
         <div>
             <h1>ErrorPage</h1>
-            <Button text={`Retour à la page d'accueil`} url={'/'} />
+            <ErrorButton text={`Retour à la page d'accueil`} url={'/'} />
         </div>
     )
 }
