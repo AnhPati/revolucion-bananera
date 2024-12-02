@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export const Button = ({ text, url }) => {
+export const ErrorButton = ({ text, url }) => {
     return (
         <Link to={url}>
             <button>{text}</button>
