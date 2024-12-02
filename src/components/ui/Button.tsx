@@ -1,7 +1,16 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
+import { ReactNode } from "react";
 
-export const Button = ({ label, Icon, onClick, variant = 'primary', isDisabled }) => {
+type ButtonPropsType = {
+    label: string,
+    Icon?: ReactNode,
+    onClick: () => void,
+    variant: ButtonVariant,
+    isDisabled: boolean
+}
+
+export const Button = ({ label, Icon, onClick, variant = 'primary', isDisabled }: ButtonPropsType) => {
     return (
         <ButtonStyled onClick={onClick} $variant={variant} disabled={isDisabled} >
             {label}{Icon && Icon}
@@ -9,7 +18,9 @@ export const Button = ({ label, Icon, onClick, variant = 'primary', isDisabled }
     )
 }
 
-const ButtonStyled = styled.button`
+type ButtonVariant = 'primary' | 'success';
+
+const ButtonStyled = styled.button< { $variant: ButtonVariant }>`
     border-radius: ${theme.borderRadius.round};
     color: ${theme.colors.white};
     font-weight: ${theme.fonts.weights.bold};
