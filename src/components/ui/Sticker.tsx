@@ -1,7 +1,12 @@
 import styled from "styled-components"
 import { theme } from "../../theme"
 
-export const Sticker = ({ label = "new", className }) => {
+type StickerPropsType = {
+  label: string,
+  className: string
+}
+
+export const Sticker = ({ label = "new", className }: StickerPropsType) => {
   return <StickerStyled className={className}>{label}</StickerStyled>
 }
 
