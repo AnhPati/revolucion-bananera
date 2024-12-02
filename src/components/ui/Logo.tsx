@@ -2,7 +2,12 @@ import styled from "styled-components";
 import logo from "./../../assets/logo-orange.png"
 import { theme } from "../../theme";
 
-export const Logo = ({ className, onClick }) => {
+type LogoPropsType = {
+    className: string,
+    onClick: () => void
+}
+
+export const Logo = ({ className, onClick }: LogoPropsType) => {
     return (
         <LogoStyled className={className} onClick={onClick}>
             <h1>
