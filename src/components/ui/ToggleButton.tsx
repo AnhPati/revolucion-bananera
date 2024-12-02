@@ -56,7 +56,7 @@ const ToggleButtonStyled = styled.div`
       margin: 0;
       cursor: pointer;
       box-sizing: border-box;
-      transition: all ${theme.animations.quick} ease;
+      transition: all ${theme.animations.speed.quick} ease;
     }
 
     // the small round circle
@@ -66,7 +66,7 @@ const ToggleButtonStyled = styled.div`
       top: 3px;
       height: 30px;
       width: 30px;
-      transition: all ${theme.animations.quick} ease;
+      transition: all ${theme.animations.speed.quick} ease;
       z-index: 3;
     }
 
