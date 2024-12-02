@@ -1,7 +1,14 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
+import { ReactNode } from "react";
 
-export const SubmitMessage = ({ label, Icon, variant }) => {
+type SubmitMessagePropsType = {
+    label: string,
+    Icon: ReactNode,
+    variant: SubmitMessageVariant
+}
+
+export const SubmitMessage = ({ label, Icon, variant }: SubmitMessagePropsType) => {
     return (
         <SubmitMessageStyled $variant={variant}>
             {Icon && Icon} {label}
@@ -9,7 +16,9 @@ export const SubmitMessage = ({ label, Icon, variant }) => {
     )
 }
 
-const SubmitMessageStyled = styled.span`
+type SubmitMessageVariant = 'success' | 'error' | 'update'
+
+const SubmitMessageStyled = styled.span<{ $variant: SubmitMessageVariant }>`
     display: flex;
     align-items: center;
     margin-left: 5px;
