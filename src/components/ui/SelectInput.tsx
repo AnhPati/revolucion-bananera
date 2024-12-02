@@ -1,7 +1,24 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
+import { ReactNode } from "react";
 
-export const SelectInput = ({ id, name, value, Icon, options, onChange, onFocus, onBlur }) => {
+type SelectInputPropsType = {
+    id: string,
+    name: string,
+    value: string,
+    Icon: ReactNode,
+    options: [
+        {
+            value: string,
+            label: string
+        }
+    ],
+    onChange: () => void,
+    onFocus: () => void,
+    onBlur: () => void
+}
+
+export const SelectInput = ({ id, name, value, Icon, options, onChange, onFocus, onBlur }: SelectInputPropsType) => {
     return (
         <SelectInputStyled>
             {Icon}
