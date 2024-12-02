@@ -1,7 +1,12 @@
 import styled from "styled-components"
 import { theme } from "../../theme"
 
-export const Ribbon = ({ label = "Nouveauté", className }) => {
+type RibbonPropsType = {
+  label: string,
+  className: string
+}
+
+export const Ribbon = ({ label = "Nouveauté", className }: RibbonPropsType) => {
   return (
     <RibbonStyled className={className}>
       <div className="ribbon ribbon-top-left">
