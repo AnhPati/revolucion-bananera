@@ -3,7 +3,15 @@ import styled from 'styled-components';
 import { theme } from '../../../theme';
 import { QuantityButton } from '../QuantityButton';
 
-export const CardDescription = ({ leftDescription, onAdd, onRemove, isUnavailable, quantity }) => {
+type CardDescriptionPropsType = {
+    leftDescription: string,
+    onAdd: () => void,
+    onRemove: () => void,
+    isUnavailable: boolean,
+    quantity: number
+}
+
+export const CardDescription = ({ leftDescription, onAdd, onRemove, isUnavailable, quantity }: CardDescriptionPropsType) => {
     return (
         <CardDescriptionStyled>
             <p className='left-description'>
