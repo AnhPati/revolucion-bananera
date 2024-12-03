@@ -2,7 +2,14 @@ import styled from "styled-components";
 import { fadeInTop } from "../../../theme/animations";
 import { theme } from "../../../theme";
 
-export const CardImg = ({ src, alt, isUnavailable, unavailableImage }) => {
+type CardImgPropsType = {
+    src: string,
+    alt: string,
+    isUnavailable: boolean,
+    unavailableImage: string
+}
+
+export const CardImg = ({ src, alt, isUnavailable, unavailableImage }: CardImgPropsType) => {
     return (
         <CardImgStyled>
             {isUnavailable && (
