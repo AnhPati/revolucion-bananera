@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { theme } from "../../../theme";
 
-export const CardTitle = ({ title }) => {
+type CardTitlePropsType = {
+    title: string
+}
+
+export const CardTitle = ({ title }: CardTitlePropsType) => {
     return (
         <CardTitleStyled>
             {title}
