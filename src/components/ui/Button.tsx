@@ -6,7 +6,7 @@ type ButtonPropsType = {
     label: string,
     Icon?: ReactNode,
     onClick: () => void,
-    variant: ButtonVariant,
+    variant?: ButtonVariant,
     isDisabled: boolean
 }
 
