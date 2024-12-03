@@ -3,7 +3,11 @@ import styled from "styled-components";
 import { theme } from "../../../theme";
 import { fadeInRight } from "../../../theme/animations";
 
-export const RemoveButton = ({ onClick }) => {
+type RemoveButtonPropsType = {
+    onClick: () => void
+}
+
+export const RemoveButton = ({ onClick }: RemoveButtonPropsType) => {
     return (
         <RemoveButtonStyled className='remove-button' onClick={onClick}>
             <TiDelete />
