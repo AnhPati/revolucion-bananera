@@ -6,8 +6,23 @@ import { RemoveButton } from './RemoveButton';
 import { Ribbon } from '../Ribbon';
 import { pulse } from '../../../theme/animations';
 
+type CardPropsType = {
+    id: string,
+    imgSrc: string,
+    title: string,
+    leftDescription: string,
+    hasDeleteButton: boolean,
+    onDelete: () => void,
+    isHoverable: boolean,
+    onClick: () => void, selected: boolean, onAdd: () => void,
+    onRemove: () => void,
+    isPublicised: boolean,
+    isUnavailable: boolean,
+    unavailableImage: string,
+    quantity: number
+}
 
-export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, onRemove, isPublicised, isUnavailable, unavailableImage, quantity }) => {
+export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, onRemove, isPublicised, isUnavailable, unavailableImage, quantity }: CardPropsType) => {
     return (
         <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected}>
             {isPublicised && <Ribbon />}
@@ -20,7 +35,10 @@ export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDe
     )
 }
 
-const CardStyled = styled.li`
+type CardIsHoverable = boolean
+type CardIsSelected = boolean
+
+const CardStyled = styled.li<{ $isHoverable: CardIsHoverable, $isSelected: CardIsSelected }>`
     ${({ $isHoverable }) => $isHoverable && hoverableStyles}
 
     position: relative;
