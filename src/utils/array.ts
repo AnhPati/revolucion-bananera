@@ -10,7 +10,7 @@ type ProductType = {
 
 export const getDeepClone = (array: Array<ProductType>) => JSON.parse(JSON.stringify(array))
 
-export const findProductTypeById = (id: string, array: Array<ProductType>) => array.find(item => item.id === id)
+export const findObjectById = (id: string, array: Array<ProductType>) => array.find(item => item.id === id)
 
 export const findIndexById = (id: string, array: Array<ProductType>) => array.findIndex(item => item.id === id)
 
