@@ -1,7 +1,16 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
+import { ReactNode } from "react";
 
-export const Tab = ({ onClick, className, tabSelected, id, Icon, label }) => {
+type TabPropsType = {
+    onClick: () => void,
+    className: string,
+    id: string,
+    Icon: ReactNode,
+    label: string
+}
+
+export const Tab = ({ onClick, className, id, Icon, label }: TabPropsType) => {
 
     return (
         <TabStyled onClick={onClick} className={className ? className : ''} id={id}>
