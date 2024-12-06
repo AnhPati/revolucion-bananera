@@ -1,0 +1,1 @@
+export const convertStringToBoolean = (input: string) => typeof input === "boolean" ? input : input === "true"
