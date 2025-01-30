@@ -16,10 +16,7 @@ export const getOrders = async () => {
 export const syncOrders = async (order) => {
     const docRef = doc(db, 'orders', order.id)
 
-    const newOrder = {
-        orderId: order.id,
-        order: order
-    }
+    const newOrder = order
 
     await setDoc(docRef, newOrder)
 
