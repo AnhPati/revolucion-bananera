@@ -15,7 +15,8 @@ export const OrdersContainer = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             const orders = await getOrders()
-            setOrders(orders)
+            const sortedOrders = [...orders].sort((a, b) => new Date(parseDate(a.orderTime)) - new Date(parseDate(b.orderTime)));
+            setOrders(sortedOrders)
             setLoading(false)
         }
 
@@ -23,7 +24,6 @@ export const OrdersContainer = () => {
 
     }, [])
 
-    const sortedOrders = [...orders].sort((a, b) => new Date(parseDate(a.orderTime)) - new Date(parseDate(b.orderTime)));
     const lastOrderIndex = orders.length - 1
 
     const onDelete = (orderId, event) => {
@@ -33,8 +33,8 @@ export const OrdersContainer = () => {
 
     return (
         <OrdersContainerStyled>
-            {!loading ? (
-                sortedOrders.map(order => {
+            {!loading && orders.length > 0 ? (
+                orders.map(order => {
                     if (order.statut === "to process") {
                         return (
                             <OrderContainer
