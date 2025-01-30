@@ -6,10 +6,11 @@ import OrderContext from "../../../contexts/OrderContext";
 import { formatPrice } from "../../../utils/maths";
 
 const OrderMessage = () => {
-    const { tempOrder, handleValidOrder, handleDenyOrder } = useContext(OrderContext)
+    const { userId, tempOrder, handleValidOrder, handleDenyOrder, handleClearBasketProduct } = useContext(OrderContext)
 
     const handleAccept = () => {
-        handleValidOrder()
+        handleValidOrder(tempOrder)
+        handleClearBasketProduct(userId)
     }
 
     const handleDeny = () => {

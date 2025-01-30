@@ -8,6 +8,7 @@ import { useBasketProducts } from "../../../hooks/useBasketProducts";
 import { useEffect } from "react";
 import { initialiseUserSession } from "./helpers/initialiseUserSession";
 import OrderMessage from "./OrderMessage";
+import { useAdminOrders } from "../../../hooks/useAdminOrders";
 
 const OrderPage = () => {
     const {
@@ -31,6 +32,11 @@ const OrderPage = () => {
         handleAddBasketProduct,
         handleDeleteBasketProduct,
         decrementQuantityProduct,
+        handleClearBasketProduct,
+    } = useBasketProducts()
+
+    const {
+        setOrders,
         orderStatut,
         orders,
         tempOrder,
@@ -38,7 +44,7 @@ const OrderPage = () => {
         handleValidOrder,
         handleDenyOrder,
         handleDeleteOrder
-    } = useBasketProducts()
+    } = useAdminOrders()
 
 
     const orderContextValue = {
@@ -58,6 +64,8 @@ const OrderPage = () => {
         handleAddBasketProduct,
         handleDeleteBasketProduct,
         decrementQuantityProduct,
+        handleClearBasketProduct,
+        setOrders,
         orderStatut,
         orders,
         tempOrder,
@@ -68,7 +76,7 @@ const OrderPage = () => {
     }
 
     useEffect(() => {
-        initialiseUserSession(userId, setProducts, setBasketProducts)
+        initialiseUserSession(userId, adminMode.isAdminMode, setProducts, setBasketProducts, setOrders)
     }, [])
 
 
