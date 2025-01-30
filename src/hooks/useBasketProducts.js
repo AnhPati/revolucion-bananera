@@ -5,9 +5,6 @@ import { syncBasketProducts } from "../api/basketProduct"
 
 export const useBasketProducts = () => {
     const [basketProducts, setBasketProducts] = useState(fakeBasket.EMPTY)
-    const [orderStatut, setOrderStatut] = useState('none')
-    const [orders, setOrders] = useState([])
-    const [tempOrder, setTempOrder] = useState({})
 
     const handleAddBasketProduct = (productToAdd, userId) => {
         const newBasketProducts = getDeepClone(basketProducts)
@@ -57,31 +54,9 @@ export const useBasketProducts = () => {
         syncBasketProducts(userId, newBasketProducts)
     }
 
-    const handleCheckOrder = (newOrder) => {
-        setTempOrder(newOrder)
-        setOrderStatut('pending')
-    }
-
-    const handleValidOrder = () => {
-        const ordersCopy = getDeepClone(orders)
-        const newOrders = [tempOrder, ...ordersCopy]
-        setOrderStatut('accepted')
-        setOrders(newOrders)
+    const handleClearBasketProduct = (userId) => {
         setBasketProducts(fakeBasket.EMPTY)
-        setTempOrder({})
-    }
-
-    const handleDenyOrder = () => {
-        setOrderStatut('none')
-    }
-
-    const handleDeleteOrder = (id) => {
-        const newOrders = getDeepClone(orders)
-        const orderIndex = findIndexById(id, newOrders)
-
-        newOrders[orderIndex].statut = "archived"
-
-        setOrders(newOrders)
+        syncBasketProducts(userId, fakeBasket.EMPTY)
     }
 
     return {
@@ -89,13 +64,7 @@ export const useBasketProducts = () => {
         setBasketProducts,
         handleAddBasketProduct,
         handleDeleteBasketProduct,
-        decrementQuantityProduct,
-        orderStatut,
-        orders,
-        tempOrder,
-        handleCheckOrder,
-        handleValidOrder,
-        handleDenyOrder,
-        handleDeleteOrder
+        handleClearBasketProduct,
+        decrementQuantityProduct
     }
 }
