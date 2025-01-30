@@ -2,37 +2,37 @@ import styled from "styled-components"
 import { theme } from "../../../../../../theme"
 import { OrderContainer } from "./OrderContainer"
 import { EmptyOrders } from "./EmptyOrders"
+import { useContext, useEffect, useState } from "react"
+import OrderContext from "../../../../../../contexts/OrderContext"
 import { getOrders } from "../../../../../../api/orders"
-import { useEffect } from "react"
 
-export const OrdersContainer = ({ orders, onDelete }) => {
-    const lastOrderIndex = orders.length - 1
-    const hasOrders = orders.filter(order => {
-        console.log('order solo')
-        console.log(order)
-        order.statut === "to process"
-    }).length > 0
-    console.log(`hasOrders : ${hasOrders}`)
+export const OrdersContainer = () => {
+    const { handleDeleteOrder } = useContext(OrderContext)
+    const [orders, setOrders] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchOrders = async () => {
             const orders = await getOrders()
-            console.log(`Firebase orders : `)
-            console.log(orders)
+            setOrders(orders)
+            setLoading(false)
         }
 
         fetchOrders()
 
     }, [])
 
+    const lastOrderIndex = orders.length - 1
+
+    const onDelete = (orderId, event) => {
+        event.stopPropagation()
+        handleDeleteOrder(orderId)
+    }
+
     return (
         <OrdersContainerStyled>
-            {console.log('Orders ???')}
-            {console.log(hasOrders)}
-            {hasOrders ? (
+            {!loading ? (
                 orders.map(order => {
-                    console.log("Order en cours")
-                    console.log(order.products)
                     if (order.statut === "to process") {
                         return (
                             <OrderContainer
