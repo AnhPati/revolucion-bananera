@@ -5,6 +5,7 @@ import { EmptyOrders } from "./EmptyOrders"
 import { useContext, useEffect, useState } from "react"
 import OrderContext from "../../../../../../contexts/OrderContext"
 import { getOrders } from "../../../../../../api/orders"
+import { parseDate } from "../../../../../../utils/date"
 
 export const OrdersContainer = () => {
     const { handleDeleteOrder } = useContext(OrderContext)
@@ -22,6 +23,7 @@ export const OrdersContainer = () => {
 
     }, [])
 
+    const sortedOrders = [...orders].sort((a, b) => new Date(parseDate(a.orderTime)) - new Date(parseDate(b.orderTime)));
     const lastOrderIndex = orders.length - 1
 
     const onDelete = (orderId, event) => {
@@ -32,7 +34,7 @@ export const OrdersContainer = () => {
     return (
         <OrdersContainerStyled>
             {!loading ? (
-                orders.map(order => {
+                sortedOrders.map(order => {
                     if (order.statut === "to process") {
                         return (
                             <OrderContainer

@@ -7,3 +7,8 @@ export const formatDate = (date) => {
 
     return `${day}/${month}/${year} - ${hours}:${minutes}`;
 };
+
+export const parseDate = (stringDate) => {
+    const [day, month, year, hours, minutes] = stringDate.match(/\d+/g).map(Number);
+    return new Date(year, month - 1, day, hours, minutes); // Month est 0-indexé en JS
+};
