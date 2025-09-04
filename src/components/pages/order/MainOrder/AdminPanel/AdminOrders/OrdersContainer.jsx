@@ -4,38 +4,27 @@ import { OrderContainer } from "./OrderContainer"
 import { EmptyOrders } from "./EmptyOrders"
 import { useContext, useEffect, useState } from "react"
 import OrderContext from "../../../../../../contexts/OrderContext"
-import { getOrders } from "../../../../../../api/orders"
 import { parseDate } from "../../../../../../utils/date"
 
 export const OrdersContainer = () => {
-    const { handleDeleteOrder } = useContext(OrderContext)
-    const [orders, setOrders] = useState([])
-    const [loading, setLoading] = useState(true)
+    const { orders, handleArchiveOrder } = useContext(OrderContext)
 
-    useEffect(() => {
-        const fetchOrders = async () => {
-            const orders = await getOrders()
-            const sortedOrders = [...orders].sort((a, b) => new Date(parseDate(a.orderTime)) - new Date(parseDate(b.orderTime)));
-            setOrders(sortedOrders)
-            setLoading(false)
-        }
+    const isLoading = orders === undefined
+    const lastOrderIndex = isLoading ? undefined : orders.length - 1
 
-        fetchOrders()
-
-    }, [])
-
-    const lastOrderIndex = orders.length - 1
-
-    const onDelete = (orderId, event) => {
+    const onArchive = (orderId, event) => {
         event.stopPropagation()
-        handleDeleteOrder(orderId)
+        handleArchiveOrder(orderId)
     }
+
+    const pendingOrders = isLoading ? undefined : orders.filter(order => order.statut === "to process")
 
     return (
         <OrdersContainerStyled>
-            {!loading && orders.length > 0 ? (
-                orders.map(order => {
-                    if (order.statut === "to process") {
+            {isLoading ?
+                <h2>En chargement</h2>
+                : pendingOrders.length > 0 ? (
+                    pendingOrders.map(order => {
                         return (
                             <OrderContainer
                                 key={order.id}
@@ -45,14 +34,13 @@ export const OrdersContainer = () => {
                                 orderProducts={order.products}
                                 orderIndex={orders.indexOf(order)}
                                 lastOrderIndex={lastOrderIndex}
-                                onDelete={onDelete}
+                                onArchive={onArchive}
                             />
                         )
-                    }
-                })
-            ) : (
-                <EmptyOrders />
-            )}
+                    })
+                ) : (
+                    <EmptyOrders />
+                )}
         </OrdersContainerStyled>
     )
 }

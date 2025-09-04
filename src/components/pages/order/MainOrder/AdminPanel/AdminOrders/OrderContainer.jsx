@@ -3,7 +3,7 @@ import OrderContext from '../../../../../../contexts/OrderContext'
 import { RemoveButton } from '../../../../../ui/Card/RemoveButton'
 import styled from 'styled-components'
 
-export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderIndex, lastOrderIndex, onDelete }) => {
+export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderIndex, lastOrderIndex, onArchive }) => {
     const { products } = useContext(OrderContext)
 
     return (
@@ -23,7 +23,7 @@ export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderInde
                     )
                 })}
             </ul>
-            <RemoveButton onClick={(event) => onDelete(id, event)} />
+            <RemoveButton onClick={(event) => onArchive(id, event)} />
             {orderIndex < lastOrderIndex ? <hr /> : null}
         </OrderContainerStyled>
     )

@@ -4,7 +4,7 @@ import { syncOrders } from "../api/orders"
 
 export const useAdminOrders = () => {
     const [orderStatut, setOrderStatut] = useState('none')
-    const [orders, setOrders] = useState([])
+    const [orders, setOrders] = useState(undefined)
     const [tempOrder, setTempOrder] = useState({})
 
     const handleCheckOrder = (newOrder) => {
@@ -25,13 +25,20 @@ export const useAdminOrders = () => {
         setOrderStatut('none')
     }
 
-    const handleDeleteOrder = (id) => {
+    const handleArchiveOrder = (id) => {
+        console.log('en archive ?')
         const newOrders = getDeepClone(orders)
         const orderIndex = findIndexById(id, newOrders)
 
-        newOrders[orderIndex].statut = "archived"
+        const newOrder = newOrders[orderIndex]
+        newOrder.statut = "archived"
+        console.log('Orders :')
+        console.log(newOrders)
+        console.log('Order Archived :')
+        console.log(newOrder)
 
         setOrders(newOrders)
+        syncOrders(newOrder)
     }
 
     return {
@@ -42,6 +49,6 @@ export const useAdminOrders = () => {
         handleCheckOrder,
         handleValidOrder,
         handleDenyOrder,
-        handleDeleteOrder
+        handleArchiveOrder
     }
 }

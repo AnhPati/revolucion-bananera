@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { initialiseUserSession } from "./helpers/initialiseUserSession";
 import OrderMessage from "./OrderMessage";
 import { useAdminOrders } from "../../../hooks/useAdminOrders";
+import { getOrders } from "../../../api/orders"
 
 const OrderPage = () => {
     const {
@@ -43,7 +44,7 @@ const OrderPage = () => {
         handleCheckOrder,
         handleValidOrder,
         handleDenyOrder,
-        handleDeleteOrder
+        handleArchiveOrder
     } = useAdminOrders()
 
 
@@ -72,12 +73,22 @@ const OrderPage = () => {
         handleCheckOrder,
         handleValidOrder,
         handleDenyOrder,
-        handleDeleteOrder
+        handleArchiveOrder
     }
 
     useEffect(() => {
         initialiseUserSession(userId, adminMode.isAdminMode, setProducts, setBasketProducts, setOrders)
     }, [])
+
+    useEffect(() => {
+        if (adminMode.isAdminMode && orders === undefined) {
+            const loadOrders = async () => {
+                const ordersData = await getOrders()
+                setOrders(ordersData)
+            }
+            loadOrders()
+        }
+    }, [adminMode.isAdminMode])
 
 
     return (

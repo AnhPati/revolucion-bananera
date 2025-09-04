@@ -20,5 +20,5 @@ export const syncOrders = async (order) => {
 
     await setDoc(docRef, newOrder)
 
-    return newOrder
+    return getOrders()
 }
