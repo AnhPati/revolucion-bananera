@@ -1,18 +1,25 @@
 import { MdOutlineHistory } from "react-icons/md"
+import { PiNotepad } from "react-icons/pi"
 import { Button } from "../../../../../ui/Button"
 import styled from "styled-components"
 import { OrdersContainer } from "./OrdersContainer"
+import { useState } from "react"
 
 export const AdminOrders = () => {
+    const [showArchivedOrders, setShowArchivedOrders] = useState(false)
 
+    const handleOrdersView = () => {
+        setShowArchivedOrders(!showArchivedOrders)
+    }
 
     return (
         <AdminOrdersStyled>
-            <OrdersContainer />
+            <OrdersContainer showArchivedOrders={showArchivedOrders} />
             <Button
-                label={'Historique des commandes'}
+                label={showArchivedOrders ? 'Commandes en cours' : 'Historique des commandes'}
                 variant={'success'}
-                Icon={<MdOutlineHistory />}
+                Icon={showArchivedOrders ? <PiNotepad /> : <MdOutlineHistory />}
+                onClick={handleOrdersView}
             />
         </AdminOrdersStyled>
     )

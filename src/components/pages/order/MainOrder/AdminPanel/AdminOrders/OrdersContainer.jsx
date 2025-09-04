@@ -6,7 +6,7 @@ import { useContext, useMemo } from "react"
 import OrderContext from "../../../../../../contexts/OrderContext"
 import { sortOrdersByDate } from "../../../../../../utils/orders"
 
-export const OrdersContainer = () => {
+export const OrdersContainer = ({ showArchivedOrders }) => {
     const { orders, handleArchiveOrder } = useContext(OrderContext)
 
     const isLoading = orders === undefined
@@ -17,18 +17,20 @@ export const OrdersContainer = () => {
         handleArchiveOrder(orderId)
     }
 
-    const pendingOrders = useMemo(() => {
+    const statutToDisplay = showArchivedOrders ? "archived" : "to process"
+
+    const ordersToDisplay = useMemo(() => {
         if (isLoading) return undefined
 
-        return sortOrdersByDate(orders.filter(order => order.statut === "to process"))
-    }, [isLoading, orders])
+        return sortOrdersByDate(orders.filter(order => order.statut === statutToDisplay))
+    }, [isLoading, orders, statutToDisplay])
 
     return (
         <OrdersContainerStyled>
             {isLoading ?
                 <h2>En chargement</h2>
-                : pendingOrders.length > 0 ? (
-                    pendingOrders.map(order => {
+                : ordersToDisplay.length > 0 ? (
+                    ordersToDisplay.map(order => {
                         return (
                             <OrderContainer
                                 key={order.id}
