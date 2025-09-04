@@ -2,9 +2,9 @@ import styled from "styled-components"
 import { theme } from "../../../../../../theme"
 import { OrderContainer } from "./OrderContainer"
 import { EmptyOrders } from "./EmptyOrders"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useMemo } from "react"
 import OrderContext from "../../../../../../contexts/OrderContext"
-import { parseDate } from "../../../../../../utils/date"
+import { sortOrdersByDate } from "../../../../../../utils/orders"
 
 export const OrdersContainer = () => {
     const { orders, handleArchiveOrder } = useContext(OrderContext)
@@ -17,7 +17,11 @@ export const OrdersContainer = () => {
         handleArchiveOrder(orderId)
     }
 
-    const pendingOrders = isLoading ? undefined : orders.filter(order => order.statut === "to process")
+    const pendingOrders = useMemo(() => {
+        if (isLoading) return undefined
+
+        return sortOrdersByDate(orders.filter(order => order.statut === "to process"))
+    }, [isLoading, orders])
 
     return (
         <OrdersContainerStyled>
