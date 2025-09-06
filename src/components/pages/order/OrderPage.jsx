@@ -45,7 +45,8 @@ const OrderPage = () => {
         handleValidOrder,
         handleDenyOrder,
         handleArchiveOrder,
-        handleUnarchiveOrder
+        handleUnarchiveOrder,
+        handleDeleteOrder
     } = useAdminOrders()
 
 
@@ -75,7 +76,8 @@ const OrderPage = () => {
         handleValidOrder,
         handleDenyOrder,
         handleArchiveOrder,
-        handleUnarchiveOrder
+        handleUnarchiveOrder,
+        handleDeleteOrder
     }
 
     useEffect(() => {

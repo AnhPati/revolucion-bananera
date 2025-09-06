@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { findIndexById, getDeepClone } from "../utils/array"
+import { filterArrayWithId, findIndexById, getDeepClone } from "../utils/array"
 import { syncOrders } from "../api/orders"
 
 export const useAdminOrders = () => {
@@ -45,6 +45,13 @@ export const useAdminOrders = () => {
         syncOrders(newOrder)
     }
 
+    const handleDeleteOrder = (id) => {
+        const newOrders = filterArrayWithId(id, orders)
+
+        setOrders(newOrders)
+        syncOrders(newOrders)
+    }
+
     return {
         setOrders,
         orderStatut,
@@ -54,6 +61,7 @@ export const useAdminOrders = () => {
         handleValidOrder,
         handleDenyOrder,
         handleArchiveOrder,
-        handleUnarchiveOrder
+        handleUnarchiveOrder,
+        handleDeleteOrder
     }
 }

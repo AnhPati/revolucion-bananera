@@ -6,7 +6,7 @@ import { useContext, useMemo } from "react"
 import OrderContext from "../../../../../../contexts/OrderContext"
 import { sortOrdersByDate } from "../../../../../../utils/orders"
 
-export const OrdersContainer = ({ showArchivedOrders, onArchive, onUnarchive }) => {
+export const OrdersContainer = ({ showArchivedOrders, onArchive, onUnarchive, onDelete }) => {
     const { orders } = useContext(OrderContext)
 
     const isLoading = orders === undefined
@@ -38,6 +38,7 @@ export const OrdersContainer = ({ showArchivedOrders, onArchive, onUnarchive }) 
                                 lastOrderIndex={lastOrderIndex}
                                 isArchived={showArchivedOrders}
                                 onArchiveClick={showArchivedOrders ? onUnarchive : onArchive}
+                                onDelete={onDelete}
                             />
                         )
                     })

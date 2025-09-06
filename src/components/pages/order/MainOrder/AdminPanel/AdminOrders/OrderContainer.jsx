@@ -28,6 +28,7 @@ export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderInde
                 onClick={(event) => onArchiveClick(id, event)}
                 Icon={isArchived ? <MdUnarchive /> : <MdArchive />}
             />
+            {isArchived && <IconButton style={{ top: '55px' }} onClick={(event) => onArchiveClick(id, event)} />}
             {orderIndex < lastOrderIndex ? <hr /> : null}
         </OrderContainerStyled>
     )

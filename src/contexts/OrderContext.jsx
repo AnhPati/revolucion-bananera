@@ -37,6 +37,7 @@ const OrderContext = createContext({
     handleDenyOrder: () => { },
     handleArchiveOrder: () => { },
     handleUnarchiveOrder: () => { },
+    handleDeleteOrder: () => { },
     handleClearBasketProduct: () => { }
 })
 
