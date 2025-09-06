@@ -35,6 +35,16 @@ export const useAdminOrders = () => {
         syncOrders(newOrder)
     }
 
+    const handleUnarchiveOrder = (id) => {
+        const newOrders = getDeepClone(orders)
+        const orderIndex = findIndexById(id, newOrders)
+
+        const newOrder = newOrders[orderIndex]
+        newOrder.statut = "to process"
+        setOrders(newOrders)
+        syncOrders(newOrder)
+    }
+
     return {
         setOrders,
         orderStatut,
@@ -43,6 +53,7 @@ export const useAdminOrders = () => {
         handleCheckOrder,
         handleValidOrder,
         handleDenyOrder,
-        handleArchiveOrder
+        handleArchiveOrder,
+        handleUnarchiveOrder
     }
 }
