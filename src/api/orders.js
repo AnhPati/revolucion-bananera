@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, setDoc } from "firebase/firestore"
+import { collection, doc, getDocs, setDoc, deleteDoc } from "firebase/firestore"
 import { db } from "./firebase-config"
 
 export const getOrders = async () => {
@@ -21,4 +21,10 @@ export const syncOrders = async (order) => {
     await setDoc(docRef, newOrder)
 
     return getOrders()
+}
+
+export const deleteOrder = async (orderId) => {
+    const docRef = doc(db, 'orders', orderId)
+
+    await deleteDoc(docRef)
 }
