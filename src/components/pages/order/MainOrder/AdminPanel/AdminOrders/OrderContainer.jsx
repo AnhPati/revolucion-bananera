@@ -2,8 +2,9 @@ import { useContext } from 'react'
 import OrderContext from '../../../../../../contexts/OrderContext'
 import { RemoveButton } from '../../../../../ui/Card/RemoveButton'
 import styled from 'styled-components'
+import { MdArchive, MdUnarchive } from 'react-icons/md'
 
-export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderIndex, lastOrderIndex, onArchive }) => {
+export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderIndex, lastOrderIndex, isArchived, onArchiveClick }) => {
     const { products } = useContext(OrderContext)
 
     return (
@@ -23,7 +24,9 @@ export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderInde
                     )
                 })}
             </ul>
-            <RemoveButton onClick={(event) => onArchive(id, event)} />
+            <span className="archive-button" onClick={(event) => onArchiveClick(id, event)}>
+                {isArchived ? <MdUnarchive /> : <MdArchive />}
+            </span>
             {orderIndex < lastOrderIndex ? <hr /> : null}
         </OrderContainerStyled>
     )
