@@ -4,7 +4,7 @@ import { IconButton } from '../../../../../ui/IconButton'
 import styled from 'styled-components'
 import { MdArchive, MdUnarchive } from 'react-icons/md'
 
-export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderIndex, lastOrderIndex, isArchived, onArchiveClick }) => {
+export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderIndex, lastOrderIndex, isArchived, onArchiveClick, onDelete }) => {
     const { products } = useContext(OrderContext)
 
     return (
@@ -29,7 +29,7 @@ export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderInde
                 Icon={isArchived ? <MdUnarchive /> : <MdArchive />}
             />
             {isArchived && <IconButton
-                onClick={(event) => onArchiveClick(id, event)}
+                onClick={(event) => onDelete(id, event)}
             />}
             {orderIndex < lastOrderIndex ? <hr /> : null}
         </OrderContainerStyled>
