@@ -17,6 +17,14 @@ export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderInde
                 {orderProducts.map(product => {
                     const orderProduct = products[product.id]
 
+                    if (!orderProduct) {
+                        return (
+                            <li key={product.id}>
+                                Produit supprimé de la vente !
+                            </li>
+                        )
+                    }
+
                     return (
                         <li key={product.id}>
                             {orderProduct.title} x{product.quantity}

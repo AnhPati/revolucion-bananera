@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { filterArrayWithId, findIndexById, getDeepClone } from "../utils/array"
-import { syncOrders, deleteOrder } from "../api/orders"
+import { syncOrders, deleteOrder, getOrders } from "../api/orders"
 
 export const useAdminOrders = () => {
     const [orderStatut, setOrderStatut] = useState('none')
@@ -12,8 +12,14 @@ export const useAdminOrders = () => {
         setOrderStatut('pending')
     }
 
-    const handleValidOrder = (tempOrder) => {
-        const ordersCopy = getDeepClone(orders)
+    const handleValidOrder = async (tempOrder) => {
+        let currentOrders = orders
+
+        if (orders === undefined) {
+            currentOrders = await getOrders() || []
+        }
+
+        const ordersCopy = getDeepClone(currentOrders)
         const newOrders = [tempOrder, ...ordersCopy]
         setOrderStatut('accepted')
         setOrders(newOrders)

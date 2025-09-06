@@ -5,10 +5,16 @@ export const getOrders = async () => {
     const collectionRef = collection(db, 'orders')
     const collectionSnapshot = await getDocs(collectionRef)
 
+    console.log('Firebase snapshot empty?', collectionSnapshot.empty)
+    console.log('Firebase snapshot size:', collectionSnapshot.size)
+
     if (!collectionSnapshot.empty) {
         const orders = []
-        collectionSnapshot.forEach(doc => orders.push({ id: doc.id, ...doc.data() }))
-
+        collectionSnapshot.forEach(doc => {
+            console.log('Document trouvé:', doc.id, doc.data())
+            orders.push({ id: doc.id, ...doc.data() })
+        })
+        console.log('Total orders récupérés:', orders.length)
         return orders
     }
 }
