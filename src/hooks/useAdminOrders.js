@@ -26,17 +26,11 @@ export const useAdminOrders = () => {
     }
 
     const handleArchiveOrder = (id) => {
-        console.log('en archive ?')
         const newOrders = getDeepClone(orders)
         const orderIndex = findIndexById(id, newOrders)
 
         const newOrder = newOrders[orderIndex]
         newOrder.statut = "archived"
-        console.log('Orders :')
-        console.log(newOrders)
-        console.log('Order Archived :')
-        console.log(newOrder)
-
         setOrders(newOrders)
         syncOrders(newOrder)
     }

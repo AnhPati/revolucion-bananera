@@ -6,16 +6,12 @@ import { useContext, useMemo } from "react"
 import OrderContext from "../../../../../../contexts/OrderContext"
 import { sortOrdersByDate } from "../../../../../../utils/orders"
 
-export const OrdersContainer = ({ showArchivedOrders }) => {
-    const { orders, handleArchiveOrder } = useContext(OrderContext)
+export const OrdersContainer = ({ showArchivedOrders, onArchive }) => {
+    const { orders } = useContext(OrderContext)
 
     const isLoading = orders === undefined
     const lastOrderIndex = isLoading ? undefined : orders.length - 1
 
-    const onArchive = (orderId, event) => {
-        event.stopPropagation()
-        handleArchiveOrder(orderId)
-    }
 
     const statutToDisplay = showArchivedOrders ? "archived" : "to process"
 
@@ -40,7 +36,7 @@ export const OrdersContainer = ({ showArchivedOrders }) => {
                                 orderProducts={order.products}
                                 orderIndex={orders.indexOf(order)}
                                 lastOrderIndex={lastOrderIndex}
-                                onArchive={onArchive}
+                                onClick={onArchive}
                             />
                         )
                     })
