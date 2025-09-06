@@ -6,7 +6,13 @@ import { OrdersContainer } from "./OrdersContainer"
 import { useState } from "react"
 
 export const AdminOrders = () => {
+    const { handleArchiveOrder } = useContext(OrderContext)
     const [showArchivedOrders, setShowArchivedOrders] = useState(false)
+
+    const onArchive = (orderId, event) => {
+        event.stopPropagation()
+        handleArchiveOrder(orderId)
+    }
 
     const handleOrdersView = () => {
         setShowArchivedOrders(!showArchivedOrders)
@@ -14,7 +20,10 @@ export const AdminOrders = () => {
 
     return (
         <AdminOrdersStyled>
-            <OrdersContainer showArchivedOrders={showArchivedOrders} />
+            <OrdersContainer
+                showArchivedOrders={showArchivedOrders}
+                onArchive={onArchive}
+            />
             <Button
                 label={showArchivedOrders ? 'Commandes en cours' : 'Historique des commandes'}
                 variant={'success'}
