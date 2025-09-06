@@ -2,12 +2,31 @@ import styled from "styled-components"
 import { theme } from "../../../../../../theme"
 import { OrderContainer } from "./OrderContainer"
 import { EmptyOrders } from "./EmptyOrders"
-import { useContext, useMemo } from "react"
+import { useContext, useMemo, useState } from "react"
 import OrderContext from "../../../../../../contexts/OrderContext"
 import { sortOrdersByDate } from "../../../../../../utils/orders"
+import { DeleteOrderConfirm } from "./DeleteOrderConfirm"
 
 export const OrdersContainer = ({ showArchivedOrders, onArchive, onUnarchive, onDelete }) => {
     const { orders } = useContext(OrderContext)
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
+    const [orderToDelete, setOrderToDelete] = useState(undefined)
+
+    const onDeleteClick = (orderId) => {
+        setOrderToDelete(orderId)
+        setShowDeleteConfirm(true)
+    }
+
+    const onDeleteConfirm = () => {
+        onDelete(orderToDelete)
+        setOrderToDelete(undefined)
+        setShowDeleteConfirm(false)
+    }
+
+    const onDeleteCancel = () => {
+        setOrderToDelete(undefined)
+        setShowDeleteConfirm(false)
+    }
 
     const isLoading = orders === undefined
     const lastOrderIndex = isLoading ? undefined : orders.length - 1
@@ -38,13 +57,21 @@ export const OrdersContainer = ({ showArchivedOrders, onArchive, onUnarchive, on
                                 lastOrderIndex={lastOrderIndex}
                                 isArchived={showArchivedOrders}
                                 onArchiveClick={showArchivedOrders ? onUnarchive : onArchive}
-                                onDelete={onDelete}
+                                onDelete={onDeleteClick}
                             />
                         )
                     })
                 ) : (
                     <EmptyOrders />
                 )}
+
+            {showDeleteConfirm &&
+                <DeleteOrderConfirm
+                    orderToDelete={orderToDelete}
+                    onConfirm={onDeleteConfirm}
+                    onCancel={onDeleteCancel}
+                />
+            }
         </OrdersContainerStyled>
     )
 }

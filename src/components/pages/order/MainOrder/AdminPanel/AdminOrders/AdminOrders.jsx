@@ -21,8 +21,8 @@ export const AdminOrders = () => {
         handleUnarchiveOrder(orderId)
     }
 
-    const onDelete = (orderId, event) => {
-        event.stopPropagation()
+    const onDelete = (orderId) => {
+        console.log('AdminOrders onDelete appelé avec:', orderId)
         handleDeleteOrder(orderId)
     }
 
@@ -44,6 +44,7 @@ export const AdminOrders = () => {
                 Icon={showArchivedOrders ? <PiNotepad /> : <MdOutlineHistory />}
                 onClick={handleOrdersView}
             />
+
         </AdminOrdersStyled>
     )
 }
