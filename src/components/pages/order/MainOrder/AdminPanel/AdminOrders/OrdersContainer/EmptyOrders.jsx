@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const EmptyOrders = () => {
+export const EmptyOrders = ({ emptyMessage = 'Aucune commande en cours.' }) => {
     return (
         <EmptyOrdersStyled>
-            <h2>Aucune commande en cours.</h2>
+            <h2>{emptyMessage}</h2>
         </EmptyOrdersStyled>
     )
 }

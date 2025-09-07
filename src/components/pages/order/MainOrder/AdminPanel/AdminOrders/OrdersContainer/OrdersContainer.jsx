@@ -62,7 +62,7 @@ export const OrdersContainer = ({ showArchivedOrders, onArchive, onUnarchive, on
                         )
                     })
                 ) : (
-                    <EmptyOrders />
+                    <EmptyOrders {...(showArchivedOrders && { emptyMessage: "Aucune commande archivée." })} />
                 )}
 
             {showDeleteConfirm &&
