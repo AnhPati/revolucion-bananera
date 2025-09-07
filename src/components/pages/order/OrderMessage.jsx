@@ -4,6 +4,7 @@ import { Button } from "../../ui/Button";
 import { useContext } from "react";
 import OrderContext from "../../../contexts/OrderContext";
 import { formatPrice } from "../../../utils/maths";
+import { Modal } from "../../ui/Modal";
 
 const OrderMessage = () => {
     const { userId, tempOrder, handleValidOrder, handleDenyOrder, handleClearBasketProduct } = useContext(OrderContext)
@@ -17,9 +18,13 @@ const OrderMessage = () => {
         handleDenyOrder()
     }
     return (
-        <OrderMessageStyled>
-            <div className="order_message-layer layer-animation"></div>
-            <div className="order_message-container message-animation">
+        <Modal
+            overlayColor={theme.colors.primary}
+            overlayOpacity="50%"
+            containerWidth="auto"
+            containerMaxWidth="500px"
+        >
+            <OrderMessageContentStyled>
                 <h1>Votre commande a bien été enregistrée !</h1>
                 <div className="order_message-summary">
                     <h2>Total à payer : {formatPrice(tempOrder.amount)}</h2>
@@ -34,53 +39,42 @@ const OrderMessage = () => {
                         onClick={handleDeny}
                     />
                 </div>
-            </div>
-        </OrderMessageStyled>
+            </OrderMessageContentStyled>
+        </Modal>
     )
 }
 
 export default OrderMessage
 
-const OrderMessageStyled = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+const OrderMessageContentStyled = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 15px;
-    z-index: 3;
+    gap: 30px;
+    padding: 40px 40px 60px 40px;
 
-    .order_message-layer {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: ${theme.colors.primary};
-        opacity: 50%;
+    h1 {
+        margin: 0;
+        font-size: 36px;
+        font-weight: 400;
+        text-align: center;
     }
 
-    .order_message-container {
+    .order_message-summary {
+        h2 {
+            margin: 0;
+            text-align: center;
+        }
+    }
+
+    .buttons-container {
         display: flex;
-        flex-direction: column;
         justify-content: center;
-        align-items: center;
-        gap: 30px;
-        padding: 40px 40px 60px 40px;
-        border-radius: 5px;
-        background: ${theme.colors.background_white};
-        color: ${theme.colors.greyBlue};
-        z-index: 0;
+        gap: 20px;
 
-        .buttons-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-
-            button {
-                width: 95px;
-            }
+        button {
+            width: 95px;
         }
     }
 `;
