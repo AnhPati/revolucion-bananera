@@ -7,7 +7,7 @@ import { useAdminProducts } from "../../../hooks/useAdminProducts";
 import { useBasketProducts } from "../../../hooks/useBasketProducts";
 import { useEffect } from "react";
 import { initialiseUserSession } from "./helpers/initialiseUserSession";
-import OrderMessage from "./OrderMessage";
+import OrderConfirm from "./OrderConfirm";
 import { useAdminOrders } from "../../../hooks/useAdminOrders";
 import { getOrders } from "../../../api/orders"
 import { CSSTransition } from "react-transition-group";
@@ -108,7 +108,7 @@ const OrderPage = () => {
                         timeout={300}
                         unmountOnExit
                     >
-                        <OrderMessage />
+                        <OrderConfirm />
                     </CSSTransition>
                     <Navbar />
                     <MainOrder />

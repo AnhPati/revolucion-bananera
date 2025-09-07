@@ -6,7 +6,7 @@ import { formatPrice } from "../../../utils/maths";
 import { Modal } from "../../ui/Modal/Modal";
 import { ModalButtons } from "../../ui/Modal/ModalButtons";
 
-const OrderMessage = () => {
+const OrderConfirm = () => {
     const { userId, tempOrder, handleValidOrder, handleDenyOrder, handleClearBasketProduct } = useContext(OrderContext)
 
     const handleAccept = () => {
@@ -24,20 +24,20 @@ const OrderMessage = () => {
             containerWidth="auto"
             containerMaxWidth="500px"
         >
-            <OrderMessageContentStyled>
+            <OrderConfirmContentStyled>
                 <h1>Votre commande a bien été enregistrée !</h1>
                 <div className="order_message-summary">
                     <h2>Total à payer : {formatPrice(tempOrder.amount)}</h2>
                 </div>
                 <ModalButtons onConfirm={handleAccept} onCancel={handleDeny} />
-            </OrderMessageContentStyled>
+            </OrderConfirmContentStyled>
         </Modal>
     )
 }
 
-export default OrderMessage
+export default OrderConfirm
 
-const OrderMessageContentStyled = styled.div`
+const OrderConfirmContentStyled = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
