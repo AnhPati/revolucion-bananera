@@ -1,17 +1,17 @@
 import { TiDelete } from "react-icons/ti";
 import styled from "styled-components";
-import { theme } from "../../../theme";
-import { fadeInRight } from "../../../theme/animations";
+import { theme } from "../../theme";
+import { fadeInRight } from "../../theme/animations";
 
-export const RemoveButton = ({ onClick }) => {
+export const IconButton = ({ onClick, Icon = <TiDelete /> }) => {
     return (
-        <RemoveButtonStyled className='remove-button' onClick={onClick}>
-            <TiDelete />
-        </RemoveButtonStyled>
+        <IconButtonStyled className='icon-button' onClick={onClick}>
+            {Icon}
+        </IconButtonStyled>
     )
 }
 
-const RemoveButtonStyled = styled.span`
+const IconButtonStyled = styled.span`
     position: absolute;
     z-index: 2;
     right: 15px;

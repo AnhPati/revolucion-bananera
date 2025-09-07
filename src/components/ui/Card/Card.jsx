@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { theme } from '../../../theme';
 import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
-import { RemoveButton } from './RemoveButton';
+import { IconButton } from '../IconButton';
 import { Ribbon } from '../Ribbon';
 import { pulse } from '../../../theme/animations';
 
@@ -12,7 +12,7 @@ export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDe
         <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected}>
             {isPublicised && <Ribbon />}
             {hasDeleteButton && (
-                <RemoveButton onClick={onDelete} />
+                <IconButton onClick={onDelete} />
             )}
             <CardImg src={imgSrc} alt={title} isUnavailable={isUnavailable} unavailableImage={unavailableImage} />
             <CardInfos title={title} leftDescription={leftDescription} onAdd={onAdd} onRemove={onRemove} isUnavailable={isUnavailable} quantity={quantity} />
@@ -60,7 +60,7 @@ const hoverableStyles = css`
 const selectedStyles = css`
     background-color: ${theme.colors.primary};
 
-    .remove-button {
+    .icon-button {
         svg {
             color: ${theme.colors.white};
         }

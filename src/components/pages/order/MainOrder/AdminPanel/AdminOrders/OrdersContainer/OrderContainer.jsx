@@ -1,9 +1,10 @@
 import { useContext } from 'react'
-import OrderContext from '../../../../../../contexts/OrderContext'
-import { RemoveButton } from '../../../../../ui/Card/RemoveButton'
+import OrderContext from '../../../../../../../contexts/OrderContext'
+import { IconButton } from '../../../../../../ui/IconButton'
 import styled from 'styled-components'
+import { MdArchive, MdUnarchive } from 'react-icons/md'
 
-export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderIndex, lastOrderIndex, onDelete }) => {
+export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderIndex, lastOrderIndex, isArchived, onArchiveClick, onDelete }) => {
     const { products } = useContext(OrderContext)
 
     return (
@@ -16,6 +17,14 @@ export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderInde
                 {orderProducts.map(product => {
                     const orderProduct = products[product.id]
 
+                    if (!orderProduct) {
+                        return (
+                            <li key={product.id}>
+                                Produit supprimé de la vente !
+                            </li>
+                        )
+                    }
+
                     return (
                         <li key={product.id}>
                             {orderProduct.title} x{product.quantity}
@@ -23,7 +32,13 @@ export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderInde
                     )
                 })}
             </ul>
-            <RemoveButton onClick={(event) => onDelete(id, event)} />
+            <IconButton
+                onClick={(event) => onArchiveClick(id, event)}
+                Icon={isArchived ? <MdUnarchive /> : <MdArchive />}
+            />
+            {isArchived && <IconButton
+                onClick={(event) => onDelete(id, event)}
+            />}
             {orderIndex < lastOrderIndex ? <hr /> : null}
         </OrderContainerStyled>
     )
@@ -49,5 +64,9 @@ const OrderContainerStyled = styled.div`
         height: 1px;
         background: #e4e5e9;
         border: none;
+    }
+
+    .icon-button:nth-of-type(2) {
+      top: 55px;
     }
 `;

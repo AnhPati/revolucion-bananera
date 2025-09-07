@@ -1,6 +1,7 @@
 import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { MdModeEditOutline } from "react-icons/md"
+import { PiNotepad } from "react-icons/pi";
 import AddProductForm from "../AdminForms/AddProductForm/AddProductForm"
 import UpdateProductForm from "../AdminForms/UpdateProductPanel/UpdateProductForm"
 import { HintMessage } from "../AdminForms/UpdateProductPanel/HintMessage"
@@ -35,7 +36,7 @@ export const getAdminTabsConfig = ({
         {
             id: 'tab-orders',
             label: 'Commandes en cours',
-            Icon: <MdModeEditOutline />,
+            Icon: <PiNotepad />,
             onClick: onClickSelectTab,
             Content: <AdminOrders />
         }
