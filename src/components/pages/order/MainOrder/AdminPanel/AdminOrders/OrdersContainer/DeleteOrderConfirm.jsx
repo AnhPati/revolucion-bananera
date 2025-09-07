@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { Button } from "../../../../../../ui/Button"
 import { theme } from "../../../../../../../theme"
 
-export const DeleteOrderConfirm = ({ orderToDelete, onConfirm, onCancel }) => {
+export const DeleteOrderConfirm = ({ onConfirm, onCancel }) => {
     return (
         <DeleteOrderConfirmStyled>
             <div className="delete-order-layer"></div>
