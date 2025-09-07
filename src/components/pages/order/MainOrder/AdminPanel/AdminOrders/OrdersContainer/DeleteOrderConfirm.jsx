@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { Button } from "../../../../../ui/Button"
-import { theme } from "../../../../../../theme"
+import { Button } from "../../../../../../ui/Button"
+import { theme } from "../../../../../../../theme"
 
 export const DeleteOrderConfirm = ({ orderToDelete, onConfirm, onCancel }) => {
     return (
