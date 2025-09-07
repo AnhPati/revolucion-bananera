@@ -6,6 +6,8 @@ import { useContext, useMemo, useState } from "react"
 import OrderContext from "../../../../../../../contexts/OrderContext"
 import { sortOrdersByDate } from "../../../../../../../utils/orders"
 import { DeleteOrderConfirm } from "./DeleteOrderConfirm"
+import { CSSTransition } from "react-transition-group"
+import { OverlayMessageAnimation } from "../../../../../../../theme/animations"
 
 export const OrdersContainer = ({ showArchivedOrders, onArchive, onUnarchive, onDelete }) => {
     const { orders } = useContext(OrderContext)
@@ -67,13 +69,19 @@ export const OrdersContainer = ({ showArchivedOrders, onArchive, onUnarchive, on
                     <EmptyOrders {...(showArchivedOrders && { emptyMessage: "Aucune commande archivée." })} />
                 )}
 
-            {showDeleteConfirm &&
+            <CSSTransition
+                in={showDeleteConfirm}
+                appear={true}
+                classNames={'overlay-message-animation'}
+                timeout={300}
+                unmountOnExit
+            >
                 <DeleteOrderConfirm
                     orderToDelete={orderToDelete}
                     onConfirm={onDeleteConfirm}
                     onCancel={onDeleteCancel}
                 />
-            }
+            </CSSTransition>
         </OrdersContainerStyled>
     )
 }
@@ -87,12 +95,14 @@ const OrdersContainerStyled = styled.div`
     overflow-y: scroll;
     scrollbar-color: transparent transparent;
 
+    ${OverlayMessageAnimation}
+
     .loading-container {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
-        
+
         h2 {
             margin: 0;
             color: #747b91;

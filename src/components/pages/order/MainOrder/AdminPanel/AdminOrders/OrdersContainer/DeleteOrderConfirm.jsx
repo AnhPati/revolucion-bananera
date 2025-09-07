@@ -5,8 +5,8 @@ import { theme } from "../../../../../../../theme"
 export const DeleteOrderConfirm = ({ onConfirm, onCancel }) => {
     return (
         <DeleteOrderConfirmStyled>
-            <div className="delete-order-layer"></div>
-            <div className="delete-order-container">
+            <div className="delete-order-layer layer-animation"></div>
+            <div className="delete-order-container message-animation">
                 <h1>Supprimer définitivement cette commande ?</h1>
                 <p>Cette action est irréversible</p>
                 <div className="buttons-container">
@@ -28,6 +28,8 @@ const DeleteOrderConfirmStyled = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 15px;
+
+    overflow: hidden;
     z-index: 3;
 
     .delete-order-layer {

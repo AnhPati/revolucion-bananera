@@ -195,3 +195,54 @@ export const BasketProductAnimation = css`
         transition: ${theme.animations.speed.extraQuick} ease-in;
     }
 `;
+
+export const OverlayMessageAnimation = css`
+    
+    .overlay-message-animation-enter {
+        .layer-animation {           
+            opacity: 0%; 
+        }
+
+        .message-animation {
+            opacity: 0%; 
+            transform: translateY(-100%);
+        }
+    }
+
+    .overlay-message-animation-enter-active {
+        .layer-animation {
+            opacity: 50%; 
+            transition: ${theme.animations.speed.extraQuick} ease-out;
+        }
+
+        .message-animation {
+            opacity: 100%; 
+            transform: translateY(0%); 
+            transition: ${theme.animations.speed.extraQuick} ease-out;
+        }
+    }
+
+    .overlay-message-animation-exit {
+        .layer-animation {    
+        opacity: 50%;
+        }
+
+        .message-animation {
+            opacity: 100%; 
+            transform: translateY(0%);
+        }
+    }
+
+    .overlay-message-animation-exit-active {
+        .layer-animation {
+            opacity: 0%;  
+            transition: ${theme.animations.speed.extraQuick} ease-in;
+        }
+
+        .message-animation {
+            opacity: 0%; 
+            transform: translateY(100%);  
+            transition: ${theme.animations.speed.extraQuick} ease-in;
+        }
+    }
+`

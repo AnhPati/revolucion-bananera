@@ -18,8 +18,8 @@ const OrderMessage = () => {
     }
     return (
         <OrderMessageStyled>
-            <div className="order_message-layer"></div>
-            <div className="order_message-container">
+            <div className="order_message-layer layer-animation"></div>
+            <div className="order_message-container message-animation">
                 <h1>Votre commande a bien été enregistrée !</h1>
                 <div className="order_message-summary">
                     <h2>Total à payer : {formatPrice(tempOrder.amount)}</h2>

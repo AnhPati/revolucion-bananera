@@ -10,6 +10,8 @@ import { initialiseUserSession } from "./helpers/initialiseUserSession";
 import OrderMessage from "./OrderMessage";
 import { useAdminOrders } from "../../../hooks/useAdminOrders";
 import { getOrders } from "../../../api/orders"
+import { CSSTransition } from "react-transition-group";
+import { OverlayMessageAnimation } from "../../../theme/animations";
 
 const OrderPage = () => {
     const {
@@ -99,7 +101,15 @@ const OrderPage = () => {
         <OrderPageStyled>
             <div className={'order-container'}>
                 <OrderContext.Provider value={orderContextValue}>
-                    {orderStatut === "pending" && <OrderMessage />}
+                    <CSSTransition
+                        in={orderStatut === 'pending'}
+                        appear={true}
+                        classNames={'overlay-message-animation'}
+                        timeout={300}
+                        unmountOnExit
+                    >
+                        <OrderMessage />
+                    </CSSTransition>
                     <Navbar />
                     <MainOrder />
                 </OrderContext.Provider>
@@ -116,6 +126,8 @@ const OrderPageStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    ${OverlayMessageAnimation}
 
     .order-container {
         width: 1400px;
