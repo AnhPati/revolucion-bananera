@@ -43,7 +43,9 @@ export const OrdersContainer = ({ showArchivedOrders, onArchive, onUnarchive, on
     return (
         <OrdersContainerStyled>
             {isLoading ?
-                <h2>En chargement</h2>
+                <div className="loading-container">
+                    <h2>En chargement</h2>
+                </div>
                 : ordersToDisplay.length > 0 ? (
                     ordersToDisplay.map(order => {
                         return (
@@ -84,6 +86,22 @@ const OrdersContainerStyled = styled.div`
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-color: transparent transparent;
+
+    .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        
+        h2 {
+            margin: 0;
+            color: #747b91;
+            font-size: 36px;
+            font-weight: 400;
+            text-align: center;
+        }
+    }
+    
 
     &:hover { 
         scrollbar-color: initial;
