@@ -16,7 +16,7 @@ export const useAdminOrders = () => {
         let currentOrders = orders
 
         if (orders === undefined) {
-            currentOrders = await getOrders() || []
+            currentOrders = await getOrders()
         }
 
         const ordersCopy = getDeepClone(currentOrders)

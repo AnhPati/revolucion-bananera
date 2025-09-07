@@ -17,6 +17,8 @@ export const getOrders = async () => {
         console.log('Total orders récupérés:', orders.length)
         return orders
     }
+    
+    return []
 }
 
 export const syncOrders = async (order) => {
