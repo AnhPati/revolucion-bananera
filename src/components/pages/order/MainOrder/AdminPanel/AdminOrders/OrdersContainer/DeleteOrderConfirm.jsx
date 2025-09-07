@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { Button } from "../../../../../../ui/Button"
 import { theme } from "../../../../../../../theme"
 import { Modal } from "../../../../../../ui/Modal/Modal"
+import { ModalButtons } from "../../../../../../ui/Modal/ModalButtons"
 
 export const DeleteOrderConfirm = ({ onConfirm, onCancel }) => {
     return (
@@ -14,10 +14,11 @@ export const DeleteOrderConfirm = ({ onConfirm, onCancel }) => {
             <DeleteOrderConfirmContentStyled>
                 <h1>Supprimer définitivement cette commande ?</h1>
                 <p>Cette action est irréversible</p>
-                <div className="buttons-container">
-                    <Button label="Confirmer" onClick={onConfirm} />
-                    <Button label="Annuler" onClick={onCancel} />
-                </div>
+                <ModalButtons
+                    onConfirm={onConfirm}
+                    onCancel={onCancel}
+                    gap="10px"
+                />
             </DeleteOrderConfirmContentStyled>
         </Modal>
     )
@@ -40,15 +41,5 @@ const DeleteOrderConfirmContentStyled = styled.div`
         font-size: 18px;
         margin: 0;
         text-align: center;
-    }
-
-    .buttons-container {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-
-        button {
-            width: 95px;
-        }
     }
 `

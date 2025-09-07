@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { theme } from "../../../theme";
-import { Button } from "../../ui/Button";
 import { useContext } from "react";
 import OrderContext from "../../../contexts/OrderContext";
 import { formatPrice } from "../../../utils/maths";
 import { Modal } from "../../ui/Modal/Modal";
+import { ModalButtons } from "../../ui/Modal/ModalButtons";
 
 const OrderMessage = () => {
     const { userId, tempOrder, handleValidOrder, handleDenyOrder, handleClearBasketProduct } = useContext(OrderContext)
@@ -29,16 +29,7 @@ const OrderMessage = () => {
                 <div className="order_message-summary">
                     <h2>Total à payer : {formatPrice(tempOrder.amount)}</h2>
                 </div>
-                <div className="buttons-container">
-                    <Button
-                        label='Confirmer'
-                        onClick={handleAccept}
-                    />
-                    <Button
-                        label='Annuler'
-                        onClick={handleDeny}
-                    />
-                </div>
+                <ModalButtons onConfirm={handleAccept} onCancel={handleDeny} />
             </OrderMessageContentStyled>
         </Modal>
     )
@@ -65,16 +56,6 @@ const OrderMessageContentStyled = styled.div`
         h2 {
             margin: 0;
             text-align: center;
-        }
-    }
-
-    .buttons-container {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-
-        button {
-            width: 95px;
         }
     }
 `;
