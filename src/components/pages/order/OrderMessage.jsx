@@ -4,7 +4,7 @@ import { Button } from "../../ui/Button";
 import { useContext } from "react";
 import OrderContext from "../../../contexts/OrderContext";
 import { formatPrice } from "../../../utils/maths";
-import { Modal } from "../../ui/Modal";
+import { Modal } from "../../ui/Modal/Modal";
 
 const OrderMessage = () => {
     const { userId, tempOrder, handleValidOrder, handleDenyOrder, handleClearBasketProduct } = useContext(OrderContext)

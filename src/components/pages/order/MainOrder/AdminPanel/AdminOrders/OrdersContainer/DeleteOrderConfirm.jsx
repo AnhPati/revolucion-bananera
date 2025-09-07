@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { Button } from "../../../../../../ui/Button"
 import { theme } from "../../../../../../../theme"
-import { Modal } from "../../../../../../ui/Modal"
+import { Modal } from "../../../../../../ui/Modal/Modal"
 
 export const DeleteOrderConfirm = ({ onConfirm, onCancel }) => {
     return (
