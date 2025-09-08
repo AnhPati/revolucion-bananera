@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { theme } from "../../theme/index.ts"
+import { theme } from "../../theme/theme"
 
 type StickerProps = {
   label?: string
