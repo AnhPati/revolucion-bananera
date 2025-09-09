@@ -1,8 +1,16 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../theme";
-import { forwardRef } from "react";
+import { theme } from "../../theme/theme";
+import { ComponentPropsWithRef, forwardRef } from "react";
+import { IconType } from "react-icons";
 
-export const TextInput = forwardRef(({
+type TextInputVariant = "primary" | "secondary"
+
+type TextInputProps = {
+    Icon: IconType,
+    variant?: TextInputVariant
+} & ComponentPropsWithRef<"input">
+
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
     value,
     onChange,
     Icon,
@@ -11,7 +19,7 @@ export const TextInput = forwardRef(({
     ...optionalsProps }, ref) => {
     return (
         <TextInputStyled className={className} $variant={variant}>
-            {Icon && Icon}
+            {Icon && <Icon />}
             <input
                 value={value}
                 onChange={onChange}
@@ -24,7 +32,11 @@ export const TextInput = forwardRef(({
 })
 TextInput.displayName = "TextInput";
 
-const TextInputStyled = styled.div`
+type TextInputStyledProps = {
+    $variant: TextInputVariant
+}
+
+const TextInputStyled = styled.div<TextInputStyledProps>`
     position: relative;
     width: 100%;
 
