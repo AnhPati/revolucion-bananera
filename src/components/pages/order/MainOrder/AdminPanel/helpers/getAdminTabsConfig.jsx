@@ -16,27 +16,27 @@ export const getAdminTabsConfig = ({
         {
             id: 'tab-collapse',
             className: isOpen ? 'tab-control' : 'tab-control tab-active',
-            Icon: isOpen ? <FiChevronDown /> : <FiChevronUp />,
+            Icon: isOpen ? FiChevronDown : FiChevronUp,
             onClick: onClickOpenPanel
         },
         {
             id: 'tab-add',
             label: 'Ajouter un produit',
-            Icon: <AiOutlinePlus />,
+            Icon: AiOutlinePlus,
             onClick: onClickSelectTab,
             Content: <AddProductForm />
         },
         {
             id: 'tab-update',
             label: 'Modifier un produit',
-            Icon: <MdModeEditOutline />,
+            Icon: MdModeEditOutline,
             onClick: onClickSelectTab,
             Content: isCardSelected ? <UpdateProductForm /> : <HintMessage />
         },
         {
             id: 'tab-orders',
             label: 'Commandes en cours',
-            Icon: <PiNotepad />,
+            Icon: PiNotepad,
             onClick: onClickSelectTab,
             Content: <AdminOrders />
         }
