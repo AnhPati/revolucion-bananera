@@ -1,12 +1,18 @@
 import { TiDelete } from "react-icons/ti";
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "../../theme/theme";
 import { fadeInRight } from "../../theme/animations";
+import { IconType } from "react-icons";
 
-export const IconButton = ({ onClick, Icon = <TiDelete /> }) => {
+type IconButtonProps = {
+    onClick?: React.MouseEventHandler<HTMLSpanElement>,
+    Icon: IconType
+}
+
+export const IconButton = ({ onClick, Icon = TiDelete }: IconButtonProps) => {
     return (
         <IconButtonStyled className='icon-button' onClick={onClick}>
-            {Icon}
+            <Icon />
         </IconButtonStyled>
     )
 }

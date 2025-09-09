@@ -34,7 +34,7 @@ export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderInde
             </ul>
             <IconButton
                 onClick={(event) => onArchiveClick(id, event)}
-                Icon={isArchived ? <MdUnarchive /> : <MdArchive />}
+                Icon={isArchived ? MdUnarchive : MdArchive}
             />
             {isArchived && <IconButton
                 onClick={(event) => onDelete(id, event)}
