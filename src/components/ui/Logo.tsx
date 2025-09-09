@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import logo from "./../../assets/logo-orange.png"
-import { theme } from "../../theme/theme";
+import { theme } from "@/theme/theme";
 
 type LogoProps = {
     className?: string,

@@ -1,7 +1,7 @@
 import { TiDelete } from "react-icons/ti";
 import styled from "styled-components";
-import { theme } from "../../theme/theme";
-import { fadeInRight } from "../../theme/animations";
+import { theme } from "@/theme/theme";
+import { fadeInRight } from "@/theme/animations";
 import { IconType } from "react-icons";
 
 type IconButtonProps = {

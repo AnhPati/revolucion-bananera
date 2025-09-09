@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../theme/theme";
+import { theme } from "@/theme/theme";
 import { ComponentPropsWithRef, forwardRef } from "react";
 import { IconType } from "react-icons";
 

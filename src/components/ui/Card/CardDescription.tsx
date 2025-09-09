@@ -1,6 +1,6 @@
 import { Button } from '../Button'
 import styled from 'styled-components';
-import { theme } from '../../../theme/theme';
+import { theme } from "@/theme/theme";
 import { QuantityButton } from '../QuantityButton';
 
 type CardDescriptionProps = {

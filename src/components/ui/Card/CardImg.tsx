@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { fadeInTop } from "../../../theme/animations";
-import { theme } from "../../../theme/theme";
+import { fadeInTop } from "@/theme/animations";
+import { theme } from "@/theme/theme";
 
 type CardImgProps = {
     src?: string,

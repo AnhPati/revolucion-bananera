@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../theme/theme";
+import { theme } from "@/theme/theme";
 import { IconType } from "react-icons";
 
 type SubmitMessageVariant = "success" | "error" | "update"

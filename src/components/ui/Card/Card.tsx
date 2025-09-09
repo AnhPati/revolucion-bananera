@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
-import { theme } from '../../../theme/theme';
+import { theme } from "@/theme/theme";
 import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
 import { IconButton } from '../IconButton';
 import { Ribbon } from '../Ribbon';
-import { pulse } from '../../../theme/animations';
+import { pulse } from '@/theme/animations';
 
 type CardProps = {
     id: string,
