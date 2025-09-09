@@ -75,7 +75,7 @@ export const MenuOrder = () => {
                                         onDelete={(event) => onDelete(id, event)}
                                         isHoverable={isAdminMode}
                                         onClick={isAdminMode ? (() => onClick(id)) : undefined}
-                                        selected={checkCardIsSelected(id, cardSelected)}
+                                        isSelected={checkCardIsSelected(id, cardSelected)}
                                         onAdd={(event) => addToBasket(id, event)}
                                         onRemove={(event) => removeFromBasket(id, event)}
                                         isPublicised={convertStringToBoolean(isPublicised)}

@@ -6,7 +6,7 @@ import { IconType } from "react-icons";
 
 type IconButtonProps = {
     onClick?: React.MouseEventHandler<HTMLSpanElement>,
-    Icon: IconType
+    Icon?: IconType
 }
 
 export const IconButton = ({ onClick, Icon = TiDelete }: IconButtonProps) => {
