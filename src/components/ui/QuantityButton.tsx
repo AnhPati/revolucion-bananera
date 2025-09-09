@@ -1,7 +1,14 @@
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "../../theme/theme";
 
-export const QuantityButton = ({ onAdd, onRemove, quantity, isDisabled }) => {
+type QuantityButtonProps = {
+    onAdd?: React.MouseEventHandler<HTMLButtonElement>,
+    onRemove?: React.MouseEventHandler<HTMLButtonElement>,
+    quantity: number,
+    isDisabled: boolean
+}
+
+export const QuantityButton = ({ onAdd, onRemove, quantity, isDisabled }: QuantityButtonProps) => {
     return (
         <QuantityButtonStyled>
             <button className='decrement-button' onClick={onRemove} disabled={quantity < 1 || isDisabled ? true : false} >-</button>
