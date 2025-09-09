@@ -1,10 +1,21 @@
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "../../theme/theme";
+import { IconType } from "react-icons";
+import { ComponentProps } from "react";
 
-export const SelectInput = ({ id, name, value, Icon, options, onChange, onFocus, onBlur }) => {
+type Option = {
+    label: string
+} & ComponentProps<"option">
+
+type SelectInputProps = {
+    Icon: IconType,
+    options: Option[]
+} & ComponentProps<"select">
+
+export const SelectInput = ({ id, name, value, Icon, options, onChange, onFocus, onBlur }: SelectInputProps) => {
     return (
         <SelectInputStyled>
-            {Icon}
+            <Icon />
             <select
                 id={id}
                 name={name}
