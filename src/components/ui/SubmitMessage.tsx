@@ -1,15 +1,28 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "@/theme/theme";
+import { IconType } from "react-icons";
 
-export const SubmitMessage = ({ label, Icon, variant }) => {
+type SubmitMessageVariant = "success" | "error" | "update"
+
+type SubmitMessageProps = {
+    label: string,
+    Icon: IconType,
+    variant: SubmitMessageVariant
+}
+
+export const SubmitMessage = ({ label, Icon, variant }: SubmitMessageProps) => {
     return (
         <SubmitMessageStyled $variant={variant}>
-            {Icon && Icon} {label}
+            {Icon && <Icon />} {label}
         </SubmitMessageStyled>
     )
 }
 
-const SubmitMessageStyled = styled.span`
+type SubmitMessageStyledProps = {
+    $variant: SubmitMessageVariant
+}
+
+const SubmitMessageStyled = styled.span<SubmitMessageStyledProps>`
     display: flex;
     align-items: center;
     margin-left: 5px;

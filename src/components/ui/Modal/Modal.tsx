@@ -1,5 +1,9 @@
 import styled from "styled-components"
-import { theme } from "../../../theme"
+import { theme } from "@/theme/theme";
+
+type ModalProps = {
+    children: React.ReactNode,
+} & Partial<ModalStyledProps>
 
 export const Modal = ({
     children,
@@ -8,7 +12,7 @@ export const Modal = ({
     containerMaxWidth = "600px",
     containerWidth = "90%"
 
-}) => {
+}: ModalProps) => {
     return (
         <ModalStyled
             overlayColor={overlayColor}
@@ -24,7 +28,14 @@ export const Modal = ({
     )
 }
 
-const ModalStyled = styled.div`
+type ModalStyledProps = {
+    overlayColor: string,
+    overlayOpacity: string,
+    containerMaxWidth: string,
+    containerWidth: string
+}
+
+const ModalStyled = styled.div<ModalStyledProps>`
     position: absolute;
     top: 0;
     left: 0;

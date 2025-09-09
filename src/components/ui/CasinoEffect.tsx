@@ -1,8 +1,12 @@
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "@/theme/theme";
 
-export const CasinoEffect = ({ count }) => {
+type CasinoEffectProps = {
+    count: string
+}
+
+export const CasinoEffect = ({ count }: CasinoEffectProps) => {
     return (
         <TransitionGroup component={CasinoEffectStyled}>
             <CSSTransition

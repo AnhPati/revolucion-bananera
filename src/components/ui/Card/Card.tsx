@@ -1,15 +1,48 @@
 import styled, { css } from 'styled-components';
-import { theme } from '../../../theme';
+import { theme } from "@/theme/theme";
 import { CardImg } from './CardImg';
 import { CardInfos } from './CardInfos';
 import { IconButton } from '../IconButton';
 import { Ribbon } from '../Ribbon';
-import { pulse } from '../../../theme/animations';
+import { pulse } from '@/theme/animations';
 
+type CardProps = {
+    id: string,
+    imgSrc?: string,
+    title: string,
+    leftDescription: string,
+    hasDeleteButton: boolean,
+    onDelete?: React.MouseEventHandler<HTMLSpanElement>,
+    onClick?: React.MouseEventHandler<HTMLLIElement>,
+    onAdd?: React.MouseEventHandler<HTMLButtonElement>,
+    onRemove?: React.MouseEventHandler<HTMLButtonElement>,
+    isPublicised: boolean,
+    isUnavailable: boolean,
+    unavailableImage: string,
+    quantity: number
+    isHoverable: boolean,
+    isSelected: boolean
+} & Partial<CardStyledProps>
 
-export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDelete, isHoverable, onClick, selected, onAdd, onRemove, isPublicised, isUnavailable, unavailableImage, quantity }) => {
+export const Card = ({
+    id,
+    imgSrc,
+    title,
+    leftDescription,
+    hasDeleteButton,
+    onDelete,
+    isHoverable,
+    onClick,
+    isSelected,
+    onAdd,
+    onRemove,
+    isPublicised,
+    isUnavailable,
+    unavailableImage,
+    quantity
+}: CardProps) => {
     return (
-        <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={selected}>
+        <CardStyled key={id} id={id} onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
             {isPublicised && <Ribbon />}
             {hasDeleteButton && (
                 <IconButton onClick={onDelete} />
@@ -20,7 +53,12 @@ export const Card = ({ id, imgSrc, title, leftDescription, hasDeleteButton, onDe
     )
 }
 
-const CardStyled = styled.li`
+type CardStyledProps = {
+    $isHoverable: boolean,
+    $isSelected: boolean
+}
+
+const CardStyled = styled.li<CardStyledProps>`
     ${({ $isHoverable }) => $isHoverable && hoverableStyles}
 
     position: relative;

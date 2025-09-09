@@ -12,7 +12,7 @@ export const SubmitButton = ({ isSubmitted, submitMessageType }) => {
             {isSubmitted && (
                 <SubmitMessage
                     label={submitMessageType === 'success' ? 'Ajouté avec succès !' : `Le prix n'est pas au bon format.`}
-                    Icon={submitMessageType === 'success' ? <FiCheck /> : <FiAlertCircle />}
+                    Icon={submitMessageType === 'success' ? FiCheck : FiAlertCircle}
                     variant={submitMessageType}
                 />
             )}

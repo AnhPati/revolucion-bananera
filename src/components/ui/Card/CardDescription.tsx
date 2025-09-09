@@ -1,9 +1,17 @@
 import { Button } from '../Button'
 import styled from 'styled-components';
-import { theme } from '../../../theme';
+import { theme } from "@/theme/theme";
 import { QuantityButton } from '../QuantityButton';
 
-export const CardDescription = ({ leftDescription, onAdd, onRemove, isUnavailable, quantity }) => {
+type CardDescriptionProps = {
+    leftDescription: string,
+    onAdd?: React.MouseEventHandler<HTMLButtonElement>,
+    onRemove?: React.MouseEventHandler<HTMLButtonElement>,
+    isUnavailable: boolean,
+    quantity: number
+}
+
+export const CardDescription = ({ leftDescription, onAdd, onRemove, isUnavailable, quantity }: CardDescriptionProps) => {
     return (
         <CardDescriptionStyled>
             <p className='left-description'>
@@ -14,7 +22,7 @@ export const CardDescription = ({ leftDescription, onAdd, onRemove, isUnavailabl
                     quantity > 0 ?
                         <QuantityButton onAdd={onAdd} onRemove={onRemove} quantity={quantity} isDisabled={isUnavailable} />
                         :
-                        <Button label={'Ajouter'} onClick={onAdd} isDisabled={isUnavailable} />
+                        <Button label={'Ajouter'} onClick={onAdd} disabled={isUnavailable} />
                 }
             </div>
         </CardDescriptionStyled>

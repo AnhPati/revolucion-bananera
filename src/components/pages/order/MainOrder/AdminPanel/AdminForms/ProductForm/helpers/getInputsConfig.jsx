@@ -11,7 +11,7 @@ export const getTextInputsConfig = (productValues) => [
         name: 'title',
         value: productValues.title,
         placeholder: 'Nom du produit (ex: Super Burger)',
-        Icon: <FaHamburger />,
+        Icon: FaHamburger,
         className: 'input-title'
     },
     {
@@ -19,7 +19,7 @@ export const getTextInputsConfig = (productValues) => [
         name: 'imageSource',
         value: productValues.imageSource,
         placeholder: `Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)`,
-        Icon: <BsFillCameraFill />,
+        Icon: BsFillCameraFill,
         className: 'input-img'
     },
     {
@@ -27,7 +27,7 @@ export const getTextInputsConfig = (productValues) => [
         name: 'price',
         value: productValues.price,
         placeholder: 'Prix',
-        Icon: <MdOutlineEuro />,
+        Icon: MdOutlineEuro,
         className: 'input-price'
     }
 ]
@@ -38,13 +38,13 @@ export const getSelectInputsConfig = (productValues) => [
         name: "isAvailable",
         value: productValues.isAvailable,
         options: isAvailableOptions,
-        Icon: <FiPackage />
+        Icon: FiPackage
     },
     {
         id: "4",
         name: "isPublicised",
         value: productValues.isPublicised,
         options: isPublicisedOptions,
-        Icon: <GoMegaphone />
+        Icon: GoMegaphone
     }
 ]

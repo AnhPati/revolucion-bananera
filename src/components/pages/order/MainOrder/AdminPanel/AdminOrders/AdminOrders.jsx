@@ -41,7 +41,7 @@ export const AdminOrders = () => {
             <Button
                 label={showArchivedOrders ? 'Commandes en cours' : 'Historique des commandes'}
                 variant={'success'}
-                Icon={showArchivedOrders ? <PiNotepad /> : <MdOutlineHistory />}
+                Icon={showArchivedOrders ? PiNotepad : MdOutlineHistory}
                 onClick={handleOrdersView}
             />
 

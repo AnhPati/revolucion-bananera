@@ -1,8 +1,13 @@
 import styled from "styled-components";
 import logo from "./../../assets/logo-orange.png"
-import { theme } from "../../theme";
+import { theme } from "@/theme/theme";
 
-export const Logo = ({ className, onClick }) => {
+type LogoProps = {
+    className?: string,
+    onClick?: React.MouseEventHandler<HTMLDivElement>
+}
+
+export const Logo = ({ className, onClick }: LogoProps) => {
     return (
         <LogoStyled className={className} onClick={onClick}>
             <h1>

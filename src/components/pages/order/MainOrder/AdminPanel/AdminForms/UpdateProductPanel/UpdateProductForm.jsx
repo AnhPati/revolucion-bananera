@@ -45,7 +45,7 @@ const UpdateProductForm = () => {
             {isUpdating ? (
                 <SubmitMessage
                     label={'Modifications enregistrées !'}
-                    Icon={<BsCloudCheck />}
+                    Icon={BsCloudCheck}
                     variant={'update'}
                 />
 

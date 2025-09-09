@@ -38,11 +38,11 @@ export const LoginForm = () => {
                 onChange={handleChange}
                 placeholder={'Entrer votre prénom'}
                 required
-                Icon={<BsPersonCircle />}
+                Icon={BsPersonCircle}
             />
             <Button
                 label={'Accéder à mon espace'}
-                Icon={<IoChevronForward />}
+                Icon={IoChevronForward}
             />
         </LoginFormStyled>
     )
