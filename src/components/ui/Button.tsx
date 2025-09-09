@@ -1,15 +1,29 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "../../theme/theme";
+import { IconType } from "react-icons";
+import { ComponentProps } from "react";
 
-export const Button = ({ label, Icon, onClick, variant = 'primary', isDisabled }) => {
+type ButtonVariant = "primary" | "success"
+
+type ButtonProps = {
+    label: string,
+    Icon?: IconType,
+    variant?: ButtonVariant
+} & ComponentProps<"button">
+
+export const Button = ({ label, Icon, onClick, variant = 'primary', ...optionalsProps }: ButtonProps) => {
     return (
-        <ButtonStyled onClick={onClick} $variant={variant} disabled={isDisabled} >
-            {label}{Icon && Icon}
+        <ButtonStyled onClick={onClick} $variant={variant} {...optionalsProps}>
+            {label}{Icon && <Icon />}
         </ButtonStyled>
     )
 }
 
-const ButtonStyled = styled.button`
+type ButtonStyledProps = {
+    $variant: ButtonVariant
+}
+
+const ButtonStyled = styled.button<ButtonStyledProps>`
     border-radius: ${theme.borderRadius.round};
     color: ${theme.colors.white};
     font-weight: ${theme.fonts.weights.bold};

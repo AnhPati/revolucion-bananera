@@ -14,7 +14,7 @@ export const CardDescription = ({ leftDescription, onAdd, onRemove, isUnavailabl
                     quantity > 0 ?
                         <QuantityButton onAdd={onAdd} onRemove={onRemove} quantity={quantity} isDisabled={isUnavailable} />
                         :
-                        <Button label={'Ajouter'} onClick={onAdd} isDisabled={isUnavailable} />
+                        <Button label={'Ajouter'} onClick={onAdd} disabled={isUnavailable} />
                 }
             </div>
         </CardDescriptionStyled>
