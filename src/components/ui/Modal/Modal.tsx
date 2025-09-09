@@ -1,13 +1,6 @@
 import styled from "styled-components"
 import { theme } from "../../../theme/theme"
 
-type ModalStyledProps = {
-    overlayColor: string,
-    overlayOpacity: string,
-    containerMaxWidth: string,
-    containerWidth: string
-}
-
 type ModalProps = {
     children: React.ReactNode,
 } & Partial<ModalStyledProps>
@@ -33,6 +26,13 @@ export const Modal = ({
             </div>
         </ModalStyled>
     )
+}
+
+type ModalStyledProps = {
+    overlayColor: string,
+    overlayOpacity: string,
+    containerMaxWidth: string,
+    containerWidth: string
 }
 
 const ModalStyled = styled.div<ModalStyledProps>`
