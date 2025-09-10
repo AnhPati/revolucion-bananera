@@ -3,7 +3,7 @@ import { FaHamburger } from "react-icons/fa"
 import { FiPackage } from "react-icons/fi"
 import { GoMegaphone } from "react-icons/go"
 import { MdOutlineEuro } from "react-icons/md"
-import { isAvailableOptions, isPublicisedOptions } from "../../../../../../../../enums/select"
+import { isAvailableOptions, isPublicisedOptions } from "../../../../../../../../constants/select"
 
 export const getTextInputsConfig = (productValues) => [
     {

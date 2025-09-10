@@ -5,7 +5,7 @@ type QuantityButtonProps = {
     onAdd?: React.MouseEventHandler<HTMLButtonElement>,
     onRemove?: React.MouseEventHandler<HTMLButtonElement>,
     quantity: number,
-    isDisabled: boolean
+    isDisabled?: boolean
 }
 
 export const QuantityButton = ({ onAdd, onRemove, quantity, isDisabled }: QuantityButtonProps) => {

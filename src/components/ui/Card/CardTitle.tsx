@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "@/theme/theme";
 
 type CardTitleProps = {
-    title: string
+    title?: string
 }
 
 export const CardTitle = ({ title }: CardTitleProps) => {

@@ -2,11 +2,11 @@ import { CardDescription } from "./CardDescription"
 import { CardTitle } from "./CardTitle"
 
 type CardInfosProps = {
-    title: string,
+    title?: string,
     leftDescription: string,
     onAdd?: React.MouseEventHandler<HTMLButtonElement>,
     onRemove?: React.MouseEventHandler<HTMLButtonElement>,
-    isUnavailable: boolean,
+    isUnavailable?: boolean,
     quantity: number
 }
 

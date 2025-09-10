@@ -6,7 +6,7 @@ import { theme } from "../../../../../theme";
 import OrderContext from "../../../../../contexts/OrderContext";
 import EmptyMenu from "./EmptyMenu";
 import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
-import { DEFAULT_IMG, UNAVAILABLE_PRODUCT_IMG } from "../../../../../enums/product";
+import { DEFAULT_IMG, UNAVAILABLE_PRODUCT_IMG } from "../../../../../constants/product";
 import { findObjectById, isEmptyArray } from "../../../../../utils/array";
 import { Loader } from "./Loader";
 import { CSSTransition, TransitionGroup } from "react-transition-group";

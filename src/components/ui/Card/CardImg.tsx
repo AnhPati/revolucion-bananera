@@ -5,8 +5,8 @@ import { theme } from "@/theme/theme";
 type CardImgProps = {
     src?: string,
     alt?: string,
-    isUnavailable: boolean,
-    unavailableImage: string
+    isUnavailable?: boolean,
+    unavailableImage?: string
 }
 
 export const CardImg = ({ src, alt, isUnavailable, unavailableImage }: CardImgProps) => {

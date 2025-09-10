@@ -3,7 +3,7 @@ import { theme } from "../../../../../theme";
 import OrderContext from "../../../../../contexts/OrderContext";
 import { getAdminTabsConfig, getCurrentTabSelected } from "./helpers/getAdminTabsConfig";
 import { useContext } from "react";
-import { EMPTY_PRODUCT } from "../../../../../enums/product";
+import { EMPTY_PRODUCT } from "../../../../../constants/product";
 
 const AdminPanelContent = () => {
     const { adminMode, productSelected } = useContext(OrderContext)

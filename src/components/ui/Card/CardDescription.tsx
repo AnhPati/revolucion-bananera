@@ -7,7 +7,7 @@ type CardDescriptionProps = {
     leftDescription: string,
     onAdd?: React.MouseEventHandler<HTMLButtonElement>,
     onRemove?: React.MouseEventHandler<HTMLButtonElement>,
-    isUnavailable: boolean,
+    isUnavailable?: boolean,
     quantity: number
 }
 

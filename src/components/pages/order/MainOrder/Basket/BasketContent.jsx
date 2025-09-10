@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { BasketProduct } from "./BasketProduct/BasketProduct";
-import { BASKET_MESSAGE, DEFAULT_IMG } from "../../../../../enums/product";
+import { BASKET_MESSAGE, DEFAULT_IMG } from "../../../../../constants/product";
 import { useContext } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
 import { theme } from "../../../../../theme";
