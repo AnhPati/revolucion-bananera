@@ -1,26 +1,31 @@
 import { useRef, useState } from "react"
-import { fakeMenu } from "../fakeData/fakeMenu"
+import { fakeMenu } from "@/fakeData/fakeMenu"
+//@ts-ignore
 import { EMPTY_PRODUCT } from "../enums/product"
-import { filterArrayWithId, getDeepClone } from "../utils/array"
+import { filterArrayWithId, getDeepClone } from "@/utils/array"
+//@ts-ignore
 import { syncProducts } from "../api/product"
 import { useLocation } from "react-router-dom"
+import { Product } from "@/types/Product"
+import { AdminModeInfos } from "@/types/Admin"
 
 export const useAdminProducts = () => {
-    const userId = useLocation().state.username
-    const [products, setProducts] = useState(undefined)
-    const [adminMode, setAdminMode] = useState({
+    const userId: string = useLocation().state.username
+    const [products, setProducts] = useState<Product[] | undefined>(undefined)
+    const [adminMode, setAdminMode] = useState<AdminModeInfos>({
         isAdminMode: false,
         adminPanel: {
             isOpen: true,
             tabSelected: 'tab-add'
         },
-        cardSelected: null,
-        setAdminMode: () => { }
+        cardSelected: null
     })
-    const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
-    const titleInputRef = useRef()
+    const [productSelected, setProductSelected] = useState<Product>(EMPTY_PRODUCT)
+    const titleInputRef = useRef<HTMLInputElement>()
 
-    const handleAddProduct = (newProduct, userId) => {
+    const handleAddProduct = (newProduct: Product, userId: string) => {
+        if (!products) return
+
         const productsCopy = getDeepClone(products)
         const newProducts = [newProduct, ...productsCopy]
 
@@ -28,7 +33,9 @@ export const useAdminProducts = () => {
         syncProducts(userId, newProducts)
     }
 
-    const handleDeleteProduct = (productId, userId) => {
+    const handleDeleteProduct = (productId: string, userId: string) => {
+        if (!products) return
+
         const newProducts = filterArrayWithId(productId, products)
 
         if (productId === productSelected.id) {
@@ -38,15 +45,16 @@ export const useAdminProducts = () => {
 
         setProducts(newProducts)
         syncProducts(userId, newProducts)
-        adminMode.cardSelected && titleInputRef.current.focus()
+
+        adminMode.cardSelected && titleInputRef.current?.focus()
     }
 
-    const handleGenerateNewProducts = (userId) => {
+    const handleGenerateNewProducts = (userId: string) => {
         setProducts(fakeMenu.LARGE)
         syncProducts(userId, fakeMenu.LARGE)
     }
 
-    const handleSelectProduct = async (productSelected) => {
+    const handleSelectProduct = async (productSelected: Product) => {
         const productId = productSelected.id
 
         await setAdminMode(prevAdminMode => ({
@@ -60,11 +68,13 @@ export const useAdminProducts = () => {
 
         await setProductSelected(productSelected)
 
-        titleInputRef.current.focus()
+        titleInputRef.current?.focus()
     }
 
-    const handleUpdateProduct = async (productSelected, userId) => {
+    const handleUpdateProduct = async (productSelected: Product, userId: string) => {
         const productId = productSelected.id
+        if (!products) return
+
         const newProducts = getDeepClone(products)
         const indexOfProduct = products.findIndex(product => product.id === productId)
 
