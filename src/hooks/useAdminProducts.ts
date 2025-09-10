@@ -1,10 +1,8 @@
 import { useRef, useState } from "react"
 import { fakeMenu } from "@/fakeData/fakeMenu"
-//@ts-ignore
-import { EMPTY_PRODUCT } from "../constants/product"
+import { EMPTY_PRODUCT } from "@/constants/product"
 import { filterArrayWithId, getDeepClone } from "@/utils/array"
-//@ts-ignore
-import { syncProducts } from "../api/product"
+import { syncProducts } from "@/api/product"
 import { useLocation } from "react-router-dom"
 import { Product } from "@/types/Product"
 import { AdminModeInfos } from "@/types/Admin"

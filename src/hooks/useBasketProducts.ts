@@ -1,9 +1,7 @@
 import { useState } from "react"
-//@ts-ignore
-import { fakeBasket } from "../fakeData/fakeBasket"
+import { fakeBasket } from "@/fakeData/fakeBasket"
 import { filterArrayWithId, findObjectById, findIndexById, getDeepClone } from "@/utils/array"
-//@ts-ignore
-import { syncBasketProducts } from "../api/basketProduct"
+import { syncBasketProducts } from "@/api/basketProduct"
 import { BasketProduct } from "@/types/Product"
 
 export const useBasketProducts = () => {

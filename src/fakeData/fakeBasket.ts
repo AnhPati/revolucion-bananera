@@ -1,6 +1,5 @@
 import { BasketProduct } from "@/types/Product"
-//@ts-ignore
-import { EMPTY_PRODUCT } from "../constants/product"
+import { EMPTY_PRODUCT } from "@/constants/product"
 
 export const EMPTY: BasketProduct[] = []
 
