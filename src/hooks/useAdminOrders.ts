@@ -1,37 +1,43 @@
 import { useState } from "react"
-import { filterArrayWithId, findIndexById, getDeepClone } from "../utils/array"
+import { filterArrayWithId, findIndexById, getDeepClone } from "@/utils/array"
+//@ts-ignore
 import { syncOrders, deleteOrder, getOrders } from "../api/orders"
+import { Order } from "@/types/Order"
 
 export const useAdminOrders = () => {
-    const [orderStatut, setOrderStatut] = useState('none')
-    const [orders, setOrders] = useState(undefined)
-    const [tempOrder, setTempOrder] = useState({})
+    const [orderStatut, setOrderStatut] = useState<string>('none')
+    const [orders, setOrders] = useState<Order[] | undefined>(undefined)
+    const [tempOrder, setTempOrder] = useState<Order>({} as Order)
 
-    const handleCheckOrder = (newOrder) => {
+    const handleCheckOrder = (newOrder: Order) => {
         setTempOrder(newOrder)
         setOrderStatut('pending')
     }
 
-    const handleValidOrder = async (tempOrder) => {
+    const handleValidOrder = async (tempOrder: Order) => {
         let currentOrders = orders
 
         if (orders === undefined) {
             currentOrders = await getOrders()
         }
 
+        if (!currentOrders) return
+
         const ordersCopy = getDeepClone(currentOrders)
         const newOrders = [tempOrder, ...ordersCopy]
         setOrderStatut('accepted')
         setOrders(newOrders)
         syncOrders(tempOrder)
-        setTempOrder({})
+        setTempOrder({} as Order)
     }
 
     const handleDenyOrder = () => {
         setOrderStatut('none')
     }
 
-    const handleArchiveOrder = (id) => {
+    const handleArchiveOrder = (id: string) => {
+        if (!orders) return
+
         const newOrders = getDeepClone(orders)
         const orderIndex = findIndexById(id, newOrders)
 
@@ -41,7 +47,9 @@ export const useAdminOrders = () => {
         syncOrders(newOrder)
     }
 
-    const handleUnarchiveOrder = (id) => {
+    const handleUnarchiveOrder = (id: string) => {
+        if (!orders) return
+
         const newOrders = getDeepClone(orders)
         const orderIndex = findIndexById(id, newOrders)
 
@@ -51,7 +59,9 @@ export const useAdminOrders = () => {
         syncOrders(newOrder)
     }
 
-    const handleDeleteOrder = async (id) => {
+    const handleDeleteOrder = async (id: string) => {
+        if (!orders) return
+
         const newOrders = filterArrayWithId(id, orders)
 
         setOrders(newOrders)
