@@ -2,15 +2,15 @@ import styled from "styled-components"
 import { theme } from "../../../../../../../theme"
 import { OrderContainer } from "./OrderContainer"
 import { EmptyOrders } from "./EmptyOrders"
-import { useContext, useMemo, useState } from "react"
-import OrderContext from "../../../../../../../contexts/OrderContext"
+import { useMemo, useState } from "react"
+import { useOrderContext } from "../../../../../../../contexts/OrderContext"
 import { sortOrdersByDate } from "../../../../../../../utils/orders"
 import { DeleteOrderConfirm } from "./DeleteOrderConfirm"
 import { CSSTransition } from "react-transition-group"
 import { OverlayMessageAnimation } from "../../../../../../../theme/animations"
 
 export const OrdersContainer = ({ showArchivedOrders, onArchive, onUnarchive, onDelete }) => {
-    const { orders } = useContext(OrderContext)
+    const { orders } = useOrderContext()
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
     const [orderToDelete, setOrderToDelete] = useState(undefined)
 

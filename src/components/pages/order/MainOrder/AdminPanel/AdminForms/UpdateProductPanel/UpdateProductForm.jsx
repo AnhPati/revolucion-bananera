@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import OrderContext from "../../../../../../../contexts/OrderContext";
+import { useState } from "react";
+import { useOrderContext } from "../../../../../../../contexts/OrderContext";
 import { ProductForm } from "../ProductForm/ProductForm";
 import { UpdateFormMessage } from "./UpdateFormMessage";
 import { useDisplayMessage } from "../../../../../../../hooks/useDisplayMessage";
@@ -7,7 +7,7 @@ import { SubmitMessage } from "../../../../../../ui/SubmitMessage"
 import { BsCloudCheck } from "react-icons/bs";
 
 const UpdateProductForm = () => {
-    const { productSelected, titleInputRef, handleUpdateProduct, userId } = useContext(OrderContext)
+    const { productSelected, titleInputRef, handleUpdateProduct, userId } = useOrderContext()
     const [valueOnFocus, setValueOnFocus] = useState(null)
     const { isSubmitting: isUpdating, displayMessage } = useDisplayMessage()
 

@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { BasketHeader } from "./BasketHeader";
 import { BasketContent } from "./BasketContent";
 import { BasketFooter } from "./BasketFooter";
-import { useContext } from "react";
-import OrderContext from "../../../../../contexts/OrderContext";
+import { useOrderContext } from "../../../../../contexts/OrderContext";
 import EmptyBasket from "./EmptyBasket";
 import { theme } from "../../../../../theme";
 import { isEmptyArray } from "../../../../../utils/array";
@@ -11,7 +10,7 @@ import { calculateAmountToPay } from "./helpers/calculateAmountToPay";
 import { formatDate } from "../../../../../utils/date";
 
 export const Basket = () => {
-    const { basketProducts, products, orderStatut, handleCheckOrder, userId } = useContext(OrderContext)
+    const { basketProducts, products, orderStatut, handleCheckOrder, userId } = useOrderContext()
     const amountToPay = calculateAmountToPay(basketProducts, products)
     const isLoading = products === undefined
 

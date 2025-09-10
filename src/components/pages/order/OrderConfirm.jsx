@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../theme";
-import { useContext } from "react";
-import OrderContext from "../../../contexts/OrderContext";
+import { useOrderContext } from "../../../contexts/OrderContext";
 import { formatPrice } from "../../../utils/maths";
 import { Modal } from "../../ui/Modal/Modal";
 import { ModalButtons } from "../../ui/Modal/ModalButtons";
 
 const OrderConfirm = () => {
-    const { userId, tempOrder, handleValidOrder, handleDenyOrder, handleClearBasketProduct } = useContext(OrderContext)
+    const { userId, tempOrder, handleValidOrder, handleDenyOrder, handleClearBasketProduct } = useOrderContext()
 
     const handleAccept = () => {
         handleValidOrder(tempOrder)

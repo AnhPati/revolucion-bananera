@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
-import OrderContext from "../../../../../contexts/OrderContext";
+import { useOrderContext } from "../../../../../contexts/OrderContext";
 import { getAdminTabsConfig, getCurrentTabSelected } from "./helpers/getAdminTabsConfig";
-import { useContext } from "react";
 import { EMPTY_PRODUCT } from "../../../../../constants/product";
 
 const AdminPanelContent = () => {
-    const { adminMode, productSelected } = useContext(OrderContext)
+    const { adminMode, productSelected } = useOrderContext()
     const tabSelected = adminMode.adminPanel.tabSelected
 
     const isCardSelected = productSelected !== EMPTY_PRODUCT

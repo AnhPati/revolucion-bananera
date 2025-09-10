@@ -1,11 +1,10 @@
-import { useContext } from 'react'
-import OrderContext from '../../../../../../../contexts/OrderContext'
+import { useOrderContext } from '../../../../../../../contexts/OrderContext'
 import { IconButton } from '../../../../../../ui/IconButton'
 import styled from 'styled-components'
 import { MdArchive, MdUnarchive } from 'react-icons/md'
 
 export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderIndex, lastOrderIndex, isArchived, onArchiveClick, onDelete }) => {
-    const { products } = useContext(OrderContext)
+    const { products } = useOrderContext()
 
     return (
         <OrderContainerStyled>
