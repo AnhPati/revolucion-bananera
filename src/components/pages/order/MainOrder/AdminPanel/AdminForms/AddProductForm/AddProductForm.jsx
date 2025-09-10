@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import OrderContext from "../../../../../../../contexts/OrderContext"
 import { replaceFrenchCommaWithDot } from "../../../../../../../utils/maths"
-import { EMPTY_PRODUCT } from "../../../../../../../enums/product"
+import { EMPTY_PRODUCT } from "../../../../../../../constants/product"
 import { ProductForm } from "../ProductForm/ProductForm"
 import { SubmitButton } from "./SubmitButton"
 import { useDisplayMessage } from "../../../../../../../hooks/useDisplayMessage"

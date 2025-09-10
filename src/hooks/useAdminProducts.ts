@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import { fakeMenu } from "@/fakeData/fakeMenu"
 //@ts-ignore
-import { EMPTY_PRODUCT } from "../enums/product"
+import { EMPTY_PRODUCT } from "../constants/product"
 import { filterArrayWithId, getDeepClone } from "@/utils/array"
 //@ts-ignore
 import { syncProducts } from "../api/product"
