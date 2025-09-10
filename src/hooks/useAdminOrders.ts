@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { filterArrayWithId, findIndexById, getDeepClone } from "@/utils/array"
-//@ts-ignore
-import { syncOrders, deleteOrder, getOrders } from "../api/orders"
+import { syncOrders, deleteOrder, getOrders } from "@/api/orders"
 import { Order } from "@/types/Order"
 
 export const useAdminOrders = () => {
