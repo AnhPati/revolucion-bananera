@@ -1,7 +1,8 @@
 import { collection, doc, getDocs, setDoc, deleteDoc } from "firebase/firestore"
 import { db } from "./firebase-config"
+import { Order } from "@/types/Order"
 
-export const getOrders = async () => {
+export const getOrders = async (): Promise<Order[]> => {
     const collectionRef = collection(db, 'orders')
     const collectionSnapshot = await getDocs(collectionRef)
 
@@ -9,19 +10,19 @@ export const getOrders = async () => {
     console.log('Firebase snapshot size:', collectionSnapshot.size)
 
     if (!collectionSnapshot.empty) {
-        const orders = []
+        const orders: Order[] = []
         collectionSnapshot.forEach(doc => {
             console.log('Document trouvé:', doc.id, doc.data())
-            orders.push({ id: doc.id, ...doc.data() })
+            orders.push({ id: doc.id, ...doc.data() } as Order)
         })
         console.log('Total orders récupérés:', orders.length)
         return orders
     }
-    
+
     return []
 }
 
-export const syncOrders = async (order) => {
+export const syncOrders = async (order: Order): Promise<Order[]> => {
     const docRef = doc(db, 'orders', order.id)
 
     const newOrder = order
@@ -31,7 +32,7 @@ export const syncOrders = async (order) => {
     return getOrders()
 }
 
-export const deleteOrder = async (orderId) => {
+export const deleteOrder = async (orderId: string) => {
     const docRef = doc(db, 'orders', orderId)
 
     await deleteDoc(docRef)
