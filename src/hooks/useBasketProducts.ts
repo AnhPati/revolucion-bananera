@@ -1,12 +1,15 @@
 import { useState } from "react"
+//@ts-ignore
 import { fakeBasket } from "../fakeData/fakeBasket"
-import { filterArrayWithId, findObjectById, findIndexById, getDeepClone } from "../utils/array"
+import { filterArrayWithId, findObjectById, findIndexById, getDeepClone } from "@/utils/array"
+//@ts-ignore
 import { syncBasketProducts } from "../api/basketProduct"
+import { BasketProduct } from "@/types/Product"
 
 export const useBasketProducts = () => {
-    const [basketProducts, setBasketProducts] = useState(fakeBasket.EMPTY)
+    const [basketProducts, setBasketProducts] = useState<BasketProduct[]>(fakeBasket.EMPTY)
 
-    const handleAddBasketProduct = (productToAdd, userId) => {
+    const handleAddBasketProduct = (productToAdd: BasketProduct, userId: string) => {
         const newBasketProducts = getDeepClone(basketProducts)
         const idProductToAdd = productToAdd.id
 
@@ -38,7 +41,7 @@ export const useBasketProducts = () => {
         }
     }
 
-    const decrementQuantityProduct = (id) => {
+    const decrementQuantityProduct = (id: string) => {
         const newBasketProducts = getDeepClone(basketProducts)
         const productIndex = findIndexById(id, newBasketProducts)
 
@@ -47,14 +50,14 @@ export const useBasketProducts = () => {
         setBasketProducts(newBasketProducts)
     }
 
-    const handleDeleteBasketProduct = (id, userId) => {
+    const handleDeleteBasketProduct = (id: string, userId: string) => {
         const newBasketProducts = filterArrayWithId(id, basketProducts)
 
         setBasketProducts(newBasketProducts)
         syncBasketProducts(userId, newBasketProducts)
     }
 
-    const handleClearBasketProduct = (userId) => {
+    const handleClearBasketProduct = (userId: string) => {
         setBasketProducts(fakeBasket.EMPTY)
         syncBasketProducts(userId, fakeBasket.EMPTY)
     }
