@@ -9,20 +9,20 @@ import { pulse } from '@/theme/animations';
 type CardProps = {
     id: string,
     imgSrc?: string,
-    title: string,
+    title?: string,
     leftDescription: string,
-    hasDeleteButton: boolean,
+    hasDeleteButton?: boolean,
     onDelete?: React.MouseEventHandler<HTMLSpanElement>,
     onClick?: React.MouseEventHandler<HTMLLIElement>,
     onAdd?: React.MouseEventHandler<HTMLButtonElement>,
     onRemove?: React.MouseEventHandler<HTMLButtonElement>,
-    isPublicised: boolean,
-    isUnavailable: boolean,
-    unavailableImage: string,
+    isPublicised?: boolean,
+    isUnavailable?: boolean,
+    unavailableImage?: string,
     quantity: number
-    isHoverable: boolean,
-    isSelected: boolean
-} & Partial<CardStyledProps>
+    isHoverable?: boolean,
+    isSelected?: boolean
+}
 
 export const Card = ({
     id,
@@ -54,8 +54,8 @@ export const Card = ({
 }
 
 type CardStyledProps = {
-    $isHoverable: boolean,
-    $isSelected: boolean
+    $isHoverable?: boolean,
+    $isSelected?: boolean
 }
 
 const CardStyled = styled.li<CardStyledProps>`
@@ -109,7 +109,7 @@ const selectedStyles = css`
     }
 
     p {
-        color: ${theme.colors.white};
+        color: ${theme.colors.white}!important;
     }
 
     button {
