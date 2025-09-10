@@ -7,3 +7,8 @@ export type Product = {
     isAvailable: boolean,
     isPublicised: boolean
 }
+
+export type BasketProduct = {
+    id: string,
+    quantity: number
+} & Partial<Product>
