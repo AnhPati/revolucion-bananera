@@ -110,6 +110,18 @@ export const slideInSpace = (appearValue: string, midValue: string, endValue: st
     }
 `
 
+export const slideInDown = (appearValue: string, endValue: string) => keyframes`
+    0% {
+        transform: translateY(${appearValue});
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(${endValue});
+        opacity: 1;
+    }
+`
+
 export const ImgPreviewAnimation = css`
     &.img_preview-animation-appear {
         opacity: 0%;
