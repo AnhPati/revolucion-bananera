@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Logo } from "../../ui/Logo";
-import { slideInDown } from "../../../theme/animations";
-import { theme } from "../../../theme";
+import { Logo } from "@/components/ui/Logo";
+import { slideInDown } from "@/theme/animations";
+import { theme } from "@/theme/theme";
 
 export const ErrorLogo = () => {
     return (
