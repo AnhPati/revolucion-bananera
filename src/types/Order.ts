@@ -6,5 +6,7 @@ export type Order = {
     amount: number,
     orderTime: string,
     products: BasketProduct[],
-    statut: string
+    statut: OrderStatut
 }
+
+export type OrderStatut = "none" | "to process" | "pending" | "accepted" | "archived"

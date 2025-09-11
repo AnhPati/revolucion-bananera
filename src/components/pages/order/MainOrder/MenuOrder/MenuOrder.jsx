@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { useContext } from "react";
 import { Card } from "../../../../ui/Card/Card";
 import { formatPrice } from "../../../../../utils/maths";
 import { theme } from "../../../../../theme";
-import OrderContext from "../../../../../contexts/OrderContext";
+import { useOrderContext } from "../../../../../contexts/OrderContext";
 import EmptyMenu from "./EmptyMenu";
 import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
 import { DEFAULT_IMG, UNAVAILABLE_PRODUCT_IMG } from "../../../../../constants/product";
@@ -16,7 +15,7 @@ import { convertStringToBoolean } from "../../../../../utils/string";
 
 
 export const MenuOrder = () => {
-    const { userId, products, basketProducts, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct, handleDeleteBasketProduct, decrementQuantityProduct } = useContext(OrderContext)
+    const { userId, products, basketProducts, adminMode, productSelected, handleDeleteProduct, handleSelectProduct, handleAddBasketProduct, handleDeleteBasketProduct, decrementQuantityProduct } = useOrderContext()
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = productSelected.id
 

@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import AdminPanelNavbar from "./AdminPanelNavbar";
 import AdminPanelContent from "./AdminPanelContent";
-import OrderContext from "../../../../../contexts/OrderContext";
-import { useContext } from "react";
+import { useOrderContext } from "../../../../../contexts/OrderContext";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { AdminPanelAnimation } from "../../../../../theme/animations";
 
 const AdminPanel = () => {
-    const { adminMode } = useContext(OrderContext)
+    const { adminMode } = useOrderContext()
     const isOpen = adminMode.adminPanel.isOpen
 
     return (

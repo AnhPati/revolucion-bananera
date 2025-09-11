@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { Button } from "../../../../ui/Button"
-import OrderContext from "../../../../../contexts/OrderContext";
-import { useContext } from "react";
+import { useOrderContext } from "../../../../../contexts/OrderContext";
 import { theme } from "../../../../../theme";
 
 const EmptyMenu = () => {
-    const { adminMode, handleGenerateNewProducts, userId } = useContext(OrderContext)
+    const { adminMode, handleGenerateNewProducts, userId } = useOrderContext()
     const isAdminMode = adminMode.isAdminMode
 
     return (

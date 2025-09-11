@@ -98,6 +98,7 @@ export const useAdminProducts = () => {
         handleSelectProduct,
         handleUpdateProduct,
         productSelected,
+        setProductSelected,
         titleInputRef
     }
 }

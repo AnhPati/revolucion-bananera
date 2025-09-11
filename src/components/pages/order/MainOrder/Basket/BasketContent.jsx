@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { BasketProduct } from "./BasketProduct/BasketProduct";
 import { BASKET_MESSAGE, DEFAULT_IMG } from "../../../../../constants/product";
-import { useContext } from "react";
-import OrderContext from "../../../../../contexts/OrderContext";
+import { useOrderContext } from "../../../../../contexts/OrderContext";
 import { theme } from "../../../../../theme";
 import { findObjectById } from "../../../../../utils/array";
 import { checkCardIsSelected } from "../MenuOrder/helpers/checkCardIsSelected";
@@ -12,7 +11,7 @@ import { convertStringToBoolean } from "../../../../../utils/string";
 import { formatPrice } from "../../../../../utils/maths";
 
 export const BasketContent = () => {
-    const { userId, basketProducts, handleDeleteBasketProduct, adminMode, handleSelectProduct, products } = useContext(OrderContext)
+    const { userId, basketProducts, handleDeleteBasketProduct, adminMode, handleSelectProduct, products } = useOrderContext()
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = adminMode.adminPanel.cardSelected
 

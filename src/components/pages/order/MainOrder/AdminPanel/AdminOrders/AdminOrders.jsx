@@ -4,11 +4,10 @@ import { Button } from "../../../../../ui/Button"
 import styled from "styled-components"
 import { OrdersContainer } from "./OrdersContainer/OrdersContainer"
 import { useState } from "react"
-import { useContext } from "react"
-import OrderContext from "../../../../../../contexts/OrderContext"
+import { useOrderContext } from "../../../../../../contexts/OrderContext"
 
 export const AdminOrders = () => {
-    const { handleArchiveOrder, handleUnarchiveOrder, handleDeleteOrder } = useContext(OrderContext)
+    const { handleArchiveOrder, handleUnarchiveOrder, handleDeleteOrder } = useOrderContext()
     const [showArchivedOrders, setShowArchivedOrders] = useState(false)
 
     const onArchive = (orderId, event) => {

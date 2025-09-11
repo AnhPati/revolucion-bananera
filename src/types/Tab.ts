@@ -1,0 +1,1 @@
+export type TabValues = "tab-collapse" | "tab-add" | "tab-update" | "tab-orders"
