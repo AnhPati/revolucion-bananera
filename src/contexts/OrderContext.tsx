@@ -41,45 +41,7 @@ type OrderContextType = {
     handleDeleteOrder: (id: string) => Promise<void>
 }
 
-const OrderContext = createContext<OrderContextType>({
-    userId: '',
-    adminMode: {
-        isAdminMode: false,
-        adminPanel: {
-            isOpen: true,
-            tabSelected: 'tab-add',
-        },
-        cardSelected: null
-    },
-    setAdminMode: () => { },
-
-    products: undefined,
-    setProducts: () => { },
-    handleAddProduct: () => { },
-    handleDeleteProduct: () => { },
-    handleGenerateNewProducts: () => { },
-    handleSelectProduct: async () => { },
-    handleUpdateProduct: async () => { },
-    productSelected: {} as Product,
-    setProductSelected: () => { },
-    titleInputRef: {} as React.MutableRefObject<HTMLInputElement | undefined>,
-    basketProducts: [],
-    setBasketProducts: () => { },
-    handleAddBasketProduct: () => { },
-    handleDeleteBasketProduct: () => { },
-    decrementQuantityProduct: () => { },
-    setOrders: () => { },
-    orderStatut: 'none' as OrderStatut,
-    orders: undefined,
-    tempOrder: {} as Order,
-    handleCheckOrder: () => { },
-    handleValidOrder: async () => { },
-    handleDenyOrder: () => { },
-    handleArchiveOrder: () => { },
-    handleUnarchiveOrder: () => { },
-    handleDeleteOrder: async () => { },
-    handleClearBasketProduct: () => { }
-})
+const OrderContext = createContext<OrderContextType | undefined>(undefined)
 
 export const OrderContextProvider = ({ children }: PropsWithChildren) => {
     const adminProductsData = useAdminProducts()
