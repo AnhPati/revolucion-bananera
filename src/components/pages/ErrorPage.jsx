@@ -1,10 +1,21 @@
-import { Button } from "../ui/Button"
+import { Button } from "@/components/ui/Button"
+import { useNavigate } from "react-router-dom"
 
 const ErrorPage = () => {
+    const navigate = useNavigate()
+
+    const handleHomepageReturn = () => {
+        if (window.history.length > 1) {
+            navigate(-1)
+        } else {
+            navigate('/')
+        }
+    }
+
     return (
         <div>
             <h1>ErrorPage</h1>
-            <Button text={`Retour à la page d'accueil`} url={'/'} />
+            <Button label={`Retour à la page d'accueil`} onClick={handleHomepageReturn} />
         </div>
     )
 }
