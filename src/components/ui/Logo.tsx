@@ -1,23 +1,25 @@
 import styled from "styled-components";
-import logo from "./../../assets/logo-orange.png"
+import logo from "@/assets/logo-orange.png"
 import { theme } from "@/theme/theme";
 
 type LogoProps = {
+    leftLabel?: string,
+    rightLabel?: string,
     className?: string,
     onClick?: React.MouseEventHandler<HTMLDivElement>
 }
 
-export const Logo = ({ className, onClick }: LogoProps) => {
+export const Logo = ({ leftLabel = "Crazee", rightLabel = "Burger", className, onClick }: LogoProps) => {
     return (
         <LogoStyled className={className} onClick={onClick}>
             <h1>
-                Crazee
+                {leftLabel}
             </h1>
             <div className={'img-container'}>
                 <img src={logo} alt={'Crazee Burger logo'} />
             </div>
             <h1>
-                Burger
+                {rightLabel}
             </h1>
         </LogoStyled>
     )
