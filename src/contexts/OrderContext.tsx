@@ -1,50 +1,87 @@
-import { createContext, useContext } from "react";
-import { useAdminProducts } from "../hooks/useAdminProducts";
-import { useBasketProducts } from "../hooks/useBasketProducts";
-import { useAdminOrders } from "../hooks/useAdminOrders";
+import { createContext, PropsWithChildren, useContext } from "react";
+import { useAdminProducts } from "@/hooks/useAdminProducts";
+import { useBasketProducts } from "@/hooks/useBasketProducts";
+import { useAdminOrders } from "@/hooks/useAdminOrders";
+import { AdminModeInfos } from "@/types/Admin";
+import { BasketProduct, Product } from "@/types/Product";
+import { Order, OrderStatut } from "@/types/Order";
 
-const OrderContext = createContext({
+type OrderContextType = {
+    userId: string,
+    adminMode: AdminModeInfos,
+    setAdminMode: React.Dispatch<React.SetStateAction<AdminModeInfos>>,
+
+    products: Product[] | undefined,
+    setProducts: React.Dispatch<React.SetStateAction<Product[] | undefined>>,
+    handleAddProduct: (newProduct: Product, userId: string) => void,
+    handleDeleteProduct: (productId: string, userId: string) => void,
+    handleGenerateNewProducts: (userId: string) => void,
+    handleSelectProduct: (productSelected: Product) => Promise<void>,
+    handleUpdateProduct: (productSelected: Product, userId: string) => Promise<void>,
+    productSelected: Product,
+    setProductSelected: React.Dispatch<React.SetStateAction<Product>>,
+    titleInputRef: React.MutableRefObject<HTMLInputElement | undefined>,
+
+    basketProducts: BasketProduct[],
+    setBasketProducts: React.Dispatch<React.SetStateAction<BasketProduct[]>>,
+    handleAddBasketProduct: (productToAdd: BasketProduct, userId: string) => void,
+    handleDeleteBasketProduct: (id: string, userId: string) => void,
+    decrementQuantityProduct: (id: string) => void,
+    handleClearBasketProduct: (userId: string) => void,
+
+    orders: Order[] | undefined,
+    setOrders: React.Dispatch<React.SetStateAction<Order[] | undefined>>,
+    orderStatut: OrderStatut,
+    tempOrder: Order,
+    handleCheckOrder: (newOrder: Order) => void,
+    handleValidOrder: (tempOrder: Order) => Promise<void>,
+    handleDenyOrder: () => void,
+    handleArchiveOrder: (id: string) => void,
+    handleUnarchiveOrder: (id: string) => void,
+    handleDeleteOrder: (id: string) => Promise<void>
+}
+
+const OrderContext = createContext<OrderContextType>({
     userId: '',
     adminMode: {
         isAdminMode: false,
         adminPanel: {
             isOpen: true,
             tabSelected: 'tab-add',
-            cardSelected: null
-        }
+        },
+        cardSelected: null
     },
     setAdminMode: () => { },
 
-    products: [],
+    products: undefined,
     setProducts: () => { },
     handleAddProduct: () => { },
     handleDeleteProduct: () => { },
     handleGenerateNewProducts: () => { },
-    handleSelectProduct: () => { },
-    handleUpdateProduct: () => { },
-    productSelected: {},
+    handleSelectProduct: async () => { },
+    handleUpdateProduct: async () => { },
+    productSelected: {} as Product,
     setProductSelected: () => { },
-    titleInputRef: {},
+    titleInputRef: {} as React.MutableRefObject<HTMLInputElement | undefined>,
     basketProducts: [],
     setBasketProducts: () => { },
     handleAddBasketProduct: () => { },
     handleDeleteBasketProduct: () => { },
     decrementQuantityProduct: () => { },
     setOrders: () => { },
-    initialiseUserProducts: () => { },
-    orderStatut: '',
-    orders: [],
-    tempOrder: {},
+    orderStatut: 'none' as OrderStatut,
+    orders: undefined,
+    tempOrder: {} as Order,
     handleCheckOrder: () => { },
-    handleValidOrder: () => { },
+    handleValidOrder: async () => { },
     handleDenyOrder: () => { },
     handleArchiveOrder: () => { },
     handleUnarchiveOrder: () => { },
-    handleDeleteOrder: () => { },
+    handleDeleteOrder: async () => { },
     handleClearBasketProduct: () => { }
 })
 
-export const OrderContextProvider = ({ children }) => {
+export const OrderContextProvider = ({ children }: PropsWithChildren) => {
     const adminProductsData = useAdminProducts()
     const basketProductsData = useBasketProducts()
     const adminOrdersData = useAdminOrders()
@@ -61,6 +98,7 @@ export const OrderContextProvider = ({ children }) => {
         handleSelectProduct: adminProductsData.handleSelectProduct,
         handleUpdateProduct: adminProductsData.handleUpdateProduct,
         productSelected: adminProductsData.productSelected,
+        setProductSelected: adminProductsData.setProductSelected,
         titleInputRef: adminProductsData.titleInputRef,
 
         basketProducts: basketProductsData.basketProducts,

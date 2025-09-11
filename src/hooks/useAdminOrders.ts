@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { filterArrayWithId, findIndexById, getDeepClone } from "@/utils/array"
 import { syncOrders, deleteOrder, getOrders } from "@/api/orders"
-import { Order } from "@/types/Order"
+import { Order, OrderStatut } from "@/types/Order"
 
 export const useAdminOrders = () => {
-    const [orderStatut, setOrderStatut] = useState<string>('none')
+    const [orderStatut, setOrderStatut] = useState<OrderStatut>('none')
     const [orders, setOrders] = useState<Order[] | undefined>(undefined)
     const [tempOrder, setTempOrder] = useState<Order>({} as Order)
 

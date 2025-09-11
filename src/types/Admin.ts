@@ -1,3 +1,5 @@
+import { TabValues } from "./Tab"
+
 export type AdminModeInfos = {
     isAdminMode: boolean,
     adminPanel: AdminPanelInfos,
@@ -6,5 +8,5 @@ export type AdminModeInfos = {
 
 export type AdminPanelInfos = {
     isOpen: boolean,
-    tabSelected: string
+    tabSelected: TabValues
 }
