@@ -1,5 +1,6 @@
-import { Button } from "@/components/ui/Button"
+import { Button } from "../../ui/Button"
 import { useNavigate } from "react-router-dom"
+import logo from "../../../assets/logo-orange.png"
 
 const ErrorPage = () => {
     const navigate = useNavigate()
@@ -14,8 +15,27 @@ const ErrorPage = () => {
 
     return (
         <div>
-            <h1>ErrorPage</h1>
-            <Button label={`Retour à la page d'accueil`} onClick={handleHomepageReturn} />
+            <div>
+                <div>
+                    <h1>
+                        4
+                    </h1>
+                    <div className={'img-container'}>
+                        <img src={logo} alt={'Crazee Burger logo'} />
+                    </div>
+                    <h1>
+                        4
+                    </h1>
+                </div>
+                <div>
+                    <h2>Il semblerait que tu tourne en rond après une frite...</h2>
+                    <p>Je te propose de remettre les pieds dans le plat.</p>
+                </div>
+            </div>
+            <div>
+                <Button label={`Retour`} onClick={handleHomepageReturn} />
+            </div>
+
         </div>
     )
 }
