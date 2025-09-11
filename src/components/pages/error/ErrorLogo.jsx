@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Logo } from "../../ui/Logo";
+import { slideInDown } from "../../../theme/animations";
+import { theme } from "../../../theme";
 
 export const ErrorLogo = () => {
     return (
@@ -18,10 +20,27 @@ const LogoStyled = styled.div`
 
     .error_page-logo {
         transform: scale(3.5);
-            margin: 40px 0;
+        margin: 40px 0;
 
-            h1 {
-                font-size: 60px;
+        h1 {
+            font-size: 60px;
+            &:first-child {
+                animation: ${slideInDown("-300px", "0%")} ${theme.animations.speed.quick} ease-out;
+                animation-delay: 0ms;
+                animation-fill-mode: backwards;
             }
+    
+            &:last-child {
+                animation: ${slideInDown("-300px", "0%")} ${theme.animations.speed.quick} ease-out;
+                animation-delay: 1000ms;
+                animation-fill-mode: backwards;
+            }          
+        }
+        
+        .img-container {
+            animation: ${slideInDown("-300px", "0%")} ${theme.animations.speed.quick} ease-out;
+            animation-delay: 500ms;
+            animation-fill-mode: backwards;
+        }
     }
 `;
