@@ -3,21 +3,21 @@ import { useNavigate } from "react-router-dom"
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
 import styled from "styled-components"
-import { theme } from "../../../theme/index"
-import { TextInput } from "../../ui/TextInput";
-import { Button } from "../../ui/Button";
-import { authenticateUser } from "../../../api/user";
+import { theme } from "@/theme/theme"
+import { TextInput } from "@/components/ui/TextInput";
+import { Button } from "@/components/ui/Button";
+import { authenticateUser } from "@/api/user";
 import { LoginFormTitle } from "./LoginFormTitle";
 
 export const LoginForm = () => {
-    const [username, setUsername] = useState('')
+    const [username, setUsername] = useState<string>('')
     const navigate = useNavigate()
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(e.target.value)
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         const userReceived = await authenticateUser(username)
