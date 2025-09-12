@@ -1,27 +1,32 @@
 import styled from "styled-components";
 import { BasketProduct } from "./BasketProduct/BasketProduct";
-import { BASKET_MESSAGE, DEFAULT_IMG } from "../../../../../constants/product";
-import { useOrderContext } from "../../../../../contexts/OrderContext";
-import { theme } from "../../../../../theme";
-import { findObjectById } from "../../../../../utils/array";
+import { BASKET_MESSAGE, DEFAULT_IMG } from "@/constants/product";
+import { useOrderContext } from "@/contexts/OrderContext";
+import { theme } from "@/theme/theme";
+import { findObjectById } from "@/utils/array";
+//@ts-ignore
 import { checkCardIsSelected } from "../MenuOrder/helpers/checkCardIsSelected";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { BasketProductAnimation } from "../../../../../theme/animations";
-import { convertStringToBoolean } from "../../../../../utils/string";
-import { formatPrice } from "../../../../../utils/maths";
+import { BasketProductAnimation } from "@/theme/animations";
+import { convertStringToBoolean } from "@/utils/string";
+import { formatPrice } from "@/utils/maths";
 
 export const BasketContent = () => {
     const { userId, basketProducts, handleDeleteBasketProduct, adminMode, handleSelectProduct, products } = useOrderContext()
     const isAdminMode = adminMode.isAdminMode
     const cardSelected = adminMode.adminPanel.cardSelected
 
-    const handleDelete = (productId, event) => {
+    const handleDelete = (productId: string, event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         event.stopPropagation()
         handleDeleteBasketProduct(productId, userId)
     }
 
-    const onClick = (id) => {
+    const onClick = (id: string) => {
+        if (!products) return
+
         const productSelected = findObjectById(id, products)
+        if (!productSelected) return
+
         handleSelectProduct(productSelected)
     }
 
@@ -30,7 +35,11 @@ export const BasketContent = () => {
             <ul>
                 <TransitionGroup component={null}>
                     {basketProducts.map(basketProduct => {
+                        if (!products) return
+
                         const menuProduct = findObjectById(basketProduct.id, products)
+                        if (!menuProduct) return
+
                         return (
                             <CSSTransition
                                 key={basketProduct.id}
