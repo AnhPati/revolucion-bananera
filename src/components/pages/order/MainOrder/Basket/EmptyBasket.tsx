@@ -3,7 +3,7 @@ import { theme } from "@/theme"
 import { BASKET_MESSAGE } from "@/constants/product"
 
 type EmptyBasketProps = {
-    isLoading?: boolean
+    isLoading: boolean
 }
 
 export default function EmptyBasket({ isLoading }: EmptyBasketProps) {
