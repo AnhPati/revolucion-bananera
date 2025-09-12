@@ -1,9 +1,19 @@
 import styled from "styled-components";
-import { theme } from "../../../../../../theme";
+import { theme } from "@/theme/theme";
 import { BasketProductLabel } from "./BasketProductLabel";
 import { BasketProductQuantity } from "./BasketProductQuantity";
 
-export const BasketProductInfos = ({ title, price, quantity, onDelete, selected, isClickable, isUnavailable }) => {
+type BasketProductInfosProps = {
+    title?: string,
+    price: string,
+    quantity: number,
+    onDelete?: React.MouseEventHandler<HTMLDivElement>,
+    selected?: boolean,
+    isClickable?: boolean,
+    isUnavailable?: boolean
+}
+
+export const BasketProductInfos = ({ title, price, quantity, onDelete, selected, isClickable, isUnavailable }: BasketProductInfosProps) => {
     return (
         <BasketProductInfosStyled>
             <BasketProductLabel title={title} price={price} selected={selected} isClickable={isClickable} />
