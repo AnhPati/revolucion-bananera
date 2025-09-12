@@ -8,16 +8,16 @@ type BasketProductInfosProps = {
     price: string,
     quantity: number,
     onDelete?: React.MouseEventHandler<HTMLDivElement>,
-    selected?: boolean,
+    isSelected?: boolean,
     isClickable?: boolean,
     isUnavailable?: boolean
 }
 
-export const BasketProductInfos = ({ title, price, quantity, onDelete, selected, isClickable, isUnavailable }: BasketProductInfosProps) => {
+export const BasketProductInfos = ({ title, price, quantity, onDelete, isSelected, isClickable, isUnavailable }: BasketProductInfosProps) => {
     return (
         <BasketProductInfosStyled>
-            <BasketProductLabel title={title} price={price} selected={selected} isClickable={isClickable} />
-            <BasketProductQuantity quantity={quantity} onClick={onDelete} selected={selected} isClickable={isClickable} isAvailable={!isUnavailable} />
+            <BasketProductLabel title={title} price={price} isSelected={isSelected} isClickable={isClickable} />
+            <BasketProductQuantity quantity={quantity} onClick={onDelete} isSelected={isSelected} isClickable={isClickable} isAvailable={!isUnavailable} />
         </BasketProductInfosStyled>
     )
 }

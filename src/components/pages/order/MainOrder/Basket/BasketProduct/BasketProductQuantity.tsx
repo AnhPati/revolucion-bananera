@@ -6,14 +6,14 @@ import { CasinoEffect } from "@/components/ui/CasinoEffect";
 type BasketProductQuantityProps = {
     quantity: number,
     onClick?: React.MouseEventHandler<HTMLDivElement>,
-    selected?: boolean,
+    isSelected?: boolean,
     isClickable?: boolean,
     isAvailable?: boolean
 }
 
-export const BasketProductQuantity = ({ quantity, onClick, selected, isClickable, isAvailable }: BasketProductQuantityProps) => {
+export const BasketProductQuantity = ({ quantity, onClick, isSelected, isClickable, isAvailable }: BasketProductQuantityProps) => {
     return (
-        <BasketProductQuantityStyled className="basket-product_quantity" onClick={onClick} $isSelected={selected} $isClickable={isClickable}>
+        <BasketProductQuantityStyled className="basket-product_quantity" onClick={onClick} $isSelected={isSelected} $isClickable={isClickable}>
             {isAvailable && <CasinoEffect count={`x${quantity}`} />}
             <MdDeleteForever />
         </BasketProductQuantityStyled>

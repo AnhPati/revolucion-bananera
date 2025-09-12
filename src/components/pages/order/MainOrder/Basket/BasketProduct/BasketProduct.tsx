@@ -12,7 +12,7 @@ type BasketProductProps = {
     onDelete?: React.MouseEventHandler<HTMLDivElement>,
     isClickable?: boolean,
     onClick?: React.MouseEventHandler<HTMLLIElement>,
-    selected?: boolean,
+    isSelected?: boolean,
     isPublicised?: boolean,
     isUnavailable?: boolean
 }
@@ -26,12 +26,12 @@ export const BasketProduct = ({
     onDelete,
     isClickable,
     onClick,
-    selected,
+    isSelected,
     isPublicised,
     isUnavailable
 }: BasketProductProps) => {
     return (
-        <BasketProductStyled $isClickable={isClickable} onClick={onClick} $isSelected={selected}>
+        <BasketProductStyled $isClickable={isClickable} onClick={onClick} $isSelected={isSelected}>
             {isPublicised && <Sticker className={'basket-advertising'} />}
             <BasketProductImg src={imageSource} alt={title} />
             <BasketProductInfos
@@ -40,7 +40,7 @@ export const BasketProduct = ({
                 quantity={quantity}
                 onDelete={onDelete}
                 isClickable={isClickable}
-                selected={selected}
+                isSelected={isSelected}
                 isUnavailable={isUnavailable}
             />
         </BasketProductStyled>

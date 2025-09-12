@@ -4,13 +4,13 @@ import { theme } from "@/theme/theme";
 type BasketProductLabelProps = {
     title?: string,
     price?: string,
-    selected?: boolean,
+    isSelected?: boolean,
     isClickable?: boolean
 }
 
-export const BasketProductLabel = ({ title, price, selected, isClickable }: BasketProductLabelProps) => {
+export const BasketProductLabel = ({ title, price, isSelected, isClickable }: BasketProductLabelProps) => {
     return (
-        <BasketProductLabelStyled $isSelected={selected} $isClickable={isClickable}>
+        <BasketProductLabelStyled $isSelected={isSelected} $isClickable={isClickable}>
             <h5>{title}</h5>
             <p>{price}</p>
         </BasketProductLabelStyled>

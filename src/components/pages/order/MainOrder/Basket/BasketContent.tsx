@@ -54,7 +54,7 @@ export const BasketContent = () => {
                                     onDelete={(event) => handleDelete(basketProduct.id, event)}
                                     isClickable={isAdminMode}
                                     onClick={isAdminMode ? (() => onClick(basketProduct.id)) : undefined}
-                                    selected={checkCardIsSelected(basketProduct.id, cardSelected)}
+                                    isSelected={checkCardIsSelected(basketProduct.id, cardSelected)}
                                     isPublicised={convertStringToBoolean(menuProduct.isPublicised)}
                                     isUnavailable={convertStringToBoolean(menuProduct.isAvailable) === false}
                                     price={convertStringToBoolean(menuProduct.isAvailable) ? formatPrice(menuProduct.price) : BASKET_MESSAGE.UNAVAILABLE}
