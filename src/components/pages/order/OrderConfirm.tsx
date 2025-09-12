@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { theme } from "../../../theme";
-import { useOrderContext } from "../../../contexts/OrderContext";
-import { formatPrice } from "../../../utils/maths";
-import { Modal } from "../../ui/Modal/Modal";
-import { ModalButtons } from "../../ui/Modal/ModalButtons";
+import { theme } from "@/theme/theme";
+import { useOrderContext } from "@/contexts/OrderContext";
+import { formatPrice } from "@/utils/maths";
+import { Modal } from "@/components/ui/Modal/Modal";
+import { ModalButtons } from "@/components/ui/Modal/ModalButtons";
 
 const OrderConfirm = () => {
     const { userId, tempOrder, handleValidOrder, handleDenyOrder, handleClearBasketProduct } = useOrderContext()
