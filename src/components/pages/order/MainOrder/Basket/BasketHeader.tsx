@@ -1,9 +1,13 @@
 import styled from "styled-components";
-import { formatPrice } from "../../../../../utils/maths";
-import { theme } from "../../../../../theme";
-import { CasinoEffect } from "../../../../ui/CasinoEffect";
+import { formatPrice } from "@/utils/maths";
+import { theme } from "@/theme/theme";
+import { CasinoEffect } from "@/components/ui/CasinoEffect";
 
-export const BasketHeader = ({ amountToPay }) => {
+type BasketHeaderProps = {
+    amountToPay: number
+}
+
+export const BasketHeader = ({ amountToPay }: BasketHeaderProps) => {
 
     return (
         <BasketHeaderStyled>
