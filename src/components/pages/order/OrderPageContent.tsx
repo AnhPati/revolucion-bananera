@@ -1,10 +1,11 @@
-import { useOrderContext } from "../../../contexts/OrderContext";
+import { useOrderContext } from "@/contexts/OrderContext";
 import { useEffect } from "react";
 import { initialiseUserSession } from "./helpers/initialiseUserSession";
 import OrderConfirm from "./OrderConfirm";
+//@ts-ignore
 import Navbar from "./Navbar/Navbar";
 import { MainOrder } from "./MainOrder/MainOrder";
-import { getOrders } from "../../../api/orders";
+import { getOrders } from "@/api/orders";
 import { CSSTransition } from "react-transition-group";
 
 export const OrderPageContent = () => {
