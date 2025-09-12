@@ -1,8 +1,10 @@
+//@ts-ignore
 import AdminPanel from "./AdminPanel/AdminPanel"
+//@ts-ignore
 import { MenuOrder } from "./MenuOrder/MenuOrder"
-import { useOrderContext } from "../../../../contexts/OrderContext"
+import { useOrderContext } from "@/contexts/OrderContext"
 import styled from "styled-components"
-import { theme } from "../../../../theme"
+import { theme } from "@/theme/theme"
 
 export const MainRightSide = () => {
     const { adminMode } = useOrderContext()
