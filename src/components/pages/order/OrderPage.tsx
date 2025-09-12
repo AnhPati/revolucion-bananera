@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { theme } from "../../../theme";
-import { OrderContextProvider } from "../../../contexts/OrderContext";
+import { theme } from "@/theme/theme";
+import { OrderContextProvider } from "@/contexts/OrderContext";
 import { OrderPageContent } from "./OrderPageContent";
-import { OverlayMessageAnimation } from "../../../theme/animations";
+import { OverlayMessageAnimation } from "@/theme/animations";
 
 const OrderPage = () => {
     return (

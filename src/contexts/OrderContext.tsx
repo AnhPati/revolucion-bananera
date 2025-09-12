@@ -89,6 +89,11 @@ export const OrderContextProvider = ({ children }: PropsWithChildren) => {
     )
 }
 
-export const useOrderContext = () => useContext(OrderContext)
+export const useOrderContext = () => {
+    const orderContextData = useContext(OrderContext)
+    if (orderContextData === undefined) throw new Error("useOrderContext n'est pas accessible en dehors de son provider.")
+
+    return orderContextData
+}
 
 export default OrderContext
