@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const BasketProductImg = ({ src, alt }) => {
+type BasketProductImgProps = {
+    src?: string,
+    alt?: string
+}
+
+export const BasketProductImg = ({ src, alt }: BasketProductImgProps) => {
     return (
         <BasketProductImgStyled>
             <img src={src} alt={alt} />
