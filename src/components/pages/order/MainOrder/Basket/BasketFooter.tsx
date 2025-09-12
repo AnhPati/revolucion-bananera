@@ -1,8 +1,15 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
-import { Button } from "../../../../ui/Button"
+import { theme } from "@/theme/theme";
+import { Button } from "@/components/ui/Button";
+import { OrderStatut } from "@/types/Order";
 
-export const BasketFooter = ({ handlePlaceOrder, orderStatut, hasOrder }) => {
+type BasketFooterProps = {
+    handlePlaceOrder?: React.MouseEventHandler<HTMLButtonElement>,
+    orderStatut?: OrderStatut,
+    hasOrder: boolean
+}
+
+export const BasketFooter = ({ handlePlaceOrder, orderStatut, hasOrder }: BasketFooterProps) => {
     return (
         <BasketFooterStyled>
             <div className="order_button-container">
