@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Logo } from '../../../ui/Logo'
-import { windowRefresh } from '../../../../utils/windowsRefresh'
-import { theme } from '../../../../theme'
+import { Logo } from '@/components/ui/Logo'
+import { windowRefresh } from '@/utils/windowsRefresh'
+import { theme } from '@/theme/theme'
 import NavbarRightSide from './NavbarRightSide'
 
 const Navbar = () => {

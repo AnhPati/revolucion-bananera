@@ -1,11 +1,11 @@
 import "react-toastify/dist/ReactToastify.css"
 import { toast } from "react-toastify"
 import { NavbarProfile } from "./NavbarProfile"
-import ToggleButton from "../../../ui/ToggleButton"
+import ToggleButton from "@/components/ui/ToggleButton"
 import { IoMdInformationCircle } from "react-icons/io";
 import styled from "styled-components"
 import { AdminToast } from "./AdminToast";
-import { useOrderContext } from "../../../../contexts/OrderContext";
+import { useOrderContext } from "@/contexts/OrderContext";
 
 
 export default function NavbarRightSide() {

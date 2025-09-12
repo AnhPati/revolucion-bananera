@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { theme } from "@/theme/theme"
 
 type ToggleButtonProps = {
-  isChecked: boolean,
+  isChecked?: boolean,
   onToggle?: React.ChangeEventHandler<HTMLInputElement>,
   labelIfChecked?: string,
   labelIfUnchecked?: string
