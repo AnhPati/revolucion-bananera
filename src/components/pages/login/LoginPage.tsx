@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { LoginForm } from "./LoginForm"
-import background from "./../../../assets/burger-background.jpg"
-import { Logo } from "../../ui/Logo";
-import { theme } from "../../../theme";
-import { backInBounce, fadeInBottom, slideInSpace } from "../../../theme/animations";
+import background from "@/assets/burger-background.jpg"
+import { Logo } from "@/components/ui/Logo";
+import { theme } from "@/theme/theme";
+import { backInBounce, fadeInBottom, slideInSpace } from "@/theme/animations";
 
 const LoginPage = () => {
     return (
