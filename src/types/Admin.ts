@@ -2,11 +2,11 @@ import { TabValues } from "./Tab"
 
 export type AdminModeInfos = {
     isAdminMode: boolean,
-    adminPanel: AdminPanelInfos,
-    cardSelected: string | null
+    adminPanel: AdminPanelInfos
 }
 
 export type AdminPanelInfos = {
     isOpen: boolean,
-    tabSelected: TabValues
+    tabSelected: TabValues,
+    cardSelected: string | null
 }

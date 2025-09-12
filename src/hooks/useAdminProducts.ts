@@ -14,9 +14,9 @@ export const useAdminProducts = () => {
         isAdminMode: false,
         adminPanel: {
             isOpen: true,
-            tabSelected: 'tab-add'
-        },
-        cardSelected: null
+            tabSelected: 'tab-add',
+            cardSelected: null
+        }
     })
     const [productSelected, setProductSelected] = useState<Product>(EMPTY_PRODUCT)
     const titleInputRef = useRef<HTMLInputElement>()
@@ -37,14 +37,14 @@ export const useAdminProducts = () => {
         const newProducts = filterArrayWithId(productId, products)
 
         if (productId === productSelected.id) {
-            setAdminMode({ ...adminMode, cardSelected: null })
+            setAdminMode({ ...adminMode, adminPanel: { ...adminMode.adminPanel, cardSelected: null } })
             setProductSelected(EMPTY_PRODUCT)
         }
 
         setProducts(newProducts)
         syncProducts(userId, newProducts)
 
-        adminMode.cardSelected && titleInputRef.current?.focus()
+        adminMode.adminPanel.cardSelected && titleInputRef.current?.focus()
     }
 
     const handleGenerateNewProducts = (userId: string) => {
