@@ -3,9 +3,10 @@ import { FaHamburger } from "react-icons/fa"
 import { FiPackage } from "react-icons/fi"
 import { GoMegaphone } from "react-icons/go"
 import { MdOutlineEuro } from "react-icons/md"
-import { isAvailableOptions, isPublicisedOptions } from "../../../../../../../../constants/select"
+import { isAvailableOptions, isPublicisedOptions } from "@/constants/select"
+import { Product } from "@/types/Product"
 
-export const getTextInputsConfig = (productValues) => [
+export const getTextInputsConfig = (productValues: Product) => [
     {
         id: "0",
         name: 'title',
@@ -32,7 +33,7 @@ export const getTextInputsConfig = (productValues) => [
     }
 ]
 
-export const getSelectInputsConfig = (productValues) => [
+export const getSelectInputsConfig = (productValues: Product) => [
     {
         id: "3",
         name: "isAvailable",
