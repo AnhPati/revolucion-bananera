@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Button } from "../../../../ui/Button"
-import { useOrderContext } from "../../../../../contexts/OrderContext";
-import { theme } from "../../../../../theme";
+import { Button } from "@/components/ui/Button";
+import { useOrderContext } from "@/contexts/OrderContext";
+import { theme } from "@/theme/theme";
 
 const EmptyMenu = () => {
     const { adminMode, handleGenerateNewProducts, userId } = useOrderContext()
