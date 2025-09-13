@@ -1,1 +1,2 @@
 export const convertStringToBoolean = (input: string | boolean): boolean => typeof input === "boolean" ? input : input === "true"
+export const convertBooleanToString = (input: boolean): string => input.toString()

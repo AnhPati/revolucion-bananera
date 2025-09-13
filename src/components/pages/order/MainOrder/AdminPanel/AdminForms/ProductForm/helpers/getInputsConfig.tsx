@@ -5,6 +5,7 @@ import { GoMegaphone } from "react-icons/go"
 import { MdOutlineEuro } from "react-icons/md"
 import { isAvailableOptions, isPublicisedOptions } from "@/constants/select"
 import { Product } from "@/types/Product"
+import { convertBooleanToString } from "@/utils/string"
 
 export const getTextInputsConfig = (productValues: Product) => [
     {
@@ -37,15 +38,21 @@ export const getSelectInputsConfig = (productValues: Product) => [
     {
         id: "3",
         name: "isAvailable",
-        value: productValues.isAvailable,
-        options: isAvailableOptions,
+        value: convertBooleanToString(productValues.isAvailable),
+        options: isAvailableOptions.map(option => ({
+            ...option,
+            value: convertBooleanToString(option.value)
+        })),
         Icon: FiPackage
     },
     {
         id: "4",
         name: "isPublicised",
-        value: productValues.isPublicised,
-        options: isPublicisedOptions,
+        value: convertBooleanToString(productValues.isPublicised),
+        options: isPublicisedOptions.map(option => ({
+            ...option,
+            value: convertBooleanToString(option.value)
+        })),
         Icon: GoMegaphone
     }
 ]
