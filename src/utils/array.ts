@@ -6,4 +6,4 @@ export const findIndexById = <T extends { id: string }>(id: string, array: T[]):
 
 export const filterArrayWithId = <T extends { id: string }>(id: string, array: T[]): T[] => array.filter(item => item.id !== id)
 
-export const isEmptyArray = (array: []): boolean => array.length === 0
+export const isEmptyArray = <T>(array: T[]): boolean => array.length === 0

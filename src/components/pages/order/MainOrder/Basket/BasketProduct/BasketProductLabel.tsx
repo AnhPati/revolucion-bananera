@@ -1,16 +1,28 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../../../../../theme";
+import { theme } from "@/theme/theme";
 
-export const BasketProductLabel = ({ title, price, selected, isClickable }) => {
+type BasketProductLabelProps = {
+    title?: string,
+    price?: string,
+    isSelected?: boolean,
+    isClickable?: boolean
+}
+
+export const BasketProductLabel = ({ title, price, isSelected, isClickable }: BasketProductLabelProps) => {
     return (
-        <BasketProductLabelStyled $selected={selected} $isClickable={isClickable}>
+        <BasketProductLabelStyled $isSelected={isSelected} $isClickable={isClickable}>
             <h5>{title}</h5>
             <p>{price}</p>
         </BasketProductLabelStyled>
     )
 }
 
-const BasketProductLabelStyled = styled.div`
+type BasketProductLabelStyledProps = {
+    $isSelected?: boolean,
+    $isClickable?: boolean
+}
+
+const BasketProductLabelStyled = styled.div<BasketProductLabelStyledProps>`
     display: grid;
     grid-template-rows: 60% 40%;
     padding: 5px 0 ${theme.spacing.xs} 0;
@@ -32,7 +44,7 @@ const BasketProductLabelStyled = styled.div`
         white-space: nowrap;
     }
 
-    ${({ $selected, $isClickable }) => $selected && $isClickable && selectedStyles}
+    ${({ $isSelected, $isClickable }) => $isSelected && $isClickable && selectedStyles}
 `;
 
 const selectedStyles = css`

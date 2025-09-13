@@ -2,20 +2,21 @@ import styled from "styled-components";
 import { BasketHeader } from "./BasketHeader";
 import { BasketContent } from "./BasketContent";
 import { BasketFooter } from "./BasketFooter";
-import { useOrderContext } from "../../../../../contexts/OrderContext";
+import { useOrderContext } from "@/contexts/OrderContext";
 import EmptyBasket from "./EmptyBasket";
-import { theme } from "../../../../../theme";
-import { isEmptyArray } from "../../../../../utils/array";
+import { theme } from "@/theme/theme";
+import { isEmptyArray } from "@/utils/array";
 import { calculateAmountToPay } from "./helpers/calculateAmountToPay";
-import { formatDate } from "../../../../../utils/date";
+import { formatDate } from "@/utils/date";
+import { Order } from "@/types/Order";
 
 export const Basket = () => {
     const { basketProducts, products, orderStatut, handleCheckOrder, userId } = useOrderContext()
-    const amountToPay = calculateAmountToPay(basketProducts, products)
+    const amountToPay = calculateAmountToPay(basketProducts, products ?? [])
     const isLoading = products === undefined
 
     const handlePlaceOrder = () => {
-        const newOrder = {
+        const newOrder: Order = {
             id: crypto.randomUUID(),
             userId: userId,
             amount: amountToPay,

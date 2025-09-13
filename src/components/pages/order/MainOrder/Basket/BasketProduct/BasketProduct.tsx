@@ -1,13 +1,37 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../../../../../theme";
+import { theme } from "@/theme";
 import { BasketProductImg } from "./BasketProductImg";
 import { BasketProductInfos } from "./BasketProductInfos";
-import { Sticker } from "../../../../../ui/Sticker";
+import { Sticker } from "@/components/ui/Sticker";
 
-export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, isClickable, onClick, selected, isPublicised, isUnavailable }) => {
+type BasketProductProps = {
+    imageSource?: string,
+    title?: string,
+    price: string,
+    quantity: number,
+    onDelete?: React.MouseEventHandler<HTMLDivElement>,
+    isClickable?: boolean,
+    onClick?: React.MouseEventHandler<HTMLLIElement>,
+    isSelected?: boolean,
+    isPublicised?: boolean,
+    isUnavailable?: boolean
+}
 
+
+export const BasketProduct = ({
+    imageSource,
+    title,
+    price,
+    quantity,
+    onDelete,
+    isClickable,
+    onClick,
+    isSelected,
+    isPublicised,
+    isUnavailable
+}: BasketProductProps) => {
     return (
-        <BasketProductStyled $isClickable={isClickable} onClick={onClick} $isSelected={selected}>
+        <BasketProductStyled $isClickable={isClickable} onClick={onClick} $isSelected={isSelected}>
             {isPublicised && <Sticker className={'basket-advertising'} />}
             <BasketProductImg src={imageSource} alt={title} />
             <BasketProductInfos
@@ -16,14 +40,19 @@ export const BasketProduct = ({ imageSource, title, price, quantity, onDelete, i
                 quantity={quantity}
                 onDelete={onDelete}
                 isClickable={isClickable}
-                selected={selected}
+                isSelected={isSelected}
                 isUnavailable={isUnavailable}
             />
         </BasketProductStyled>
     )
 }
 
-const BasketProductStyled = styled.li`
+type BasketProductStyled = {
+    $isSelected?: boolean,
+    $isClickable?: boolean
+}
+
+const BasketProductStyled = styled.li<BasketProductStyled>`
     position: relative; 
     width: 100%;
     height: 86px;

@@ -6,8 +6,6 @@ export const syncBasketProducts = (userId: string, newProducts: BasketProduct[])
 
 export const getUserBasketProducts = (userId: string): BasketProduct[] | undefined => {
     const item = localStorage.getItem(userId)
-    if (!item) return
 
-    const basketProducts = JSON.parse(item)
-    return basketProducts
+    return item ? JSON.parse(item) as BasketProduct[] : undefined
 }

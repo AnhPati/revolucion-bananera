@@ -1,9 +1,12 @@
-import { findObjectById } from "../../../../../../utils/array";
-import { convertStringToBoolean } from "../../../../../../utils/string";
+import { BasketProduct, Product } from "@/types/Product";
+import { findObjectById } from "@/utils/array";
+import { convertStringToBoolean } from "@/utils/string";
 
-export const calculateAmountToPay = (basketProducts, products) => {
+export const calculateAmountToPay = (basketProducts: BasketProduct[], products: Product[]): number => {
     return basketProducts.reduce((amount, basketProduct) => {
         const menuProduct = findObjectById(basketProduct.id, products)
+        if (!menuProduct) return amount
+
         let productPrice = menuProduct.price
 
         if (isNaN(menuProduct.price)) {
