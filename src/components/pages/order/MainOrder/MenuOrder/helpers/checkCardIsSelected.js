@@ -1,1 +1,0 @@
-export const checkCardIsSelected = (cardId, cardSelected) => cardId === cardSelected

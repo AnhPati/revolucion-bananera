@@ -47,12 +47,12 @@ export const BasketProduct = ({
     )
 }
 
-type BasketProductStyled = {
+type BasketProductStyledProps = {
     $isSelected?: boolean,
     $isClickable?: boolean
 }
 
-const BasketProductStyled = styled.li<BasketProductStyled>`
+const BasketProductStyled = styled.li<BasketProductStyledProps>`
     position: relative; 
     width: 100%;
     height: 86px;
