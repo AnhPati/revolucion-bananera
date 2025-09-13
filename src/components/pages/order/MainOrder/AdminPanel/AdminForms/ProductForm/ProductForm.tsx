@@ -1,10 +1,27 @@
 import styled from "styled-components"
 import { ImgPreview } from "./ImgPreview"
-import { theme } from "../../../../../../../theme"
-import { forwardRef } from "react"
+import { theme } from "@/theme/theme"
+import { ComponentPropsWithRef, forwardRef } from "react"
 import ProductFormFields from "./ProductFormFields"
+import { Product } from "@/types/Product"
 
-export const ProductForm = forwardRef(({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
+type ProductFormProps = {
+    product: Product,
+    onSubmit: React.FormEventHandler<HTMLFormElement>,
+    onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLSelectElement> & React.FormEventHandler<HTMLDivElement>,
+    children: React.ReactNode,
+    onFocus: React.FocusEventHandler<HTMLInputElement | HTMLSelectElement> & React.FormEventHandler<HTMLDivElement>,
+    onBlur: React.FocusEventHandler<HTMLInputElement | HTMLSelectElement> & React.FormEventHandler<HTMLDivElement>
+} & ComponentPropsWithRef<"form">
+
+export const ProductForm = forwardRef<HTMLInputElement, ProductFormProps>(({
+    product,
+    onSubmit,
+    onChange,
+    children,
+    onFocus,
+    onBlur
+}, ref) => {
     return (
         <ProductFormStyled action='submit' onSubmit={onSubmit}>
             <ImgPreview
