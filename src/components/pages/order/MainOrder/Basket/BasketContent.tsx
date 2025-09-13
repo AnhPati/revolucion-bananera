@@ -21,13 +21,11 @@ export const BasketContent = () => {
         handleDeleteBasketProduct(productId, userId)
     }
 
-    const onClick = (id: string) => {
+    const onClick = (id: string, isAdminMode: boolean) => {
         if (!products) return
 
         const productSelected = findObjectById(id, products)
-        if (!productSelected) return
-
-        handleSelectProduct(productSelected)
+        productSelected && isAdminMode && handleSelectProduct(productSelected)
     }
 
     return (
@@ -53,7 +51,7 @@ export const BasketContent = () => {
                                     imageSource={menuProduct.imageSource.length > 0 ? menuProduct.imageSource : DEFAULT_IMG}
                                     onDelete={(event) => handleDelete(basketProduct.id, event)}
                                     isClickable={isAdminMode}
-                                    onClick={isAdminMode ? (() => onClick(basketProduct.id)) : undefined}
+                                    onClick={() => onClick(basketProduct.id, isAdminMode)}
                                     isSelected={checkCardIsSelected(basketProduct.id, cardSelected)}
                                     isPublicised={convertStringToBoolean(menuProduct.isPublicised)}
                                     isUnavailable={convertStringToBoolean(menuProduct.isAvailable) === false}
