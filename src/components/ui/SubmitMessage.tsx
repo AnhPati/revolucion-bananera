@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { theme } from "@/theme/theme";
 import { IconType } from "react-icons";
 
-type SubmitMessageVariant = "success" | "error" | "update"
+export type SubmitMessageVariant = "success" | "error" | "update"
 
 type SubmitMessageProps = {
     label: string,
