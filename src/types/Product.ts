@@ -12,3 +12,8 @@ export type BasketProduct = {
     id: string,
     quantity: number
 } & Partial<Product>
+
+
+export type ProductFormData = Omit<Product, 'price'> & {
+    price: string
+}

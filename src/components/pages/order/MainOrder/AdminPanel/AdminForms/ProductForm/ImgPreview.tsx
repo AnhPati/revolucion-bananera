@@ -1,9 +1,14 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../../../../../../theme";
+import { theme } from "@/theme/theme";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { ImgPreviewAnimation } from "../../../../../../../theme/animations";
+import { ImgPreviewAnimation } from "@/theme/animations";
 
-export const ImgPreview = ({ src, alt }) => {
+type ImgPreviewProps = {
+    src: string,
+    alt: string
+}
+
+export const ImgPreview = ({ src, alt }: ImgPreviewProps) => {
     return (
         <ImgPreviewStyled $empty={src ? false : true}>
             {src ? (
@@ -25,7 +30,11 @@ export const ImgPreview = ({ src, alt }) => {
     )
 }
 
-const ImgPreviewStyled = styled.div`
+type ImgPreviewStyledProps = {
+    $empty: boolean
+}
+
+const ImgPreviewStyled = styled.div<ImgPreviewStyledProps>`
     grid-area: 1 / 1 / 4 / 2;
     display: flex;
     align-items: center;

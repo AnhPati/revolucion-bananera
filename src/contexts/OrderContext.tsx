@@ -20,7 +20,7 @@ type OrderContextType = {
     handleUpdateProduct: (productSelected: Product, userId: string) => Promise<void>,
     productSelected: Product,
     setProductSelected: React.Dispatch<React.SetStateAction<Product>>,
-    titleInputRef: React.MutableRefObject<HTMLInputElement | undefined>,
+    titleInputRef: React.MutableRefObject<HTMLInputElement | null>,
 
     basketProducts: BasketProduct[],
     setBasketProducts: React.Dispatch<React.SetStateAction<BasketProduct[]>>,
