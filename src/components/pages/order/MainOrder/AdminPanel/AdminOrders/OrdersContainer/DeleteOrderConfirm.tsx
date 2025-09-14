@@ -1,9 +1,14 @@
 import styled from "styled-components"
-import { theme } from "../../../../../../../theme"
-import { Modal } from "../../../../../../ui/Modal/Modal"
-import { ModalButtons } from "../../../../../../ui/Modal/ModalButtons"
+import { theme } from "@/theme/theme"
+import { Modal } from "@/components/ui/Modal/Modal"
+import { ModalButtons } from "@/components/ui/Modal/ModalButtons"
 
-export const DeleteOrderConfirm = ({ onConfirm, onCancel }) => {
+type DeleteOrderConfirmProps = {
+    onConfirm?: React.MouseEventHandler<HTMLButtonElement>,
+    onCancel?: React.MouseEventHandler<HTMLButtonElement>
+}
+
+export const DeleteOrderConfirm = ({ onConfirm, onCancel }: DeleteOrderConfirmProps) => {
     return (
         <Modal
             overlayColor={theme.colors.background_dark}
