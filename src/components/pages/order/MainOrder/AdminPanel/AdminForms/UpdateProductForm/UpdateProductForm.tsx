@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useOrderContext } from "../../../../../../../contexts/OrderContext";
+import { useOrderContext } from "@/contexts/OrderContext";
 import { ProductForm } from "../ProductForm/ProductForm";
 import { UpdateFormMessage } from "./UpdateFormMessage";
-import { useDisplayMessage } from "../../../../../../../hooks/useDisplayMessage";
-import { SubmitMessage } from "../../../../../../ui/SubmitMessage"
+import { useDisplayMessage } from "@/hooks/useDisplayMessage";
+import { SubmitMessage } from "@/components/ui/SubmitMessage";
 import { BsCloudCheck } from "react-icons/bs";
 import { ProductFormData } from "@/types/Product";
 
