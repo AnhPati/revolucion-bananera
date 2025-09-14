@@ -12,7 +12,7 @@ type getAdminTabsConfigParameters = {
     isOpen?: boolean,
     onClickOpenPanel?: React.MouseEventHandler<HTMLButtonElement>,
     onClickSelectTab?: React.MouseEventHandler<HTMLButtonElement>,
-    isCardSelected: boolean
+    isCardSelected?: boolean
 }
 
 export const getAdminTabsConfig = ({
