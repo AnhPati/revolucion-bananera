@@ -4,7 +4,9 @@ export type TabValues = "tab-collapse" | "tab-add" | "tab-update" | "tab-orders"
 
 export type Tab = {
     id: TabValues,
-    className: 'tab-control' | 'tab-control tab-active',
-    Icon: IconType,
-    onClick: React.MouseEventHandler<HTMLButtonElement>
+    label?: string,
+    Content?: JSX.Element,
+    className?: 'tab-control' | 'tab-control tab-active',
+    Icon?: IconType,
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
