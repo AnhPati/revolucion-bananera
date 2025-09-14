@@ -3,8 +3,8 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { MdModeEditOutline } from "react-icons/md"
 import { PiNotepad } from "react-icons/pi";
 import AddProductForm from "../AdminForms/AddProductForm/AddProductForm"
-import UpdateProductForm from "../AdminForms/UpdateProductPanel/UpdateProductForm"
-import { HintMessage } from "../AdminForms/UpdateProductPanel/HintMessage"
+import UpdateProductForm from "../AdminForms/UpdateProductForm/UpdateProductForm"
+import { HintMessage } from "../AdminForms/UpdateProductForm/HintMessage"
 import { AdminOrders } from "../AdminOrders/AdminOrders"
 
 export const getAdminTabsConfig = ({
