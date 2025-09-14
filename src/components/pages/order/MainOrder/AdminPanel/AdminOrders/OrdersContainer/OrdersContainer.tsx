@@ -1,26 +1,41 @@
 import styled from "styled-components"
-import { theme } from "../../../../../../../theme"
+import { theme } from "@/theme/theme"
 import { OrderContainer } from "./OrderContainer"
 import { EmptyOrders } from "./EmptyOrders"
 import { useMemo, useState } from "react"
-import { useOrderContext } from "../../../../../../../contexts/OrderContext"
-import { sortOrdersByDate } from "../../../../../../../utils/orders"
+import { useOrderContext } from "@/contexts/OrderContext"
+import { sortOrdersByDate } from "@/utils/orders"
 import { DeleteOrderConfirm } from "./DeleteOrderConfirm"
 import { CSSTransition } from "react-transition-group"
-import { OverlayMessageAnimation } from "../../../../../../../theme/animations"
+import { OverlayMessageAnimation } from "@/theme/animations"
+import { Order } from "@/types/Order"
 
-export const OrdersContainer = ({ showArchivedOrders, onArchive, onUnarchive, onDelete }) => {
+type OrdersContainerProps = {
+    showArchivedOrders: boolean,
+    onArchive?: (orderId: string, event: React.MouseEvent<HTMLSpanElement>) => void,
+    onUnarchive?: (orderId: string, event: React.MouseEvent<HTMLSpanElement>) => void,
+    onDelete?: (orderId: string) => void
+}
+
+export const OrdersContainer = ({
+    showArchivedOrders,
+    onArchive,
+    onUnarchive,
+    onDelete
+}: OrdersContainerProps) => {
     const { orders } = useOrderContext()
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
-    const [orderToDelete, setOrderToDelete] = useState(undefined)
+    const [orderToDelete, setOrderToDelete] = useState<string | undefined>(undefined)
 
-    const onDeleteClick = (orderId) => {
+    const onDeleteClick = (orderId: string) => {
         setOrderToDelete(orderId)
         setShowDeleteConfirm(true)
     }
 
     const onDeleteConfirm = () => {
-        onDelete(orderToDelete)
+        if (!orderToDelete) return
+
+        onDelete?.(orderToDelete)
         setOrderToDelete(undefined)
         setShowDeleteConfirm(false)
     }
@@ -48,8 +63,8 @@ export const OrdersContainer = ({ showArchivedOrders, onArchive, onUnarchive, on
                 <div className="loading-container">
                     <h2>En chargement</h2>
                 </div>
-                : ordersToDisplay.length > 0 ? (
-                    ordersToDisplay.map(order => {
+                : ordersToDisplay && ordersToDisplay.length > 0 ? (
+                    ordersToDisplay.map((order: Order) => {
                         return (
                             <OrderContainer
                                 key={order.id}

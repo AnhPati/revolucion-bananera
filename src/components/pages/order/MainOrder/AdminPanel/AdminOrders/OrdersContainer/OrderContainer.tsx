@@ -1,9 +1,34 @@
-import { useOrderContext } from '../../../../../../../contexts/OrderContext'
-import { IconButton } from '../../../../../../ui/IconButton'
+import { useOrderContext } from '@/contexts/OrderContext'
+import { IconButton } from '@/components/ui/IconButton'
 import styled from 'styled-components'
 import { MdArchive, MdUnarchive } from 'react-icons/md'
+import { BasketProduct } from '@/types/Product'
+import { findObjectById } from '@/utils/array'
 
-export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderIndex, lastOrderIndex, isArchived, onArchiveClick, onDelete }) => {
+type OrderContainerProps = {
+    id: string,
+    userId: string,
+    orderTime: string,
+    orderProducts: BasketProduct[],
+    orderIndex: number,
+    lastOrderIndex?: number,
+    isArchived?: boolean,
+    onArchiveClick?: (orderId: string, event: React.MouseEvent<HTMLSpanElement>) => void,
+    onDelete?: (orderId: string) => void
+}
+
+export const OrderContainer = (
+    {
+        id,
+        userId,
+        orderTime,
+        orderProducts,
+        orderIndex,
+        lastOrderIndex,
+        isArchived,
+        onArchiveClick,
+        onDelete
+    }: OrderContainerProps) => {
     const { products } = useOrderContext()
 
     return (
@@ -14,7 +39,9 @@ export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderInde
             <p><b>Commande :</b></p>
             <ul>
                 {orderProducts.map(product => {
-                    const orderProduct = products[product.id]
+                    if (!products) return null
+
+                    const orderProduct = findObjectById(product.id, products)
 
                     if (!orderProduct) {
                         return (
@@ -32,13 +59,13 @@ export const OrderContainer = ({ id, userId, orderTime, orderProducts, orderInde
                 })}
             </ul>
             <IconButton
-                onClick={(event) => onArchiveClick(id, event)}
+                onClick={(event) => onArchiveClick?.(id, event)}
                 Icon={isArchived ? MdUnarchive : MdArchive}
             />
             {isArchived && <IconButton
-                onClick={(event) => onDelete(id, event)}
+                onClick={() => onDelete?.(id)}
             />}
-            {orderIndex < lastOrderIndex ? <hr /> : null}
+            {lastOrderIndex && orderIndex < lastOrderIndex ? <hr /> : null}
         </OrderContainerStyled>
     )
 }

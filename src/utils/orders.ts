@@ -1,6 +1,6 @@
 import { parseDate } from "./date"
 
-export const sortOrdersByDate = <T extends { orderTime: string }>(orders: T[]): T[] | number => {
+export const sortOrdersByDate = <T extends { orderTime: string }>(orders: T[]): T[] => {
     return [...orders].sort((a, b) => {
         const firstOderTime = parseDate(a.orderTime)
         const secondOderTime = parseDate(b.orderTime)
