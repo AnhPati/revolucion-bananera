@@ -20,7 +20,7 @@ export const getAdminTabsConfig = ({
     onClickOpenPanel,
     onClickSelectTab,
     isCardSelected
-}: getAdminTabsConfigParameters) => [
+}: getAdminTabsConfigParameters): Tab[] => [
         {
             id: 'tab-collapse',
             className: isOpen ? 'tab-control' : 'tab-control tab-active',
