@@ -4,11 +4,12 @@ import { Modal } from "@/components/ui/Modal/Modal"
 import { ModalButtons } from "@/components/ui/Modal/ModalButtons"
 
 type DeleteOrderConfirmProps = {
+    orderToDelete?: string,
     onConfirm?: React.MouseEventHandler<HTMLButtonElement>,
     onCancel?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-export const DeleteOrderConfirm = ({ onConfirm, onCancel }: DeleteOrderConfirmProps) => {
+export const DeleteOrderConfirm = ({ orderToDelete, onConfirm, onCancel }: DeleteOrderConfirmProps) => {
     return (
         <Modal
             overlayColor={theme.colors.background_dark}
@@ -17,7 +18,7 @@ export const DeleteOrderConfirm = ({ onConfirm, onCancel }: DeleteOrderConfirmPr
             containerMaxWidth="600px"
         >
             <DeleteOrderConfirmContentStyled>
-                <h1>Supprimer définitivement cette commande ?</h1>
+                <h1>Supprimer définitivement la commande n° {orderToDelete} ?</h1>
                 <p>Cette action est irréversible</p>
                 <ModalButtons
                     onConfirm={onConfirm}
