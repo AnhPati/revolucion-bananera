@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
-import { useOrderContext } from "../../../../../contexts/OrderContext";
+import { theme } from "@/theme/theme";
+import { useOrderContext } from "@/contexts/OrderContext";
 import { getAdminTabsConfig, getCurrentTabSelected } from "./helpers/getAdminTabsConfig";
-import { EMPTY_PRODUCT } from "../../../../../constants/product";
+import { EMPTY_PRODUCT } from "@/constants/product";
 
 const AdminPanelContent = () => {
     const { adminMode, productSelected } = useOrderContext()
@@ -14,7 +14,7 @@ const AdminPanelContent = () => {
 
     return (
         <AdminPanelContentStyled>
-            {currentTabSelected.Content}
+            {currentTabSelected ? currentTabSelected.Content : null}
         </AdminPanelContentStyled>
     )
 }
