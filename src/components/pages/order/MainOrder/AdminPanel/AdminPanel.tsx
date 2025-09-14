@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import AdminPanelNavbar from "./AdminPanelNavbar";
 import AdminPanelContent from "./AdminPanelContent";
-import { useOrderContext } from "../../../../../contexts/OrderContext";
+import { useOrderContext } from "@/contexts/OrderContext";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { AdminPanelAnimation } from "../../../../../theme/animations";
+import { AdminPanelAnimation } from "@/theme/animations";
 
 const AdminPanel = () => {
     const { adminMode } = useOrderContext()
