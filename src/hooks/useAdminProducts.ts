@@ -19,7 +19,7 @@ export const useAdminProducts = () => {
         }
     })
     const [productSelected, setProductSelected] = useState<Product>(EMPTY_PRODUCT)
-    const titleInputRef = useRef<HTMLInputElement>()
+    const titleInputRef = useRef<HTMLInputElement | null>(null)
 
     const handleAddProduct = (newProduct: Product, userId: string) => {
         if (!products) return
