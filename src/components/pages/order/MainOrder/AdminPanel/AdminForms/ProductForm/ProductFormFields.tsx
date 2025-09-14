@@ -1,17 +1,17 @@
-import { ComponentPropsWithRef, forwardRef } from "react"
+import { forwardRef } from "react"
 import styled from "styled-components"
 import { getSelectInputsConfig, getTextInputsConfig } from "./helpers/getInputsConfig"
 import { TextInput } from "@/components/ui/TextInput"
 import { SelectInput } from "@/components/ui/SelectInput"
 import { theme } from "@/theme/theme"
-import { Product } from "@/types/Product"
+import { ProductFormData } from "@/types/Product"
 
-type ProductFormFieldsProps = {
-    product: Product,
+export type ProductFormFieldsProps = {
+    product: ProductFormData,
     onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLSelectElement>,
-    onFocus: React.FocusEventHandler<HTMLInputElement | HTMLSelectElement>,
-    onBlur: React.FocusEventHandler<HTMLInputElement | HTMLSelectElement>
-} & ComponentPropsWithRef<"div">
+    onFocus?: React.FocusEventHandler<HTMLInputElement | HTMLSelectElement>,
+    onBlur?: React.FocusEventHandler<HTMLInputElement | HTMLSelectElement>
+}
 
 const ProductFormFields = forwardRef<HTMLInputElement, ProductFormFieldsProps>(({
     product,

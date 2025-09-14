@@ -1,18 +1,13 @@
 import styled from "styled-components"
 import { ImgPreview } from "./ImgPreview"
 import { theme } from "@/theme/theme"
-import { ComponentPropsWithRef, forwardRef } from "react"
-import ProductFormFields from "./ProductFormFields"
-import { Product } from "@/types/Product"
+import { forwardRef } from "react"
+import ProductFormFields, { ProductFormFieldsProps } from "./ProductFormFields"
 
 type ProductFormProps = {
-    product: Product,
-    onSubmit: React.FormEventHandler<HTMLFormElement>,
-    onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLSelectElement> & React.FormEventHandler<HTMLDivElement>,
-    children: React.ReactNode,
-    onFocus: React.FocusEventHandler<HTMLInputElement | HTMLSelectElement> & React.FormEventHandler<HTMLDivElement>,
-    onBlur: React.FocusEventHandler<HTMLInputElement | HTMLSelectElement> & React.FormEventHandler<HTMLDivElement>
-} & ComponentPropsWithRef<"form">
+    onSubmit?: React.FormEventHandler<HTMLFormElement>,
+    children: React.ReactNode
+} & ProductFormFieldsProps
 
 export const ProductForm = forwardRef<HTMLInputElement, ProductFormProps>(({
     product,

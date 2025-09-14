@@ -4,10 +4,10 @@ import { FiPackage } from "react-icons/fi"
 import { GoMegaphone } from "react-icons/go"
 import { MdOutlineEuro } from "react-icons/md"
 import { isAvailableOptions, isPublicisedOptions } from "@/constants/select"
-import { Product } from "@/types/Product"
+import { ProductFormData } from "@/types/Product"
 import { convertBooleanToString } from "@/utils/string"
 
-export const getTextInputsConfig = (productValues: Product) => [
+export const getTextInputsConfig = (productValues: ProductFormData) => [
     {
         id: "0",
         name: 'title',
@@ -34,7 +34,7 @@ export const getTextInputsConfig = (productValues: Product) => [
     }
 ]
 
-export const getSelectInputsConfig = (productValues: Product) => [
+export const getSelectInputsConfig = (productValues: ProductFormData) => [
     {
         id: "3",
         name: "isAvailable",
