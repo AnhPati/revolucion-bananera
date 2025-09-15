@@ -5,7 +5,7 @@ import { BasketFooter } from "./BasketFooter";
 import { useOrderContext } from "@/contexts/OrderContext";
 import EmptyBasket from "./EmptyBasket";
 import { theme } from "@/theme/theme";
-import { isEmptyArray } from "@/utils/array";
+import { findObjectById, isEmptyArray } from "@/utils/array";
 import { calculateAmountToPay } from "./helpers/calculateAmountToPay";
 import { formatDate } from "@/utils/date";
 import { Order } from "@/types/Order";
@@ -16,9 +16,11 @@ export const Basket = () => {
     const isLoading = products === undefined
 
     const handlePlaceOrder = () => {
-        const enrichedProducts = basketProducts.map(basketProduct => {
-            const fullProduct = products?.find(p => p.id === basketProduct.id)
-            return { ...fullProduct, quantity: basketProduct.quantity }
+        const enrichedProducts = basketProducts.flatMap(basketProduct => {
+            const menuProduct = findObjectById(basketProduct.id, products ?? [])
+            if (!menuProduct) return []
+
+            return [{ ...menuProduct, quantity: basketProduct.quantity }]
         })
 
         const newOrder: Order = {
