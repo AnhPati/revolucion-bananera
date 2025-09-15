@@ -5,13 +5,8 @@ import { ErrorContent } from "./ErrorContent"
 
 const ErrorPage = () => {
     const navigate = useNavigate()
-
     const handleHomepageReturn = () => {
-        if (window.history.length > 1) {
-            navigate(-1)
-        } else {
-            navigate('/')
-        }
+        navigate('/')
     }
 
     return (
