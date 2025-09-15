@@ -16,12 +16,17 @@ export const Basket = () => {
     const isLoading = products === undefined
 
     const handlePlaceOrder = () => {
+        const enrichedProducts = basketProducts.map(basketProduct => {
+            const fullProduct = products?.find(p => p.id === basketProduct.id)
+            return { ...fullProduct, quantity: basketProduct.quantity }
+        })
+
         const newOrder: Order = {
             id: crypto.randomUUID(),
             userId: userId,
             amount: amountToPay,
             orderTime: formatDate(new Date()),
-            products: basketProducts,
+            products: enrichedProducts,
             statut: "to process"
         }
 

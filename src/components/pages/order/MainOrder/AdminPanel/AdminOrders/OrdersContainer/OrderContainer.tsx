@@ -47,14 +47,14 @@ export const OrderContainer = (
                     if (!orderProduct) {
                         return (
                             <li key={product.id}>
-                                Produit supprimé de la vente !
+                                {product.title} x{product.quantity} <span className="deleted">(Produit supprimé de la vente)</span>
                             </li>
                         )
                     }
 
                     return (
                         <li key={product.id}>
-                            {orderProduct.title} x{product.quantity}
+                            {product.title} x{product.quantity}
                         </li>
                     )
                 })}
