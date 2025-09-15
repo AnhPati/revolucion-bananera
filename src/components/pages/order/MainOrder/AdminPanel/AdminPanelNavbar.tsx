@@ -1,7 +1,8 @@
 import styled from "styled-components"
-import { Tab } from "../../../../ui/Tab"
+import { Tab } from "@/components/ui/Tab"
 import { getAdminTabsConfig } from "./helpers/getAdminTabsConfig"
-import { useOrderContext } from "../../../../../contexts/OrderContext"
+import { useOrderContext } from "@/contexts/OrderContext"
+import { TabValues } from "@/types/Tab"
 
 const AdminPanelNavbar = () => {
     const { adminMode, setAdminMode } = useOrderContext()
@@ -15,14 +16,15 @@ const AdminPanelNavbar = () => {
         setAdminMode(newAdminMode)
     }
 
-    const handleActiveTab = (e) => {
-        const tabSelected = e.currentTarget.id
+    const handleActiveTab = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const tabSelected = e.currentTarget.id as TabValues
 
         setAdminMode(prevAdminMode => ({
             ...prevAdminMode,
             adminPanel: {
                 isOpen: true,
-                tabSelected: tabSelected
+                tabSelected: tabSelected,
+                cardSelected: prevAdminMode.adminPanel.cardSelected
             }
         }))
     }
@@ -36,8 +38,8 @@ const AdminPanelNavbar = () => {
                     return (
                         <li key={tab.id}>
                             <Tab
-                                id={tab.id && tab.id}
-                                label={tab.label && tab.label}
+                                id={tab.id}
+                                label={tab.label}
                                 className={tab.className ? tab.className : tabSelected === tab.id ? 'tab-active' : ''}
                                 Icon={tab.Icon}
                                 onClick={tab.onClick}

@@ -6,13 +6,21 @@ import AddProductForm from "../AdminForms/AddProductForm/AddProductForm"
 import UpdateProductForm from "../AdminForms/UpdateProductForm/UpdateProductForm"
 import { HintMessage } from "../AdminForms/UpdateProductForm/HintMessage"
 import { AdminOrders } from "../AdminOrders/AdminOrders"
+import { TabType, TabValues } from "@/types/Tab";
+
+type getAdminTabsConfigParameters = {
+    isOpen?: boolean,
+    onClickOpenPanel?: React.MouseEventHandler<HTMLButtonElement>,
+    onClickSelectTab?: React.MouseEventHandler<HTMLButtonElement>,
+    isCardSelected?: boolean
+}
 
 export const getAdminTabsConfig = ({
     isOpen,
     onClickOpenPanel,
     onClickSelectTab,
     isCardSelected
-}) => [
+}: getAdminTabsConfigParameters): TabType[] => [
         {
             id: 'tab-collapse',
             className: isOpen ? 'tab-control' : 'tab-control tab-active',
@@ -42,7 +50,9 @@ export const getAdminTabsConfig = ({
         }
     ]
 
-export const getCurrentTabSelected = (tabs, tabSelected) => {
+
+
+export const getCurrentTabSelected = (tabs: TabType[], tabSelected: TabValues) => {
     const tab = tabs.find((tab) => tab.id ? tab.id === tabSelected : null)
 
     return tab
