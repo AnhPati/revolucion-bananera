@@ -6,7 +6,7 @@ import { ComponentProps } from "react";
 type ButtonVariant = "primary" | "success"
 
 type ButtonProps = {
-    label: string,
+    label?: string,
     Icon?: IconType,
     variant?: ButtonVariant
 } & ComponentProps<"button">
