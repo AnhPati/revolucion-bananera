@@ -4,7 +4,6 @@ import { BASKET_MESSAGE, DEFAULT_IMG } from "@/constants/product";
 import { useOrderContext } from "@/contexts/OrderContext";
 import { theme } from "@/theme/theme";
 import { findObjectById } from "@/utils/array";
-//@ts-ignore
 import { checkCardIsSelected } from "../MenuOrder/helpers/checkCardIsSelected";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { BasketProductAnimation } from "@/theme/animations";

@@ -1,6 +1,4 @@
-//@ts-ignore
 import AdminPanel from "./AdminPanel/AdminPanel"
-//@ts-ignore
 import { MenuOrder } from "./MenuOrder/MenuOrder"
 import { useOrderContext } from "@/contexts/OrderContext"
 import styled from "styled-components"
