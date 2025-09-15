@@ -35,7 +35,7 @@ const DeleteOrderConfirmContentStyled = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    padding: 15px 20px;
+    padding: 15px ${theme.spacing.md};
 
     h1 {
         font-size: 30px;      
@@ -44,7 +44,7 @@ const DeleteOrderConfirmContentStyled = styled.div`
     }
 
     p {
-        font-size: 18px;
+        font-size: ${theme.fonts.size.P1};
         margin: 0;
         text-align: center;
     }

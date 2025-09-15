@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { Button } from "../Button"
+import { theme } from "@/theme/theme";
 
 type ModalButtonsProps = {
     onConfirm?: React.MouseEventHandler<HTMLButtonElement>,
     onCancel?: React.MouseEventHandler<HTMLButtonElement>,
 } & Partial<ModalButtonsStyledProps>
 
-export const ModalButtons = ({ onConfirm, onCancel, gap = '20px' }: ModalButtonsProps) => {
+export const ModalButtons = ({ onConfirm, onCancel, gap = theme.spacing.md }: ModalButtonsProps) => {
     return (
         <ModalButtonsStyled gap={gap}>
             <Button label="Confirmer" onClick={onConfirm} />

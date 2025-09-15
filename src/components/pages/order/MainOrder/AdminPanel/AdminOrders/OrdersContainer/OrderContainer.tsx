@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { MdArchive, MdUnarchive } from 'react-icons/md'
 import { BasketProduct } from '@/types/Product'
 import { findObjectById } from '@/utils/array'
+import { theme } from '@/theme/theme'
 
 type OrderContainerProps = {
     id: string,
@@ -74,7 +75,7 @@ const OrderContainerStyled = styled.div`
     position: relative;
 
     p, li {
-        font-size: 12px;
+        font-size: ${theme.fonts.size.XS};
     }
 
     p {
@@ -88,7 +89,7 @@ const OrderContainerStyled = styled.div`
 
     hr {
         height: 1px;
-        background: #e4e5e9;
+        background: ${theme.colors.greyLight};
         border: none;
     }
 

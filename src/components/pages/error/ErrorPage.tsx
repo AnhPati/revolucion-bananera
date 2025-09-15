@@ -1,17 +1,13 @@
 import { Button } from "@/components/ui/Button"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
+import { theme } from "@/theme/theme";
 import { ErrorContent } from "./ErrorContent"
 
 const ErrorPage = () => {
     const navigate = useNavigate()
-
     const handleHomepageReturn = () => {
-        if (window.history.length > 1) {
-            navigate(-1)
-        } else {
-            navigate('/')
-        }
+        navigate('/')
     }
 
     return (
@@ -32,7 +28,7 @@ const ErrorPageStyled = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background: #f5f5f7;
+    background: ${theme.colors.background_white};
 
     .button-container {
         width: 100px;

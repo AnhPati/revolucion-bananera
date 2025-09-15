@@ -23,7 +23,7 @@ const LogoStyled = styled.div`
         margin: 40px 0;
 
         h1 {
-            font-size: 60px;
+            font-size: ${theme.fonts.size.P6};
             &:first-child {
                 animation: ${slideInDown("-300px", "0%")} ${theme.animations.speed.quick} ease-out;
                 animation-delay: 0ms;
@@ -32,14 +32,14 @@ const LogoStyled = styled.div`
     
             &:last-child {
                 animation: ${slideInDown("-300px", "0%")} ${theme.animations.speed.quick} ease-out;
-                animation-delay: 1000ms;
+                animation-delay: ${theme.animations.speed.normal};
                 animation-fill-mode: backwards;
             }          
         }
         
         .img-container {
             animation: ${slideInDown("-300px", "0%")} ${theme.animations.speed.quick} ease-out;
-            animation-delay: 500ms;
+            animation-delay: ${theme.animations.speed.quick};
             animation-fill-mode: backwards;
         }
     }

@@ -44,7 +44,7 @@ const ModalStyled = styled.div<ModalStyledProps>`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 15px;
+    border-radius: ${theme.borderRadius.extraRound};
     overflow: hidden;
     z-index: 3;
 
@@ -61,7 +61,7 @@ const ModalStyled = styled.div<ModalStyledProps>`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        border-radius: 5px;
+        border-radius: ${theme.borderRadius.round};
         background: ${theme.colors.background_white};
         color: ${theme.colors.greyBlue};
         z-index: 1;

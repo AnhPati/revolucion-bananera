@@ -120,9 +120,9 @@ const OrdersContainerStyled = styled.div`
 
         h2 {
             margin: 0;
-            color: #747b91;
-            font-size: 36px;
-            font-weight: 400;
+            color: ${theme.colors.greyBlue};
+            font-size: ${theme.fonts.size.P4};
+            font-weight: ${theme.fonts.weights.regular};
             text-align: center;
         }
     }
