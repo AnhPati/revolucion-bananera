@@ -72,6 +72,20 @@ export const pulse = keyframes`
     }
 `
 
+export const rotate = keyframes`
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+`
+
 export const bounceIn = keyframes`
     0% {
         transform: scale(1.2);
