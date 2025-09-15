@@ -46,8 +46,8 @@ const OrderConfirmContentStyled = styled.div`
 
     h1 {
         margin: 0;
-        font-size: 36px;
-        font-weight: 400;
+        font-size: ${theme.fonts.size.P4};
+        font-weight: ${theme.fonts.weights.regular};
         text-align: center;
     }
 
