@@ -38,8 +38,8 @@ const AdminPanelNavbar = () => {
                     return (
                         <li key={tab.id}>
                             <Tab
-                                id={tab.id && tab.id}
-                                label={tab.label && tab.label}
+                                id={tab.id}
+                                label={tab.label}
                                 className={tab.className ? tab.className : tabSelected === tab.id ? 'tab-active' : ''}
                                 Icon={tab.Icon}
                                 onClick={tab.onClick}
