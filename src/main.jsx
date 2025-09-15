@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import App from './App.jsx'
+import App from './App.tsx'
 import './index.css'
 import OrderPage from './components/pages/order/OrderPage.tsx'
 import ErrorPage from './components/pages/error/ErrorPage.tsx'
