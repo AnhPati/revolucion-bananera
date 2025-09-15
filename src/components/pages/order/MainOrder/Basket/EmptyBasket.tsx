@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { theme } from "@/theme"
+import { theme } from "@/theme/theme"
 import { BASKET_MESSAGE } from "@/constants/product"
 
 type EmptyBasketProps = {
