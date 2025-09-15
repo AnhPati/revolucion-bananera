@@ -1,22 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import App from './App.tsx'
+import { RouterProvider } from 'react-router-dom'
 import './index.css'
-import OrderPage from './components/pages/order/OrderPage.tsx'
-import ErrorPage from './components/pages/error/ErrorPage.tsx'
+import { router } from './router/router'
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: "/order",
-    element: <OrderPage />
-  }
-])
+
 
 const rootElement = document.getElementById('root')
 if (!rootElement) throw new Error(`L'élément racine n'est pas rencontré.`)
