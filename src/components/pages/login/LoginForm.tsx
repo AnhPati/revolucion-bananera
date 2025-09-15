@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
+import { RiLoader4Line } from "react-icons/ri";
 import styled from "styled-components"
 import { theme } from "@/theme/theme"
 import { TextInput } from "@/components/ui/TextInput";
@@ -11,6 +12,7 @@ import { LoginFormTitle } from "./LoginFormTitle";
 
 export const LoginForm = () => {
     const [username, setUsername] = useState<string>('')
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
     const navigate = useNavigate()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +21,7 @@ export const LoginForm = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
+        setIsSubmitting(true)
         const userReceived = await authenticateUser(username)
 
         setUsername('')
@@ -40,10 +42,16 @@ export const LoginForm = () => {
                 required
                 Icon={BsPersonCircle}
             />
-            <Button
-                label={'Accéder à mon espace'}
-                Icon={IoChevronForward}
-            />
+            {isSubmitting ? (
+                <Button
+                    Icon={RiLoader4Line}
+                />
+            ) : (
+                <Button
+                    label={'Accéder à mon espace'}
+                    Icon={IoChevronForward}
+                />
+            )}
         </LoginFormStyled>
     )
 }
