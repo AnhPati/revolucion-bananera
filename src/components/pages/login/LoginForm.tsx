@@ -78,6 +78,12 @@ const LoginFormStyled = styled.form<LoginFormStyledProps>`
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.SM};
 
+    .error-soumission-message {
+        text-align: center;
+        margin-bottom: ${theme.spacing.sm};
+        color: ${theme.colors.loginLine};
+    }
+
     ${(({ $isSubmitting }) => $isSubmitting && submittingStyles)}
 `
 
