@@ -10,10 +10,12 @@ import { Button } from "@/components/ui/Button";
 import { authenticateUser } from "@/api/user";
 import { LoginFormTitle } from "./LoginFormTitle";
 import { rotate } from "@/theme/animations";
+import { validateLoginForm } from "./helpers/validateLoginForm";
 
 export const LoginForm = () => {
     const [username, setUsername] = useState<string>('')
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+    const [errorMessage, setErrorMessage] = useState<string>('')
     const navigate = useNavigate()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +24,12 @@ export const LoginForm = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+
+        const loginError = validateLoginForm(username)
+        if (loginError) return setErrorMessage(loginError)
+
         setIsSubmitting(true)
+
         const userReceived = await authenticateUser(username)
 
         setUsername('')
@@ -34,7 +41,7 @@ export const LoginForm = () => {
     }
 
     return (
-        <LoginFormStyled action="submit" onSubmit={handleSubmit} $isSubmitting={isSubmitting}>
+        <LoginFormStyled action="submit" onSubmit={handleSubmit} $isSubmitting={isSubmitting} noValidate>
             <LoginFormTitle />
             <TextInput
                 value={username}
@@ -43,6 +50,7 @@ export const LoginForm = () => {
                 required
                 Icon={BsPersonCircle}
             />
+            {errorMessage && <span className="error-soumission-message">{errorMessage}</span>}
             {isSubmitting ? (
                 <Button
                     Icon={RiLoader4Line}
