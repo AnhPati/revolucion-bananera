@@ -1,7 +1,11 @@
 import { theme } from "@/theme/theme";
 import styled from "styled-components";
 
-export const EmptyOrders = ({ emptyMessage = 'Aucune commande en cours.' }) => {
+type EmptyOrdersProps = {
+    emptyMessage?: string
+}
+
+export const EmptyOrders = ({ emptyMessage = 'Aucune commande en cours.' }: EmptyOrdersProps) => {
     return (
         <EmptyOrdersStyled>
             <h2>{emptyMessage}</h2>
