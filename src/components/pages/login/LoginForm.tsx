@@ -30,15 +30,18 @@ export const LoginForm = () => {
         if (loginError) return setErrorMessage(loginError)
 
         setIsSubmitting(true)
+        setTimeout(async () => {
+            const userReceived = await authenticateUser(username)
 
-        const userReceived = await authenticateUser(username)
+            setUsername('')
+            navigate('/order', {
+                state: {
+                    username: userReceived.username
+                }
+            })
 
-        setUsername('')
-        navigate('/order', {
-            state: {
-                username: userReceived.username
-            }
-        })
+            setIsSubmitting(false)
+        }, 2000)
     }
 
     return (
@@ -95,6 +98,8 @@ const LoginFormStyled = styled.form<LoginFormStyledProps>`
 
 const submittingStyles = css`
     button {
+        pointer-events: none;
+
         svg {
             animation: ${rotate} ${theme.animations.speed.normal} infinite ease-in-out;
         }
