@@ -11,6 +11,7 @@ import { authenticateUser } from "@/api/user";
 import { LoginFormTitle } from "./LoginFormTitle";
 import { rotate } from "@/theme/animations";
 import { validateLoginForm } from "./helpers/validateLoginForm";
+import { ErrorMessage } from "@/components/ui/ErrorMessage";
 
 export const LoginForm = () => {
     const [username, setUsername] = useState<string>('')
@@ -50,7 +51,12 @@ export const LoginForm = () => {
                 required
                 Icon={BsPersonCircle}
             />
-            {errorMessage && <span className="error-soumission-message">{errorMessage}</span>}
+            {errorMessage && (
+                <ErrorMessage
+                    className={"error-soumission-message"}
+                    message={errorMessage}
+                />
+            )}
             {isSubmitting ? (
                 <Button
                     Icon={RiLoader4Line}
