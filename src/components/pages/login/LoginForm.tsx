@@ -10,10 +10,13 @@ import { Button } from "@/components/ui/Button";
 import { authenticateUser } from "@/api/user";
 import { LoginFormTitle } from "./LoginFormTitle";
 import { rotate } from "@/theme/animations";
+import { validateLoginForm } from "./helpers/validateLoginForm";
+import { ErrorMessage } from "@/components/ui/ErrorMessage";
 
 export const LoginForm = () => {
     const [username, setUsername] = useState<string>('')
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+    const [errorMessage, setErrorMessage] = useState<string>('')
     const navigate = useNavigate()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,19 +25,27 @@ export const LoginForm = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        setIsSubmitting(true)
-        const userReceived = await authenticateUser(username)
 
-        setUsername('')
-        navigate('/order', {
-            state: {
-                username: userReceived.username
-            }
-        })
+        const loginError = validateLoginForm(username)
+        if (loginError) return setErrorMessage(loginError)
+
+        setIsSubmitting(true)
+        setTimeout(async () => {
+            const userReceived = await authenticateUser(username)
+
+            setUsername('')
+            navigate('/order', {
+                state: {
+                    username: userReceived.username
+                }
+            })
+
+            setIsSubmitting(false)
+        }, 2000)
     }
 
     return (
-        <LoginFormStyled action="submit" onSubmit={handleSubmit} $isSubmitting={isSubmitting}>
+        <LoginFormStyled action="submit" onSubmit={handleSubmit} $isSubmitting={isSubmitting} noValidate>
             <LoginFormTitle />
             <TextInput
                 value={username}
@@ -43,6 +54,12 @@ export const LoginForm = () => {
                 required
                 Icon={BsPersonCircle}
             />
+            {errorMessage && (
+                <ErrorMessage
+                    className={"error-soumission-message"}
+                    message={errorMessage}
+                />
+            )}
             {isSubmitting ? (
                 <Button
                     Icon={RiLoader4Line}
@@ -70,11 +87,19 @@ const LoginFormStyled = styled.form<LoginFormStyledProps>`
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.SM};
 
+    .error-soumission-message {
+        text-align: center;
+        margin-bottom: ${theme.spacing.sm};
+        color: ${theme.colors.loginLine};
+    }
+
     ${(({ $isSubmitting }) => $isSubmitting && submittingStyles)}
 `
 
 const submittingStyles = css`
     button {
+        pointer-events: none;
+
         svg {
             animation: ${rotate} ${theme.animations.speed.normal} infinite ease-in-out;
         }
