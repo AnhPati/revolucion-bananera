@@ -55,4 +55,18 @@ const LoginPageStyled = styled.div`
             animation: ${fadeInBottom} ${theme.animations.speed.quick} ease-out;
         }
     }
+
+    @media (max-width: 1280px) {
+        .login-container {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .login-container {
+            .login_page-logo {    
+                transform: scale(1.45);
+            }
+        }
+    }
 `;

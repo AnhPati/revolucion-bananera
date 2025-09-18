@@ -93,6 +93,10 @@ const LoginFormStyled = styled.form<LoginFormStyledProps>`
         color: ${theme.colors.loginLine};
     }
 
+    @media (max-width: 600px) {
+        width: ${theme.gridUnit * 40}px;
+    }
+
     ${(({ $isSubmitting }) => $isSubmitting && submittingStyles)}
 `
 
