@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { LoginForm } from "./LoginForm"
-import background from "@/assets/burger-background.jpg"
+import background from "@/assets/burger-right-background.jpg"
 import { Logo } from "@/components/ui/Logo";
 import { theme } from "@/theme/theme";
 import { backInBounce, fadeInBottom, slideInSpace } from "@/theme/animations";
@@ -8,8 +8,10 @@ import { backInBounce, fadeInBottom, slideInSpace } from "@/theme/animations";
 const LoginPage = () => {
     return (
         <LoginPageStyled>
-            <Logo className={'login_page-logo'} />
-            <LoginForm />
+            <div className="login-container">
+                <Logo className={'login_page-logo'} />
+                <LoginForm />
+            </div>
         </LoginPageStyled>
     )
 }
@@ -22,28 +24,35 @@ const LoginPageStyled = styled.div`
     background-size: cover;
     background-position: center center;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
 
-    .login_page-logo {
-        transform: scale(2.5);
-        margin: 40px 0;
+    .login-container {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 100px;
 
-        h1:first-child {
-            animation: ${slideInSpace("60%", "-20%", "0%")} ${theme.animations.speed.quick} ease-out;
+        .login_page-logo {
+            transform: scale(2.5);
+            margin: 40px 0;
+
+            h1:first-child {
+                animation: ${slideInSpace("60%", "-20%", "0%")} ${theme.animations.speed.quick} ease-out;
+            }
+
+            h1:last-child {
+                animation: ${slideInSpace("-60%", "20%", "0%")} ${theme.animations.speed.quick} ease-out;
+            }
+
+            .img-container {
+                animation: ${backInBounce} ${theme.animations.speed.quick} ease-out;
+            }
         }
 
-        h1:last-child {
-            animation: ${slideInSpace("-60%", "20%", "0%")} ${theme.animations.speed.quick} ease-out;
+        form {
+            animation: ${fadeInBottom} ${theme.animations.speed.quick} ease-out;
         }
-
-        .img-container {
-            animation: ${backInBounce} ${theme.animations.speed.quick} ease-out;
-        }
-    }
-
-    form {
-        animation: ${fadeInBottom} ${theme.animations.speed.quick} ease-out;
     }
 `;
