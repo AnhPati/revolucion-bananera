@@ -4,9 +4,9 @@ import { theme } from "@/theme/theme";
 export const LoginFormTitle = () => {
     return (
         <>
-            <TitlePrimaryStyled>Bienvenue chez nous !</TitlePrimaryStyled>
+            <TitlePrimaryStyled>Espace Staff</TitlePrimaryStyled>
             <TitleSeparationStyled />
-            <TitleSecondaryStyled>Connectez-vous :</TitleSecondaryStyled>
+            <TitleSecondaryStyled>Connectez-vous</TitleSecondaryStyled>
         </>
     )
 }
