@@ -9,14 +9,14 @@ type LogoProps = {
     onClick?: React.MouseEventHandler<HTMLDivElement>
 }
 
-export const Logo = ({ leftLabel = "Crazee", rightLabel = "Burger", className, onClick }: LogoProps) => {
+export const Logo = ({ leftLabel = "Groovy", rightLabel = "Burger", className, onClick }: LogoProps) => {
     return (
         <LogoStyled className={className} onClick={onClick}>
             <h1>
                 {leftLabel}
             </h1>
             <div className={'img-container'}>
-                <img src={logo} alt={'Crazee Burger logo'} />
+                <img src={logo} alt={'Groovy Burger logo'} />
             </div>
             <h1>
                 {rightLabel}
