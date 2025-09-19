@@ -50,7 +50,7 @@ export const LoginForm = () => {
             <TextInput
                 value={username}
                 onChange={handleChange}
-                placeholder={'Entrer votre prénom'}
+                placeholder={'Votre prénom'}
                 required
                 Icon={BsPersonCircle}
             />

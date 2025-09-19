@@ -42,7 +42,7 @@ const TextInputStyled = styled.div<TextInputStyledProps>`
 
     > svg {
         position: absolute;
-        left: ${theme.gridUnit * 2.5}px;
+        left: ${theme.gridUnit * 4.5}px;
         color: ${theme.colors.greyBlue};
         font-size: ${theme.fonts.size.SM};
     }
@@ -51,7 +51,7 @@ const TextInputStyled = styled.div<TextInputStyledProps>`
         width: 100%;
         color: ${theme.colors.dark};
         font-weight: ${theme.fonts.weights.regular};
-        padding-left: ${theme.gridUnit * 5.75}px;
+        padding-left: ${theme.gridUnit * 7.75}px;
         padding-right: ${theme.gridUnit * 3}px;
         border: none;
         border-radius: ${theme.borderRadius.round};
