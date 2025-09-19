@@ -50,7 +50,7 @@ export const LoginForm = () => {
             <TextInput
                 value={username}
                 onChange={handleChange}
-                placeholder={'Entrer votre prénom'}
+                placeholder={'Votre prénom'}
                 required
                 Icon={BsPersonCircle}
             />
@@ -91,6 +91,10 @@ const LoginFormStyled = styled.form<LoginFormStyledProps>`
         text-align: center;
         margin-bottom: ${theme.spacing.sm};
         color: ${theme.colors.loginLine};
+    }
+
+    @media (max-width: 600px) {
+        width: ${theme.gridUnit * 40}px;
     }
 
     ${(({ $isSubmitting }) => $isSubmitting && submittingStyles)}

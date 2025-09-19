@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import { LoginForm } from "./LoginForm"
-import background from "@/assets/burger-background.jpg"
+import background from "@/assets/burger-right-background.jpg"
 import { Logo } from "@/components/ui/Logo";
-import { theme } from "@/theme/theme";
-import { backInBounce, fadeInBottom, slideInSpace } from "@/theme/animations";
+import { CopyrightContainer } from "./CopyrightContainer";
+import { LoginPageLayout } from "./LoginPageLayout";
 
 const LoginPage = () => {
     return (
         <LoginPageStyled>
-            <Logo className={'login_page-logo'} />
-            <LoginForm />
+            <LoginPageLayout>
+                <Logo className={'login_page-logo'} />
+                <LoginForm />
+            </LoginPageLayout>
+            <CopyrightContainer />
         </LoginPageStyled>
     )
 }
@@ -18,32 +21,10 @@ export default LoginPage
 
 const LoginPageStyled = styled.div`
     min-height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${background});
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url(${background});
     background-size: cover;
     background-position: center center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-
-    .login_page-logo {
-        transform: scale(2.5);
-        margin: 40px 0;
-
-        h1:first-child {
-            animation: ${slideInSpace("60%", "-20%", "0%")} ${theme.animations.speed.quick} ease-out;
-        }
-
-        h1:last-child {
-            animation: ${slideInSpace("-60%", "20%", "0%")} ${theme.animations.speed.quick} ease-out;
-        }
-
-        .img-container {
-            animation: ${backInBounce} ${theme.animations.speed.quick} ease-out;
-        }
-    }
-
-    form {
-        animation: ${fadeInBottom} ${theme.animations.speed.quick} ease-out;
-    }
 `;
