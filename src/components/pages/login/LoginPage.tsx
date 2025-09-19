@@ -14,6 +14,10 @@ const LoginPage = () => {
                     <LoginForm />
                 </div>
             </div>
+            <div className="copyright-container">
+                <p>© 2025 Groovy Burger — Tous droits réservés</p>
+                <p>Made with ❤️</p>
+            </div>
         </LoginPageStyled>
     )
 }
