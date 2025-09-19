@@ -31,6 +31,7 @@ const LoginPageStyled = styled.div`
     background-position: center center;
     display: flex;
     align-items: center;
+
     .login-container {
         width: 50%;
         display: flex;
@@ -65,7 +66,16 @@ const LoginPageStyled = styled.div`
             }
         }
     }
-    
+
+    .copyright-container {
+        align-self: flex-end;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: ${theme.colors.white};
+        font-size: ${theme.fonts.size.SM};
+    }
 
     @media (max-width: 1280px) {
         .login-container {
