@@ -4,6 +4,7 @@ import background from "@/assets/burger-right-background.jpg"
 import { Logo } from "@/components/ui/Logo";
 import { theme } from "@/theme/theme";
 import { backInBounce, fadeInBottom, slideInSpace } from "@/theme/animations";
+import { CopyrightContainer } from "./CopyrightContainer";
 
 const LoginPage = () => {
     return (
@@ -16,10 +17,7 @@ const LoginPage = () => {
                     </div>
                 </div>
             </div>
-            <div className="copyright-container">
-                <p>© 2025 Groovy Burger — Tous droits réservés</p>
-                <p>Made with ❤️</p>
-            </div>
+            <CopyrightContainer />
         </LoginPageStyled>
     )
 }
@@ -73,25 +71,6 @@ const LoginPageStyled = styled.div`
                     animation: ${fadeInBottom} ${theme.animations.speed.quick} ease-out;
                 }
             }
-        }
-    }
-        
-
-    .copyright-container {
-        width: 100%;
-        align-self: flex-end;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 30px;
-
-        p {
-            color: ${theme.colors.white};
-            font-size: ${theme.fonts.size.SM};
-            font-weight: ${theme.fonts.weights.regular};
-            margin: 0;
         }
     }
 
