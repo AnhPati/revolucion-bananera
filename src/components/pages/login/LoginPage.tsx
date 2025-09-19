@@ -9,9 +9,11 @@ const LoginPage = () => {
     return (
         <LoginPageStyled>
             <div className="login-container">
-                <div className="login-content">
-                    <Logo className={'login_page-logo'} />
-                    <LoginForm />
+                <div className="login-container-left-side">
+                    <div className="login-content">
+                        <Logo className={'login_page-logo'} />
+                        <LoginForm />
+                    </div>
                 </div>
             </div>
             <div className="copyright-container">
@@ -30,68 +32,79 @@ const LoginPageStyled = styled.div`
     background-size: cover;
     background-position: center center;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 
     .login-container {
-        width: 50%;
+        width: 100%;
+        flex: 1;
         display: flex;
-        justify-content: end;
 
-        .login-content {
+        .login-container-left-side {
+            width: 50%;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 0 100px;
+            justify-content: end;
 
-            .login_page-logo {
-                transform: scale(2.5);
-                margin: 40px 0;
+            .login-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0 140px;
 
-                h1:first-child {
-                    animation: ${slideInSpace("60%", "-20%", "0%")} ${theme.animations.speed.quick} ease-out;
+                .login_page-logo {
+                    transform: scale(2.5);
+                    margin: 40px 0;
+
+                    h1:first-child {
+                        animation: ${slideInSpace("60%", "-20%", "0%")} ${theme.animations.speed.quick} ease-out;
+                    }
+
+                    h1:last-child {
+                        animation: ${slideInSpace("-60%", "20%", "0%")} ${theme.animations.speed.quick} ease-out;
+                    }
+
+                    .img-container {
+                        animation: ${backInBounce} ${theme.animations.speed.quick} ease-out;
+                    }
                 }
 
-                h1:last-child {
-                    animation: ${slideInSpace("-60%", "20%", "0%")} ${theme.animations.speed.quick} ease-out;
+                form {
+                    animation: ${fadeInBottom} ${theme.animations.speed.quick} ease-out;
                 }
-
-                .img-container {
-                    animation: ${backInBounce} ${theme.animations.speed.quick} ease-out;
-                }
-            }
-
-            form {
-                animation: ${fadeInBottom} ${theme.animations.speed.quick} ease-out;
             }
         }
     }
+        
 
     .copyright-container {
+        width: 100%;
         align-self: flex-end;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        color: ${theme.colors.white};
-        font-size: ${theme.fonts.size.SM};
+        gap: 10px;
+        margin-bottom: 30px;
+
+        p {
+            color: ${theme.colors.white};
+            font-size: ${theme.fonts.size.SM};
+            font-weight: ${theme.fonts.weights.regular};
+            margin: 0;
+        }
     }
 
     @media (max-width: 1280px) {
-        .login-container {
+        .login-container .login-container-left-side {
             width: 100%;
             justify-content: center;
         }
     }
 
     @media (max-width: 600px) {
-        .login-container {
-            .login-content {
-            .login_page-logo {    
-                transform: scale(1.4);
-            }
-
-            }
+        .login-container .login-container-left-side .login-content .login_page-logo {    
+            transform: scale(1.4);
         }
     }
 `;
