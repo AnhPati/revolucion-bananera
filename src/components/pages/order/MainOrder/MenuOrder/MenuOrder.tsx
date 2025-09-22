@@ -7,7 +7,7 @@ import EmptyMenu from "./EmptyMenu";
 import { checkCardIsSelected } from "./helpers/checkCardIsSelected";
 import { DEFAULT_IMG, UNAVAILABLE_PRODUCT_IMG } from "@/constants/product";
 import { findObjectById, isEmptyArray } from "@/utils/array";
-import { Loader } from "./Loader";
+import { MessageLoader } from "./MessageLoader";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { ProductCardAnimation } from "@/theme/animations";
 import { convertStringToBoolean } from "@/utils/string";
@@ -64,7 +64,7 @@ export const MenuOrder = () => {
     return (
         <>
             {isLoading ? (
-                <Loader />
+                <MessageLoader />
             ) : isEmptyArray(products) ? (
                 <EmptyMenu />
             ) : (

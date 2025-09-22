@@ -1,15 +1,15 @@
 import { theme } from '@/theme/theme';
 import styled from 'styled-components';
 
-export const Loader = () => {
+export const MessageLoader = () => {
     return (
-        <LoaderStyled>
+        <MessageLoaderStyled>
             <h1>Chargement en cours ...</h1>
-        </LoaderStyled>
+        </MessageLoaderStyled>
     )
 }
 
-const LoaderStyled = styled.div`
+const MessageLoaderStyled = styled.div`
     height: 100%;
     width: 100%;
     display: flex;
