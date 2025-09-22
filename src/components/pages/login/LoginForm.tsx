@@ -64,6 +64,8 @@ export const LoginForm = () => {
             {isSubmitting ? (
                 <Button
                     Icon={RiLoader4Line}
+                    isLoading={true}
+                    disabled
                 />
             ) : (
                 <Button
@@ -103,8 +105,6 @@ const LoginFormStyled = styled.form<LoginFormStyledProps>`
 
 const submittingStyles = css`
     button {
-        pointer-events: none;
-
         svg {
             animation: ${rotate} ${theme.animations.speed.normal} infinite ease-in-out;
         }
