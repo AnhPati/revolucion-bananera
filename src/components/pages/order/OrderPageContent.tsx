@@ -10,11 +10,13 @@ import { AdminModalShortcuts } from "./MainOrder/AdminPanel/AdminModalShortcuts"
 import styled from "styled-components";
 import { theme } from "@/theme/theme";
 import { setLocalStorage } from "@/utils/windows";
+import { useKeyboardShortcuts } from "@/hooks/useShortcuts";
 
 export const OrderPageContent = () => {
     const {
         userId,
         adminMode,
+        setAdminMode,
         isVisibleModalShortcuts,
         setIsVisibleModalShortcuts,
         setProducts,
@@ -43,18 +45,23 @@ export const OrderPageContent = () => {
         setLocalStorage(`shortcuts-${userId}`, false)
     }
 
-    const handleShortcuts = (e: KeyboardEvent) => {
-        const key = e.metaKey || e.ctrlKey
+    useKeyboardShortcuts("i", () => setAdminMode({
+        ...adminMode,
+        isAdminMode: !adminMode.isAdminMode
+    })
+    )
 
-        if (key && e.key.toLocaleLowerCase() === "i") console.log("Shortcut")
-    }
+    useKeyboardShortcuts("j", () => {
+        if (!adminMode.isAdminMode) return
 
-    useEffect(() => {
-        window.addEventListener("keydown", handleShortcuts)
-        return () => {
-            window.removeEventListener("keydown", handleShortcuts)
-        }
-    }, [])
+        setAdminMode({
+            ...adminMode,
+            adminPanel: {
+                ...adminMode.adminPanel,
+                isOpen: !adminMode.adminPanel.isOpen
+            }
+        })
+    })
 
     return (
         <>
