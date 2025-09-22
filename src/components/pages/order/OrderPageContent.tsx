@@ -9,10 +9,14 @@ import { CSSTransition } from "react-transition-group";
 import { AdminModalShortcuts } from "./MainOrder/AdminPanel/AdminModalShortcuts";
 import styled from "styled-components";
 import { theme } from "@/theme/theme";
+import { getLocalStorage, setLocalStorage } from "@/utils/windows";
 
 export const OrderPageContent = () => {
     const { userId, adminMode, setProducts, setBasketProducts, setOrders, orders, orderStatut } = useOrderContext()
-    const [isVisibleModalShortcuts, setIsVisibleModalShortcuts] = useState(true)
+    const [isVisibleModalShortcuts, setIsVisibleModalShortcuts] = useState<boolean>(() => {
+        const isVisible = getLocalStorage(`shortcuts-${userId}`)
+        return typeof isVisible === "boolean" ? isVisible : true
+    })
 
     useEffect(() => {
         if (userId) initialiseUserSession(userId, adminMode.isAdminMode, setProducts, setBasketProducts, setOrders)
@@ -30,11 +34,12 @@ export const OrderPageContent = () => {
 
     const hideModalShortcuts = () => {
         setIsVisibleModalShortcuts(false)
+        setLocalStorage(`shortcuts-${userId}`, false)
     }
 
     return (
         <>
-            {/* {adminMode.isAdminMode && */ isVisibleModalShortcuts && <AdminModalShortcuts
+            {adminMode.isAdminMode && isVisibleModalShortcuts && <AdminModalShortcuts
                 className={'shortcuts'}
                 onClick={hideModalShortcuts}
             />}
