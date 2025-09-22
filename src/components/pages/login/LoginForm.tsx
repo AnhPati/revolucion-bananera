@@ -13,9 +13,11 @@ import { rotate } from "@/theme/animations";
 import { loginFormSchema } from "./validators/loginFormValidator";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 
+type Status = "success" | "loading" | "error" | "idle"
+
 export const LoginForm = () => {
     const [username, setUsername] = useState<string>('')
-    const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+    const [status, setStatus] = useState<Status>("idle")
     const [errorMessage, setErrorMessage] = useState<string>('')
     const navigate = useNavigate()
 
@@ -28,11 +30,16 @@ export const LoginForm = () => {
 
 
         const validation = loginFormSchema.safeParse({ username })
-        if (!validation.success) return setErrorMessage(validation.error.issues[0].message)
+        if (!validation.success) {
+            setStatus("error")
+            setErrorMessage(validation.error.issues[0].message)
+            return
+        }
 
-        setIsSubmitting(true)
-        setTimeout(async () => {
-            const userReceived = await authenticateUser(username)
+        setStatus("loading")
+        const userReceived = await authenticateUser(username)
+
+        setTimeout(() => {
 
             setUsername('')
             navigate('/order', {
@@ -41,12 +48,12 @@ export const LoginForm = () => {
                 }
             })
 
-            setIsSubmitting(false)
+            setStatus("success")
         }, 2000)
     }
 
     return (
-        <LoginFormStyled action="submit" onSubmit={handleSubmit} $isSubmitting={isSubmitting} noValidate>
+        <LoginFormStyled action="submit" onSubmit={handleSubmit} $isSubmitting={status === "loading"} noValidate>
             <LoginFormTitle />
             <TextInput
                 value={username}
@@ -55,13 +62,13 @@ export const LoginForm = () => {
                 required
                 Icon={BsPersonCircle}
             />
-            {errorMessage && (
+            {status === "error" && (
                 <ErrorMessage
                     className={"error-soumission-message"}
                     message={errorMessage}
                 />
             )}
-            {isSubmitting ? (
+            {status === "loading" ? (
                 <Button
                     Icon={RiLoader4Line}
                     isLoading={true}
