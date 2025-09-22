@@ -43,6 +43,19 @@ export const OrderPageContent = () => {
         setLocalStorage(`shortcuts-${userId}`, false)
     }
 
+    const handleShortcuts = (e: KeyboardEvent) => {
+        const key = e.metaKey || e.ctrlKey
+
+        if (key && e.key.toLocaleLowerCase() === "i") console.log("Shortcut")
+    }
+
+    useEffect(() => {
+        window.addEventListener("keydown", handleShortcuts)
+        return () => {
+            window.removeEventListener("keydown", handleShortcuts)
+        }
+    }, [])
+
     return (
         <>
             {adminMode.isAdminMode && isVisibleModalShortcuts && <AdminModalShortcuts
