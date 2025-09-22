@@ -27,7 +27,7 @@ const AdminShortcutsStyled = styled.div`
     position: absolute;
     top: 40px;
     left: 40px;
-    z-index: 1;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     gap: ${theme.spacing.sm};
@@ -60,5 +60,15 @@ const AdminShortcutsStyled = styled.div`
         color: ${theme.colors.white};
         border: 1px solid ${theme.colors.white};
         border-radius: 25px;
+
+        &:hover {
+            cursor: pointer;
+            color: ${theme.colors.primary};
+            border-color: ${theme.colors.primary};
+        }
+
+        &:active {
+            opacity: .5;
+        }
     }
 `;
