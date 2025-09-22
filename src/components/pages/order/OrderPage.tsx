@@ -19,7 +19,7 @@ export default OrderPage
 const OrderPageStyled = styled.div`
     position: relative;
     height: 100vh;
-    background: ${theme.colors.primary};
+    background: ${theme.colors.greyBlue};
     display: flex;
     justify-content: center;
     align-items: center;
