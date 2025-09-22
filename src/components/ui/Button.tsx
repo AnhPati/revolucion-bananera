@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { theme } from "@/theme/theme";
 import { IconType } from "react-icons";
 import { ComponentProps } from "react";
+import { Loader } from "./Loader";
 
 type ButtonVariant = "primary" | "success"
 
@@ -15,7 +16,11 @@ type ButtonProps = {
 export const Button = ({ label, Icon, onClick, variant = 'primary', isLoading, ...optionalsProps }: ButtonProps) => {
     return (
         <ButtonStyled onClick={onClick} $variant={variant} $isLoading={isLoading} {...optionalsProps}>
-            {label}{Icon && <Icon />}
+            {isLoading ? (
+                <Loader />
+            ) : (
+                <>{label}{Icon && <Icon />}</>
+            )}
         </ButtonStyled>
     )
 }

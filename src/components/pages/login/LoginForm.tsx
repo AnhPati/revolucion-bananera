@@ -2,14 +2,12 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
-import { RiLoader4Line } from "react-icons/ri";
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { theme } from "@/theme/theme"
 import { TextInput } from "@/components/ui/TextInput";
 import { Button } from "@/components/ui/Button";
 import { authenticateUser } from "@/api/user";
 import { LoginFormTitle } from "./LoginFormTitle";
-import { rotate } from "@/theme/animations";
 import { loginFormSchema } from "./validators/loginFormValidator";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 
@@ -53,7 +51,7 @@ export const LoginForm = () => {
     }
 
     return (
-        <LoginFormStyled action="submit" onSubmit={handleSubmit} $isSubmitting={status === "loading"} noValidate>
+        <LoginFormStyled action="submit" onSubmit={handleSubmit} noValidate>
             <LoginFormTitle />
             <TextInput
                 value={username}
@@ -68,27 +66,18 @@ export const LoginForm = () => {
                     message={errorMessage}
                 />
             )}
-            {status === "loading" ? (
-                <Button
-                    Icon={RiLoader4Line}
-                    isLoading={true}
-                    disabled
-                />
-            ) : (
-                <Button
-                    label={'Accéder à mon espace'}
-                    Icon={IoChevronForward}
-                />
-            )}
+
+            <Button
+                label={'Accéder à mon espace'}
+                Icon={IoChevronForward}
+                isLoading={status === "loading"}
+                disabled={status === "loading"}
+            />
         </LoginFormStyled>
     )
 }
 
-type LoginFormStyledProps = {
-    $isSubmitting: boolean
-}
-
-const LoginFormStyled = styled.form<LoginFormStyledProps>`
+const LoginFormStyled = styled.form`
     width: ${theme.gridUnit * 50}px;
     display: flex;
     flex-direction: column;
@@ -105,15 +94,5 @@ const LoginFormStyled = styled.form<LoginFormStyledProps>`
 
     @media (max-width: 600px) {
         width: ${theme.gridUnit * 40}px;
-    }
-
-    ${(({ $isSubmitting }) => $isSubmitting && submittingStyles)}
-`
-
-const submittingStyles = css`
-    button {
-        svg {
-            animation: ${rotate} ${theme.animations.speed.normal} infinite ease-in-out;
-        }
     }
 `
