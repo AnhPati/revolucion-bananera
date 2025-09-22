@@ -1,9 +1,14 @@
 import { theme } from "@/theme/theme";
 import styled from "styled-components";
 
-export const AdminShortcuts = () => {
+type AdminModalShortcutsProps = {
+    className?: string,
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
+}
+
+export const AdminModalShortcuts = ({ className, onClick }: AdminModalShortcutsProps) => {
     return (
-        <AdminShortcutsStyled>
+        <AdminShortcutsStyled className={className}>
             <p className="shortcuts-title">
                 💡 Pour aller plus vite :
             </p>
@@ -13,7 +18,7 @@ export const AdminShortcuts = () => {
             <p className="shortcuts-info">
                 ⌘ + j : Toggle "panel" admin
             </p>
-            <button>Ne plus afficher</button>
+            <button onClick={onClick}>Ne plus afficher</button>
         </AdminShortcutsStyled>
     )
 }

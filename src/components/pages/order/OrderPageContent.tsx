@@ -1,17 +1,18 @@
 import { useOrderContext } from "@/contexts/OrderContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { initialiseUserSession } from "./helpers/initialiseUserSession";
 import OrderConfirm from "./OrderConfirm";
 import Navbar from "./Navbar/Navbar";
 import { MainOrder } from "./MainOrder/MainOrder";
 import { getOrders } from "@/api/orders";
 import { CSSTransition } from "react-transition-group";
-import { AdminShortcuts } from "./MainOrder/AdminPanel/AdminShortcuts";
+import { AdminModalShortcuts } from "./MainOrder/AdminPanel/AdminModalShortcuts";
 import styled from "styled-components";
 import { theme } from "@/theme/theme";
 
 export const OrderPageContent = () => {
     const { userId, adminMode, setProducts, setBasketProducts, setOrders, orders, orderStatut } = useOrderContext()
+    const [isVisibleModalShortcuts, setIsVisibleModalShortcuts] = useState(true)
 
     useEffect(() => {
         if (userId) initialiseUserSession(userId, adminMode.isAdminMode, setProducts, setBasketProducts, setOrders)
@@ -27,9 +28,16 @@ export const OrderPageContent = () => {
         }
     }, [adminMode.isAdminMode])
 
+    const hideModalShortcuts = () => {
+        setIsVisibleModalShortcuts(false)
+    }
+
     return (
         <>
-            <AdminShortcuts />
+            {/* {adminMode.isAdminMode && */ isVisibleModalShortcuts && <AdminModalShortcuts
+                className={'shortcuts'}
+                onClick={hideModalShortcuts}
+            />}
             <OrderPageContentStyled>
                 <CSSTransition
                     in={orderStatut === 'pending'}
