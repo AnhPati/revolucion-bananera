@@ -1,11 +1,14 @@
+import { isBasketProductArray } from "@/guards/productGuards"
 import { BasketProduct } from "@/types/Product"
+import { getLocalStorage, setLocalStorage } from "@/utils/windows"
 
 export const syncBasketProducts = (userId: string, newProducts: BasketProduct[]) => {
-    localStorage.setItem(userId, JSON.stringify(newProducts))
+    setLocalStorage(userId, newProducts)
 }
 
 export const getUserBasketProducts = (userId: string): BasketProduct[] | undefined => {
-    const item = localStorage.getItem(userId)
+    const basketProducts = getLocalStorage(userId)
+    if (isBasketProductArray(basketProducts)) return basketProducts
 
-    return item ? JSON.parse(item) as BasketProduct[] : undefined
+    return undefined
 }

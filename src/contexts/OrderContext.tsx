@@ -10,6 +10,8 @@ type OrderContextType = {
     userId: string,
     adminMode: AdminModeInfos,
     setAdminMode: React.Dispatch<React.SetStateAction<AdminModeInfos>>,
+    isVisibleModalShortcuts: boolean,
+    setIsVisibleModalShortcuts: React.Dispatch<React.SetStateAction<boolean>>,
 
     products: Product[] | undefined,
     setProducts: React.Dispatch<React.SetStateAction<Product[] | undefined>>,
@@ -52,6 +54,8 @@ export const OrderContextProvider = ({ children }: PropsWithChildren) => {
         userId: adminProductsData.userId,
         adminMode: adminProductsData.adminMode,
         setAdminMode: adminProductsData.setAdminMode,
+        isVisibleModalShortcuts: adminProductsData.isVisibleModalShortcuts,
+        setIsVisibleModalShortcuts: adminProductsData.setIsVisibleModalShortcuts,
         products: adminProductsData.products,
         setProducts: adminProductsData.setProducts,
         handleAddProduct: adminProductsData.handleAddProduct,

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Logo } from '@/components/ui/Logo'
-import { windowRefresh } from '@/utils/windowsRefresh'
+import { windowRefresh } from '@/utils/windows'
 import { theme } from '@/theme/theme'
 import NavbarRightSide from './NavbarRightSide'
 

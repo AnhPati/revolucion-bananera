@@ -7,11 +7,9 @@ import { OverlayMessageAnimation } from "@/theme/animations";
 const OrderPage = () => {
     return (
         <OrderPageStyled>
-            <div className={'order-container'}>
-                <OrderContextProvider>
-                    <OrderPageContent />
-                </OrderContextProvider>
-            </div>
+            <OrderContextProvider>
+                <OrderPageContent />
+            </OrderContextProvider>
         </OrderPageStyled>
     )
 }
@@ -19,20 +17,12 @@ const OrderPage = () => {
 export default OrderPage
 
 const OrderPageStyled = styled.div`
+    position: relative;
     height: 100vh;
-    background: ${theme.colors.primary};
+    background: ${theme.colors.greyBlue};
     display: flex;
     justify-content: center;
     align-items: center;
 
     ${OverlayMessageAnimation}
-
-    .order-container {
-        width: 1400px;
-        height: 95vh;
-        display: flex;
-        flex-direction: column;
-        background: ${theme.colors.background_white};
-        border-radius: ${theme.borderRadius.extraRound};
-    }
 `;

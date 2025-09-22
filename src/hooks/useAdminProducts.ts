@@ -6,6 +6,7 @@ import { syncProducts } from "@/api/product"
 import { useLocation } from "react-router-dom"
 import { Product } from "@/types/Product"
 import { AdminModeInfos } from "@/types/Admin"
+import { getLocalStorage } from "@/utils/windows"
 
 export const useAdminProducts = () => {
     const userId: string = useLocation().state.username
@@ -17,6 +18,10 @@ export const useAdminProducts = () => {
             tabSelected: 'tab-add',
             cardSelected: null
         }
+    })
+    const [isVisibleModalShortcuts, setIsVisibleModalShortcuts] = useState<boolean>(() => {
+        const isVisible = getLocalStorage(`shortcuts-${userId}`)
+        return typeof isVisible === "boolean" ? isVisible : true
     })
     const [productSelected, setProductSelected] = useState<Product>(EMPTY_PRODUCT)
     const titleInputRef = useRef<HTMLInputElement | null>(null)
@@ -90,6 +95,8 @@ export const useAdminProducts = () => {
         userId,
         adminMode,
         setAdminMode,
+        isVisibleModalShortcuts,
+        setIsVisibleModalShortcuts,
         products,
         setProducts,
         handleAddProduct,
