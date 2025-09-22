@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { authenticateUser } from "@/api/user";
 import { LoginFormTitle } from "./LoginFormTitle";
 import { rotate } from "@/theme/animations";
-import { validateLoginForm } from "./validators/loginFormValidator";
+import { loginFormSchema } from "./validators/loginFormValidator";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 
 export const LoginForm = () => {
@@ -26,8 +26,9 @@ export const LoginForm = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        const loginError = validateLoginForm(username)
-        if (loginError) return setErrorMessage(loginError)
+
+        const validation = loginFormSchema.safeParse({ username })
+        if (!validation.success) return setErrorMessage(validation.error.issues[0].message)
 
         setIsSubmitting(true)
         setTimeout(async () => {
