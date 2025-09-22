@@ -1,5 +1,5 @@
 import { useOrderContext } from "@/contexts/OrderContext";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { initialiseUserSession } from "./helpers/initialiseUserSession";
 import OrderConfirm from "./OrderConfirm";
 import Navbar from "./Navbar/Navbar";
@@ -9,14 +9,20 @@ import { CSSTransition } from "react-transition-group";
 import { AdminModalShortcuts } from "./MainOrder/AdminPanel/AdminModalShortcuts";
 import styled from "styled-components";
 import { theme } from "@/theme/theme";
-import { getLocalStorage, setLocalStorage } from "@/utils/windows";
+import { setLocalStorage } from "@/utils/windows";
 
 export const OrderPageContent = () => {
-    const { userId, adminMode, setProducts, setBasketProducts, setOrders, orders, orderStatut } = useOrderContext()
-    const [isVisibleModalShortcuts, setIsVisibleModalShortcuts] = useState<boolean>(() => {
-        const isVisible = getLocalStorage(`shortcuts-${userId}`)
-        return typeof isVisible === "boolean" ? isVisible : true
-    })
+    const {
+        userId,
+        adminMode,
+        isVisibleModalShortcuts,
+        setIsVisibleModalShortcuts,
+        setProducts,
+        setBasketProducts,
+        setOrders,
+        orders,
+        orderStatut
+    } = useOrderContext()
 
     useEffect(() => {
         if (userId) initialiseUserSession(userId, adminMode.isAdminMode, setProducts, setBasketProducts, setOrders)
