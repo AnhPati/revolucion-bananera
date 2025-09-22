@@ -4,19 +4,19 @@ import { useOrderContext } from "@/contexts/OrderContext"
 import styled from "styled-components"
 import { theme } from "@/theme/theme"
 
-export const MainRightSide = () => {
+export const MainLeftSide = () => {
     const { adminMode } = useOrderContext()
     const isAdminMode = adminMode.isAdminMode
 
     return (
-        <MainRightSideStyled>
+        <MainLeftSideStyled>
             <MenuOrder />
             {isAdminMode && <AdminPanel />}
-        </MainRightSideStyled>
+        </MainLeftSideStyled>
     )
 }
 
-const MainRightSideStyled = styled.div`
+const MainLeftSideStyled = styled.div`
     position: relative;
     display: grid;
     box-shadow: ${theme.shadows.strong};
