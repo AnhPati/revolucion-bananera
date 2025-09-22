@@ -1,5 +1,7 @@
 import { theme } from "@/theme/theme";
 import styled from "styled-components";
+import { getShortcutKey } from "./helpers/getShortcutKey";
+import { getOS } from "@/utils/windows";
 
 type AdminModalShortcutsProps = {
     className?: string,
@@ -7,16 +9,17 @@ type AdminModalShortcutsProps = {
 }
 
 export const AdminModalShortcuts = ({ className, onClick }: AdminModalShortcutsProps) => {
+    const userOS = getOS()
     return (
         <AdminShortcutsStyled className={className}>
             <p className="shortcuts-title">
                 💡 Pour aller plus vite :
             </p>
             <p className="shortcuts-info">
-                ⌘ + i : Toggle "mode" admin
+                {getShortcutKey(userOS)} + i : Toggle "mode" admin
             </p>
             <p className="shortcuts-info">
-                ⌘ + j : Toggle "panel" admin
+                {getShortcutKey(userOS)} + j : Toggle "panel" admin
             </p>
             <button onClick={onClick}>Ne plus afficher</button>
         </AdminShortcutsStyled>
