@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { authenticateUser } from "@/api/user";
 import { LoginFormTitle } from "./LoginFormTitle";
 import { rotate } from "@/theme/animations";
-import { validateLoginForm } from "./helpers/validateLoginForm";
+import { validateLoginForm } from "./validators/loginFormValidator";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 
 export const LoginForm = () => {
