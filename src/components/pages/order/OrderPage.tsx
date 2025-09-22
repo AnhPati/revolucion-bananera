@@ -3,17 +3,13 @@ import { theme } from "@/theme/theme";
 import { OrderContextProvider } from "@/contexts/OrderContext";
 import { OrderPageContent } from "./OrderPageContent";
 import { OverlayMessageAnimation } from "@/theme/animations";
-import { AdminShortcuts } from "./MainOrder/AdminPanel/AdminShortcuts";
 
 const OrderPage = () => {
     return (
         <OrderPageStyled>
-            <AdminShortcuts />
-            <div className={'order-container'}>
-                <OrderContextProvider>
-                    <OrderPageContent />
-                </OrderContextProvider>
-            </div>
+            <OrderContextProvider>
+                <OrderPageContent />
+            </OrderContextProvider>
         </OrderPageStyled>
     )
 }
@@ -29,13 +25,4 @@ const OrderPageStyled = styled.div`
     align-items: center;
 
     ${OverlayMessageAnimation}
-
-    .order-container {
-        width: 1400px;
-        height: 95vh;
-        display: flex;
-        flex-direction: column;
-        background: ${theme.colors.background_white};
-        border-radius: ${theme.borderRadius.extraRound};
-    }
 `;
