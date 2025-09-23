@@ -2,20 +2,20 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
-import { RiLoader4Line } from "react-icons/ri";
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { theme } from "@/theme/theme"
 import { TextInput } from "@/components/ui/TextInput";
 import { Button } from "@/components/ui/Button";
 import { authenticateUser } from "@/api/user";
 import { LoginFormTitle } from "./LoginFormTitle";
-import { rotate } from "@/theme/animations";
-import { validateLoginForm } from "./helpers/validateLoginForm";
+import { loginFormSchema } from "./validators/loginFormValidator";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
+
+type Status = "success" | "loading" | "error" | "idle"
 
 export const LoginForm = () => {
     const [username, setUsername] = useState<string>('')
-    const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+    const [status, setStatus] = useState<Status>("idle")
     const [errorMessage, setErrorMessage] = useState<string>('')
     const navigate = useNavigate()
 
@@ -26,12 +26,18 @@ export const LoginForm = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        const loginError = validateLoginForm(username)
-        if (loginError) return setErrorMessage(loginError)
 
-        setIsSubmitting(true)
-        setTimeout(async () => {
-            const userReceived = await authenticateUser(username)
+        const validation = loginFormSchema.safeParse({ username })
+        if (!validation.success) {
+            setStatus("error")
+            setErrorMessage(validation.error.issues[0].message)
+            return
+        }
+
+        setStatus("loading")
+        const userReceived = await authenticateUser(username)
+
+        setTimeout(() => {
 
             setUsername('')
             navigate('/order', {
@@ -40,12 +46,12 @@ export const LoginForm = () => {
                 }
             })
 
-            setIsSubmitting(false)
+            setStatus("success")
         }, 2000)
     }
 
     return (
-        <LoginFormStyled action="submit" onSubmit={handleSubmit} $isSubmitting={isSubmitting} noValidate>
+        <LoginFormStyled action="submit" onSubmit={handleSubmit} noValidate>
             <LoginFormTitle />
             <TextInput
                 value={username}
@@ -54,31 +60,24 @@ export const LoginForm = () => {
                 required
                 Icon={BsPersonCircle}
             />
-            {errorMessage && (
+            {status === "error" && (
                 <ErrorMessage
                     className={"error-soumission-message"}
                     message={errorMessage}
                 />
             )}
-            {isSubmitting ? (
-                <Button
-                    Icon={RiLoader4Line}
-                />
-            ) : (
-                <Button
-                    label={'Accéder à mon espace'}
-                    Icon={IoChevronForward}
-                />
-            )}
+
+            <Button
+                label={'Accéder à mon espace'}
+                Icon={IoChevronForward}
+                isLoading={status === "loading"}
+                disabled={status === "loading"}
+            />
         </LoginFormStyled>
     )
 }
 
-type LoginFormStyledProps = {
-    $isSubmitting: boolean
-}
-
-const LoginFormStyled = styled.form<LoginFormStyledProps>`
+const LoginFormStyled = styled.form`
     width: ${theme.gridUnit * 50}px;
     display: flex;
     flex-direction: column;
@@ -95,17 +94,5 @@ const LoginFormStyled = styled.form<LoginFormStyledProps>`
 
     @media (max-width: 600px) {
         width: ${theme.gridUnit * 40}px;
-    }
-
-    ${(({ $isSubmitting }) => $isSubmitting && submittingStyles)}
-`
-
-const submittingStyles = css`
-    button {
-        pointer-events: none;
-
-        svg {
-            animation: ${rotate} ${theme.animations.speed.normal} infinite ease-in-out;
-        }
     }
 `

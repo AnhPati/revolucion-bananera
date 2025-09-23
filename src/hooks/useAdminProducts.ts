@@ -19,7 +19,7 @@ export const useAdminProducts = () => {
             cardSelected: null
         }
     })
-    const [isVisibleModalShortcuts, setIsVisibleModalShortcuts] = useState<boolean>(() => {
+    const [isAdminShortcutsModalVisible, setIsAdminShortcutsModalVisible] = useState<boolean>(() => {
         const isVisible = getLocalStorage(`shortcuts-${userId}`)
         return typeof isVisible === "boolean" ? isVisible : true
     })
@@ -95,8 +95,8 @@ export const useAdminProducts = () => {
         userId,
         adminMode,
         setAdminMode,
-        isVisibleModalShortcuts,
-        setIsVisibleModalShortcuts,
+        isAdminShortcutsModalVisible,
+        setIsAdminShortcutsModalVisible,
         products,
         setProducts,
         handleAddProduct,

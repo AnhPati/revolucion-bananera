@@ -6,23 +6,48 @@ import Navbar from "./Navbar/Navbar";
 import { MainOrder } from "./MainOrder/MainOrder";
 import { getOrders } from "@/api/orders";
 import { CSSTransition } from "react-transition-group";
-import { AdminModalShortcuts } from "./MainOrder/AdminPanel/AdminModalShortcuts";
+import { AdminShortcutsModal } from "./MainOrder/AdminPanel/AdminShortcutsModal";
 import styled from "styled-components";
 import { theme } from "@/theme/theme";
 import { setLocalStorage } from "@/utils/windows";
+import { useKeyboardShortcuts } from "@/hooks/useShortcuts";
 
 export const OrderPageContent = () => {
     const {
         userId,
         adminMode,
-        isVisibleModalShortcuts,
-        setIsVisibleModalShortcuts,
+        setAdminMode,
+        isAdminShortcutsModalVisible,
+        setIsAdminShortcutsModalVisible,
         setProducts,
         setBasketProducts,
         setOrders,
         orders,
         orderStatut
     } = useOrderContext()
+
+    const hideModalShortcuts = () => {
+        setIsAdminShortcutsModalVisible(false)
+        setLocalStorage(`shortcuts-${userId}`, false)
+    }
+
+    useKeyboardShortcuts("i", () => setAdminMode({
+        ...adminMode,
+        isAdminMode: !adminMode.isAdminMode
+    })
+    )
+
+    useKeyboardShortcuts("j", () => {
+        if (!adminMode.isAdminMode) return
+
+        setAdminMode({
+            ...adminMode,
+            adminPanel: {
+                ...adminMode.adminPanel,
+                isOpen: !adminMode.adminPanel.isOpen
+            }
+        })
+    })
 
     useEffect(() => {
         if (userId) initialiseUserSession(userId, adminMode.isAdminMode, setProducts, setBasketProducts, setOrders)
@@ -38,14 +63,9 @@ export const OrderPageContent = () => {
         }
     }, [adminMode.isAdminMode])
 
-    const hideModalShortcuts = () => {
-        setIsVisibleModalShortcuts(false)
-        setLocalStorage(`shortcuts-${userId}`, false)
-    }
-
     return (
         <>
-            {adminMode.isAdminMode && isVisibleModalShortcuts && <AdminModalShortcuts
+            {adminMode.isAdminMode && isAdminShortcutsModalVisible && <AdminShortcutsModal
                 className={'shortcuts'}
                 onClick={hideModalShortcuts}
             />}

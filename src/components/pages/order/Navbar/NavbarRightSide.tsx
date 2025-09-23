@@ -36,7 +36,12 @@ export default function NavbarRightSide() {
   return (
     <NavbarRightSideStyled>
       <AdminToast />
-      <ToggleButton labelIfChecked={toggleLabelChecked} labelIfUnchecked={toggleLabelUnchecked} onToggle={displayAdminToast} />
+      <ToggleButton
+        labelIfChecked={toggleLabelChecked}
+        labelIfUnchecked={toggleLabelUnchecked}
+        onToggle={displayAdminToast}
+        isChecked={adminMode.isAdminMode}
+      />
       <NavbarProfile />
     </NavbarRightSideStyled>
   )

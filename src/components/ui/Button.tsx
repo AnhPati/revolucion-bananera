@@ -2,25 +2,32 @@ import styled, { css } from "styled-components";
 import { theme } from "@/theme/theme";
 import { IconType } from "react-icons";
 import { ComponentProps } from "react";
+import { Loader } from "./Loader";
 
 type ButtonVariant = "primary" | "success"
 
 type ButtonProps = {
     label?: string,
     Icon?: IconType,
-    variant?: ButtonVariant
+    variant?: ButtonVariant,
+    isLoading?: boolean
 } & ComponentProps<"button">
 
-export const Button = ({ label, Icon, onClick, variant = 'primary', ...optionalsProps }: ButtonProps) => {
+export const Button = ({ label, Icon, onClick, variant = 'primary', isLoading, ...optionalsProps }: ButtonProps) => {
     return (
-        <ButtonStyled onClick={onClick} $variant={variant} {...optionalsProps}>
-            {label}{Icon && <Icon />}
+        <ButtonStyled onClick={onClick} $variant={variant} $isLoading={isLoading} {...optionalsProps}>
+            {isLoading ? (
+                <Loader />
+            ) : (
+                <>{label}{Icon && <Icon />}</>
+            )}
         </ButtonStyled>
     )
 }
 
 type ButtonStyledProps = {
-    $variant: ButtonVariant
+    $variant: ButtonVariant,
+    $isLoading?: boolean
 }
 
 const ButtonStyled = styled.button<ButtonStyledProps>`
@@ -48,7 +55,19 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
     }
 
     ${({ $variant }) => ButtonStyles[$variant]}
-`;
+    ${({ $isLoading }) => $isLoading && loadingStyles}
+`
+
+const normalInteractionsStyles = css`
+    &:hover {
+        color: ${theme.colors.primary};
+        background: ${theme.colors.white};
+    }
+    &:active {
+        color: ${theme.colors.white};
+        background: ${theme.colors.primary};
+    }
+`
 
 const extraNormalStyles = css`
     width: 100%;
@@ -57,31 +76,33 @@ const extraNormalStyles = css`
     background: ${theme.colors.primary};
     border-color: ${theme.colors.primary};
 
-    &:hover {
-        color: ${theme.colors.primary};
-        background: ${theme.colors.white};
-    }
-
-    &:active {
-        color: ${theme.colors.white};
-        background: ${theme.colors.primary};
-    }
+    ${normalInteractionsStyles}
 `
+
+const successInteractionsStyles = css`
+      &:hover {
+          color: ${theme.colors.success};
+          background: ${theme.colors.white};
+      }
+      &:active {
+          color: ${theme.colors.white};
+          background: ${theme.colors.success};
+      }
+  `
 
 const extraSuccessStyles = css`
     padding: ${theme.gridUnit * 1.25}px 29px;
     background: ${theme.colors.success};
     border-color: ${theme.colors.success};
 
-    &:hover {
-        color: ${theme.colors.success};
-        background: ${theme.colors.white};
-    }
+    ${successInteractionsStyles}
+`
 
-    &:active {
-        color: ${theme.colors.white};
-        background: ${theme.colors.success};
-    }
+const loadingStyles = css<ButtonStyledProps>`
+    opacity: 1!important;
+    cursor: progress!important;
+    ${({ $variant }) => $variant === 'primary' && normalInteractionsStyles}
+    ${({ $variant }) => $variant === 'success' && successInteractionsStyles}
 `
 
 const ButtonStyles = {
