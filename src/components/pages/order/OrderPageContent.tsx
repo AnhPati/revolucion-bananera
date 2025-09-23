@@ -6,7 +6,7 @@ import Navbar from "./Navbar/Navbar";
 import { MainOrder } from "./MainOrder/MainOrder";
 import { getOrders } from "@/api/orders";
 import { CSSTransition } from "react-transition-group";
-import { AdminModalShortcuts } from "./MainOrder/AdminPanel/AdminModalShortcuts";
+import { AdminShortcutsModal } from "./MainOrder/AdminPanel/AdminShortcutsModal";
 import styled from "styled-components";
 import { theme } from "@/theme/theme";
 import { setLocalStorage } from "@/utils/windows";
@@ -17,8 +17,8 @@ export const OrderPageContent = () => {
         userId,
         adminMode,
         setAdminMode,
-        isVisibleModalShortcuts,
-        setIsVisibleModalShortcuts,
+        isAdminShortcutsModalVisible,
+        setIsAdminShortcutsModalVisible,
         setProducts,
         setBasketProducts,
         setOrders,
@@ -26,22 +26,8 @@ export const OrderPageContent = () => {
         orderStatut
     } = useOrderContext()
 
-    useEffect(() => {
-        if (userId) initialiseUserSession(userId, adminMode.isAdminMode, setProducts, setBasketProducts, setOrders)
-    }, [userId])
-
-    useEffect(() => {
-        if (adminMode.isAdminMode && orders === undefined) {
-            const loadOrders = async () => {
-                const ordersData = await getOrders()
-                setOrders(ordersData)
-            }
-            loadOrders()
-        }
-    }, [adminMode.isAdminMode])
-
     const hideModalShortcuts = () => {
-        setIsVisibleModalShortcuts(false)
+        setIsAdminShortcutsModalVisible(false)
         setLocalStorage(`shortcuts-${userId}`, false)
     }
 
@@ -63,9 +49,23 @@ export const OrderPageContent = () => {
         })
     })
 
+    useEffect(() => {
+        if (userId) initialiseUserSession(userId, adminMode.isAdminMode, setProducts, setBasketProducts, setOrders)
+    }, [userId])
+
+    useEffect(() => {
+        if (adminMode.isAdminMode && orders === undefined) {
+            const loadOrders = async () => {
+                const ordersData = await getOrders()
+                setOrders(ordersData)
+            }
+            loadOrders()
+        }
+    }, [adminMode.isAdminMode])
+
     return (
         <>
-            {adminMode.isAdminMode && isVisibleModalShortcuts && <AdminModalShortcuts
+            {adminMode.isAdminMode && isAdminShortcutsModalVisible && <AdminShortcutsModal
                 className={'shortcuts'}
                 onClick={hideModalShortcuts}
             />}

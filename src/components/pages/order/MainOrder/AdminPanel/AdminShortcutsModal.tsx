@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { getShortcutKey } from "./helpers/getShortcutKey";
 import { getOS } from "@/utils/windows";
 
-type AdminModalShortcutsProps = {
+type AdminShortcutsModalProps = {
     className?: string,
     onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-export const AdminModalShortcuts = ({ className, onClick }: AdminModalShortcutsProps) => {
+export const AdminShortcutsModal = ({ className, onClick }: AdminShortcutsModalProps) => {
     const userOS = getOS()
     return (
         <AdminShortcutsStyled className={className}>
